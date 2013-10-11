@@ -35,6 +35,13 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    columnize (0.3.6)
+    debugger (1.6.2)
+      columnize (>= 0.3.1)
+      debugger-linecache (~> 1.2.0)
+      debugger-ruby_core_source (~> 1.2.3)
+    debugger-linecache (1.2.0)
+    debugger-ruby_core_source (1.2.3)
     erubis (2.7.0)
     execjs (2.0.2)
     hike (1.2.3)
@@ -52,6 +59,7 @@ GEM
     mime-types (1.25)
     minitest (4.7.5)
     multi_json (1.8.1)
+    pg (0.17.0)
     polyglot (0.3.3)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -109,8 +117,10 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
+  debugger
   jbuilder (~> 1.2)
   jquery-rails
+  pg
   rails (= 4.0.0)
   sass-rails (~> 4.0.0)
   sdoc
