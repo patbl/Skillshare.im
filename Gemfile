@@ -9,7 +9,10 @@ group :test, :development do
 end
 
 group :development do
+  gem 'guard-rails'
   gem 'guard-rspec'
+  gem 'guard-livereload'
+  gem 'rack-livereload'
 end
 
 group :production do
