@@ -5,7 +5,9 @@ gem 'rails', '4.0.0'
 group :test, :development do
   gem 'sqlite3'
   gem 'rspec-rails'
+  gem 'capybara'
   gem 'debugger'
+  gem 'factory_girl_rails'
 end
 
 group :development do

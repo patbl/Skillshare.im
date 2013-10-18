@@ -1,6 +1,8 @@
 Skillshare::Application.routes.draw do
   root 'pages#show'
 
+  resources :users
+
   get 'sessions/create'
   get 'sessions/destroy'
 

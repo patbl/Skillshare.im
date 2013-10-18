@@ -12,6 +12,8 @@
           Signed in as <b>#{current_user.name}</b>!
         %div
           = link_to "Sign out", signout_path, id: "sign_out"
+        %div
+          -# = link_to "View profile", current_user
       - else
         = link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in"
     = yield
