@@ -3,11 +3,10 @@ Skillshare::Application.routes.draw do
 
   resources :users
 
-  get 'sessions/create'
-  get 'sessions/destroy'
+  resources :sessions, only: %i[new create destroy]
 
-  match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
-  match 'auth/failure', to: redirect('/'), via: [:get, :post]
-  match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
+  match 'auth/:provider/callback', to: 'sessions#create', via: %i[get, post]
+  match 'auth/failure', to: redirect('/'), via: %i[get, post]
+  match 'signout', to: 'sessions#destroy', as: 'signout', via: %i[get, post]
 
 end
