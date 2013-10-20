@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "users/index.html.haml" do
-  let!(:three_users) { 3.times.collect create(:user) }
+  let!(:three_users) { create_list(:user, 3) }
 
   it "should display all the users" do
     visit '/users'
