@@ -85,6 +85,9 @@ GEM
     guard-rspec (3.0.2)
       guard (>= 1.8)
       rspec (~> 2.13)
+    guard-spring (0.0.4)
+      guard
+      spring
     haml (4.0.3)
       tilt
     haml-rails (0.4)
@@ -185,7 +188,12 @@ GEM
       railties (>= 4.0.0.beta, < 5.0)
       sass (>= 3.1.10)
       sprockets-rails (~> 2.0.0)
+    simplecov (0.7.1)
+      multi_json (~> 1.0)
+      simplecov-html (~> 0.7.1)
+    simplecov-html (0.7.1)
     slop (3.4.6)
+    spring (0.0.11)
     sprockets (2.10.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -228,6 +236,7 @@ DEPENDENCIES
   guard-livereload
   guard-rails
   guard-rspec
+  guard-spring
   haml-rails
   jbuilder (~> 1.2)
   jquery-rails
@@ -237,6 +246,7 @@ DEPENDENCIES
   rails (= 4.0.0)
   rspec-rails
   sass-rails (~> 4.0.0)
+  simplecov
   sqlite3
   therubyracer
   turbolinks

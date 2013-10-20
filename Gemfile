@@ -13,8 +13,13 @@ end
 group :development do
   gem 'guard-rails'
   gem 'guard-rspec'
+  gem 'guard-spring'
   gem 'guard-livereload'
   gem 'rack-livereload'
+end
+
+group :test do
+  gem 'simplecov', require: false
 end
 
 group :production do
