@@ -8,6 +8,7 @@ group :test, :development do
   gem 'capybara'
   gem 'debugger'
   gem 'factory_girl_rails'
+  gem 'libnotify'
 end
 
 group :development do
