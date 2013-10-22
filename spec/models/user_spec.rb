@@ -21,4 +21,14 @@ describe User do
       expect(new_user).to be_invalid
     end
   end
+
+  describe "#full_name" do
+    let(:user) { create(:user) }
+    it "returns the user's full name" do
+      user.first_name = 'Ed'
+      user.last_name = 'Lu'
+      expect(user.full_name).to eq "Ed Lu"
+    end
+  end
+
 end
