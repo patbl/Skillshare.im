@@ -18,6 +18,10 @@ group :development do
   gem 'guard-livereload'
   gem 'rack-livereload'
   gem 'quiet_assets'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'pry-rails'
+  gem 'meta_request'
 end
 
 group :test do
