@@ -6,6 +6,8 @@
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body
+    - if flash[:notice]
+      #notice= flash[:notice]
     #user_nav
       - if current_user
         %div
