@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe User do
   let(:user) { create(:user) }
+  let(:user_with_proposals) { create(:user_with_proposals) }
 
   context "validations" do
     it "is valid with a provider and a UID" do

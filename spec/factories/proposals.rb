@@ -5,5 +5,6 @@ FactoryGirl.define do
     location "Honolulu"
     category "accommodations"
     offer true
+    user
   end
 end

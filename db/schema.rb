@@ -13,10 +13,22 @@
 
 ActiveRecord::Schema.define(version: 20131016094053) do
 
+  create_table "proposals", force: true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "body"
+    t.string   "location"
+    t.string   "category"
+    t.boolean  "offer"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "provider"
     t.string   "uid"
-    t.string   "name"
+    t.string   "first_name"
+    t.string   "last_name"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
     t.string   "email"

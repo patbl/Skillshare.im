@@ -1,7 +1,9 @@
 Skillshare::Application.routes.draw do
   root 'pages#show'
 
-  resources :users
+  resources :users do
+    resources :proposals
+  end
 
   resources :sessions, only: %i[new create destroy]
 
