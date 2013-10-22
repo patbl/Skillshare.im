@@ -17,11 +17,13 @@ group :development do
   gem 'guard-spring'
   gem 'guard-livereload'
   gem 'rack-livereload'
+  gem 'quiet_assets'
 end
 
 group :test do
   gem 'simplecov', require: false
   gem 'capybara'
+  gem 'launchy'
 end
 
 group :production do
