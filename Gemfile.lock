@@ -73,6 +73,7 @@ GEM
       railties (>= 3.0.0)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
+    ffaker (1.20.0)
     ffi (1.9.0)
     figaro (0.7.0)
       bundler (~> 1.0)
@@ -257,6 +258,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   debugger
   factory_girl_rails
+  ffaker
   figaro
   guard-livereload
   guard-rails

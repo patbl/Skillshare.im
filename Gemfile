@@ -22,11 +22,15 @@ group :development do
   gem 'binding_of_caller'
   gem 'pry-rails'
   gem 'meta_request'
-  gem 'rb-readline' # fixes "can't modify string; temporarily locked" error (http://stackoverflow.com/questions/19496932)
+
+  # fixes "can't modify string; temporarily locked" error
+  # (http://stackoverflow.com/questions/19496932)
+  gem 'rb-readline', require: false
 end
 
 group :test do
   gem 'simplecov', require: false
+  gem 'ffaker'
   gem 'capybara'
   gem 'launchy'
 end
