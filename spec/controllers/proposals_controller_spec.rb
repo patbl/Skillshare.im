@@ -10,7 +10,7 @@ describe ProposalsController do
     it "assigns all proposals to @proposals" do
       expect(assigns(:proposals)).to match_array proposals
     end
-    it "render the :index template" do
+    it "renders the :index template" do
       expect(response).to render_template :index
     end
   end
@@ -90,13 +90,13 @@ describe ProposalsController do
     end
     context "with invalid attributes" do
       it "doesn't update the proposal in the database" do
-        patch :update, id: proposal, proposal:
+        patch :update, id: proposal, user_id: proposal.user, proposal:
           attributes_for(:proposal, title: nil)
         proposal.reload
         expect(proposal).to_not be_nil
       end
       it "re-renders the :edit template" do
-        patch :update, id: proposal, proposal:
+        patch :update, id: proposal, user_id: proposal.user, proposal:
           attributes_for(:proposal, title: nil)
         expect(response).to render_template :edit
       end
