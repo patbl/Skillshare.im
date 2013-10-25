@@ -11,6 +11,10 @@ FactoryGirl.define do
     sequence(:oauth_token) { |n| "oauth#{n}" }
     oauth_expires_at 1.month.from_now
 
+    factory :admin do
+      admin true
+    end
+
     factory :user_with_proposals do
       ignore do
         proposals_count 5

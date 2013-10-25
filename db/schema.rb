@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20131016094053) do
     t.datetime "oauth_expires_at"
     t.string   "email"
     t.string   "location"
+    t.boolean  "admin"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
