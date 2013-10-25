@@ -15,7 +15,7 @@ class CreateUsers < ActiveRecord::Migration
       create_table :proposals do |t|
         t.belongs_to :user
         t.string :title
-        t.text :body
+        t.text :description
         t.string :location
         t.string :category
         t.boolean :offer
