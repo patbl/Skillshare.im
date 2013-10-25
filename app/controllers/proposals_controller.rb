@@ -1,10 +1,11 @@
 class ProposalsController < ApplicationController
+  before_action :set_proposal, only: %i[show edit update destroy]
+  before_action :set_user, only: %i[update destroy]
   def index
     @proposals = Proposal.all
   end
 
   def show
-    @proposal = Proposal.find(params[:id])
   end
 
   def new
@@ -12,7 +13,6 @@ class ProposalsController < ApplicationController
   end
 
   def edit
-    @proposal = Proposal.find(params[:id])
   end
 
   def create
@@ -25,9 +25,7 @@ class ProposalsController < ApplicationController
   end
 
   def update
-    @proposal = Proposal.find(params[:id])
-    if @proposal.update_attributes(proposal_params)
-      @user = User.find(params[:user_id])
+    if @proposal.update(proposal_params)
       redirect_to [@user, @proposal]
     else
       render :edit
@@ -35,8 +33,7 @@ class ProposalsController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:user_id])
-    Proposal.find(params[:id]).destroy
+    @proposal.destroy
     redirect_to user_proposals_path(@user)
   end
 
@@ -45,5 +42,13 @@ class ProposalsController < ApplicationController
   def proposal_params
     attrs = %i[title body location category offer]
     params.require(:proposal).permit(attrs)
+  end
+
+  def set_proposal
+    @proposal = Proposal.find(params[:id])
+  end
+
+  def set_user
+    @user = User.find(params[:user_id])
   end
 end
