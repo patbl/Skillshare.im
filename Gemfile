@@ -8,6 +8,7 @@ group :test, :development do
   gem 'capybara'
   gem 'debugger'
   gem 'factory_girl_rails'
+  gem 'jazz_hands'
   gem 'libnotify'
 end
 
@@ -20,7 +21,6 @@ group :development do
   gem 'quiet_assets'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'pry-rails'
   gem 'meta_request'
 
   # fixes "can't modify string; temporarily locked" error
