@@ -46,7 +46,6 @@ RSpec.configure do |config|
 
   config.include FactoryGirl::Syntax::Methods
   config.include Capybara::DSL, type: :feature
-
 end
 
 OmniAuth.config.test_mode = true
