@@ -1,3 +1,5 @@
+%h2 My Proposals
 - for proposal in @proposals
-  #proposal= link_to proposal.title, [@user, proposal]
+  #proposal= link_to proposal.title, [proposal.user, proposal]
+%br
 = link_to "Create a new proposal", new_user_proposal_path

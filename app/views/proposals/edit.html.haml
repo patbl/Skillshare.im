@@ -1,2 +1,23 @@
 %h1 Proposals#edit
 %p Find me in app/views/proposals/edit.html.haml
+= form_for [@proposal.user, @proposal] do |f|
+  = f.label :title, "Title"
+  = f.text_field :title
+
+  = f.label :category
+  = f.text_field :category
+
+  = f.label :offer
+  = f.check_box :offer
+
+  = f.label :location
+  = f.text_field :location
+
+  = f.label :description
+  = f.text_area :description
+
+  = f.submit "Update"
+
+  
+
+
