@@ -1,2 +1,4 @@
-%h1 Proposals#show
-%p Find me in app/views/proposals/show.html.haml
+%h2= @proposal.title
+%p= @proposal.description
+%p= @proposal.location
+= link_to 'Edit', edit_user_proposal_path(@proposal.user, @proposal)

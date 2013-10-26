@@ -1,6 +1,6 @@
 class ProposalsController < ApplicationController
   before_action :set_proposal, only: %i[show edit update destroy]
-  before_action :set_user, only: %i[update destroy]
+  before_action :set_user, only: %i[new create update destroy]
   def index
     @proposals = Proposal.all
   end
@@ -17,6 +17,7 @@ class ProposalsController < ApplicationController
 
   def create
     @proposal = Proposal.new(proposal_params)
+    @proposal.user_id = current_user.id
     if @proposal.save
       render :show
     else
@@ -40,7 +41,7 @@ class ProposalsController < ApplicationController
   private
 
   def proposal_params
-    attrs = %i[title body location category offer]
+    attrs = %i[title description location category offer]
     params.require(:proposal).permit(attrs)
   end
 
@@ -49,6 +50,7 @@ class ProposalsController < ApplicationController
   end
 
   def set_user
-    @user = User.find(params[:user_id])
+    # @user = User.find(params[:user_id])
+    @user = current_user
   end
 end

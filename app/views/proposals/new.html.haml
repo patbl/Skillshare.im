@@ -1,14 +1,23 @@
 %h1 A new proposal
-%p Need a form or summat
-= form_tag user_proposals_path, method: :post do
-  = label_tag :title, "Title"
-  = text_field_tag :title
-  = label_tag :location
-  = text_field_tag :location
-  -# FIXME
-  %br
-  %br
-  %br
-  = label_tag :description
-  = text_area_tag :description
+- if @proposal.errors.any?
+  = "The form contained #{pluralize(@proposal.errors.count, 'error')}."
+  - @proposal.errors.full_messages.each do |msg|
+    = msg
+= form_for([@user, @proposal]) do |f|
+  = f.label :title, "Title"
+  = f.text_field :title
+
+  = f.label :category
+  = f.text_field :category
+
+  = f.label :offer
+  = f.check_box :offer
+
+  = f.label :location
+  = f.text_field :location
+
+  = f.label :description
+  = f.text_area :description
+
+  = f.submit "Create"
 

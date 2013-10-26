@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20131016094053) do
   create_table "proposals", force: true do |t|
     t.integer  "user_id"
     t.string   "title"
-    t.text     "body"
+    t.text     "description"
     t.string   "location"
     t.string   "category"
     t.boolean  "offer"
