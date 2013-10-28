@@ -44,6 +44,13 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 
+  config.treat_symbols_as_metadata_keys_with_true_values = true
+  config.filter_run :focus
+  config.filter_run_excluding :slow unless ENV["SLOW_SPECS"]
+
+  config.before(:each) { GC.disable }
+  config.after(:each) { GC.enable }
+
   config.include FactoryGirl::Syntax::Methods
   config.include Capybara::DSL, type: :feature
 end
