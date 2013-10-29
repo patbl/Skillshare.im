@@ -1,5 +1,4 @@
-%h1 Proposals#edit
-%p Find me in app/views/proposals/edit.html.haml
+%h1 Edit
 = form_for [@proposal.user, @proposal] do |f|
   = f.label :title, "Title"
   = f.text_field :title

@@ -1,4 +1,4 @@
-%h1 A new proposal
+%h1 New Offer
 - if @proposal.errors.any?
   = "The form contained #{pluralize(@proposal.errors.count, 'error')}."
   - @proposal.errors.full_messages.each do |msg|
@@ -10,14 +10,13 @@
   = f.label :category
   = f.text_field :category
 
-  = f.label :offer
-  = f.check_box :offer
-
   = f.label :location
   = f.text_field :location
 
   = f.label :description
   = f.text_area :description
+
+  = f.hidden_field :offer, value: true
 
   = f.submit "Create"
 
