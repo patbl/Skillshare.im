@@ -7,3 +7,6 @@
       %li= link_to "My offers", user_proposals_path(current_user)
   - else
     = link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in"
+  %ul
+    %li= link_to "Home", root_path
+    %li= link_to "Users", users_path
