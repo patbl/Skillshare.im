@@ -30,11 +30,11 @@ describe UsersController do
 
     describe "PATCH #update" do
       it "allows the current user to update her profile" do
-        user = create(:user, last_name: "Crass")
+        user = create(:user, name: "Leon Crass")
         session[:user_id] = user
-        patch :update, user: attributes_for(:user, last_name: "Kass"), id: user.id
+        patch :update, user: attributes_for(:user, name: "Leon Kass"), id: user.id
         expect(response).to redirect_to(user)
-        expect(User.find(user).last_name).to eq "Kass"
+        expect(User.find(user).name).to eq "Leon Kass"
       end
       it "doesn't allow the current user to update another user's profile" do
         good_user = create :user

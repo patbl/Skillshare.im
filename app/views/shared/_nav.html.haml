@@ -1,7 +1,7 @@
 %nav
   - if current_user
     %ul
-      %li Hi, <b>#{current_user.full_name}</b>!
+      %li Hi, <b>#{current_user.name}</b>!
       %li= link_to "Sign out", signout_path, id: "sign_out"
       %li= link_to "View profile", current_user
       %li= link_to "My offers", user_proposals_path(current_user)
