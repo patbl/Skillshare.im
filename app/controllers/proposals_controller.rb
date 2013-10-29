@@ -1,8 +1,10 @@
 class ProposalsController < ApplicationController
+  before_action :set_user, only: %i[new create edit update destroy]
   before_action :set_proposal, only: %i[show edit update destroy]
-  before_action :set_user, only: %i[new create update destroy]
+
   def index
-    @proposals = Proposal.all
+    @offers = Proposal.offers
+    @requests = Proposal.requests
   end
 
   def show
@@ -34,8 +36,12 @@ class ProposalsController < ApplicationController
   end
 
   def destroy
-    @proposal.destroy
-    redirect_to user_proposals_path(@user)
+    if @proposal.user.id == current_user.id || current_user.admin?
+      Proposal.find(@proposal).destroy
+      redirect_to user_proposals_path(@user)
+    else
+      redirect_to root_url, notice: "You can't do that!"
+    end
   end
 
   private
@@ -50,7 +56,7 @@ class ProposalsController < ApplicationController
   end
 
   def set_user
-    # @user = User.find(params[:user_id])
     @user = current_user
+    redirect_to signin_path unless @user
   end
 end
