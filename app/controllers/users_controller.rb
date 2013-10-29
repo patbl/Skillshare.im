@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-    @user = User.find(params[:id])
+    @user = User.find(params[:id]) # probably should restrict access to e-mail address
   end
 
   def index
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    attrs = %i[email location first_name last_name]
+    attrs = %i[email location name about]
     params.require(:user).permit(attrs)
   end
 end
