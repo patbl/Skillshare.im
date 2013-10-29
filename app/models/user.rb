@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  # has_many :proposals, dependent: destroy
+  has_many :proposals, dependent: :destroy
   validates_presence_of :provider, :uid
   validates_uniqueness_of :uid # TODO: maybe uid should be unique per provider
   def self.from_omniauth(auth)
