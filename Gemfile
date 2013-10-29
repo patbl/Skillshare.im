@@ -17,7 +17,7 @@ group :development do
   gem 'guard-rails'
   gem 'guard-rspec'
   gem 'guard-spring'
-  gem 'guard-livereload'
+  gem 'guard-livereload', require: false
   gem 'rack-livereload'
   gem 'quiet_assets'
   gem 'better_errors'
