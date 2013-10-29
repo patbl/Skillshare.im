@@ -12,5 +12,13 @@ FactoryGirl.define do
     factory :invalid_proposal do
       title nil
     end
+
+    factory :offer do
+      offer true
+    end
+
+    factory :request do
+      offer false
+    end
   end
 end
