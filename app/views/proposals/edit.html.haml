@@ -6,14 +6,13 @@
   = f.label :category
   = f.text_field :category
 
-  = f.label :offer
-  = f.check_box :offer
-
   = f.label :location
   = f.text_field :location
 
   = f.label :description
   = f.text_area :description
+
+  = f.hidden_field :offer
 
   = f.submit "Update"
 
