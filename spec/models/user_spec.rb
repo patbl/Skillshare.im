@@ -20,12 +20,4 @@ describe User do
       expect(new_user).to have(1).error_on(:uid)
     end
   end
-
-  describe "#full_name" do
-    it "returns the user's full name" do
-      user.assign_attributes(first_name: 'Ed', last_name: 'Lu')
-      expect(user.full_name).to eq "Ed Lu"
-    end
-  end
-
 end

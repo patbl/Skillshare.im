@@ -1,3 +1,4 @@
-#location= @user.location
-#email= @user.email
-= link_to "My Proposals", user_proposals_path(@user)
+- if @user == current_user
+  = render 'current_user_show'
+- else
+  = render 'other_user_show'

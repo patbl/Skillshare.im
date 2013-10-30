@@ -19,6 +19,7 @@ group :development do
   gem 'guard-spring'
   gem 'guard-livereload', require: false
   gem 'rack-livereload'
+  gem 'guard-bundler'
   gem 'quiet_assets'
   gem 'better_errors'
   gem 'binding_of_caller'
@@ -33,7 +34,10 @@ group :test do
   gem 'simplecov', require: false
   gem 'ffaker'
   gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'capybara-webkit'
   gem 'launchy'
+  gem 'database_cleaner'
 end
 
 group :production do
@@ -51,3 +55,4 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'omniauth-facebook'
 gem 'figaro'
+gem 'redcarpet'

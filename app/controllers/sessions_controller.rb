@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
     redirect_to facebook_auth_path
   end
   def create
-    user = User.from_omniauth(env['omniauth.auth'])
+    user = User.from_omniauth(auth_hash)
     session[:user_id] = user.id
     redirect_to root_url, notice: "You signed in successfully."
   end
@@ -11,5 +11,11 @@ class SessionsController < ApplicationController
   def destroy
     session[:user_id] = nil
     redirect_to root_url, notice: "You signed out successfully."
+  end
+
+  protected
+  
+  def auth_hash
+    request.env['omniauth.auth']
   end
 end

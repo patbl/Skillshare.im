@@ -21,6 +21,7 @@ class ProposalsController < ApplicationController
     @proposal = Proposal.new(proposal_params)
     @proposal.user_id = current_user.id
     if @proposal.save
+      flash[:notice] = "New offer created."
       render :show
     else
       render :new
@@ -29,7 +30,7 @@ class ProposalsController < ApplicationController
 
   def update
     if @proposal.update(proposal_params)
-      redirect_to [@user, @proposal]
+      redirect_to [@user, @proposal], notice: 'Offer updated.'
     else
       render :edit
     end
