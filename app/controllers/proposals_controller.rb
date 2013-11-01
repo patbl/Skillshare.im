@@ -3,8 +3,9 @@ class ProposalsController < ApplicationController
   before_action :set_proposal, only: %i[show edit update destroy]
 
   def index
-    @offers = Proposal.offers
-    @requests = Proposal.requests
+    @user = User.find(params[:user_id])
+    @offers = Proposal.offers.where(user_id: params[:user_id])
+    @requests = Proposal.requests.where(user_id: params[:user_id])
   end
 
   def show
