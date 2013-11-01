@@ -1,21 +1,2 @@
 %h1 Edit
-= form_for [@proposal.user, @proposal] do |f|
-  = f.label :title, "Title"
-  = f.text_field :title
-
-  = f.label :category
-  = f.text_field :category
-
-  = f.label :location
-  = f.text_field :location
-
-  = f.label :description
-  = f.text_area :description
-
-  = f.hidden_field :offer
-
-  = f.submit "Update"
-
-  
-
-
+= render "new_or_edit"

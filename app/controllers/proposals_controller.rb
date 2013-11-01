@@ -13,7 +13,6 @@ class ProposalsController < ApplicationController
 
   def new
     @proposal = Proposal.new
-    @location = current_user.location
   end
 
   def edit

@@ -11,10 +11,13 @@ describe ProposalsController do
     end
 
     describe "GET #index" do
-      let(:offers) { create_list(:offer, 3) }
-      before { get :index }
+      before do
+        @other_user = create :user
+        other_offer = create :offer, user: @other_user
+        get :index, user_id: @other_user
+      end
       it "assigns all offers to @offers" do
-        expect(assigns(:offers)).to match_array (offers << @proposal)
+        expect(assigns(:offers)).to match_array Proposal.offers.where(user: @other_user)
       end
       it "renders the :index template" do
         expect(response).to render_template :index

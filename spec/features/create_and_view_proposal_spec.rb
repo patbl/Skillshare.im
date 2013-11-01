@@ -10,7 +10,6 @@ feature "Proposal management" do
     expect do
       fill_in 'proposal_title', with: "12 cases of tinned dog food"
       fill_in 'proposal_category', with: "goods"
-      fill_in 'proposal_location', with: "Staines, UK"
       fill_in 'proposal_description', with: <<-EOF
 So I was tired of spending so much time preparing and consuming 
 food, so I tried going on an **all–dog-food diet** for a couple of
@@ -23,11 +22,23 @@ co-workers or whatever. So I was like, what's the point? But I
 thought somebody else might be interested in giving it a go.
 It's _one-hundred percent_ vegan, and pretty tasty, too.
 EOF
-      click_button 'Create'
+      click_button 'Save'
     end.to change(Proposal, :count).by(1)
     expect(current_path).to eq user_proposals_path(User.last)
     expect(page).to have_selector('#title', text: '12 cases of tinned dog food')
     expect(page).to have_content("New offer created.")
+  end
+
+  scenario "you can get good cheer anywhere" do
+    sign_in
+    user = User.last
+    create :offer, title: "good cheer", user: user
+    click_link "My offers"
+    click_link "good cheer"
+    click_link "Edit"
+    choose "Anywhere"
+    click_button "Save"
+    expect(page).to have_selector("#location", text: "Anywhere")
   end
 
   scenario "edits a proposal", skip: true do
@@ -40,7 +51,7 @@ EOF
     visit user_proposals_path(user)
     expect(page).to have_selector('#offer', count: 2)
 
-    click_link 'Feminist Perspectives'
+    click_link 'Feminist Perspectives on Tort Law'
     click_link 'Edit'
     fill_in 'Title', with: 'Feminist Perspectives in Music Therapy'
     click_button 'Update'

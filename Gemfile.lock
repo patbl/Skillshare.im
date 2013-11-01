@@ -271,6 +271,9 @@ GEM
       multi_json (~> 1.0)
       rubyzip (~> 1.0.0)
       websocket (~> 1.0.4)
+    simple_form (3.0.0)
+      actionpack (>= 4.0.0, < 4.1)
+      activemodel (>= 4.0.0, < 4.1)
     simplecov (0.7.1)
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)
@@ -346,6 +349,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 4.0.0)
   selenium-webdriver
+  simple_form
   simplecov
   sqlite3
   therubyracer
