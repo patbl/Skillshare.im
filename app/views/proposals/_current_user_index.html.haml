@@ -1,0 +1,5 @@
+%h2 My Offers
+- for offer in @offers
+  #offer= link_to offer.title, [offer.user, offer]
+%br
+= link_to "Create a new offer", new_user_proposal_path

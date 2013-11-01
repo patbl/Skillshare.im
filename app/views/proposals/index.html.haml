@@ -1,5 +1,4 @@
-%h2 My Offers
-- for offer in @offers
-  #offer= link_to offer.title, [offer.user, offer]
-%br
-= link_to "Create a new offer", new_user_proposal_path
+- if @user == current_user
+  = render 'current_user_index'
+- else
+  = render 'other_user_index'
