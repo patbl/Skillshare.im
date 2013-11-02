@@ -1,8 +1,4 @@
-- if @proposal.errors.any?
-  = "The form contained #{pluralize(@proposal.errors.count, 'error')}."
-  - @proposal.errors.full_messages.each do |msg|
-    = msg
-= simple_form_for([@user, @proposal]) do |f|
+= simple_form_for(@proposal) do |f|
   = f.input :title
   = f.input :category
   = f.input :location, as: :radio_buttons, collection: [@user.location, "Anywhere"],

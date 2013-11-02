@@ -1,12 +1,15 @@
+%auth
+  - if current_user
+    Hi, <b>#{current_user.name}</b>!
+    = link_to "Sign out.", signout_path, id: "sign_out"
+  - else
+    = link_to "Sign in", facebook_auth_path, id: "sign_in"
+
 %nav
   - if current_user
     %ul
-      %li Hi, <b>#{current_user.name}</b>!
-      %li= link_to "Sign out", signout_path, id: "sign_out"
-      %li= link_to "View profile", current_user
+      %li= link_to "Home", root_path
+      %li= link_to "Profile", current_user
       %li= link_to "My offers", user_proposals_path(current_user)
   - else
-    = link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in"
-  %ul
-    %li= link_to "Home", root_path
-    %li= link_to "Users", users_path
+    = link_to "Home", root_path

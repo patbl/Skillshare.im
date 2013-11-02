@@ -9,7 +9,8 @@ class ProposalsController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:user_id])
+    @proposal = Proposal.find(params[:id])
+    @user = @proposal.user
   end
 
   def new
@@ -32,7 +33,7 @@ class ProposalsController < ApplicationController
 
   def update
     if @proposal.update(proposal_params)
-      redirect_to [@user, @proposal], notice: 'Offer updated.'
+      redirect_to @proposal, notice: 'Offer updated.'
     else
       render :edit
     end
