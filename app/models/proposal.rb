@@ -2,6 +2,8 @@ class Proposal < ActiveRecord::Base
   belongs_to :user
   validates :title, length: { minimum: 4, maximum: 70 }
   validates :description, length: { minimum: 20, maximum: 3000 }
+  validates :category, inclusion: { in: ApplicationHelper::CATEGORIES,
+    message: "%{value} is not a valid category" }
   validates_presence_of :title, :location, :category, :description, :user
 
   scope :requests, -> { where offer: false }

@@ -1,4 +1,6 @@
 module ApplicationHelper
+  CATEGORIES = %w[goods lodging services] 
+
   def markdown(text)
     markdown_options = {
       no_intra_emphasis: true,

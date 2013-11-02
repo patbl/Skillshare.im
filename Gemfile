@@ -57,3 +57,4 @@ gem 'omniauth-facebook'
 gem 'figaro'
 gem 'redcarpet'
 gem 'simple_form'
+gem 'coveralls', require: false
