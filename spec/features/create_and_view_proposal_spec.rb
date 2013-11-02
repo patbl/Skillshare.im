@@ -41,6 +41,20 @@ EOF
     expect(page).to have_selector("#location", text: "Anywhere")
   end
 
+  scenario "viewing others' proposals" do
+    xi = create :user, name: "Xu Li"
+    create :offer, title: "stuff", user: xi
+    sign_in
+    click_link "Users"
+    click_link "Xu Li"
+    click_link "Xu Li's Offers"
+    expect(page).to_not have_link("Create a new offer")
+    click_link "stuff"
+    expect(page).to have_selector("#title", "stuff")
+    expect(page).to_not have_link("Edit")
+    expect(page).to_not have_link("Delete")
+  end
+
   scenario "edits a proposal", skip: true do
     sign_in
 

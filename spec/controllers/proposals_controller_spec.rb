@@ -25,7 +25,7 @@ describe ProposalsController do
     end
 
     describe "GET #show" do
-      before { get :show, id: @proposal }
+      before { get :show, id: @proposal, user_id: @user }
       it "assigns the requested proposal to @proposal" do
         expect(assigns(:proposal)).to eq @proposal
       end

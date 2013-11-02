@@ -1,5 +1,7 @@
 %h2#title= @proposal.title
-#description= markdown(@proposal.description)
+#name= @user.name
 #location= @proposal.location
-= link_to 'Edit', edit_user_proposal_path(@proposal.user, @proposal)
-= link_to 'Delete', [@proposal.user, @proposal], method: :delete, data: { confirm: "Are you sure you want to delete this?" }
+#description= markdown(@proposal.description)
+- if @user == current_user
+  = link_to 'Edit', edit_user_proposal_path(@proposal.user, @proposal)
+  = link_to 'Delete', [@proposal.user, @proposal], method: :delete, data: { confirm: "Are you sure you want to delete this?" }
