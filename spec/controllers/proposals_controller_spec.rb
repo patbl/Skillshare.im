@@ -93,7 +93,7 @@ describe ProposalsController do
         it "redirects to the proposal" do
           patch :update, id: @proposal,
           proposal: attributes_for(:proposal)
-          expect(response).to redirect_to [@user, @proposal]
+          expect(response).to redirect_to @proposal
           expect(assigns(:user)).to eq @user
         end
       end

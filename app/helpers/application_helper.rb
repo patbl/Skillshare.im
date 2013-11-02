@@ -10,4 +10,8 @@ module ApplicationHelper
     renderer = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(html_options), markdown_options)
     renderer.render(text).html_safe
   end
+
+  def facebook_auth_path
+    "/auth/facebook"
+  end
 end

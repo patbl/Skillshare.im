@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def new
-    redirect_to facebook_auth_path
+    redirect_to "auth/facebook"
   end
   def create
     user = User.from_omniauth(auth_hash)
