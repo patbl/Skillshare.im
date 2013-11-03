@@ -50,6 +50,14 @@ class ProposalsController < ApplicationController
     end
   end
 
+  def filter
+    @offers = if params[:category]
+                Proposal.offers.tagged_with(params[:category])
+              else
+                Proposal.offers
+              end
+  end
+
   private
 
   def proposal_params

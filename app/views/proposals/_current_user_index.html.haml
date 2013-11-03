@@ -1,5 +1,5 @@
 %h2 My Offers
-- for offer in @offers
+- @offers.each do |offer|
   #offer= link_to offer.title, offer
 %br
 = link_to "Create a new offer", new_user_proposal_path(@user)

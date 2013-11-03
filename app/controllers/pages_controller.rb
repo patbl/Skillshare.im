@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
   def show
-    @proposals = Proposal.recent
+    @offers = Proposal.offers
   end
 end

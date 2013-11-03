@@ -4,6 +4,7 @@ Skillshare::Application.routes.draw do
   resources :users do
     resources :proposals, shallow: true
   end
+  match 'proposals', to: 'proposals#filter', via: %i[get post]
 
   resources :sessions, only: %i[new create destroy]
 

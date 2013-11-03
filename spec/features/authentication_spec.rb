@@ -31,5 +31,3 @@ describe "Authentication" do
   end
 
 end
-
-

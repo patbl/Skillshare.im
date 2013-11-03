@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require 'spec_helper'
 
 feature "Proposal management", slow: true do
@@ -56,10 +57,17 @@ EOF
   scenario "filtering proposals" do
     create :offer, title: "love", category_list: "services"
     create :offer, title: "encouragement", category_list: "services"
-    create :offer, title: "floppy disks", category_list: "goods"
+    create :offer, title: "crash pad", category_list: "lodging"
 
     visit root_path
     click_link "services"
+    expect(page).to have_selector("#offer", count: 2)
+    click_link "lodging"
+    expect(page).to have_selector("#offer", count: 1)
+    click_link "all"
+    expect(page).to have_selector("#offer", count: 3)
+    click_link "goods"
+    expect(page).to_not have_selector("#offer")
   end
 
   scenario "edits a proposal", skip: true do

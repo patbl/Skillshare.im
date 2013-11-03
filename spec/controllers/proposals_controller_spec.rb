@@ -137,6 +137,26 @@ describe ProposalsController do
           to change(Proposal, :count).by(-1)
       end
     end
+
+    
+  end
+
+  describe "filtering" do
+    before do
+      create :offer, category_list: "goods"
+    end
+    it "gets all the offers when unfiltered" do
+      get :filter 
+      expect(assigns(:offers)).to eq Proposal.offers
+    end
+    it "filters the offers based on their category" do
+      get :filter, category: "services"
+      expect(assigns(:offers)).to be_empty
+    end
+    it "doesn't show anything if there's nothing" do
+      get :filter, category: "lodging"
+      expect(assigns(:offers)).to be_empty
+    end
   end
 
   describe "admin" do

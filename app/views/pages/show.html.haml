@@ -4,14 +4,12 @@
 
 %p Effective altruists only! Meanies, bleeding hearts, and the ill-informed will be mercilessly ignored.
 
-%h2 Recent Offers
-- for proposal in @proposals
-  = link_to proposal.title, proposal
-  %br
-
 - if current_user
   %h2= link_to "Create an offer!", new_user_proposal_path(current_user)
 - else
   %h2= link_to "Sign in with Facebook to get started!", facebook_auth_path
 
-= render "categories"
+= render "shared/proposals"
+%br
+
+= render "shared/categories"
