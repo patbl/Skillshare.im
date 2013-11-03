@@ -57,9 +57,10 @@ describe ProposalsController do
 
     describe "POST #create" do
       context "with valid attributes" do
-        it "saves the new proposal in the database", skip: false do
-          expect { post :create, proposal: attributes_for(:proposal) }
-            .to change(Proposal, :count).by(1)
+        it "saves the new proposal in the database" do
+          expect {
+            post :create, proposal: attributes_for(:proposal)
+          }.to change(Proposal, :count).by(1)
           expect(response).to render_template(:show)
         end
       end

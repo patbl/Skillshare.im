@@ -2,7 +2,7 @@
 = simple_form_for(@proposal) do |f|
   = f.error_notification
   = f.input :title
-  = f.input :category
+  = f.input :category_list, collection: @categories
   = f.input :location, as: :radio_buttons, collection: [@user.location, "Anywhere"],
       checked: @proposal.location || @user.location
   = f.input :description

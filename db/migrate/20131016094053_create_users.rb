@@ -18,7 +18,6 @@ class CreateUsers < ActiveRecord::Migration
         t.string     :title
         t.text       :description
         t.string     :location
-        t.string     :category
         t.boolean    :offer
 
         t.timestamps

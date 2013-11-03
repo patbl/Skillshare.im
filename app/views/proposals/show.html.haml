@@ -1,7 +1,7 @@
 %h2#title= @proposal.title
 #name= link_to @user.name, @user
 #location= @proposal.location
-#category= @proposal.category
+#category= @proposal.category_list
 #description= markdown(@proposal.description)
 - if @user == current_user
   = link_to 'Edit', edit_proposal_path(@proposal.user, @proposal)

@@ -13,3 +13,5 @@
   %h2= link_to "Create an offer!", new_user_proposal_path(current_user)
 - else
   %h2= link_to "Sign in with Facebook to get started!", facebook_auth_path
+
+= render "categories"

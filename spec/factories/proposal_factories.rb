@@ -5,7 +5,7 @@ FactoryGirl.define do
     title "a free bed"
     description "Mi casa es su casa. Pero no abrazos, por favor"
     location "#{Faker::Address.city}, #{Faker::Address.country}"
-    category ApplicationHelper::CATEGORIES.sample
+    category_list ApplicationHelper::CATEGORIES.sample
     offer true
     user
 

@@ -15,9 +15,11 @@ class ProposalsController < ApplicationController
 
   def new
     @proposal = Proposal.new
+    @categories = ApplicationHelper::CATEGORIES
   end
 
   def edit
+    @categories = ApplicationHelper::CATEGORIES
   end
 
   def create
@@ -51,7 +53,7 @@ class ProposalsController < ApplicationController
   private
 
   def proposal_params
-    attrs = %i[title description location category offer]
+    attrs = %i[title description location offer category_list]
     params.require(:proposal).permit(attrs)
   end
 

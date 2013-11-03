@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-feature "Proposal management" do
-  scenario "adds a new proposal", focus: true do
+feature "Proposal management", slow: true do
+  scenario "adds a new proposal" do
     sign_in
 
     click_link "My offers"
@@ -9,7 +9,7 @@ feature "Proposal management" do
 
     expect do
       fill_in "Title", with: "12 cases of tinned dog food"
-      fill_in "Category", with: "goods"
+      select "goods", from: "Category"
       fill_in "Description", with: <<-EOF
 So I was tired of spending so much time preparing and consuming 
 food, so I tried going on an **all–dog-food diet** for a couple of
@@ -41,8 +41,8 @@ EOF
   end
 
   scenario "viewing others' proposals" do
-    xi = create :user, name: "Xu Li"
-    create :offer, title: "stuff", user: xi
+    xu = create :user, name: "Xu Li"
+    create :offer, title: "stuff", user: xu
     sign_in
     click_link "stuff"
     expect(page).to have_selector("#title", "stuff")
@@ -51,6 +51,15 @@ EOF
     click_link "Xu Li"
     click_link "Xu Li's Offers"
     expect(page).to_not have_link("Create a new offer")
+  end
+
+  scenario "filtering proposals" do
+    create :offer, title: "love", category_list: "services"
+    create :offer, title: "encouragement", category_list: "services"
+    create :offer, title: "floppy disks", category_list: "goods"
+
+    visit root_path
+    click_link "services"
   end
 
   scenario "edits a proposal", skip: true do
