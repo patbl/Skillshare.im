@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 20131102183948) do
     t.string   "title"
     t.text     "description"
     t.string   "location"
-    t.string   "category"
     t.boolean  "offer"
     t.datetime "created_at"
     t.datetime "updated_at"

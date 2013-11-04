@@ -9,6 +9,10 @@ FactoryGirl.define do
     offer true
     user
 
+    after(:create) do |proposal|
+      proposal.update(location: proposal.user.location)
+    end
+
     factory :invalid_proposal do
       title nil
     end

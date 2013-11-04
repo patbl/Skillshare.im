@@ -5,52 +5,53 @@ feature "Proposal management", slow: true do
   scenario "adds a new proposal" do
     sign_in
 
-    click_link "My offers"
-    click_link "Create a new offer"
+    click_link "Create"
 
     expect do
       fill_in "Title", with: "12 cases of tinned dog food"
       select "goods", from: "Category"
-      fill_in "Description", with: <<-EOF
-So I was tired of spending so much time preparing and consuming 
-food, so I tried going on an **all–dog-food diet** for a couple of
-months. It wasn't so bad, but I think my dog noticed. She
-stopped listening to me.
-
-<b>Plus</b>, I'd always finish eating before my girlfriend did, but
-she'd want me to stay there so she could talk about her
-co-workers or whatever. So I was like, what's the point? But I 
-thought somebody else might be interested in giving it a go.
-It's _one-hundred percent_ vegan, and pretty tasty, too.
-EOF
+      fill_in "Description", with: "Abandoned all–dog-food diet. Will ship internationally."
+      choose "Anywhere"
       click_button "Save"
     end.to change(Proposal, :count).by(1)
     expect(page).to have_selector("#title", text: "12 cases of tinned dog food")
     expect(page).to have_content("New offer created.")
   end
 
-  scenario "you can get good cheer anywhere" do
+  scenario "edits a proposal" do
     sign_in
     user = User.last
-    create :offer, title: "good cheer", user: user
+    create :offer, title: "melancholy", category_list: "lodging", user: user
+    
     click_link "My offers"
-    click_link "good cheer"
+    click_link "melancholy"
     click_link "Edit"
+
+    expect(find_field("Title").value).to eq "melancholy"
+    expect(find_field("Category list").value).to eq "lodging"
+
+    fill_in "Title", with: "good cheer"
     choose "Anywhere"
     click_button "Save"
+
+    expect(page).to have_selector("#title", text: "good cheer")
     expect(page).to have_selector("#location", text: "Anywhere")
   end
 
   scenario "viewing others' proposals" do
     xu = create :user, name: "Xu Li"
     create :offer, title: "stuff", user: xu
+
     sign_in
     click_link "stuff"
+
     expect(page).to have_selector("#title", "stuff")
     expect(page).to_not have_link("Edit")
     expect(page).to_not have_link("Delete")
+
     click_link "Xu Li"
     click_link "Xu Li's Offers"
+
     expect(page).to_not have_link("Create a new offer")
   end
 

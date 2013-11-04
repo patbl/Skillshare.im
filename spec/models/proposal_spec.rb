@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Proposal do
-  let(:proposal) { create(:proposal) }
+  let(:proposal) { build(:proposal) }
 
   context "validations" do
     it "is valid with everything filled in" do
@@ -20,24 +20,28 @@ describe Proposal do
 
   context "scopes" do
     context "#requests" do
+      before { create :offer }
+
       it "returns nil if there aren't any" do
-        offer = create :proposal, offer: true
         expect(Proposal.requests).to be_empty
       end
+
       it "returns requests if there are some" do
-        requests = create_list :proposal, 3, offer: false
-        expect(Proposal.requests).to match_array requests
+        request = create :request
+        expect(Proposal.requests).to match_array Array(request)
       end
     end
 
     context "#offers" do
+      before { create :request }
+
       it "returns nil if there aren't any" do
-        offer = create :proposal, offer: false
-        expect(Proposal.offers).to_not include(offer)
+        expect(Proposal.offers).to be_empty
       end
+
       it "returns offers if there are some" do
-        offers = create_list :proposal, 3, offer: true
-        expect(offers).to match_array offers
+        offer = create :offer
+        expect(Proposal.offers).to match_array Array(offer)
       end
     end
   end

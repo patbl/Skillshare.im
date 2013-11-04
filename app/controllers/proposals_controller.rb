@@ -1,16 +1,16 @@
 class ProposalsController < ApplicationController
-  before_action :set_user, only: %i[new create edit update destroy]
-  before_action :set_proposal, only: %i[show edit update destroy]
+  before_action :ensure_signed_in, only: %i[create new edit update destroy]
+  before_action :set_proposal,     only: %i[edit show update destroy]
+  before_action :set_user_from_params, only: %i[index create new]
+  before_action :set_user_from_proposal, only: %i[edit show update destroy]
+  before_action :verify_user,      only: %i[create new edit update destroy]
 
   def index
-    @user = User.find(params[:user_id])
     @offers = Proposal.offers.where(user_id: params[:user_id])
     @requests = Proposal.requests.where(user_id: params[:user_id])
   end
 
   def show
-    @proposal = Proposal.find(params[:id])
-    @user = @proposal.user
   end
 
   def new
@@ -23,8 +23,7 @@ class ProposalsController < ApplicationController
   end
 
   def create
-    @proposal = Proposal.new(proposal_params)
-    @proposal.user_id = current_user.id
+    @proposal = Proposal.new(proposal_params.merge(user_id: params[:user_id]))
     if @proposal.save
       flash[:notice] = "New offer created."
       render :show
@@ -35,19 +34,15 @@ class ProposalsController < ApplicationController
 
   def update
     if @proposal.update(proposal_params)
-      redirect_to @proposal, notice: 'Offer updated.'
+      redirect_to @proposal, notice: "Offer updated."
     else
       render :edit
     end
   end
 
   def destroy
-    if @proposal.user.id == current_user.id || current_user.admin?
-      Proposal.find(@proposal).destroy
-      redirect_to user_proposals_path(@user)
-    else
-      redirect_to root_url, notice: "You can't do that!"
-    end
+    @proposal.destroy
+    redirect_to user_proposals_path(@user)
   end
 
   def filter
@@ -60,17 +55,29 @@ class ProposalsController < ApplicationController
 
   private
 
-  def proposal_params
-    attrs = %i[title description location offer category_list]
-    params.require(:proposal).permit(attrs)
+  def ensure_signed_in
+    redirect_to signin_path unless current_user
   end
 
   def set_proposal
     @proposal = Proposal.find(params[:id])
   end
 
-  def set_user
-    @user = current_user
-    redirect_to signin_path unless @user
+  def set_user_from_params
+    @user = User.find(params[:user_id])
   end
+
+  def set_user_from_proposal
+    @user = @proposal.user
+  end
+
+  def verify_user
+    redirect_to root_path unless @user == current_user
+  end
+
+  def proposal_params
+    attrs = %i[title description location offer category_list]
+    params.require(:proposal).permit(attrs)
+  end
+
 end

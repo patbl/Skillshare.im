@@ -50,6 +50,7 @@ describe UsersController do
       delete :destroy
       expect(response).to redirect_to(root_url)
     end
+
   end
 
   describe "admin access" do
