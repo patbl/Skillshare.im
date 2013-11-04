@@ -5,7 +5,8 @@ sam = User.create!({
   email: "samjohnson@gmail.com",
   location: "Lichfield, England",
   about: "A man of letters."
- })
+})
+
 forks = Proposal.create!({
   title: "forks and knives",
   description: "My spoons keep disappearing, so I bought a new flatware set. Now I don't know what to do with all my extra forks and knives!",
