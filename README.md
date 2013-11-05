@@ -48,6 +48,13 @@ Here's what I can remember off the top of my head:
   collaboration or tracking tool, let me know. Since I've been the
   only one working on it so far, I haven't needed anything else.
 
+* If the database schema has changed, run the following commands on
+Heroku (will wipe out existing data):
+
+    heroku pg:reset DATABASE_URL --confirm ea-skillshare
+    heroku run rake db:migrate
+    heroku run rake db:seed
+
 ### Roadmap
 
 1. Make EA Skillshare an awesome app that people love to use and that
