@@ -27,7 +27,7 @@ Here's what I can remember off the top of my head:
   to use a single app, but I haven't been able to figure out how to do
   so. To get Facebook authentication working, you'll need to set a
   couple of environment variables. I used the Figaro gem (here's a
-  [good tutorial](http://railsapps.github.io/rails-environment-variables.html).
+  [good tutorial](http://railsapps.github.io/rails-environment-variables.html)).
   If you message me and you seem legit, I'll send you the API keys and
   secrets that I'm using. Alternatively, you can set up your own
   Facebook app, but it would be better for us to be working off the
