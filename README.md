@@ -47,7 +47,7 @@ Here's what I can remember off the top of my head:
   fix by myself are assigned to me. I'd be grateful for help on the
   issues that aren't assigned. If you want to use some other
   collaboration or tracking tool, let me know. Since I've been the
-  only one working on it so far, I haven't needed anything else.
+  only one working on the project so far, I haven't needed anything else.
 
 ### Roadmap
 
