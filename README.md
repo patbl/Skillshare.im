@@ -23,10 +23,11 @@ Here's what I can remember off the top of my head:
 * EA Skillshare uses Facebook for authentication. I've created two
   Facebook apps: one for development and testing (which can
   communicate with localhost:3000), and one for production (which can
-  communicate with ea-skillshare.herokuapp.com). Perhaps it's possible
-  to use a single app, but I haven't been able to figure out how to do
-  so. To get Facebook authentication working, you'll need to set a
-  couple of environment variables. I used the Figaro gem (here's a
+  communicate with http://ea-skillshare.herokuapp.com). Perhaps it's
+  possible to use a single app, but I haven't been able to figure out
+  how to do so. To get Facebook authentication working, you'll need to
+  set a couple of environment variables. I used the Figaro gem (here's
+  a
   [good tutorial](http://railsapps.github.io/rails-environment-variables.html)).
   If you message me and you seem legit, I'll send you the API keys and
   secrets that I'm using. Alternatively, you can set up your own
