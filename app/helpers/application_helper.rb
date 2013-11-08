@@ -13,8 +13,4 @@ module ApplicationHelper
     renderer.render(text).html_safe
   end
 
-  def my_facebook_auth_path
-    "/auth/facebook"
-  end
-
 end

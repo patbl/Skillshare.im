@@ -86,6 +86,9 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.include Capybara::DSL, type: :feature
   config.include FeatureHelpers, type: :feature
+
+  config.include MailerMacros
+  config.before(:each) { reset_email }
 end
 
 OmniAuth.config.test_mode = true
