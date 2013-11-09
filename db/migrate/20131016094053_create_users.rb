@@ -15,10 +15,22 @@ class CreateUsers < ActiveRecord::Migration
 
       create_table :proposals do |t|
         t.belongs_to :user
+
         t.string     :title
         t.text       :description
         t.string     :location
         t.boolean    :offer
+
+        t.timestamps
+      end
+
+      create_table :messages do |t|
+        t.belongs_to :user
+
+        t.string     :subject
+        t.text       :body
+        t.integer    :sender_id
+        t.integer    :recipient_id
 
         t.timestamps
       end

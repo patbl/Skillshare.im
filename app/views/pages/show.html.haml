@@ -7,7 +7,7 @@
 - if current_user
   %h2= link_to "Create an offer!", new_user_proposal_path(current_user)
 - else
-  %h2= link_to "Sign in with Facebook to get started!", my_facebook_auth_path
+  %h2= link_to "Sign in with Facebook to get started!", signin_path
 
 = render "shared/proposals"
 %br

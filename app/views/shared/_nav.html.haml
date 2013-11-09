@@ -3,7 +3,7 @@
     Hi, <b>#{current_user.name}</b>!
     = link_to "Sign out.", signout_path, id: "sign_out"
   - else
-    = link_to "Sign in", my_facebook_auth_path, id: "sign_in"
+    = link_to "Sign in", signin_path, id: "sign_in"
 
 %nav
   - if current_user

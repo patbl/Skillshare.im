@@ -13,6 +13,16 @@
 
 ActiveRecord::Schema.define(version: 20131102183948) do
 
+  create_table "messages", force: true do |t|
+    t.integer  "user_id"
+    t.string   "subject"
+    t.text     "body"
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "proposals", force: true do |t|
     t.integer  "user_id"
     t.string   "title"

@@ -22,7 +22,7 @@ describe UsersController do
     describe "GET #edit" do
       it "allows the current user to edit her profile" do
         session[:user_id] = user
-        get :edit, user: user
+        get :edit, id: user
         expect(response).to render_template :edit
         expect(assigns(:user)).to eq user
       end
@@ -47,7 +47,7 @@ describe UsersController do
 
     it "GET #destroy denies access" do
       session[:user_id] = user.id
-      delete :destroy
+      delete :destroy, id: 1
       expect(response).to redirect_to(root_url)
     end
 

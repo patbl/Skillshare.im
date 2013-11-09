@@ -1,5 +1,9 @@
 class SessionsController < ApplicationController
 
+  def new
+    redirect_to "/auth/facebook"
+  end
+
   def create
     user = User.from_omniauth(auth_hash)
     session[:user_id] = user.id

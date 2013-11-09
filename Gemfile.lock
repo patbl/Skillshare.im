@@ -1,25 +1,42 @@
+GIT
+  remote: git://github.com/nixme/jazz_hands.git
+  revision: 5e4b48f145883ecb14b55bf04eacc28ac9662676
+  branch: bring-your-own-debugger
+  specs:
+    jazz_hands (0.5.2)
+      awesome_print (~> 1.2)
+      coolline (>= 0.4.2)
+      hirb (~> 0.7.1)
+      pry (~> 0.9.12)
+      pry-doc (~> 0.4.6)
+      pry-git (~> 0.2.3)
+      pry-rails (~> 0.3.2)
+      pry-remote (>= 0.1.7)
+      pry-stack_explorer (~> 0.4.9)
+      railties (>= 3.0, < 5.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
-    actionmailer (4.0.0)
-      actionpack (= 4.0.0)
-      mail (~> 2.5.3)
-    actionpack (4.0.0)
-      activesupport (= 4.0.0)
+    actionmailer (4.0.1)
+      actionpack (= 4.0.1)
+      mail (~> 2.5.4)
+    actionpack (4.0.1)
+      activesupport (= 4.0.1)
       builder (~> 3.1.0)
       erubis (~> 2.7.0)
       rack (~> 1.5.2)
       rack-test (~> 0.6.2)
-    activemodel (4.0.0)
-      activesupport (= 4.0.0)
+    activemodel (4.0.1)
+      activesupport (= 4.0.1)
       builder (~> 3.1.0)
-    activerecord (4.0.0)
-      activemodel (= 4.0.0)
+    activerecord (4.0.1)
+      activemodel (= 4.0.1)
       activerecord-deprecated_finders (~> 1.0.2)
-      activesupport (= 4.0.0)
+      activesupport (= 4.0.1)
       arel (~> 4.0.0)
     activerecord-deprecated_finders (1.0.3)
-    activesupport (4.0.0)
+    activesupport (4.0.1)
       i18n (~> 0.6, >= 0.6.4)
       minitest (~> 4.2)
       multi_json (~> 1.3)
@@ -28,7 +45,7 @@ GEM
     acts-as-taggable-on (2.4.1)
       rails (>= 3, < 5)
     addressable (2.3.5)
-    arel (4.0.0)
+    arel (4.0.1)
     atomic (1.1.14)
     awesome_print (1.2.0)
     better_errors (1.0.1)
@@ -37,6 +54,9 @@ GEM
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.1.4)
+    byebug (2.3.1)
+      columnize (~> 0.3.6)
+      debugger-linecache (~> 1.2.0)
     callsite (0.0.11)
     capybara (2.1.0)
       mime-types (>= 1.16)
@@ -49,12 +69,10 @@ GEM
       json
     celluloid (0.15.2)
       timers (~> 1.1.0)
-    childprocess (0.3.9)
-      ffi (~> 1.0, >= 1.0.11)
     coderay (1.0.9)
-    coffee-rails (4.0.0)
+    coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
-      railties (>= 4.0.0.beta, < 5.0)
+      railties (>= 4.0.0, < 5.0)
     coffee-script (2.2.0)
       coffee-script-source
       execjs
@@ -69,13 +87,8 @@ GEM
       thor
     database_cleaner (1.2.0)
     debug_inspector (0.0.2)
-    debugger (1.6.2)
-      columnize (>= 0.3.1)
-      debugger-linecache (~> 1.2.0)
-      debugger-ruby_core_source (~> 1.2.3)
     debugger-linecache (1.2.0)
-    debugger-ruby_core_source (1.2.3)
-    diff-lcs (1.2.4)
+    diff-lcs (1.2.5)
     diffy (3.0.1)
     em-websocket (0.5.0)
       eventmachine (>= 0.12.9)
@@ -83,15 +96,15 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (2.0.2)
-    factory_girl (4.2.0)
+    factory_girl (4.3.0)
       activesupport (>= 3.0.0)
-    factory_girl_rails (4.2.1)
-      factory_girl (~> 4.2.0)
+    factory_girl_rails (4.3.0)
+      factory_girl (~> 4.3.0)
       railties (>= 3.0.0)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
     ffaker (1.20.0)
-    ffi (1.9.0)
+    ffi (1.9.3)
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
@@ -100,28 +113,28 @@ GEM
       diff-lcs (~> 1.1)
       mime-types (~> 1.15)
       posix-spawn (~> 0.3.6)
-    guard (2.0.5)
+    guard (2.2.3)
       formatador (>= 0.2.4)
-      listen (~> 2.0)
+      listen (~> 2.1)
       lumberjack (~> 1.0)
       pry (>= 0.9.12)
       thor (>= 0.18.1)
-    guard-bundler (0.1.3)
-      bundler (>= 1.0.0)
-      guard (>= 0.2.2)
+    guard-bundler (2.0.0)
+      bundler (~> 1.0)
+      guard (~> 2.2)
     guard-livereload (2.0.0)
       em-websocket (~> 0.5)
       guard (~> 2.0)
       multi_json (~> 1.8)
     guard-rails (0.4.7)
       guard (>= 0.2.2)
-    guard-rspec (3.0.2)
-      guard (>= 1.8)
-      rspec (~> 2.13)
+    guard-rspec (4.0.3)
+      guard (>= 2.1.1)
+      rspec (~> 2.14)
     guard-spring (0.0.4)
       guard
       spring
-    haml (4.0.3)
+    haml (4.0.4)
       tilt
     haml-rails (0.4)
       actionpack (>= 3.1, < 4.1)
@@ -134,18 +147,6 @@ GEM
     http_parser.rb (0.5.3)
     httpauth (0.2.0)
     i18n (0.6.5)
-    jazz_hands (0.5.2)
-      awesome_print (~> 1.2)
-      coolline (>= 0.4.2)
-      hirb (~> 0.7.1)
-      pry (~> 0.9.12)
-      pry-debugger (~> 0.2.2)
-      pry-doc (~> 0.4.6)
-      pry-git (~> 0.2.3)
-      pry-rails (~> 0.3.2)
-      pry-remote (>= 0.1.7)
-      pry-stack_explorer (~> 0.4.9)
-      railties (>= 3.0, < 5.0)
     jbuilder (1.5.2)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
@@ -157,10 +158,12 @@ GEM
       multi_json (>= 1.5)
     launchy (2.3.0)
       addressable (~> 2.3)
+    letter_opener (1.1.2)
+      launchy (~> 2.2)
     libnotify (0.8.2)
       ffi (>= 1.0.11)
     libv8 (3.16.14.3)
-    listen (2.0.4)
+    listen (2.2.0)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
@@ -174,9 +177,9 @@ GEM
       railties
     method_source (0.8.2)
     mime-types (1.25)
-    mini_portile (0.5.1)
+    mini_portile (0.5.2)
     minitest (4.7.5)
-    multi_json (1.8.1)
+    multi_json (1.8.2)
     multipart-post (1.2.0)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
@@ -201,9 +204,9 @@ GEM
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.4)
-    pry-debugger (0.2.2)
-      debugger (~> 1.3)
-      pry (~> 0.9.10)
+    pry-byebug (1.2.0)
+      byebug (~> 2.2)
+      pry (~> 0.9.12)
     pry-doc (0.4.6)
       pry (>= 0.9)
       yard (>= 0.8)
@@ -228,22 +231,22 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
-    rails (4.0.0)
-      actionmailer (= 4.0.0)
-      actionpack (= 4.0.0)
-      activerecord (= 4.0.0)
-      activesupport (= 4.0.0)
+    rails (4.0.1)
+      actionmailer (= 4.0.1)
+      actionpack (= 4.0.1)
+      activerecord (= 4.0.1)
+      activesupport (= 4.0.1)
       bundler (>= 1.3.0, < 2.0)
-      railties (= 4.0.0)
+      railties (= 4.0.1)
       sprockets-rails (~> 2.0.0)
     rails_12factor (0.0.2)
       rails_serve_static_assets
       rails_stdout_logging
     rails_serve_static_assets (0.0.1)
     rails_stdout_logging (0.0.3)
-    railties (4.0.0)
-      actionpack (= 4.0.0)
-      activesupport (= 4.0.0)
+    railties (4.0.1)
+      actionpack (= 4.0.1)
+      activesupport (= 4.0.1)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.1.0)
@@ -259,10 +262,10 @@ GEM
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
-    rspec-core (2.14.5)
-    rspec-expectations (2.14.3)
+    rspec-core (2.14.7)
+    rspec-expectations (2.14.4)
       diff-lcs (>= 1.1.3, < 2.0)
-    rspec-mocks (2.14.3)
+    rspec-mocks (2.14.4)
     rspec-rails (2.14.0)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
@@ -270,17 +273,11 @@ GEM
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
-    rubyzip (1.0.0)
     sass (3.2.12)
-    sass-rails (4.0.0)
-      railties (>= 4.0.0.beta, < 5.0)
+    sass-rails (4.0.1)
+      railties (>= 4.0.0, < 5.0)
       sass (>= 3.1.10)
       sprockets-rails (~> 2.0.0)
-    selenium-webdriver (2.37.0)
-      childprocess (>= 0.2.5)
-      multi_json (~> 1.0)
-      rubyzip (~> 1.0.0)
-      websocket (~> 1.0.4)
     simple_form (3.0.0)
       actionpack (>= 4.0.0, < 4.1)
       activemodel (>= 4.0.0, < 4.1)
@@ -289,13 +286,13 @@ GEM
       simplecov-html (~> 0.7.1)
     simplecov-html (0.7.1)
     slop (3.4.6)
-    spring (0.0.11)
+    spring (0.9.0)
     sprockets (2.10.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sprockets-rails (2.0.0)
+    sprockets-rails (2.0.1)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
@@ -310,20 +307,19 @@ GEM
       atomic
     tilt (1.4.1)
     timers (1.1.0)
-    tins (0.12.0)
+    tins (0.13.0)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
     turbolinks (1.3.0)
       coffee-rails
     tzinfo (0.3.38)
-    uglifier (2.2.1)
+    uglifier (2.3.1)
       execjs (>= 0.3.0)
-      multi_json (~> 1.0, >= 1.0.2)
-    websocket (1.0.7)
+      json (>= 1.8.0)
     xpath (2.0.0)
       nokogiri (~> 1.3)
-    yard (0.8.7.2)
+    yard (0.8.7.3)
 
 PLATFORMS
   ruby
@@ -334,10 +330,9 @@ DEPENDENCIES
   binding_of_caller
   capybara
   capybara-webkit
-  coffee-rails (~> 4.0.0)
+  coffee-rails
   coveralls
   database_cleaner
-  debugger
   factory_girl_rails
   ffaker
   figaro
@@ -347,23 +342,24 @@ DEPENDENCIES
   guard-rspec
   guard-spring
   haml-rails
-  jazz_hands
+  jazz_hands!
   jbuilder (~> 1.2)
   jquery-rails
   launchy
+  letter_opener
   libnotify
   meta_request
   omniauth-facebook
   pg
+  pry-byebug
   quiet_assets
   rack-livereload
-  rails (= 4.0.0)
+  rails (= 4.0.1)
   rails_12factor
   rb-readline
   redcarpet
   rspec-rails
-  sass-rails (~> 4.0.0)
-  selenium-webdriver
+  sass-rails
   simple_form
   simplecov
   sqlite3

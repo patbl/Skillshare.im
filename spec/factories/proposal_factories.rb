@@ -2,8 +2,8 @@ require 'ffaker'
 
 FactoryGirl.define do
   factory :proposal do
-    title "a free bed"
-    description "Mi casa es su casa. Pero no abrazos, por favor"
+    title Faker::Lorem.sentence[10..30]
+    description Faker::Lorem.paragraphs.join("\n\n")
     location "#{Faker::Address.city}, #{Faker::Address.country}"
     category_list ApplicationHelper::CATEGORIES.sample
     offer true
