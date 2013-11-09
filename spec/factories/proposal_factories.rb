@@ -2,7 +2,7 @@ require 'ffaker'
 
 FactoryGirl.define do
   factory :proposal do
-    title Faker::Lorem.sentence
+    title Faker::Lorem.sentence[10..30]
     description Faker::Lorem.paragraphs.join("\n\n")
     location "#{Faker::Address.city}, #{Faker::Address.country}"
     category_list ApplicationHelper::CATEGORIES.sample

@@ -164,21 +164,21 @@ describe ProposalsController do
   describe "guest" do
     describe "GET #new" do
       it "requires log in" do
-        get :new
+        get :new, user_id: 123
         expect(response).to redirect_to signin_path
       end
     end
 
     describe "GET #edit" do
       it "requires log in" do
-        get :edit
+        get :edit, id: 123
         expect(response).to redirect_to signin_path
       end
     end
 
     describe "POST #create" do
       it "requires log in" do
-        post :create
+        post :create, user_id: 123
         expect(response).to redirect_to signin_path
       end
     end

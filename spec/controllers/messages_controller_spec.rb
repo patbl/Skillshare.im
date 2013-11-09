@@ -4,7 +4,7 @@ describe MessagesController do
   
   describe "GET :new" do
     it "requires the user to be signed in" do
-      get :new, user_id: build(:user)
+      get :new, user_id: 1
       expect(response).to redirect_to signin_path
     end
 
