@@ -4,5 +4,5 @@
     %meta{charset: "utf-8", content: "text/html", "http-equiv" => "Content-Type"}/
   %body
     %p= @greeting
-    %p= "#{@sender.name} sent you a message:"
+    %p= "#{@sender.name} sent you a message about #{@proposal.title}:"
     %div{ style: "border: 2px solid #99CCFF; padding: 5px"}= markdown(@body)

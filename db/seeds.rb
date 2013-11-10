@@ -2,7 +2,7 @@ sam = User.create!({
   provider: "facebook",
   uid: "abc",
   name: "Sam Johnson",
-  email: "samjohnson@gmail.com",
+  email: "patbl@live.com",
   location: "Lichfield, England",
   about: "A man of letters."
 })

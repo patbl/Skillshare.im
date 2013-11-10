@@ -1,3 +1,8 @@
+[![Build Status](http://allthebadges.io/patbl/ea-skillshare/travis.png)](http://allthebadges.io/patbl/ea-skillshare/travis)
+[![Code Climate](https://codeclimate.com/github/patbl/ea-skillshare.png)](https://codeclimate.com/github/patbl/ea-skillshare)
+[![Coverage](http://allthebadges.io/patbl/ea-skillshare/coveralls.png)](http://allthebadges.io/patbl/ea-skillshare/coveralls)
+[![Dependencies](http://allthebadges.io/patbl/ea-skillshare/gemnasium.png)](http://allthebadges.io/patbl/ea-skillshare/gemnasium)
+
 # EA Skillshare
 
 EA Skillshare is a Rails app whose purpose is to make it easier for

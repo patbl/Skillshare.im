@@ -3,7 +3,6 @@ class MessagesController < ApplicationController
     return redirect_to signin_path unless current_user
     @message = Message.new
     @proposal = Proposal.find(params[:proposal_id])
-    # @user = @proposal.user
   end
 
   def create

@@ -10,6 +10,6 @@ class UserToUser < ActionMailer::Base
     @recipient = @proposal.user
     @greeting = "Hi, #{@recipient.name}!"
 
-    mail to: @recipient.email, subject: "Message from #{@recipient.name}"
+    mail to: @recipient.email, subject: "Message from #{@sender.name} about #{@proposal.title}"
   end
 end

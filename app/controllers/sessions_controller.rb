@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-
   def new
     redirect_to "/auth/facebook"
   end
@@ -20,5 +19,4 @@ class SessionsController < ApplicationController
   def auth_hash
     request.env['omniauth.auth']
   end
-
 end

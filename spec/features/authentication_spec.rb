@@ -27,13 +27,4 @@ feature "Authentication" do
       end
     end
   end
-
-  scenario "guest user attempts to create new proposal" do
-    user = create :user
-
-    visit new_user_proposal_path(user)
-    click_link "Sign in"
-    
-    
-  end
 end
