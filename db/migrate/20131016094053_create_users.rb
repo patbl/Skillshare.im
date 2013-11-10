@@ -22,17 +22,17 @@ class CreateUsers < ActiveRecord::Migration
         t.boolean    :offer
 
         t.timestamps
-      end
 
-      create_table :messages do |t|
-        t.belongs_to :user
+        create_table :messages do |t|
+          t.belongs_to :proposal
 
-        t.string     :subject
-        t.text       :body
-        t.integer    :sender_id
-        t.integer    :recipient_id
+          t.string     :subject
+          t.text       :body
+          t.integer    :sender_id
+          t.integer    :recipient_id
 
-        t.timestamps
+          t.timestamps
+        end
       end
     end
   end

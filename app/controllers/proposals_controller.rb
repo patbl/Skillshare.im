@@ -1,7 +1,9 @@
 class ProposalsController < ApplicationController
+  # This class is well confusing. Why set the user from params? It
+  # made sense at one time but I can't remember the reason.
   before_action :ensure_signed_in, only: %i[create new edit update destroy]
   before_action :set_proposal,     only: %i[edit show update destroy]
-  before_action :set_user_from_params, only: %i[index create new]
+  before_action :set_user_from_params, only: %i[index create new] # FIX: why create and new?
   before_action :set_user_from_proposal, only: %i[edit show update destroy]
   before_action :verify_user,      only: %i[create new edit update destroy]
 
@@ -23,7 +25,7 @@ class ProposalsController < ApplicationController
   end
 
   def create
-    @proposal = Proposal.new(proposal_params.merge(user_id: params[:user_id]))
+    @proposal = Proposal.new(proposal_params.merge(user_id: params[:user_id])) # FIX: why use params for user ID?
     if @proposal.save
       flash[:notice] = "New offer created."
       render :show

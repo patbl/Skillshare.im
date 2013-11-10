@@ -5,5 +5,5 @@
     %style{type: "text/css"} #box { border: 2px solid #99CCFF; padding: 5px; }
   %body
     %p= @greeting
-    %p= "#{@sender.name} sent you a message:"
+    %p= "#{@sender.name} sent you a message about #{@proposal.title}:"
     %div#box= markdown(@body)

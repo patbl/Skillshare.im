@@ -4,12 +4,12 @@ describe UserToUser do
   describe "contact" do
     it "renders the headers" do
       sender = create :user
-      recipient = create :user
-      message = create :message, sender_id: sender.id, recipient_id: recipient.id
+      proposal = create :proposal
+      message = create :message, sender_id: sender.id, proposal_id: proposal.id
       mail = UserToUser.contact(message)
-      mail.subject.should eq("Message from #{recipient.name}")
-      mail.to.should eq([recipient.email])
-      mail.from.should eq(["don't_even_think_of_replying@ea-skillshare.herokuapp.com"])
+      expect(mail.subject).to eq "Message from #{sender.name} about #{proposal.title}"
+      expect(mail.to).to eq [proposal.user.email]
+      expect(mail.from).to eq ["don't_even_think_of_replying@ea-skillshare.herokuapp.com"]
     end
 
     it "renders the body" do
@@ -17,5 +17,4 @@ describe UserToUser do
       mail.body.encoded.should match("Hi")
     end
   end
-
 end

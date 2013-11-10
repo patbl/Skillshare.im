@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe "Authentication" do
+feature "Authentication" do
 
-  context "user hasn't signed in yet" do
+  scenario "user hasn't signed in yet", :skip do
     subject { page }
 
     before { visit root_url }
@@ -25,9 +25,6 @@ describe "Authentication" do
           should have_selector('#sign_in')
         end
       end
-
     end
-
   end
-
 end

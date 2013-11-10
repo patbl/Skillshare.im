@@ -6,9 +6,10 @@ class UserToUser < ActionMailer::Base
   def contact(message)
     @body = message.body
     @sender = User.find(message.sender_id)
-    @recipient = User.find(message.recipient_id)
+    @proposal = Proposal.find(message.proposal_id)
+    @recipient = @proposal.user
     @greeting = "Hi, #{@recipient.name}!"
 
-    mail to: @recipient.email, subject: "Message from #{@recipient.name}"
+    mail to: @recipient.email, subject: "Message from #{@sender.name} about #{@proposal.title}"
   end
 end

@@ -1,5 +1,6 @@
 class Proposal < ActiveRecord::Base
   belongs_to :user
+  has_many :messages
   acts_as_taggable_on :categories
 
   validates :title, length: { minimum: 4, maximum: 70 }
