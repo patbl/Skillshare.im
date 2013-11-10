@@ -6,3 +6,5 @@
 - if @user == current_user
   = link_to 'Edit', edit_proposal_path(@proposal.user, @proposal)
   = link_to 'Delete', @proposal, method: :delete, data: { confirm: "Are you sure you want to delete this?" }
+- else
+  = link_to "Send #{@user.name} a message", new_proposal_message_path(@proposal)

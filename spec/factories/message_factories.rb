@@ -4,6 +4,7 @@ FactoryGirl.define do
   factory :message do
     subject Faker::Lorem.sentence
     body Faker::Lorem.paragraphs.join("\n\n")
+    proposal
 
     factory :message_with_users do
       after(:create) do |message|

@@ -1,7 +1,11 @@
 class User < ActiveRecord::Base
   has_many :proposals, dependent: :destroy
+  has_many :messages_received, class_name: "Message", foreign_key: "recipient_id"
+  has_many :messages_sent, class_name: "Message", foreign_key: "sender_id"
+
   validates_presence_of :provider, :uid
   validates_uniqueness_of :uid # TODO: maybe uid should be unique per provider
+
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
       user.provider = auth.provider
@@ -14,5 +18,4 @@ class User < ActiveRecord::Base
       user.save!
     end
   end
-
 end

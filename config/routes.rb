@@ -2,8 +2,9 @@ Skillshare::Application.routes.draw do
   root 'pages#show'
 
   resources :users do
-    resources :proposals, shallow: true
-    resources :messages
+    resources :proposals, shallow: true do
+      resources :messages
+    end
   end
   match 'proposals', to: 'proposals#filter', via: %i[get post]
 

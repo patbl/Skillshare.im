@@ -7,6 +7,9 @@
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body
+    - if Rails.env.production?
+      %h1{style: "color: red"} ¡Not ready yet!
+      %h4 Feel free to play around, but be aware that anything you save will be deleted several times over.
     %h1 Sharing is Caring
     - if flash[:notice]
       #notice= flash[:notice]
