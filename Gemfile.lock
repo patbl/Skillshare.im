@@ -67,6 +67,10 @@ GEM
     capybara-webkit (1.0.0)
       capybara (~> 2.0, >= 2.0.2)
       json
+    carrierwave (0.9.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
     celluloid (0.15.2)
       timers (~> 1.1.0)
     coderay (1.1.0)
@@ -109,6 +113,8 @@ GEM
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
+    foreigner (1.6.0)
+      activerecord (>= 3.0.0)
     formatador (0.2.4)
     grit (2.5.0)
       diff-lcs (~> 1.1)
@@ -173,6 +179,10 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mailboxer (0.11.0)
+      carrierwave (>= 0.5.8)
+      foreigner (>= 0.9.1)
+      rails (> 3.0.0)
     meta_request (0.2.8)
       callsite
       rack-contrib
@@ -354,6 +364,7 @@ DEPENDENCIES
   launchy
   letter_opener
   libnotify
+  mailboxer
   meta_request
   omniauth-facebook
   pg

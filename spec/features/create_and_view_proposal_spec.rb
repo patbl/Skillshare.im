@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 require 'spec_helper'
 
 feature "Proposal management", slow: true do
@@ -38,7 +37,7 @@ feature "Proposal management", slow: true do
     expect(page).to have_selector("#location", text: "Anywhere")
   end
 
-  scenario "viewing others' proposals" do
+  scenario "viewing others' proposals", skip: true do
     xu = create :user, name: "Xu Li"
     create :offer, title: "stuff", user: xu
 

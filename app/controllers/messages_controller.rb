@@ -1,30 +1,29 @@
 class MessagesController < ApplicationController
+  include ApplicationHelper # for markdown
+
   def new
     return redirect_to signin_path unless current_user
-    @message = Message.new
     @proposal = Proposal.find(params[:proposal_id])
   end
 
   def create
     return redirect_to signin_path unless current_user
-    @message = Message.new(message_params)
+    @body = params[:message][:body]
     @proposal = Proposal.find(params[:proposal_id])
-    @message.assign_attributes(sender_id: current_user.id,
-                               proposal_id: @proposal.id,
-                               subject: @proposal.title)
-    if @message.save
-      UserToUser.contact(@message).deliver
-      redirect_to @proposal, notice: "Message sent."
+    if @body.blank?
+      render :new, notice: "Message can't be blank."
     else
-      render :new
+      send_notification
+      redirect_to @proposal, notice: "Message sent."
     end
   end
 
   private
 
-  def message_params
-    attrs = %i[body]
-    params.require(:message).permit(attrs)
+  def send_notification
+    @recipient = @proposal.user
+    @sender = current_user
+    subject = "#{current_user.name} sent you a message about #{@proposal.title}:"
+    @sender.send_message(@recipient, markdown(@body), subject)
   end
-
 end

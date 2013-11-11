@@ -1,0 +1,5 @@
+en:
+  mailboxer:
+    message_mailer:
+      subject_new: "You got skills: %{subject}"
+      subject_reply: "New reply: %{subject}"

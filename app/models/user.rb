@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   has_many :messages_received, class_name: "Message", foreign_key: "recipient_id"
   has_many :messages_sent, class_name: "Message", foreign_key: "sender_id"
 
+  acts_as_messageable
+
   validates_presence_of :provider, :uid
   validates_uniqueness_of :uid # TODO: maybe uid should be unique per provider
 
@@ -17,5 +19,9 @@ class User < ActiveRecord::Base
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
       user.save!
     end
+  end
+
+  def mailboxer_email(message)
+    email
   end
 end
