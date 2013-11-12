@@ -1,7 +1,8 @@
 OmniAuth.config.logger = Rails.logger
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'],
-           scope: 'email,user_location'
+  options = { scope: 'email,user_location',
+              image_size: :normal }
+  provider :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'], options
 end
 
 # in the development environment, redirect instead of raising an

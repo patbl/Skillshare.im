@@ -4,10 +4,12 @@ class CreateUsers < ActiveRecord::Migration
       t.string   :provider
       t.string   :uid
       t.string   :name
+      t.string   :email
+      t.string   :image
+      t.string   :facebook_profile
+      t.string   :location
       t.string   :oauth_token
       t.datetime :oauth_expires_at
-      t.string   :email
-      t.string   :location
       t.text     :about
       t.boolean  :admin
 

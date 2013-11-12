@@ -49,7 +49,7 @@ gem 'therubyracer', platforms: :ruby
 gem 'haml-rails'
 gem 'sass-rails'
 gem 'less-rails'
-gem 'twitter-bootstrap-rails'
+gem 'anjlab-bootstrap-rails', '~> 3.0.2.0', require: 'bootstrap-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails'
 gem 'jquery-rails'

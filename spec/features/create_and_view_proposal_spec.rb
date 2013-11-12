@@ -21,8 +21,8 @@ feature "Proposal management", slow: true do
     sign_in
     user = User.last
     create :offer, title: "melancholy", category_list: "lodging", user: user
-    
-    click_link "My offers"
+
+    click_link "My Offers"
     click_link "melancholy"
     click_link "Edit"
 
