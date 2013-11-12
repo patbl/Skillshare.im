@@ -1,7 +1,9 @@
 class ProposalsController < ApplicationController
   # This class is well confusing. Why set the user from params? It
-  # made sense at one time but I can't remember the reason.
+  # made sense at one time but I can't remember the reason. And too
+  # many before_actions!
   before_action :ensure_signed_in, only: %i[create new edit update destroy]
+  before_action :set_categories, only: %i[create new edit update]
   before_action :set_proposal,     only: %i[edit show update destroy]
   before_action :set_user_from_params, only: %i[index create new] # FIX: why create and new?
   before_action :set_user_from_proposal, only: %i[edit show update destroy]
@@ -17,11 +19,9 @@ class ProposalsController < ApplicationController
 
   def new
     @proposal = Proposal.new
-    @categories = ApplicationHelper::CATEGORIES
   end
 
   def edit
-    @categories = ApplicationHelper::CATEGORIES
   end
 
   def create
@@ -63,6 +63,10 @@ class ProposalsController < ApplicationController
 
   def set_proposal
     @proposal = Proposal.find(params[:id])
+  end
+
+  def set_categories
+    @categories = ApplicationHelper::CATEGORIES
   end
 
   def set_user_from_params
