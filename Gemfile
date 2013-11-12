@@ -36,7 +36,6 @@ group :test do
   gem 'simplecov', require: false
   gem 'ffaker'
   gem 'capybara'
-  gem 'capybara-webkit'
   gem 'launchy'
   gem 'database_cleaner'
 end
