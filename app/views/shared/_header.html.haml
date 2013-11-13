@@ -1,21 +1,20 @@
 %nav.navbar.navbar-default{ role: "navigation" }
   .navbar-header
-    %button{ type: "button", class: "navbar-toggle", "data-toggle" => "collapse", "data-target" => "#the-navbar"}
+    %button{ type: "button", class: "navbar-toggle", "data-toggle" => "collapse", "data-target" => "#header-navbar"}
       %span.sr-only Toggle navigation
       %span.icon-bar
       %span.icon-bar
       %span.icon-bar
     = link_to("Sharing Is Caring", root_url, class: "navbar-brand")
-  #the-navbar.collapse.navbar-collapse
+  #header-navbar.collapse.navbar-collapse
     %ul.nav.navbar-nav
       %li{ class: active?(root_path) }= link_to "Home", root_path
       %li{ class: active?(proposals_path) }= link_to "All Offers", proposals_path
       - if current_user
-        %li{ class: active?(current_user) }= link_to "Profile", current_user
         %li{ class: active?(user_proposals_path(current_user)) }= link_to "My Offers", user_proposals_path(current_user)
     %ul.nav.navbar-nav.navbar-right
       - if current_user
-        %li.navbar-text= current_user.name
+        %li{ class: active?(current_user) }= link_to(current_user.name, current_user)
         %li= link_to "Sign Out", signout_path, id: "sign_out"
       - else
         %li= link_to "Sign In", signin_path, id: "sign_in"
