@@ -3,6 +3,7 @@ class ProposalsController < ApplicationController
   # made sense at one time but I can't remember the reason. And too
   # many before_actions!
   before_action :ensure_signed_in, only: %i[create new edit update destroy]
+  before_action :check_for_cancel, only: %i[create update]
   before_action :set_categories, only: %i[create new edit update]
   before_action :set_proposal,     only: %i[edit show update destroy]
   before_action :set_user_from_params, only: %i[index create new] # FIX: why create and new?
@@ -19,6 +20,7 @@ class ProposalsController < ApplicationController
 
   def new
     @proposal = Proposal.new
+    session[:return_to] ||= request.referer
   end
 
   def edit
@@ -36,7 +38,7 @@ class ProposalsController < ApplicationController
 
   def update
     if @proposal.update(proposal_params)
-      redirect_to @proposal, notice: "Offer updated."
+      redirect_to @proposal, flash: { success: "Offer updated." }
     else
       render :edit
     end
@@ -59,6 +61,10 @@ class ProposalsController < ApplicationController
 
   def ensure_signed_in
     redirect_to signin_path unless current_user
+  end
+
+  def check_for_cancel
+    redirect_to(session.delete(:return_to) || root_path, notice: "Offer wasn't updated.") if params[:cancel]
   end
 
   def set_proposal
@@ -85,5 +91,4 @@ class ProposalsController < ApplicationController
     attrs = %i[title description location offer category_list]
     params.require(:proposal).permit(attrs)
   end
-
 end

@@ -91,7 +91,7 @@ RSpec.configure do |config|
 end
 
 OmniAuth.config.test_mode = true
-OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({
+OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new(
   provider: 'facebook',
   uid: '1234567',
   info: {
@@ -127,6 +127,4 @@ OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({
       updated_time: '2011-11-11T06:21:03+0000'
     }
   }
-}
 )
-

@@ -29,7 +29,7 @@ group :development do
 
   # fixes "can't modify string; temporarily locked" error
   # (http://stackoverflow.com/questions/19496932)
-  gem 'rb-readline', require: false
+  # gem 'rb-readline', require: false
 end
 
 group :test do

@@ -68,7 +68,16 @@ describe ProposalsController do
           }.to change(Proposal, :count).by(1)
           expect(response).to render_template(:show)
         end
+
+        it "doesn't save the proposal if the user clicks Cancel" do
+          session[:return_to] = "previous page"
+          expect {
+            post :create, proposal: attributes_for(:proposal), user_id: @user.id, cancel: true
+          }.to_not change(Proposal, :count)
+          expect(response).to redirect_to("previous page")
+        end
       end
+
       context "with invalid attributes" do
         it "doesn't save the new proposal in the database" do
           session[:user_id] = @user.id
@@ -77,6 +86,7 @@ describe ProposalsController do
           end.to_not change(Proposal, :count)
           expect(response).to render_template(:new)
         end
+
         it "re-renders the :new template" do
           post :create, user_id: @proposal.user, proposal: attributes_for(:invalid_proposal)
         end
@@ -89,6 +99,7 @@ describe ProposalsController do
           patch :update, id: @proposal, proposal: attributes_for(:proposal)
           expect(assigns(:proposal)).to eq @proposal
         end
+
         it "updates the proposal in the database" do
           patch :update, id: @proposal, proposal:
             attributes_for(:proposal, title: 'couch', location: 'Tampa')
@@ -96,13 +107,15 @@ describe ProposalsController do
           expect(@proposal.title).to eq 'couch'
           expect(@proposal.location).to eq 'Tampa'
         end
+
         it "redirects to the proposal" do
           patch :update, id: @proposal,
-          proposal: attributes_for(:proposal)
+                         proposal: attributes_for(:proposal)
           expect(response).to redirect_to @proposal
           expect(assigns(:user)).to eq @user
         end
       end
+
       context "with invalid attributes" do
         it "doesn't update the proposal in the database" do
           patch :update, id: @proposal, user_id: @proposal.user, proposal:
@@ -110,17 +123,29 @@ describe ProposalsController do
           @proposal.reload
           expect(@proposal).to_not be_nil
         end
+
         it "re-renders the :edit template" do
           patch :update, id: @proposal, user_id: @proposal.user, proposal:
             attributes_for(:proposal, title: nil)
           expect(response).to render_template :edit
         end
       end
+
+      context "with cancel" do
+        it "doesn't update the record" do
+          session[:return_to] = "previous page"
+          @proposal.update!(title: "towel")
+          patch :update, id: @proposal, proposal: attributes_for(:proposal, title: "pencil"), cancel: true
+          @proposal.reload
+          expect(@proposal.title).to eq "towel"
+          expect(response).to redirect_to "previous page"
+        end
+      end
     end
 
     describe "DELETE #destroy" do
       it "deletes the proposal from the database" do
-       expect { delete :destroy, id: @proposal, user_id: @proposal.user }
+        expect { delete :destroy, id: @proposal, user_id: @proposal.user }
           .to change(Proposal, :count).by(-1)
       end
       it "redirects to users#proposals#index" do

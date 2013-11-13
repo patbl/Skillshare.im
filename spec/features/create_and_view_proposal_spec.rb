@@ -37,7 +37,34 @@ feature "Proposal management", slow: true do
     expect(page).to have_selector("#location", text: "Anywhere")
   end
 
-  scenario "viewing others' proposals", skip: true do
+  scenario "canceling a new proposal" do
+    sign_in
+
+    click_link "Create"
+    click_button "Save"
+    click_button "Cancel"
+
+    expect(current_url).to eq root_url
+  end
+
+  scenario "canceling editing a proposal" do
+    sign_in
+    user = User.last
+    create :proposal, title: "stuffed animals", user: user
+
+    visit root_url
+    click_link "stuffed animals"
+    click_link "Edit"
+
+    fill_in "Title", with: ""
+    click_button "Save"
+    click_button "Save"
+    click_button "Cancel"
+
+    expect(page).to have_content("Offer wasn't updated.")
+  end
+
+  scenario "view others' proposals", skip: true do
     xu = create :user, name: "Xu Li"
     create :offer, title: "stuff", user: xu
 
