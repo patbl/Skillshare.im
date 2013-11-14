@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature "sending messages" do
+feature "sending messages", :skip do
   scenario "sending a message about an offer" do
     sign_in
 
