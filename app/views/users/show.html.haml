@@ -3,7 +3,7 @@
 %ul
   %li= @user.name
   %li= @user.location
-  %li= mail_to(@user.email, "E-mail")
+  %li= mail_to(@user.email, "E-mail", target: "_blank")
   %li= link_to("Facebook", @user.facebook_profile)
 
 %div= @user.about
