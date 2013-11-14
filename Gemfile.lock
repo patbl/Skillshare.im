@@ -164,7 +164,7 @@ GEM
     json (1.8.1)
     jwt (0.1.8)
       multi_json (>= 1.5)
-    launchy (2.3.0)
+    launchy (2.4.0)
       addressable (~> 2.3)
     less (2.4.0)
       commonjs (~> 0.2.7)
@@ -210,7 +210,7 @@ GEM
     omniauth (1.1.4)
       hashie (>= 1.2, < 3)
       rack
-    omniauth-facebook (1.4.1)
+    omniauth-facebook (1.5.0)
       omniauth-oauth2 (~> 1.1.0)
     omniauth-oauth2 (1.1.1)
       oauth2 (~> 0.8.0)
