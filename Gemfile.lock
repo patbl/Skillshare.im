@@ -67,13 +67,10 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-<<<<<<< HEAD
-=======
     carrierwave (0.9.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
       json (>= 1.7)
->>>>>>> bd54d019579d9568bddcba7418d8aea014a9b8c9
     celluloid (0.15.2)
       timers (~> 1.1.0)
     coderay (1.1.0)
@@ -363,10 +360,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   letter_opener
-<<<<<<< HEAD
-=======
   mailboxer
->>>>>>> bd54d019579d9568bddcba7418d8aea014a9b8c9
   meta_request
   omniauth-facebook
   pg

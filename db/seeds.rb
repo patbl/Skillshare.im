@@ -3,8 +3,6 @@ sam = User.create!(
   uid: "abc",
   name: "Sam Johnson",
   email: "patbl@live.com",
-  image: "nyan.jpg",
-  facebook_profile: "https://www.facebook.com/PopeFranciscus",
   location: "Lichfield, England",
   about: "A man of letters."
 )
@@ -23,8 +21,6 @@ george = User.create!(
   uid: "def",
   name: "Jorge Shrub",
   email: "george@hotmail.com",
-  image: "nyan.jpg",
-  facebook_profile: "https://www.facebook.com/PopeFranciscus",
   location: "Midland, Texas",
   about: "I actually prefer clearing brush to running the world."
 )
@@ -43,8 +39,6 @@ barack = User.create!(
   uid: "ghi",
   name: "BO",
   email: "potus@whitehouse.gov",
-  image: "nyan.jpg",
-  facebook_profile: "https://www.facebook.com/PopeFranciscus",
   location: "Washington, D.C.",
   about: "Hello, everybody!"
 )
