@@ -17,6 +17,7 @@ group :development do
   gem 'guard-rails'
   gem 'guard-rspec'
   gem 'guard-spring'
+  gem 'spring-commands-rspec'
   gem 'guard-bundler'
   gem 'guard-livereload', require: false
   gem 'rack-livereload'
@@ -25,10 +26,6 @@ group :development do
   gem 'binding_of_caller'
   gem 'meta_request'
   gem 'letter_opener'
-
-  # fixes "can't modify string; temporarily locked" error
-  # (http://stackoverflow.com/questions/19496932)
-  gem 'rb-readline', require: false
 end
 
 group :test do
@@ -48,6 +45,7 @@ end
 gem 'therubyracer', platforms: :ruby
 gem 'haml-rails'
 gem 'sass-rails'
+gem 'anjlab-bootstrap-rails', '~> 3.0.2.0', require: 'bootstrap-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails'
 gem 'jquery-rails'
@@ -59,3 +57,4 @@ gem 'redcarpet'
 gem 'simple_form'
 gem 'coveralls', require: false
 gem 'acts-as-taggable-on'
+gem 'mailboxer'

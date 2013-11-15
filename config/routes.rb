@@ -1,9 +1,8 @@
 Skillshare::Application.routes.draw do
-  root 'pages#show'
-
   resources :users do
-    resources :proposals, shallow: true
-    resources :messages
+    resources :proposals, shallow: true do
+      resources :messages # only: %i[new create]
+    end
   end
   match 'proposals', to: 'proposals#filter', via: %i[get post]
 
@@ -13,4 +12,7 @@ Skillshare::Application.routes.draw do
   match 'auth/failure', to: redirect('/'), via: %i[get post]
   match 'signin', to: 'sessions#new', as: 'signin', via: %i[get post]
   match 'signout', to: 'sessions#destroy', as: 'signout', via: %i[get post]
+
+  root 'pages#show'
+  get 'about', to: 'pages#about', as: 'about'
 end

@@ -5,7 +5,7 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
   SimpleCov::Formatter::HTMLFormatter,
   Coveralls::SimpleCov::Formatter
 ]
-                                                           
+
 SimpleCov.start 'rails'
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
@@ -16,7 +16,6 @@ require 'rspec/autorun'
 require 'capybara/rails'
 require 'capybara/rspec'
 Capybara.javascript_driver = :webkit
-
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -88,11 +87,12 @@ RSpec.configure do |config|
   config.include FeatureHelpers, type: :feature
 
   config.include MailerMacros
+  config.include LoginMacros
   config.before(:each) { reset_email }
 end
 
 OmniAuth.config.test_mode = true
-OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({
+OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new(
   provider: 'facebook',
   uid: '1234567',
   info: {
@@ -128,6 +128,4 @@ OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({
       updated_time: '2011-11-11T06:21:03+0000'
     }
   }
-}
 )
-

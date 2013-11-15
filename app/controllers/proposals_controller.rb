@@ -1,13 +1,15 @@
 class ProposalsController < ApplicationController
-  before_action :ensure_signed_in, only: %i[create new edit update destroy]
-  before_action :set_proposal,     only: %i[edit show update destroy]
-  before_action :set_user_from_params, only: %i[index create new]
+  before_action :ensure_signed_in,       only: %i[create new edit update destroy]
+  before_action :set_categories,         only: %i[create new edit update]
+  before_action :set_proposal,           only: %i[edit show update destroy]
+  before_action :set_user_from_params,   only: %i[index create new]
   before_action :set_user_from_proposal, only: %i[edit show update destroy]
-  before_action :verify_user,      only: %i[create new edit update destroy]
+  before_action :check_for_cancel,       only: %i[create update]
+  before_action :verify_user,            only: %i[create update destroy]
 
   def index
-    @offers = Proposal.offers.where(user_id: params[:user_id])
-    @requests = Proposal.requests.where(user_id: params[:user_id])
+    @offers = Proposal.offers.where(user_id: @user)
+    @requests = Proposal.requests.where(user_id: @user)
   end
 
   def show
@@ -15,17 +17,16 @@ class ProposalsController < ApplicationController
 
   def new
     @proposal = Proposal.new
-    @categories = ApplicationHelper::CATEGORIES
+    session[:return_to] ||= request.referer
   end
 
   def edit
-    @categories = ApplicationHelper::CATEGORIES
   end
 
   def create
-    @proposal = Proposal.new(proposal_params.merge(user_id: params[:user_id]))
+    @proposal = Proposal.new(proposal_params.merge(user_id: @user.id))
     if @proposal.save
-      flash[:notice] = "New offer created."
+      flash[:success] = "New offer created."
       render :show
     else
       render :new
@@ -34,7 +35,7 @@ class ProposalsController < ApplicationController
 
   def update
     if @proposal.update(proposal_params)
-      redirect_to @proposal, notice: "Offer updated."
+      redirect_to @proposal, flash: { success: "Offer updated." }
     else
       render :edit
     end
@@ -46,11 +47,7 @@ class ProposalsController < ApplicationController
   end
 
   def filter
-    @offers = if params[:category]
-                Proposal.offers.tagged_with(params[:category])
-              else
-                Proposal.offers
-              end
+    @offers = Proposal.offers.tagged_with_or_all(params[:category])
   end
 
   private
@@ -59,8 +56,16 @@ class ProposalsController < ApplicationController
     redirect_to signin_path unless current_user
   end
 
+  def check_for_cancel
+    redirect_to(session.delete(:return_to) || root_path, notice: "Offer wasn't updated.") if params[:cancel]
+  end
+
   def set_proposal
     @proposal = Proposal.find(params[:id])
+  end
+
+  def set_categories
+    @categories = ApplicationHelper::CATEGORIES
   end
 
   def set_user_from_params
@@ -79,5 +84,4 @@ class ProposalsController < ApplicationController
     attrs = %i[title description location offer category_list]
     params.require(:proposal).permit(attrs)
   end
-
 end

@@ -1,4 +1,14 @@
+= image_tag(@user.image)
+
+%ul
+  %li= @user.name
+  %li= @user.location
+  %li= mail_to(@user.email, "E-mail", target: "_blank")
+  %li= link_to("Facebook", @user.facebook_profile)
+
+%div= @user.about
+
 - if @user == current_user
-  = render 'current_user_show'
+  = link_to "Edit my profile", edit_user_path(@user)
 - else
-  = render 'other_user_show'
+  = link_to "#{@user.name}'s Offers", user_proposals_path(@user)

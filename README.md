@@ -1,3 +1,8 @@
+[![Build Status](https://travis-ci.org/patbl/ea-skillshare.png?branch=master)](https://travis-ci.org/patbl/ea-skillshare)
+[![Code Climate](https://codeclimate.com/github/patbl/ea-skillshare.png)](https://codeclimate.com/github/patbl/ea-skillshare)
+[![Coverage Status](https://coveralls.io/repos/patbl/ea-skillshare/badge.png?branch=master)](https://coveralls.io/r/patbl/ea-skillshare?branch=master)
+[![Dependency Status](https://gemnasium.com/patbl/ea-skillshare.png)](https://gemnasium.com/patbl/ea-skillshare)
+
 # EA Skillshare
 
 EA Skillshare is a Rails app whose purpose is to make it easier for
@@ -25,19 +30,16 @@ Here's what I can remember off the top of my head:
   communicate with http://ea-skillshare.herokuapp.com). Perhaps it's
   possible to use a single app, but I haven't been able to figure out
   how to do so. To get Facebook authentication working, you'll need to
-  set a couple of environment variables. I used the Figaro gem (here's
-  a
+  set a couple of environment variables. I used the Figaro gem (here's a
   [good tutorial](http://railsapps.github.io/rails-environment-variables.html)).
   If you message me and you seem legit, I'll send you the API keys and
   secrets that I'm using. Alternatively, you can set up your own
   Facebook app, but it would be better for us to be working off the
   same one.
 
-* EA Skillshare uses
-  [Capybara Webkit](https://github.com/thoughtbot/capybara-webkit) for
-  JavaScript testing. Or it would, if I could get
-  [Database Cleaner](https://github.com/bmabey/database_cleaner)
-  configured properly. Capybara Webkit requires some system-specific
-  set up; refer to
-  [this page](https://github.com/thoughtbot/capybara-webkit/wiki/Installing-Qt-and-compiling-capybara-webkit)
-  for instructions.
+* If you're deploying to Heroku, make sure to run `rake assets:precompile` first. 
+
+* If you've edited a previous migration, you'll need to run `rake db:migrate:reset` (instead of the regular `rake db:migrate`) locally. When you deploy to Heroku, you'll need to run
+
+    heroku pg:reset DATABASE_URL --confirm ea-skillshare
+    heroku run rake db:migrate

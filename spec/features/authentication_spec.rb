@@ -1,33 +1,21 @@
 require 'spec_helper'
 
-describe "Authentication" do
-
-  context "user hasn't signed in yet" do
+feature "Authentication" do
+  scenario "signing in" do
     subject { page }
 
-    before { visit root_url }
+    visit root_url
 
-    it { should have_selector('#sign_in') }
+    expect(page).to have_selector('#sign_in')
 
-    describe "signing in" do
-      before { click_link 'Sign in' }
+    click_link 'Sign in'
 
-      it "lets me know I signed in" do
-        should have_selector('#notice')
-        should have_selector('#sign_out')
-      end
+    expect(page).to have_selector('.alert-info')
+    expect(page).to have_selector('#sign_out')
 
-      describe "signing out" do
-        before { click_link 'Sign out' }
+    click_link 'Sign Out'
 
-        it "lets me know I signed out" do
-          should have_selector('#notice')
-          should have_selector('#sign_in')
-        end
-      end
-
-    end
-
+    expect(page).to have_selector('.alert-info')
+    expect(page).to have_selector('#sign_in')
   end
-
 end

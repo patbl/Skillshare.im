@@ -1,4 +1,3 @@
-= simple_form_for [@user, @message] do |f|
-  = f.input :subject
-  = f.input :body
-  = f.button :submit
+= simple_form_for :message, url: proposal_messages_url(@proposal) do |f|
+  = f.input :body, as: :text, label: "Message"
+  = f.button :submit, "Send"

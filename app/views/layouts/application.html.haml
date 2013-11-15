@@ -2,13 +2,21 @@
 %html
   %head
     %meta{ charset: "utf-8" }
-    %title Sharing is Caring
+    %title Skillshare.im
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body
-    %h1 Sharing is Caring
-    - if flash[:notice]
-      #notice= flash[:notice]
-    = render 'shared/nav'
-    = yield
+    #wrap
+      = render "shared/header"
+
+      - flash.each do |name, msg|
+        %div{ class: alert_type(name) }= msg
+
+      .container
+        = yield
+
+    = render "shared/footer"
+
+    %footer
+      = render "shared/analytics"

@@ -2,10 +2,10 @@
 = simple_form_for([@user, @proposal]) do |f|
   = f.error_notification
   = f.input :title
-  = f.input :category_list, collection: @categories
+  = f.input :category_list, collection: @categories, label: "Category"
   = f.input :location, as: :radio_buttons, collection: [@user.location, "Anywhere"],
       checked: @proposal.location || @user.location
   = f.input :description
   = f.hidden_field :offer, value: true
   = f.button :submit, "Save"
-
+  = f.button :submit, "Cancel", name: "cancel"

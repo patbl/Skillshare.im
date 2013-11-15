@@ -1,5 +1,5 @@
 module ApplicationHelper
-  CATEGORIES = %w[goods lodging services] 
+  CATEGORIES = %w[goods lodging services]
 
   def markdown(text)
     markdown_options = {
@@ -13,4 +13,16 @@ module ApplicationHelper
     renderer.render(text).html_safe
   end
 
+  def alert_type(level)
+    case level
+    when :notice  then "alert alert-info"
+    when :success then "alert alert-success"
+    when :alert   then "alert alert-warning"
+    when :error   then "alert alert-danger"
+    end
+  end
+
+  def active?(path)
+    "active" if current_page?(path)
+  end
 end

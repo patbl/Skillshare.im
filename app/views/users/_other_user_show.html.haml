@@ -1,6 +1,0 @@
-#name= @user.name
-#location= @user.location
-#about= @user.about
-%ul
-  %li= link_to "#{@user.name}'s Offers", user_proposals_path(@user)
-  %li= link_to "Send #{@user.name} a message", new_user_message_path(@user)
