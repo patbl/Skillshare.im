@@ -1,38 +1,25 @@
 require 'spec_helper'
 
 describe ProposalsController do
-  describe "user" do
-    let(:invalid_proposal) { build(:invalid_proposal) }
-
-    before do
-      unless example.metadata[:skip_before]
-        @user = create :user
-        session[:user_id] = @user.id
-        @proposal = create(:proposal, user: @user)
-      end
-    end
-
+  shared_examples("public access to proposals") do
     describe "GET #index" do
-      it "assigns all offers to @offers", skip_before: true  do
-        User.should_receive(:find).with("123").and_return("a user")
-        offers = double("offers")
-        Proposal.should_receive(:offers).and_return(offers)
-        offers.should_receive(:where).with(user_id: "123").and_return("an offer")
-        requests = double("requests")
-        Proposal.should_receive(:requests).and_return(requests)
-        requests.should_receive(:where).with(user_id: "123").and_return("a request")
-        get :index, user_id: "123"
+      it "assigns all a user's offers to @offers and requests to @requests" do
+        user = create :user
+        offer = create :offer, user: user
+        request = create :request, user: user
 
-        expect(assigns(:user)).to eq "a user"
-        expect(assigns(:offers)).to eq "an offer"
-        expect(assigns(:requests)).to eq "a request"
+        get :index, user_id: user.id
+
+        expect(assigns(:user)).to eq user
+        expect(assigns(:offers)).to eq [offer]
+        expect(assigns(:requests)).to eq [request]
       end
     end
 
     describe "GET #show" do
-      it "assigns the requested proposal to @proposal", skip_before: true do
+      it "assigns the requested proposal to @proposal" do
         proposal = double("a proposal")
-        Proposal.should_receive(:find).with("123").and_return(proposal)
+        expect(Proposal).to receive(:find).with("123").and_return(proposal)
         expect(proposal).to receive(:user)
 
         get :show, id: "123"
@@ -40,10 +27,24 @@ describe ProposalsController do
         expect(assigns(:proposal)).to eq proposal
       end
     end
+  end
+
+  describe "user" do
+    it_behaves_like "public access to proposals"
+
+    let(:invalid_proposal) { build(:invalid_proposal) }
+
+    before do
+      unless example.metadata[:skip_before]
+        @user = create :user
+        set_user_session(@user)
+        @proposal = create(:proposal, user: @user)
+      end
+    end
 
     describe "GET #new" do
       it "assigns a new proposal to @proposal" do
-        get :new, user_id: @user.id
+        get :new, user_id: @user
         expect(assigns(:proposal)).to be_a_new(Proposal)
       end
     end
@@ -52,10 +53,13 @@ describe ProposalsController do
       it "assigns the requested proposal to @proposal" do
         session[:user_id] = "123"
         expect(User).to receive(:find).with("123").and_return("a user")
+
         proposal = double("proposal")
         expect(Proposal).to receive(:find).with("123").and_return(proposal)
         expect(proposal).to receive(:user).and_return("a user")
+
         get :edit, id: "123"
+
         expect(assigns(:proposal)).to eq proposal
       end
     end
@@ -72,7 +76,7 @@ describe ProposalsController do
         it "doesn't save the proposal if the user clicks Cancel" do
           session[:return_to] = "previous page"
           expect {
-            post :create, proposal: attributes_for(:proposal), user_id: @user.id, cancel: true
+            post :create, proposal: attributes_for(:proposal), user_id: @user, cancel: true
           }.to_not change(Proposal, :count)
           expect(response).to redirect_to("previous page")
         end
@@ -82,13 +86,9 @@ describe ProposalsController do
         it "doesn't save the new proposal in the database" do
           session[:user_id] = @user.id
           expect do
-            post :create, user_id: @user.id, proposal: attributes_for(:invalid_proposal) 
+            post :create, user_id: @user, proposal: attributes_for(:invalid_proposal)
           end.to_not change(Proposal, :count)
           expect(response).to render_template(:new)
-        end
-
-        it "re-renders the :new template" do
-          post :create, user_id: @proposal.user, proposal: attributes_for(:invalid_proposal)
         end
       end
     end
@@ -109,8 +109,7 @@ describe ProposalsController do
         end
 
         it "redirects to the proposal" do
-          patch :update, id: @proposal,
-                         proposal: attributes_for(:proposal)
+          patch :update, id: @proposal, proposal: attributes_for(:proposal)
           expect(response).to redirect_to @proposal
           expect(assigns(:user)).to eq @user
         end
@@ -148,38 +147,38 @@ describe ProposalsController do
         expect { delete :destroy, id: @proposal, user_id: @proposal.user }
           .to change(Proposal, :count).by(-1)
       end
+
       it "redirects to users#proposals#index" do
         session[:user_id] = @user.id
         delete :destroy, id: @proposal
         expect(response).to redirect_to user_proposals_path(@user)
       end
+
       it "doesn't allow a user to delete another user's proposals" do
         nice_user = create(:user)
         bad_user = create(:user)
         proposal = create :proposal, user: nice_user
         session[:user_id] = bad_user
-        expect {
-          delete :destroy, id: proposal, user_id: bad_user
-        }.to_not change(Proposal, :count)
+        expect { delete :destroy, id: proposal, user_id: bad_user}
+          .to_not change(Proposal, :count)
         expect(response).to redirect_to(root_url)
       end
+
       it "deletes the user's proposals when the user's account is deleted" do
-        expect { User.find(@user.id).destroy }.
-          to change(Proposal, :count).by(-1)
+        expect { User.find(@user.id).destroy }
+          .to change(Proposal, :count).by(-1)
       end
     end
-
-    
   end
 
   describe "filtering" do
-    before do
-      create :offer, category_list: "goods"
-    end
+    before { create :offer, category_list: "goods" }
+
     it "gets all the offers when unfiltered" do
-      get :filter 
+      get :filter
       expect(assigns(:offers)).to eq Proposal.offers
     end
+
     it "doesn't show anything if there's nothing" do
       get :filter, category: "lodging"
       expect(assigns(:offers)).to be_empty
@@ -187,34 +186,35 @@ describe ProposalsController do
   end
 
   describe "guest" do
+    it_behaves_like "public access to proposals"
+
     describe "GET #new" do
       it "requires log in" do
         get :new, user_id: 123
-        expect(response).to redirect_to signin_path
+        expect(response).to require_login
       end
     end
 
     describe "GET #edit" do
       it "requires log in" do
         get :edit, id: 123
-        expect(response).to redirect_to signin_path
+        expect(response).to require_login
       end
     end
 
     describe "POST #create" do
       it "requires log in" do
         post :create, user_id: 123
-        expect(response).to redirect_to signin_path
+        expect(response).to require_login
       end
     end
 
     describe "PATCH #update" do
       it "requires login" do
-        proposal = create(:proposal) 
+        proposal = create(:proposal)
         patch :update, id: proposal
-        expect(response).to redirect_to signin_path
+        expect(response).to require_login
       end
     end
-
   end
 end

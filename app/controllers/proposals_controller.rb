@@ -1,18 +1,15 @@
 class ProposalsController < ApplicationController
-  # This class is well confusing. Why set the user from params? It
-  # made sense at one time but I can't remember the reason. And too
-  # many before_actions!
-  before_action :ensure_signed_in, only: %i[create new edit update destroy]
-  before_action :check_for_cancel, only: %i[create update]
-  before_action :set_categories, only: %i[create new edit update]
-  before_action :set_proposal,     only: %i[edit show update destroy]
-  before_action :set_user_from_params, only: %i[index create new] # FIX: why create and new?
+  before_action :ensure_signed_in,       only: %i[create new edit update destroy]
+  before_action :set_categories,         only: %i[create new edit update]
+  before_action :set_proposal,           only: %i[edit show update destroy]
+  before_action :set_user_from_params,   only: %i[index create new]
   before_action :set_user_from_proposal, only: %i[edit show update destroy]
-  before_action :verify_user,      only: %i[create new edit update destroy]
+  before_action :check_for_cancel,       only: %i[create update]
+  before_action :verify_user,            only: %i[create update destroy]
 
   def index
-    @offers = Proposal.offers.where(user_id: params[:user_id])
-    @requests = Proposal.requests.where(user_id: params[:user_id])
+    @offers = Proposal.offers.where(user_id: @user)
+    @requests = Proposal.requests.where(user_id: @user)
   end
 
   def show
@@ -27,9 +24,9 @@ class ProposalsController < ApplicationController
   end
 
   def create
-    @proposal = Proposal.new(proposal_params.merge(user_id: params[:user_id])) # FIX: why use params for user ID?
+    @proposal = Proposal.new(proposal_params.merge(user_id: @user.id))
     if @proposal.save
-      flash[:notice] = "New offer created."
+      flash[:success] = "New offer created."
       render :show
     else
       render :new
@@ -50,11 +47,7 @@ class ProposalsController < ApplicationController
   end
 
   def filter
-    @offers = if params[:category]
-                Proposal.offers.tagged_with(params[:category])
-              else
-                Proposal.offers
-              end
+    @offers = Proposal.offers.tagged_with_or_all(params[:category])
   end
 
   private

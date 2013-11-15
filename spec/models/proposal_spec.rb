@@ -7,6 +7,11 @@ describe Proposal do
     it "is valid with everything filled in" do
       expect(proposal).to be_valid
     end
+
+    it "is invalid with a bonkers category" do
+      proposal.category_list = ["bonkers"]
+      expect(proposal).to have(1).error_on(:category_list)
+    end
   end
 
   context "#request?" do

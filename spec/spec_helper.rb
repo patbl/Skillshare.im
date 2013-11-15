@@ -87,6 +87,7 @@ RSpec.configure do |config|
   config.include FeatureHelpers, type: :feature
 
   config.include MailerMacros
+  config.include LoginMacros
   config.before(:each) { reset_email }
 end
 
