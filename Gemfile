@@ -10,7 +10,6 @@ group :test, :development do
   gem 'factory_girl_rails'
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
   gem 'pry-byebug'
-  gem 'libnotify'
 end
 
 group :development do
@@ -26,10 +25,6 @@ group :development do
   gem 'binding_of_caller'
   gem 'meta_request'
   gem 'letter_opener'
-
-  # fixes "can't modify string; temporarily locked" error
-  # (http://stackoverflow.com/questions/19496932)
-  # gem 'rb-readline', require: false
 end
 
 group :test do
@@ -48,7 +43,6 @@ end
 gem 'therubyracer', platforms: :ruby
 gem 'haml-rails'
 gem 'sass-rails'
-gem 'less-rails'
 gem 'anjlab-bootstrap-rails', '~> 3.0.2.0', require: 'bootstrap-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails'
