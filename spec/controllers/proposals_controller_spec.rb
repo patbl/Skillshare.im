@@ -8,7 +8,7 @@ describe ProposalsController do
         offer = create :offer, user: user
         request = create :request, user: user
 
-        get :index, user_id: user.id
+        get :index, user_id: user
 
         expect(assigns(:user)).to eq user
         expect(assigns(:offers)).to eq [offer]
@@ -36,15 +36,17 @@ describe ProposalsController do
 
     before do
       unless example.metadata[:skip_before]
-        @user = create :user
+        @proposal = create(:proposal)
+        @user = @proposal.user
         set_user_session(@user)
-        @proposal = create(:proposal, user: @user)
       end
     end
 
-    describe "GET #new" do
+    describe "GET #new", skip_before: true do
       it "assigns a new proposal to @proposal" do
-        get :new, user_id: @user
+        user = create :user
+        set_user_session(user)
+        get :new, user_id: user
         expect(assigns(:proposal)).to be_a_new(Proposal)
       end
     end
@@ -54,9 +56,8 @@ describe ProposalsController do
         session[:user_id] = "123"
         expect(User).to receive(:find).with("123").and_return("a user")
 
-        proposal = double("proposal")
+        proposal = build_stubbed(:proposal)
         expect(Proposal).to receive(:find).with("123").and_return(proposal)
-        expect(proposal).to receive(:user).and_return("a user")
 
         get :edit, id: "123"
 
@@ -68,7 +69,7 @@ describe ProposalsController do
       context "with valid attributes" do
         it "saves the new proposal in the database" do
           expect {
-            post :create, proposal: attributes_for(:proposal), user_id: @user.id
+            post :create, proposal: attributes_for(:proposal), user_id: @user
           }.to change(Proposal, :count).by(1)
           expect(response).to render_template(:show)
         end
@@ -84,7 +85,6 @@ describe ProposalsController do
 
       context "with invalid attributes" do
         it "doesn't save the new proposal in the database" do
-          session[:user_id] = @user.id
           expect do
             post :create, user_id: @user, proposal: attributes_for(:invalid_proposal)
           end.to_not change(Proposal, :count)

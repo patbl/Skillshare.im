@@ -3,14 +3,19 @@ require 'spec_helper'
 describe Proposal do
   let(:proposal) { build(:proposal) }
 
+  it { should validate_presence_of(:title) }
+  it { should validate_presence_of(:location) }
+  it { should validate_presence_of(:description) }
+  it { should validate_presence_of(:user) }
+  it { should validate_presence_of(:category_list) }
+
+  it { should belong_to(:user) }
+  it { should ensure_inclusion_of(:category_list)
+      .in_array(ApplicationHelper::CATEGORIES.map { |e| Array(e) }) }
+
   context "validations" do
     it "is valid with everything filled in" do
       expect(proposal).to be_valid
-    end
-
-    it "is invalid with a bonkers category" do
-      proposal.category_list = ["bonkers"]
-      expect(proposal).to have(1).error_on(:category_list)
     end
   end
 

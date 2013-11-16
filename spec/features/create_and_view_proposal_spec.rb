@@ -50,7 +50,7 @@ feature "Proposal management", slow: true do
   scenario "canceling editing a proposal" do
     sign_in
     user = User.last
-    create :proposal, title: "stuffed animals", user: user
+    create :offer, title: "stuffed animals", user: user
 
     visit root_url
     click_link "stuffed animals"

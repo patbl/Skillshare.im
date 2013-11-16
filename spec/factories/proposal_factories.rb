@@ -6,10 +6,9 @@ FactoryGirl.define do
     description Faker::Lorem.paragraphs.join("\n\n")
     location "#{Faker::Address.city}, #{Faker::Address.country}"
     category_list ApplicationHelper::CATEGORIES.sample
-    offer true
     user
 
-    after(:create) do |proposal|
+    after(:build) do |proposal|
       proposal.update(location: proposal.user.location)
     end
 
