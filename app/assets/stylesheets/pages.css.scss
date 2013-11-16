@@ -1,3 +1,25 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.landing{
+  h1{
+    font-size:60px;
+    text-align:center;
+    font-family: 'Oregano', cursive;
+    margin-top: 33px;
+  }
+  .icons{
+    opacity:0.5;
+    margin:25px;
+    font-size: 64px;
+    .fa{
+      margin: 0 16px;
+    }
+  }
+  h3{
+    text-align:center;
+    margin-top:10px;
+    color: #666;
+  }
+}

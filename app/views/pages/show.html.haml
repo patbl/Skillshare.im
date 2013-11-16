@@ -1,11 +1,18 @@
 - if current_user
   %h3= link_to "Create an offer", new_user_proposal_path(current_user)
 - else
-  .jumbotron
-    %h1 Be sharinger.
-    %p Sharing.im is a place for <a href="http://80000hours.org/what-is-an-effective-altruist">effective altruists</a> to let one another know what they have to offer the community. Relationship advice, laundry service, puppies—the possibilities are limitless.
-    %p= link_to "Sign in with Facebook", signin_path, class: "btn btn-primary btn-lg", role: "button"
+  .landing
+    %h1
+      Good People 
+      Help Each Other
 
+    %h3
+      Provide & Recieve Goods and Services for Free
+      .icons
+        <i class="fa fa-gift"></i> <i class="fa fa-heart"></i> <i class="fa fa-globe"></i> 
+
+
+%p= link_to "Sign in with Facebook", signin_path, class: "btn btn-primary btn-lg", role: "button"
 = render "shared/proposals"
 %br
 
