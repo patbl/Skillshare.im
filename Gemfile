@@ -59,5 +59,4 @@ gem 'simple_form'
 gem 'coveralls', require: false
 gem 'acts-as-taggable-on'
 gem 'mailboxer'
-
 gem 'font-awesome-rails'
