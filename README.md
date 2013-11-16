@@ -38,7 +38,7 @@ Here's what I can remember off the top of my head:
   same one.
 
 * If you're deploying to Heroku, make sure to run
-  `RAILS_ENV=production rake assets:precompile` before stage your
+  `RAILS_ENV=production bundle exec rake assets:precompile` before stage your
   changes.
 
 * If you or someone else has edited a previous migration, you'll need
