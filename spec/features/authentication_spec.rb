@@ -10,7 +10,7 @@ feature "Authentication" do
 
     click_link 'Sign in'
 
-    expect(page).to have_selector('.alert-info')
+    expect(page).to have_selector('.alert-success')
     expect(page).to have_selector('#sign_out')
 
     click_link 'Sign Out'
