@@ -8,7 +8,11 @@ class SessionsController < ApplicationController
   def create
     user = User.from_omniauth(auth_hash)
     session[:user_id] = user.id
-    redirect_to root_url, notice: "You signed in successfully."
+    redirect_to root_url, flash: { success: "You signed in successfully." }
+  end
+
+  def failure
+    redirect_to root_url, flash: { error: "You didn't sign in." }
   end
 
   def destroy
