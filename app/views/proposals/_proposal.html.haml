@@ -1,9 +1,16 @@
-.col-md-6
+.col-md-4.proposal
   %h3
     = link_to proposal.title, proposal
-  %p 
+  %p
     = proposal.description
   .info
-    = proposal.location
-    = image_tag(proposal.user.picture("small"))
-    = proposal.user.name
+    .category
+      - category = proposal.category_list.first
+      = raw(category_tag(category))
+      = link_to category, proposals_path(category: category)
+    .location
+      <i class="fa fa-map-marker"></i>
+      = proposal.location
+    .user
+      = link_to image_tag(proposal.user.picture("small")), proposal.user
+      = link_to proposal.user.name, proposal.user

@@ -1,1 +1,39 @@
+.proposal{
+  margin-bottom:20px;
+  h3 {
+    font-size:20px;
 
+    a{
+      color: darkred;
+    }
+  }
+  p{
+    color: #666;
+    font-size:16px;
+    margin-bottom:9px;
+  }
+  .info{
+    color: #aaa;
+    a{
+      color: #aaa;
+    }
+    .fa{
+      color: #888;
+    }
+    .category{
+      float:left;
+    }
+    .location{
+      margin-left:21px;
+      float:left;
+    }
+    .user{
+      float:left;
+      margin-left:21px;
+      img{
+        width:16px;
+        border-radius:3px;
+      }
+    }
+  }
+}
