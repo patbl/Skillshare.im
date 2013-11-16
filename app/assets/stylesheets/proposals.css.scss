@@ -13,12 +13,18 @@
      -ms-transition: background-color 100ms linear;
      transition: background-color 100ms linear;
   }
+  .btn{
+    float:right;
+    font-size:12px;
+    padding: 2px 7px;
+  }
   .main{
-    padding:12px 12px 7px 12px;
+    padding:9px 12px 7px 12px;
   }
   h3 {
     font-size:16px;
-    margin-top:0;
+    margin-top:3px;
+    margin-bottom:11px;
     a{
       color: darkred;
     }

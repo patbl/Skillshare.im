@@ -1,9 +1,12 @@
 .col-md-4
   .proposal
     .main
-      %h3
-        = link_to proposal.title.titleize, proposal
-        .btn.btn-danger.btn-small Request
+      .row
+        .col-md-8
+          %h3
+            = link_to proposal.title.titleize, proposal
+        .col-md-4
+          .btn.btn-danger.btn-small Request
       %p
         = proposal.description
     .info
