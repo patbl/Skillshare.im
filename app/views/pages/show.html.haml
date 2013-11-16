@@ -2,15 +2,16 @@
   = link_to "Sign in with Facebook", signin_path, class: "btn btn-primary btn-lg", role: "button"
 
 .landing
+  %h3 
+    .icons
+      <i class="fa fa-gift"></i> <i class="fa fa-heart"></i> <i class="fa fa-globe"></i> 
+
   %h1
     Good People 
     Help Each Other
 
   %h3
     Provide & Recieve Goods and Services for Free
-    .icons
-      <i class="fa fa-gift"></i> <i class="fa fa-heart"></i> <i class="fa fa-globe"></i> 
-
 
 = render partial: "proposals/proposal", collection: Proposal.all
 %br
