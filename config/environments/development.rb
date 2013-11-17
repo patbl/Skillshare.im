@@ -27,7 +27,7 @@ Skillshare::Application.configure do
   # number of complex assets.
   config.assets.debug = true
   # TODO This messes up the icons, and we'll have to eventually fix that issue
-  config.assets.prefix = "/dev-assets"
+  # config.assets.prefix = "/dev-assets"
 
   config.middleware.use Rack::LiveReload
 

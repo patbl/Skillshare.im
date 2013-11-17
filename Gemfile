@@ -10,7 +10,6 @@ group :test, :development do
   gem 'factory_girl_rails'
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
   gem 'pry-byebug'
-  # gem 'libnotify' if /linux/ =~ RUBY_PLATFORM
 end
 
 group :development do
@@ -32,7 +31,7 @@ group :test do
   gem 'simplecov', require: false
   gem 'ffaker'
   gem 'capybara'
-  #gem 'capybara-webkit'
+  # gem 'capybara-webkit'
   gem 'launchy'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
