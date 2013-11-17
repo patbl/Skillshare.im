@@ -1,6 +1,3 @@
-- unless current_user
-  = link_to "Sign in with Facebook", signin_path, class: "btn btn-primary btn-lg", role: "button"
-
 .landing
 
   .heading
@@ -9,4 +6,9 @@
     %h3
       Coffee - Lodging - Mentorship - Capital - Used Goods - Connections - Online Labor
 
-= render partial: "proposals/proposal", collection: Proposal.all
+    - unless current_user
+      .facebook-outer
+        = link_to "Sign in with Facebook", signin_path, class: "btn btn-primary btn-lg facebook", role: "button"
+
+
+  = render partial: "proposals/proposal", collection: Proposal.all
