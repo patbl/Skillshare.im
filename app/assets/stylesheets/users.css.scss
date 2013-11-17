@@ -3,7 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .user-card{
-  padding: 4px;
   margin-bottom:20px;
   background-image: url('/assets/backgrounds/gplaypattern-80.png');
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
@@ -13,10 +12,10 @@
   &:hover{
     background-color: #f6f6f6;
     -webkit-transition: background-color 100ms linear;
-     -moz-transition: background-color 100ms linear;
-     -o-transition: background-color 100ms linear;
-     -ms-transition: background-color 100ms linear;
-     transition: background-color 100ms linear;
+    -moz-transition: background-color 100ms linear;
+    -o-transition: background-color 100ms linear;
+    -ms-transition: background-color 100ms linear;
+    transition: background-color 100ms linear;
   }
   .picture{
     float:left;
@@ -29,6 +28,7 @@
     float:right;
     font-size:12px;
     padding: 2px 7px;
+    min-width: 27px;
     a{
       color: white;
       &:hover{
@@ -37,13 +37,41 @@
     }
   }
   .main{
-    padding:9px 12px 7px 12px;
+    float:left;
+    width:100%;
+    padding:6px;
+    .right{
+      padding-left: 20px;
+      .offer-count{
+        font-family: 'Oregano', cursive;
+        margin-bottom: 10px;
+        font-size:18px;
+        a{
+          color: #555;
+          &:hover{
+            text-decoration:none;
+            color: #000;
+          }
+        }
+      }
+      .location{
+        color: #999;
+        margin-bottom:3px;
+      }
+      .facebook{
+        float:left;
+      }
+      .mail{
+        float:left;
+        margin-right:10px;
+      }
+    }
   }
   h3 {
     font-family: 'Oregano', cursive;
     font-size:26px;
-    margin-top:10px;
-    margin-bottom:11px;
+    margin-top:4px;
+    margin-bottom:1px;
     color: darkred;
     a{
       color: darkred;
@@ -56,8 +84,8 @@
   }
 
   .info{
-    color: #aaa;
-    padding:11px;
+    color: #666;
+    padding:6px;
     border-top: 1px solid #ddd;
     min-height:30px;
     font-size:11px;
