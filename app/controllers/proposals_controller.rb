@@ -50,6 +50,11 @@ class ProposalsController < ApplicationController
     @offers = Proposal.offers.tagged_with_or_all(params[:category])
   end
 
+  def map
+    @center = { latlng: [52, -20], zoom: 2 }
+    @markers = Proposal.all.map { |proposal| proposal.to_marker }
+  end
+
   private
 
   def ensure_signed_in

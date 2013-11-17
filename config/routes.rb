@@ -6,6 +6,8 @@ Skillshare::Application.routes.draw do
   end
   match 'proposals', to: 'proposals#filter', via: %i[get post]
 
+  match 'map', to: 'proposals#map', via: %i[get]
+
   resources :sessions, only: %i[new create destroy]
 
   match 'auth/:provider/callback', to: 'sessions#create', via: %i[get post]

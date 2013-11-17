@@ -17,6 +17,12 @@
     float:right;
     font-size:12px;
     padding: 2px 7px;
+    a{
+      color: white;
+      &:hover{
+        text-decoration:none;
+      }
+    }
   }
   .main{
     padding:9px 12px 7px 12px;
