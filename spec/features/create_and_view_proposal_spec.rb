@@ -4,6 +4,7 @@ feature "Proposal management", slow: true do
   scenario "adds a new proposal" do
     sign_in
 
+    click_link "My Offers"
     click_link "Create"
 
     expect do
@@ -40,11 +41,12 @@ feature "Proposal management", slow: true do
   scenario "canceling a new proposal" do
     sign_in
 
+    click_link "My Offers"
     click_link "Create"
     click_button "Save"
     click_button "Cancel"
 
-    expect(current_url).to eq root_url
+    expect(current_url).to eq user_proposals_url(User.last)
   end
 
   scenario "canceling editing a proposal" do
@@ -53,7 +55,7 @@ feature "Proposal management", slow: true do
     create :offer, title: "stuffed animals", user: user
 
     visit root_url
-    click_link "stuffed animals"
+    click_link "Stuffed Animals"
     click_link "Edit"
 
     fill_in "Title", with: ""
@@ -87,7 +89,7 @@ feature "Proposal management", slow: true do
     create :offer, title: "crash pad", category_list: "lodging"
 
     visit root_path
-    click_link "services"
+    first(:link, "services").click
     expect(page).to have_selector("#offer", count: 2)
     click_link "lodging"
     expect(page).to have_selector("#offer", count: 1)
