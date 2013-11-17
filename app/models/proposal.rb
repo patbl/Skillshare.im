@@ -6,8 +6,7 @@ class Proposal < ActiveRecord::Base
   include Mappable
 
   validates :title, length: { minimum: 4, maximum: 70 }
-  validates :description, length: { minimum: 20, maximum: 3000 }
-  validates_presence_of :title, :location, :description, :user, :category_list
+  validates_presence_of :title, :location, :user, :category_list
   validate :valid_category
 
   scope :requests, -> { where offer: false }
