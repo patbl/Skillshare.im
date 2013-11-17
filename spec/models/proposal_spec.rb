@@ -3,12 +3,6 @@ require 'spec_helper'
 describe Proposal do
   let(:proposal) { build(:proposal) }
 
-  it { should validate_presence_of(:title) }
-  it { should validate_presence_of(:location) }
-  it { should validate_presence_of(:description) }
-  it { should validate_presence_of(:user) }
-  it { should validate_presence_of(:category_list) }
-
   it { should belong_to(:user) }
   it { should ensure_inclusion_of(:category_list)
       .in_array(ApplicationHelper::CATEGORIES.map { |e| Array(e) }) }
