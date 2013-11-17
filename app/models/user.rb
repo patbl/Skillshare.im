@@ -5,8 +5,7 @@ class User < ActiveRecord::Base
 
   acts_as_messageable
 
-  geocoded_by :location
-  after_validation :geocode, if: :location_changed?
+  include Mappable
 
   validates_presence_of :provider, :uid, :email, :location
   validates_uniqueness_of :uid
@@ -34,5 +33,9 @@ class User < ActiveRecord::Base
 
   def facebook_profile
     "http://facebook.com/#{self.uid}"
+  end
+  
+  def to_marker
+    { latlng: latlng, popup: name }
   end
 end

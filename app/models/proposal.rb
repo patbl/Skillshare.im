@@ -3,8 +3,7 @@ class Proposal < ActiveRecord::Base
   has_many :messages
   acts_as_taggable_on :categories
 
-  geocoded_by :location
-  after_validation :geocode, if: :location_changed?
+  include Mappable
 
   validates :title, length: { minimum: 4, maximum: 70 }
   validates :description, length: { minimum: 20, maximum: 3000 }
@@ -18,10 +17,6 @@ class Proposal < ActiveRecord::Base
 
   def request?
     !offer?
-  end
-
-  def latlng
-    [latitude, longitude]
   end
 
   def to_marker
