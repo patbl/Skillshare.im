@@ -1,28 +1,4 @@
 .row
-  .col-md-4
-    .user-card
-      .picture
-        = image_tag(@user.picture)
-      .right
-        %h3= @user.name
-        .location
-          <i class="fa fa-map-marker"></i>
-          = @user.location
-        .mail
-          = mail_to @user.email do |m|
-            .btn.btn-small.btn-default
-              <i class="fa fa-envelope"></i>
-        .facebook
-          = link_to @user.facebook_profile do |u|
-            .btn.btn-primary
-              <i class="fa fa-facebook"></i>
-
-
-      %div= @user.about
-
-    - if @user == current_user
-      = link_to "Edit my profile", edit_user_path(@user)
-      = link_to "Create a new offer", new_user_proposal_path(@user)
-
+  = render partial: "users/user", collection: [@user]
   = render partial: "proposals/proposal", collection: @proposals
 

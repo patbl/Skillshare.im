@@ -1,0 +1,31 @@
+.col-md-4
+  .user-card
+    .main
+      .row
+        .col-md-4
+          .picture
+            = link_to image_tag(user.picture), user
+        .col-md-8.right
+          %h3= link_to user.name, user
+          .offer-count
+            = link_to pluralize(user.proposals.count, 'Offer'), user
+          .location
+            <i class="fa fa-map-marker"></i>
+            = user.location
+          .mail
+            = mail_to user.email do |m|
+              .btn.btn-small.btn-default
+                <i class="fa fa-envelope"></i>
+
+          .facebook
+            = link_to user.facebook_profile do |u|
+              .btn.btn-default
+                <i class="fa fa-facebook"></i>
+
+    .info 
+      = user.about
+
+
+  - if user == current_user
+    = link_to "Edit my profile", edit_user_path(user)
+    = link_to "Create a new offer", new_user_proposal_path(user)
