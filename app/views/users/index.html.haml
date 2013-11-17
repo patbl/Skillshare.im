@@ -1,5 +1,2 @@
 %h2 Users
-- @users.each do |user|
-  #user
-    #name= link_to(user.name, user)
-    #location= user.location
+= render partial: "users/user", collection: @users
