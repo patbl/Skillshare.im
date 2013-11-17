@@ -31,10 +31,6 @@ class User < ActiveRecord::Base
     "http://graph.facebook.com/#{self.uid}/picture?type=#{size}"
   end
 
-  def facebook_profile
-    "http://facebook.com/#{self.uid}"
-  end
-  
   def to_marker
     { latlng: latlng, popup: name }
   end
