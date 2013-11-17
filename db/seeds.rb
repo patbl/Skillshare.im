@@ -51,3 +51,40 @@ Proposal.create!(
   user: barack,
   offer: true
 )
+
+Proposal.create!(
+  title: "The White House",
+  description: "Be careful with the big red button, especially if you're using the drones stateside.",
+  location: "Washington, D.C.",
+  category_list: "goods",
+  user: barack,
+  offer: true
+)
+
+Proposal.create!(
+  title: "Jet Blue",
+  description: "Be careful with the big red button, especially if you're using the drones stateside.",
+  location: "Washington, D.C.",
+  category_list: "goods",
+  user: barack,
+  offer: true
+)
+
+Proposal.create!(
+  title: "Basketball Skills",
+  description: "Be careful with the big red button, especially if you're using the drones stateside.",
+  location: "Washington, D.C.",
+  category_list: "goods",
+  user: barack,
+  offer: true
+)
+
+Proposal.create!(
+  title: "More Stuff",
+  description: "Be careful with the big red button, especially if you're using the drones stateside.",
+  location: "Washington, D.C.",
+  category_list: "goods",
+  user: barack,
+  offer: true
+)
+

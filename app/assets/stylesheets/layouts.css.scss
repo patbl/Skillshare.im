@@ -1,23 +1,24 @@
 .header{
   margin-top:19px;
   margin-bottom:26px;
+  a, .btn{
+    color: rgba(50,50,50,0.5);
+    &:hover{
+      text-decoration: none;
+      color: rgba(50,50,50,0.8);
+      -webkit-transition: color 100ms linear;
+      -moz-transition: color 100ms linear;
+      -o-transition: color 100ms linear;
+      -ms-transition: color 100ms linear;
+      transition: color 100ms linear;
+    }
+  }
 
   .logo{
     margin-top: 7px;
     a{
       font-size:40px;
-      color: rgba(50,50,50,0.5);
       font-family: 'Oregano', cursive;
-      &:hover{
-        text-decoration: none;
-        color: rgba(50,50,50,0.8);
-        -webkit-transition: color 100ms linear;
-        -moz-transition: color 100ms linear;
-        -o-transition: color 100ms linear;
-        -ms-transition: color 100ms linear;
-        transition: color 100ms linear;
-      }
-
     }
   }
 
@@ -32,12 +33,22 @@
   }
   .right{
     float:right;
+    font-size:37px;
     .btn{
       float:right;
       background: none;
       border:none;
       font-size:37px;
       color: rgba(0,0,0,0.4);
+      &:hover{
+        text-decoration: none;
+        color: rgba(50,50,50,0.8);
+        -webkit-transition: color 100ms linear;
+        -moz-transition: color 100ms linear;
+        -o-transition: color 100ms linear;
+        -ms-transition: color 100ms linear;
+        transition: color 100ms linear;
+      }
       &:active{
         border:none;
         box-shadow:none;

@@ -2,11 +2,11 @@
   margin-bottom:20px;
   background: white;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
-  border-radius:2px;
+  border-radius:3px;
   float:left;
   width:100%;
   &:hover{
-    background: #f6f6f6;
+    background-color: #f6f6f6;
     -webkit-transition: background-color 100ms linear;
      -moz-transition: background-color 100ms linear;
      -o-transition: background-color 100ms linear;
@@ -25,6 +25,7 @@
     font-size:16px;
     margin-top:3px;
     margin-bottom:11px;
+    color: darkred;
     a{
       color: darkred;
     }
