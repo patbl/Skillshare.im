@@ -28,6 +28,13 @@ describe Proposal do
     end
   end
 
+  context "#latlng" do
+    let(:proposal) { build_stubbed(:proposal, latitude: 1, longitude: 2) }
+    it "returns an array with the latitude and longitude" do
+      expect(proposal.latlng).to eq [1, 2]
+    end
+  end
+
   context "scopes" do
     context "#requests" do
       before { create :offer }
@@ -52,6 +59,14 @@ describe Proposal do
       it "returns offers if there are some" do
         offer = create :offer
         expect(Proposal.offers).to match_array Array(offer)
+      end
+    end
+
+    context "#to_marker" do
+      it "returns a correctly formatted hash" do
+        offer = build_stubbed :offer, title: "dog", latitude: 1, longitude: 2
+        expected = { latlng: [1.0, 2.0], popup: "dog" }
+        expect(offer.to_marker).to eq(expected)
       end
     end
   end

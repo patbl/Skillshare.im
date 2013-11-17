@@ -13,6 +13,6 @@ Skillshare::Application.routes.draw do
   match 'signin', to: 'sessions#new', as: 'signin', via: %i[get post]
   match 'signout', to: 'sessions#destroy', as: 'signout', via: %i[get post]
 
-  root 'pages#show'
+  root 'pages#home'
   get 'about', to: 'pages#about', as: 'about'
 end

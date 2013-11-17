@@ -8,6 +8,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string   :image
       t.string   :facebook_profile
       t.string   :location
+      t.float    :latitude
+      t.float    :longitude
       t.string   :oauth_token
       t.datetime :oauth_expires_at
       t.text     :about
@@ -21,6 +23,8 @@ class CreateUsers < ActiveRecord::Migration
         t.string     :title
         t.text       :description
         t.string     :location
+        t.float      :latitude
+        t.float      :longitude
         t.boolean    :offer
 
         t.timestamps

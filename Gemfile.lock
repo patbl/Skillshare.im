@@ -118,6 +118,7 @@ GEM
     foreigner (1.6.0)
       activerecord (>= 3.0.0)
     formatador (0.2.4)
+    geocoder (1.1.8)
     grit (2.5.0)
       diff-lcs (~> 1.1)
       mime-types (~> 1.15)
@@ -167,6 +168,7 @@ GEM
       multi_json (>= 1.5)
     launchy (2.4.0)
       addressable (~> 2.3)
+    leaflet-rails (0.6.4)
     letter_opener (1.1.2)
       launchy (~> 2.2)
     libv8 (3.16.14.3)
@@ -354,6 +356,7 @@ DEPENDENCIES
   ffaker
   figaro
   font-awesome-rails
+  geocoder
   guard-bundler
   guard-livereload
   guard-rails
@@ -364,6 +367,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   launchy
+  leaflet-rails
   letter_opener
   mailboxer
   meta_request

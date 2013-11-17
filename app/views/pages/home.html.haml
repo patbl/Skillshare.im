@@ -7,3 +7,6 @@
     Provide & Recieve Free Goods and Services 
 
 = render partial: "proposals/proposal", collection: Proposal.all
+
+.container
+  = map(:center => @center, markers: @markers)

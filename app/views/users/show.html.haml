@@ -8,6 +8,7 @@
       %li= mail_to(@user.email, "E-mail", target: "_blank")
       %li= link_to("Facebook", @user.facebook_profile)
 
+
     %div= @user.about
 
     - if @user == current_user
@@ -16,3 +17,6 @@
 
   = render partial: "proposals/proposal", collection: @proposals
 
+
+  
+  
