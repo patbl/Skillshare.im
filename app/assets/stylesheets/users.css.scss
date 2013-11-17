@@ -1,3 +1,90 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user-card{
+  padding: 4px;
+  margin-bottom:20px;
+  background-image: url('/assets/backgrounds/gplaypattern-80.png');
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+  border-radius:3px;
+  float:left;
+  width:100%;
+  &:hover{
+    background-color: #f6f6f6;
+    -webkit-transition: background-color 100ms linear;
+     -moz-transition: background-color 100ms linear;
+     -o-transition: background-color 100ms linear;
+     -ms-transition: background-color 100ms linear;
+     transition: background-color 100ms linear;
+  }
+  .picture{
+    float:left;
+    img{
+      width: 118px;
+      border-radius:3px
+    }
+  }
+  .btn{
+    float:right;
+    font-size:12px;
+    padding: 2px 7px;
+    a{
+      color: white;
+      &:hover{
+        text-decoration:none;
+      }
+    }
+  }
+  .main{
+    padding:9px 12px 7px 12px;
+  }
+  h3 {
+    font-family: 'Oregano', cursive;
+    font-size:26px;
+    margin-top:10px;
+    margin-bottom:11px;
+    color: darkred;
+    a{
+      color: darkred;
+    }
+  }
+
+  .right{
+    float:left;
+    padding-left:10px;
+  }
+
+  .info{
+    color: #aaa;
+    padding:11px;
+    border-top: 1px solid #ddd;
+    min-height:30px;
+    font-size:11px;
+    float:left;
+    width:100%;
+    .left{
+      float:left;
+    }
+    .right{
+      float:right;
+      margin-top:5px;
+    }
+    a{
+      color: #aaa;
+    }
+    .fa{
+      color: #888;
+    }
+    .category{
+      float:left;
+      margin-left:21px;
+    }
+    .location{
+      margin-left:21px;
+      float:left;
+    }
+
+  }
+}
+
