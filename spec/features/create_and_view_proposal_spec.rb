@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature "Proposal management", slow: true do
+feature "Proposal management", slow: true, skip: true do
   scenario "adds a new proposal" do
     sign_in
 

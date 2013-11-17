@@ -9,7 +9,7 @@
     = csrf_meta_tags
   %body
     #wrap
-      = render "shared/header"
+      = render "shared/header2"
 
       - flash.each do |name, msg|
         %div{ class: alert_type(name) }= msg

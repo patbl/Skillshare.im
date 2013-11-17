@@ -1,4 +1,7 @@
 %h2 Categories
-= link_to "all categories", proposals_path
+= link_to "all", proposals_path
 - ApplicationHelper::CATEGORIES.each do |category|
-  #category= link_to category, proposals_path(category: category)
+  .category
+    = raw(category_tag(category))
+    = link_to category, proposals_path(category: category)
+

@@ -1,14 +1,18 @@
-= image_tag(@user.picture)
+.row
+  .col-md-4
+    = image_tag(@user.picture)
 
-%ul
-  %li= @user.name
-  %li= @user.location
-  %li= mail_to(@user.email, "E-mail", target: "_blank")
-  %li= link_to("Facebook", @user.facebook_profile)
+    %ul
+      %li= @user.name
+      %li= @user.location
+      %li= mail_to(@user.email, "E-mail", target: "_blank")
+      %li= link_to("Facebook", @user.facebook_profile)
 
-%div= @user.about
+    %div= @user.about
 
-- if @user == current_user
-  = link_to "Edit my profile", edit_user_path(@user)
-- else
-  = link_to "#{@user.name}'s Offers", user_proposals_path(@user)
+    - if @user == current_user
+      = link_to "Edit my profile", edit_user_path(@user)
+      = link_to "Create a new offer", new_user_proposal_path(@user)
+
+  = render partial: "proposals/proposal", collection: @proposals
+

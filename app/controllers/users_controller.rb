@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   before_action :set_user, except: :index
 
   def show
+    @user = User.find(params[:id])
+    @proposals = @user.proposals
   end
 
   def index

@@ -1,0 +1,67 @@
+.header{
+  margin-top:19px;
+  margin-bottom:26px;
+  a, .btn{
+    color: rgba(50,50,50,0.5);
+    &:hover{
+      text-decoration: none;
+      color: rgba(50,50,50,0.8);
+      -webkit-transition: color 100ms linear;
+      -moz-transition: color 100ms linear;
+      -o-transition: color 100ms linear;
+      -ms-transition: color 100ms linear;
+      transition: color 100ms linear;
+    }
+  }
+
+  .logo{
+    margin-top: 7px;
+    a{
+      font-size:40px;
+      font-family: 'Oregano', cursive;
+    }
+  }
+
+  .icons{
+    text-align:center;
+    font-size: 48px;
+    color: rgba(0,0,0,0.3);
+    margin:0 16px;
+    .fa{
+      margin: 0 10px;
+    }
+  }
+  .right{
+    float:right;
+    font-size:37px;
+    .btn{
+      float:right;
+      background: none;
+      border:none;
+      font-size:37px;
+      color: rgba(0,0,0,0.4);
+      &:hover{
+        text-decoration: none;
+        color: rgba(50,50,50,0.8);
+        -webkit-transition: color 100ms linear;
+        -moz-transition: color 100ms linear;
+        -o-transition: color 100ms linear;
+        -ms-transition: color 100ms linear;
+        transition: color 100ms linear;
+      }
+      &:active{
+        border:none;
+        box-shadow:none;
+        mox-box-shadow: none;
+        background: none;
+      }
+
+    }
+
+    .btn-group.open .dropdown-toggle{
+      background:none;
+      box-shadow: none;
+      -webkit-box-shadow: none;
+    }
+  }
+}
