@@ -24,7 +24,7 @@ class ProposalsController < ApplicationController
   end
 
   def create
-    @proposal = Proposal.new(proposal_params.merge(user_id: @user.id))
+    @proposal = @user.proposals.build(proposal_params)
     if @proposal.save
       flash[:success] = "New offer created."
       redirect_to @proposal

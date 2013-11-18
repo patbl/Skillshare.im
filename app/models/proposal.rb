@@ -18,10 +18,6 @@ class Proposal < ActiveRecord::Base
     !offer?
   end
 
-  def to_marker
-    { latlng: latlng, popup: title }
-  end
-
   private
   
   def valid_category
