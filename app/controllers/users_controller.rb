@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :ensure_signed_in
+  before_action :ensure_signed_in, except: :index
   before_action :ensure_current_user, only: %i[edit update]
   before_action :set_user, except: :index
 

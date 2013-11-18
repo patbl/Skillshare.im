@@ -12,15 +12,15 @@
           .location
             <i class="fa fa-map-marker"></i>
             = user.location
-          .mail
-            = mail_to user.email do |m|
-              .btn.btn-small.btn-default
-                <i class="fa fa-envelope"></i>
-
-          .facebook
-            = link_to user.facebook_profile do |u|
-              .btn.btn-default
-                <i class="fa fa-facebook"></i>
+          - if current_user
+            .mail
+              = mail_to user.email do |m|
+                .btn.btn-small.btn-default
+                  <i class="fa fa-envelope"></i>
+            .facebook
+              = link_to user.facebook_profile do |u|
+                .btn.btn-default
+                  <i class="fa fa-facebook"></i>
 
     .info 
       = user.about

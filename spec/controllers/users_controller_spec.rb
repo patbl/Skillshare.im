@@ -15,8 +15,6 @@ describe UsersController do
 
     describe "GET #index" do
       it "assigns all users to @users" do
-        signed_in_user = users.first
-        session[:user_id] = signed_in_user
         get :index
         expect(assigns(:users)).to eq users
       end
