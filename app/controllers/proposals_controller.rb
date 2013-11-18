@@ -27,7 +27,7 @@ class ProposalsController < ApplicationController
     @proposal = Proposal.new(proposal_params.merge(user_id: @user.id))
     if @proposal.save
       flash[:success] = "New offer created."
-      render :show
+      redirect_to @proposal
     else
       render :new
     end

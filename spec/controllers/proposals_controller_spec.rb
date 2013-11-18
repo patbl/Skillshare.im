@@ -71,7 +71,7 @@ describe ProposalsController do
           expect {
             post :create, proposal: attributes_for(:proposal), user_id: @user
           }.to change(Proposal, :count).by(1)
-          expect(response).to render_template(:show)
+          expect(response).to redirect_to Proposal.last
         end
 
         it "doesn't save the proposal if the user clicks Cancel" do
