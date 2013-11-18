@@ -10,7 +10,7 @@
             .request-btn
               .btn.btn-danger.btn-small 
                 <i class="fa fa-envelope"></i>
-                = mail_to proposal.user.email, "Request", target: "_blank"
+                = request_mail_to(proposal)
       %p
         = proposal.description
     .info
