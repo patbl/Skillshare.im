@@ -1,6 +1,6 @@
 module FeatureHelpers
   def sign_in
     visit root_path
-    click_link 'Sign in'
+    first(:link, "Sign in").click
   end
 end
