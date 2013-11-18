@@ -5,14 +5,12 @@
         .col-md-8
           %h3
             = proposal.title.titleize
-        .col-md-4
-          .request-btn
-            .btn.btn-danger.btn-small 
-              <i class="fa fa-envelope"></i>
-              - if current_user
+        - if current_user
+          .col-md-4
+            .request-btn
+              .btn.btn-danger.btn-small 
+                <i class="fa fa-envelope"></i>
                 = mail_to proposal.user.email, "Request", target: "_blank"
-              - else
-                = link_to "Request", signin_path
       %p
         = proposal.description
     .info
