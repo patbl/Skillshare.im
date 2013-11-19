@@ -6,7 +6,10 @@ Helping other help others—what could be more helpful? Not only will
 you improve the world; you'll connect with others in the community.
 You might even meet your soulmate.
 
-Skillshare.im was created by [Ozzie Gooen](http://ozziegooen.com/), [Peter
-Hurford](http://www.peterhurford.com/), and [Patrick Brinich-
-Langlois](http://www.patrickbrinichlanglois.com/), who are interesting and
-compassionate people.
+Check out the [FAQ](/faq) to learn more.
+
+Skillshare.im was tenderly hand-crafted with loving-kindness by
+[Ozzie Gooen](http://ozziegooen.com/),
+[Peter Hurford](http://www.peterhurford.com/), and
+[Patrick Brinich-Langlois](http://www.patrickbrinichlanglois.com/),
+who are interesting and compassionate people.
