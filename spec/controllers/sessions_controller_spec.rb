@@ -3,17 +3,25 @@ require 'spec_helper'
 describe SessionsController do
   describe "GET :new" do
     it "redirects to Facebook's auth page" do
+      expect(request).to receive(:referer).and_return("previous page")
       get :new
       expect(response).to redirect_to "/auth/facebook"
+      expect(session[:return_to]).to eq "previous page"
     end
   end
 
   describe "GET :create" do
     before { request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:facebook] }
 
-    it "redirects to the home page" do
+    it "redirects to the the previous page or home page" do
       get :create
-      expect(response).to redirect_to root_url
+      expect(response).to redirect_to(session[:return_to] || root_url)
+    end
+
+    it "redirects to the previous page if there was one" do
+      session[:return_to] = "previous page path"
+      get :create
+      expect(response).to redirect_to "previous page path"
     end
 
     it "creates a new user" do
