@@ -216,5 +216,14 @@ describe ProposalsController do
         expect(response).to require_login
       end
     end
+
+    describe "GET #map" do
+      it "doesn't thrown an exception" do
+        offer = create :offer, title: "love"
+        offer.update(latitude: 1.0, longitude: 2.0)
+        get :map
+        expect(assigns(:markers)).to eq [{ latlng: [1.0, 2.0], popup: ActionController::Base.helpers.link_to("love", proposal_path(offer)) }]
+      end
+    end
   end
 end

@@ -55,13 +55,5 @@ describe Proposal do
         expect(Proposal.offers).to match_array Array(offer)
       end
     end
-
-    context "#to_marker" do
-      it "returns a correctly formatted hash" do
-        offer = build_stubbed :offer, title: "dog", latitude: 1, longitude: 2
-        expected = { latlng: [1.0, 2.0], popup: "dog" }
-        expect(offer.to_marker).to eq(expected)
-      end
-    end
   end
 end
