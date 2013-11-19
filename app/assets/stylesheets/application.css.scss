@@ -21,7 +21,8 @@ html,
 body {
   height: 100%;
   //background-color: #eee;
-  background-image:url('/assets/backgrounds/retina_wood.png')
+  background-image: url(image_path("backgrounds/retina_wood.png"));
+  /*background-image: url(image_path("/backgrounds/retina_wood.png"))
   /* The html and body elements cannot have any padding or margin. */
 }
 
