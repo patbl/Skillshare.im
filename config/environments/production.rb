@@ -81,6 +81,6 @@ Skillshare::Application.configure do
   config.action_mailer.default_url_options = { host: "ea-skillshare.heroku.com" }
 
   #config.assets.initialize_on_precompile = false
-  config.assets.precompile += %w[*.png *.jpg *.jpeg *.gif] 
+  # config.assets.precompile += %w[*.png *.jpg *.jpeg *.gif] 
 
 end
