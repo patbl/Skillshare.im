@@ -6,5 +6,5 @@
 - if @user == current_user
   = link_to 'Edit', edit_proposal_path(@proposal)
   = link_to 'Delete', @proposal, method: :delete, data: { confirm: "Are you sure you want to delete this?" }
-- else
+- elsif current_user
   = mail_to @user.email, "E-mail #{@user.name} about this offer", subject: "#{@proposal.title}", target: "_blank"
