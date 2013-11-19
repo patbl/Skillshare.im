@@ -43,6 +43,7 @@ class UsersController < ApplicationController
   end
 
   def ensure_signed_in
+    session[:return_to] ||= request.url
     redirect_to signin_path unless current_user
   end
 

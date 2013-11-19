@@ -17,4 +17,5 @@ Skillshare::Application.routes.draw do
 
   root 'pages#home'
   get 'about', to: 'pages#about', as: 'about'
+  get 'faq', to: 'pages#faq', as: 'faq'
 end

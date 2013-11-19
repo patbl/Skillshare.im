@@ -1,6 +1,7 @@
 sam = User.create!(
   provider: "facebook",
-  uid: "abc",
+  uid: "339188887615",
+  facebook_url: "http://www.facebook.com/DalaiLama",
   name: "Sam Johnson",
   email: "patbl@live.com",
   location: "Lichfield, England",
@@ -18,7 +19,8 @@ Proposal.create!(
 
 george = User.create!(
   provider: "facebook",
-  uid: "def",
+  uid: "165106760172502",
+  facebook_url: "http://www.facebook.com/officialpsy",
   name: "Jorge Shrub",
   email: "george@hotmail.com",
   location: "Midland, Texas",
@@ -36,7 +38,8 @@ Proposal.create!(
 
 barack = User.create!(
   provider: "facebook",
-  uid: "ghi",
+  uid: "5027904559",
+  facebook_url: "http://www.facebook.com/shakira",
   name: "BO",
   email: "potus@whitehouse.gov",
   location: "Washington, D.C.",
@@ -87,4 +90,3 @@ Proposal.create!(
   user: barack,
   offer: true
 )
-
