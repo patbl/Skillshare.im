@@ -5,8 +5,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string   :uid
       t.string   :name
       t.string   :email
-      t.string   :image
-      t.string   :facebook_profile
+      t.string   :facebook_url
       t.string   :location
       t.float    :latitude
       t.float    :longitude
