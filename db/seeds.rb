@@ -1,5 +1,3 @@
-require 'ffaker'
-
 dalai_lama = User.create!(
   provider: "facebook",
   uid: "339188887615",
@@ -62,7 +60,9 @@ EOF
 
 Proposal.create!(
   title: "Rabiosa",
-  description: Faker::Lorem.paragraphs(2).join("\n\n"),
+  description: %{ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris neque magna, consequat sed justo vel, mattis aliquam ipsum. Etiam iaculis magna urna, ac vulputate arcu tincidunt sed. Nam ac tellus ac justo dapibus consectetur. Aenean eu sapien lacus. Nulla mattis vulputate dui, feugiat pharetra augue egestas at. Suspendisse enim nunc, lobortis a consequat in, auctor sit amet odio. Nunc tincidunt odio sed leo suscipit rhoncus. Duis tortor turpis, vehicula vitae viverra ut, sollicitudin nec orci. In sodales tempus nibh nec eleifend. Proin malesuada egestas ornare. Nam convallis arcu eget ipsum mollis venenatis. Morbi iaculis a ante vitae consequat. Vivamus egestas justo et scelerisque eleifend. Donec ultricies quis nibh ut viverra.
+
+Etiam sollicitudin mi nec purus lobortis interdum. Pellentesque eget velit sollicitudin, elementum est at, aliquet tellus. Donec tincidunt risus nec tincidunt luctus. Donec enim nisi, mollis ut tortor in, tempor pulvinar ligula. Praesent facilisis sed mi ut tincidunt. Sed vestibulum lorem ut tellus mattis pretium. Etiam vitae venenatis justo. In sollicitudin odio nibh, id tristique libero ullamcorper nec. Sed sed porta arcu, in laoreet nunc. Mauris arcu magna, fermentum sit amet elit quis, porta porta dui.},
   location: "Barcelona, Spain",
   category_list: "goods",
   user: shakira,
@@ -82,7 +82,11 @@ Upon its release, "Hips Don't Lie" received generally favorable reviews from mus
 
 Proposal.create!(
   title: "La tortura",
-  description: Faker::Lorem.paragraphs(3).join("\n\n"),
+  description: %{ Mauris eget lacus vulputate, placerat odio vitae, consectetur erat. Quisque eget rutrum est. Duis tempus nulla sit amet pulvinar fringilla. Mauris a ullamcorper purus, vitae aliquam tortor. Aliquam nec diam eu dui tempor molestie. Praesent id magna semper, eleifend mi at, egestas ipsum. In hac habitasse platea dictumst. Proin pretium egestas blandit. Nullam orci ligula, sagittis quis orci ac, posuere ullamcorper nulla. Aliquam dictum rhoncus odio.
+
+Donec malesuada dui ornare neque adipiscing sagittis. Proin tincidunt vestibulum mi, nec faucibus dolor bibendum sit amet. Duis imperdiet ligula quis viverra mattis. Phasellus nibh ante, pharetra in commodo sed, dignissim sit amet risus. Nam lacinia ipsum lectus, at ornare metus euismod ut. Maecenas vel nisl et lectus interdum mattis. Etiam sagittis ac ipsum ut molestie. Cras hendrerit sagittis fringilla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam et nisl vel nunc scelerisque congue id et risus. Nunc blandit neque vel tortor pulvinar, in varius augue tempor. Morbi vel porttitor velit. Quisque quis sapien malesuada, ornare felis non, egestas erat. Sed volutpat id orci quis dictum. Cras nec dolor sed metus ornare tincidunt vitae sit amet mauris.
+
+Vestibulum ut urna feugiat, bibendum diam sit amet, tincidunt nisi. Fusce tempor nunc et ipsum dapibus tincidunt. Curabitur facilisis nisl felis, nec posuere nunc porttitor vitae. Nunc fringilla at est eu ullamcorper. Nulla quis convallis quam. Aliquam vel magna purus. Phasellus sit amet adipiscing eros, a gravida enim. Morbi cursus vestibulum augue, sit amet ornare turpis porttitor sit amet. Mauris in elit et libero pharetra blandit. Praesent eget porttitor metus, vitae tincidunt tellus.},
   location: "Barcelona, Spain",
   category_list: "goods",
   user: shakira,
@@ -91,7 +95,13 @@ Proposal.create!(
 
 Proposal.create!(
   title: "Waka Waka",
-  description: Faker::Lorem.paragraphs(4).join("\n\n"),
+  description: %{ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris neque magna, consequat sed justo vel, mattis aliquam ipsum. Etiam iaculis magna urna, ac vulputate arcu tincidunt sed. Nam ac tellus ac justo dapibus consectetur. Aenean eu sapien lacus. Nulla mattis vulputate dui, feugiat pharetra augue egestas at. Suspendisse enim nunc, lobortis a consequat in, auctor sit amet odio. Nunc tincidunt odio sed leo suscipit rhoncus. Duis tortor turpis, vehicula vitae viverra ut, sollicitudin nec orci. In sodales tempus nibh nec eleifend. Proin malesuada egestas ornare. Nam convallis arcu eget ipsum mollis venenatis. Morbi iaculis a ante vitae consequat. Vivamus egestas justo et scelerisque eleifend. Donec ultricies quis nibh ut viverra.
+
+Etiam sollicitudin mi nec purus lobortis interdum. Pellentesque eget velit sollicitudin, elementum est at, aliquet tellus. Donec tincidunt risus nec tincidunt luctus. Donec enim nisi, mollis ut tortor in, tempor pulvinar ligula. Praesent facilisis sed mi ut tincidunt. Sed vestibulum lorem ut tellus mattis pretium. Etiam vitae venenatis justo. In sollicitudin odio nibh, id tristique libero ullamcorper nec. Sed sed porta arcu, in laoreet nunc. Mauris arcu magna, fermentum sit amet elit quis, porta porta dui.
+
+Mauris eget lacus vulputate, placerat odio vitae, consectetur erat. Quisque eget rutrum est. Duis tempus nulla sit amet pulvinar fringilla. Mauris a ullamcorper purus, vitae aliquam tortor. Aliquam nec diam eu dui tempor molestie. Praesent id magna semper, eleifend mi at, egestas ipsum. In hac habitasse platea dictumst. Proin pretium egestas blandit. Nullam orci ligula, sagittis quis orci ac, posuere ullamcorper nulla. Aliquam dictum rhoncus odio.
+
+Donec malesuada dui ornare neque adipiscing sagittis. Proin tincidunt vestibulum mi, nec faucibus dolor bibendum sit amet. Duis imperdiet ligula quis viverra mattis. Phasellus nibh ante, pharetra in commodo sed, dignissim sit amet risus. Nam lacinia ipsum lectus, at ornare metus euismod ut. Maecenas vel nisl et lectus interdum mattis. Etiam sagittis ac ipsum ut molestie. Cras hendrerit sagittis fringilla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam et nisl vel nunc scelerisque congue id et risus. Nunc blandit neque vel tortor pulvinar, in varius augue tempor. Morbi vel porttitor velit. Quisque quis sapien malesuada, ornare felis non, egestas erat. Sed volutpat id orci quis dictum. Cras nec dolor sed metus ornare tincidunt vitae sit amet mauris.},
   location: "Barcelona, Spain",
   category_list: "goods",
   user: shakira,
@@ -100,7 +110,17 @@ Proposal.create!(
 
 Proposal.create!(
   title: "Loca",
-  description: Faker::Lorem.paragraphs(5).join("\n\n"),
+  description: %{
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris neque magna, consequat sed justo vel, mattis aliquam ipsum. Etiam iaculis magna urna, ac vulputate arcu tincidunt sed. Nam ac tellus ac justo dapibus consectetur. Aenean eu sapien lacus. Nulla mattis vulputate dui, feugiat pharetra augue egestas at. Suspendisse enim nunc, lobortis a consequat in, auctor sit amet odio. Nunc tincidunt odio sed leo suscipit rhoncus. Duis tortor turpis, vehicula vitae viverra ut, sollicitudin nec orci. In sodales tempus nibh nec eleifend. Proin malesuada egestas ornare. Nam convallis arcu eget ipsum mollis venenatis. Morbi iaculis a ante vitae consequat. Vivamus egestas justo et scelerisque eleifend. Donec ultricies quis nibh ut viverra.
+
+Etiam sollicitudin mi nec purus lobortis interdum. Pellentesque eget velit sollicitudin, elementum est at, aliquet tellus. Donec tincidunt risus nec tincidunt luctus. Donec enim nisi, mollis ut tortor in, tempor pulvinar ligula. Praesent facilisis sed mi ut tincidunt. Sed vestibulum lorem ut tellus mattis pretium. Etiam vitae venenatis justo. In sollicitudin odio nibh, id tristique libero ullamcorper nec. Sed sed porta arcu, in laoreet nunc. Mauris arcu magna, fermentum sit amet elit quis, porta porta dui.
+
+Mauris eget lacus vulputate, placerat odio vitae, consectetur erat. Quisque eget rutrum est. Duis tempus nulla sit amet pulvinar fringilla. Mauris a ullamcorper purus, vitae aliquam tortor. Aliquam nec diam eu dui tempor molestie. Praesent id magna semper, eleifend mi at, egestas ipsum. In hac habitasse platea dictumst. Proin pretium egestas blandit. Nullam orci ligula, sagittis quis orci ac, posuere ullamcorper nulla. Aliquam dictum rhoncus odio.
+
+Donec malesuada dui ornare neque adipiscing sagittis. Proin tincidunt vestibulum mi, nec faucibus dolor bibendum sit amet. Duis imperdiet ligula quis viverra mattis. Phasellus nibh ante, pharetra in commodo sed, dignissim sit amet risus. Nam lacinia ipsum lectus, at ornare metus euismod ut. Maecenas vel nisl et lectus interdum mattis. Etiam sagittis ac ipsum ut molestie. Cras hendrerit sagittis fringilla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam et nisl vel nunc scelerisque congue id et risus. Nunc blandit neque vel tortor pulvinar, in varius augue tempor. Morbi vel porttitor velit. Quisque quis sapien malesuada, ornare felis non, egestas erat. Sed volutpat id orci quis dictum. Cras nec dolor sed metus ornare tincidunt vitae sit amet mauris.
+
+Vestibulum ut urna feugiat, bibendum diam sit amet, tincidunt nisi. Fusce tempor nunc et ipsum dapibus tincidunt. Curabitur facilisis nisl felis, nec posuere nunc porttitor vitae. Nunc fringilla at est eu ullamcorper. Nulla quis convallis quam. Aliquam vel magna purus. Phasellus sit amet adipiscing eros, a gravida enim. Morbi cursus vestibulum augue, sit amet ornare turpis porttitor sit amet. Mauris in elit et libero pharetra blandit. Praesent eget porttitor metus, vitae tincidunt tellus.},
   location: "Barcelona, Spain",
   category_list: "goods",
   user: shakira,
