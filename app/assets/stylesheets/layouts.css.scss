@@ -33,12 +33,12 @@
   }
   .right{
     float:right;
-    .btn-default{
+    .btn-default, .fa{
       font-size:37px;
       float:right;
       background: none;
       border:none;
-      font-size:37px;
+      font-size:33px;
       color: rgba(0,0,0,0.4);
       &:hover{
         text-decoration: none;
@@ -55,7 +55,9 @@
         mox-box-shadow: none;
         background: none;
       }
-
+    }
+    .fa-plus{
+      margin: 7px 5px;
     }
     .facebook{
       margin-top:16px;
