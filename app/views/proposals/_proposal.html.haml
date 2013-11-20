@@ -10,6 +10,11 @@
             - if current_user && current_user != proposal.user
               = link_to new_proposal_message_path(proposal), class: "btn btn-danger btn-small" do
                 <i class="fa fa-envelope"></i> Request
+            - elsif current_user == proposal.user
+              = link_to proposal, :method => :delete, class: "btn btn-danger btn-small" do
+                <i class="fa fa-times"></i> 
+              = link_to edit_proposal_path(proposal), class: "btn btn-primary btn-small" do
+                <i class="fa fa-pencil"></i> 
             - else
               = link_to new_proposal_message_path(proposal), class: "btn btn-danger btn-small" do
                 <i class="fa fa-envelope"></i> Sign in to request
