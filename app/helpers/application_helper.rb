@@ -1,5 +1,5 @@
 module ApplicationHelper
-  CATEGORIES = %w[goods lodging services]
+  CATEGORIES = %w[services lodging goods]
 
   def markdown(text)
     markdown_options = {
