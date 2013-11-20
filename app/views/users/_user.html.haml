@@ -23,7 +23,7 @@
                   <i class="fa fa-facebook"></i>
 
     .info 
-      = user.about
+      = markdown(user.about)
 
 
   - if user == current_user

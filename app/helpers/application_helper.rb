@@ -2,6 +2,7 @@ module ApplicationHelper
   CATEGORIES = %w[services lodging goods]
 
   def markdown(text)
+    text ||= ""
     markdown_options = {
       no_intra_emphasis: true,
       autolink: true,

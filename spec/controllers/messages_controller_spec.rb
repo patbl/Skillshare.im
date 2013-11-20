@@ -41,6 +41,7 @@ describe MessagesController do
       set_user_session(sender)
       post :create, proposal_id: proposal, message: { body: "" }
       expect(response).to render_template(:new)
+      expect(last_email).to be_nil
     end
   end
 end

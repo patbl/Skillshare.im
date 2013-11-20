@@ -4,15 +4,15 @@
       .row
         .col-md-8
           %h3
-            = proposal.title.titleize
+            = link_to(proposal.title.titleize, proposal)
         - if current_user
           .col-md-4
             .request-btn
               .btn.btn-danger.btn-small 
                 <i class="fa fa-envelope"></i>
-                = request_mail_to(proposal)
+                = link_to "Request", new_proposal_message_path(proposal)
       %p
-        = proposal.description
+        = markdown(proposal.description)
     .info
       .left
         .user
