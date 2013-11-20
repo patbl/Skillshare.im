@@ -5,12 +5,15 @@
         .col-md-8
           %h3
             = link_to(proposal.title.titleize, proposal)
-        - if current_user
-          .col-md-4
-            .request-btn
-              .btn.btn-danger.btn-small 
-                <i class="fa fa-envelope"></i>
-                = link_to "Request", new_proposal_message_path(proposal)
+        .col-md-4
+          .request-btn
+            - if current_user && current_user != proposal.user
+              = link_to new_proposal_message_path(proposal), class: "btn btn-danger btn-small" do
+                <i class="fa fa-envelope"></i> Request
+            - else
+              = link_to new_proposal_message_path(proposal), class: "btn btn-danger btn-small" do
+                <i class="fa fa-envelope"></i> Sign in to request
+          
       %p
         = markdown(proposal.description)
     .info
