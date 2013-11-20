@@ -8,6 +8,8 @@ feature "sending messages" do
 
     click_link "500 Records"
     click_link "Request"
+    click_button "Send"
+    expect(page).to have_selector(".alert-danger")
     fill_in("Message", with: "hullo there!")
     click_button "Send"
 

@@ -26,10 +26,4 @@ module ApplicationHelper
   def active?(path)
     "active" if current_page?(path)
   end
-
-  def request_mail_to(proposal)
-    subject = %{Request for "#{proposal.title}" on Skillshare.im}
-    body = "\n\nSee offer #{proposal_url(proposal)} for more details."
-    mail_to proposal.user.email, "Request", target: "_blank", subject: subject, body: body
-  end
 end

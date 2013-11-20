@@ -22,10 +22,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  def mailboxer_email(message)
-    email
-  end
-
   def picture(size = 'large')
     "http://graph.facebook.com/#{uid}/picture?type=#{size}"
   end
