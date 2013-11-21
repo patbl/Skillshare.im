@@ -24,8 +24,8 @@
         .col-md-1
           - if user == current_user
             = link_to edit_user_path(user) do |u|
-              .btn.btn-primary
-                <i class="fa fa-pencil"></i>
+              .btn.btn-primary#edit-profile
+                <i id="edit-profile" class="fa fa-pencil"></i>
 
     - if !user.about.nil?
       .info 

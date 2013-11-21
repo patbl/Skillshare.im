@@ -5,9 +5,9 @@ feature "profile management" do
     sign_in
     user = User.last
 
-    visit proposals_path
-    click_link user.name
-    click_link "Edit"
+    visit user_path(user)
+    binding.pry
+    click_button 'edit-profile'
     fill_in "E-mail", with: ""
     click_button "Save"
     click_button "Save"
