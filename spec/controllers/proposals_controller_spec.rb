@@ -219,11 +219,13 @@ describe ProposalsController do
     end
 
     describe "GET #map" do
-      it "doesn't thrown an exception" do
-        offer = create :offer, title: "love"
+      it "assigns @markers correctly" do
+        offer = create :offer, title: "love", category_list: "lodging"
         offer.update(latitude: 1.0, longitude: 2.0)
         get :map
-        expect(assigns(:markers)).to eq [{ latlng: [1.0, 2.0], popup: "#{ActionController::Base.helpers.link_to("love", proposal_path(offer))} hello!" }]
+        path = ActionController::Base.helpers.link_to("love", proposal_path(offer))
+        icon = %{<i class="fa fa-home"></i>}
+        expect(assigns(:markers)).to eq [{ latlng: [1.0, 2.0], popup: "#{icon} #{path}"  }]
       end
     end
   end

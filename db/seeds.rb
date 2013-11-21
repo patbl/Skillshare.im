@@ -64,7 +64,7 @@ Proposal.create!(
 
 Etiam sollicitudin mi nec purus lobortis interdum. Pellentesque eget velit sollicitudin, elementum est at, aliquet tellus. Donec tincidunt risus nec tincidunt luctus. Donec enim nisi, mollis ut tortor in, tempor pulvinar ligula. Praesent facilisis sed mi ut tincidunt. Sed vestibulum lorem ut tellus mattis pretium. Etiam vitae venenatis justo. In sollicitudin odio nibh, id tristique libero ullamcorper nec. Sed sed porta arcu, in laoreet nunc. Mauris arcu magna, fermentum sit amet elit quis, porta porta dui.},
   location: "Barcelona, Spain",
-  category_list: "goods",
+  category_list: "lodging",
   user: shakira,
   offer: true
 )
@@ -122,7 +122,7 @@ Donec malesuada dui ornare neque adipiscing sagittis. Proin tincidunt vestibulum
 
 Vestibulum ut urna feugiat, bibendum diam sit amet, tincidunt nisi. Fusce tempor nunc et ipsum dapibus tincidunt. Curabitur facilisis nisl felis, nec posuere nunc porttitor vitae. Nunc fringilla at est eu ullamcorper. Nulla quis convallis quam. Aliquam vel magna purus. Phasellus sit amet adipiscing eros, a gravida enim. Morbi cursus vestibulum augue, sit amet ornare turpis porttitor sit amet. Mauris in elit et libero pharetra blandit. Praesent eget porttitor metus, vitae tincidunt tellus.},
   location: "Barcelona, Spain",
-  category_list: "goods",
+  category_list: "lodging",
   user: shakira,
   offer: true
 )

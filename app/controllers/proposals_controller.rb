@@ -43,7 +43,7 @@ class ProposalsController < ApplicationController
 
   def destroy
     @proposal.destroy
-    redirect_to user_path(@user), flash: { success: "proposal was deleted"}
+    redirect_to user_path(@user), flash: { success: "Offer was deleted"}
   end
 
   def filter
@@ -51,10 +51,10 @@ class ProposalsController < ApplicationController
   end
 
   def map
-    @center = { latlng: [52, -20], zoom: 2 }
+    @center = { latlng: [33, -20], zoom: 2 }
     @markers = Proposal.recent(50).map do |proposal|
       link = ActionController::Base.helpers.link_to(proposal.title, proposal_path(proposal))
-      { latlng: proposal.latlng, popup: "#{link} hello!" }
+      { latlng: proposal.latlng, popup: %{#{proposal.icon} #{link}} }
     end
   end
 
