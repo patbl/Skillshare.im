@@ -71,7 +71,7 @@ describe ProposalsController do
           expect {
             post :create, proposal: attributes_for(:proposal), user_id: @user
           }.to change(Proposal, :count).by(1)
-          expect(response).to redirect_to @user
+          expect(response).to redirect_to user_path(@user)
         end
 
         it "doesn't save the proposal if the user clicks Cancel" do
@@ -110,7 +110,7 @@ describe ProposalsController do
 
         it "redirects to the proposal" do
           patch :update, id: @proposal, proposal: attributes_for(:proposal)
-          expect(response).to redirect_to @proposal.user
+          expect(response).to redirect_to @proposal
           expect(assigns(:user)).to eq @user
         end
       end
@@ -151,7 +151,7 @@ describe ProposalsController do
       it "redirects to users#proposals#index" do
         session[:user_id] = @user.id
         delete :destroy, id: @proposal
-        expect(response).to redirect_to @user
+        expect(response).to redirect_to user_proposals_path(@user)
       end
 
       it "doesn't allow a user to delete another user's proposals" do
