@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     return redirect_to(session[:return_to] || root_url) if params[:cancel]
     @user.update(user_params)
     if @user.save
-      redirect_to @user
+      redirect_to @user, flash: { success: "Profile updated." }
     else
       render :edit
     end

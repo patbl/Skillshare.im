@@ -23,7 +23,7 @@
                   <i class="fa fa-facebook"></i>
         .col-md-1
           - if user == current_user
-            = link_to edit_user_path(user) do |u|
+            = link_to edit_user_path(user), id: "edit" do |u|
               .btn.btn-primary
                 <i class="fa fa-pencil"></i>
 

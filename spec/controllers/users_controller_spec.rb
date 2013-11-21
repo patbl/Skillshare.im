@@ -55,6 +55,7 @@ describe UsersController do
         patch :update, user: attributes_for(:user, name: "Leon Kass"), id: user
         expect(response).to redirect_to(user)
         expect(User.find(user).name).to eq "Leon Kass"
+        expect(flash[:success]).to be
       end
 
       it "with invalid attributes" do
