@@ -1,4 +1,4 @@
 .row
-  = render partial: "users/user", collection: [@user]
+  = render partial: "users/user", collection: [@user], :locals => { :show_create_link => true }
   = render partial: "proposals/proposal", collection: @proposals
 

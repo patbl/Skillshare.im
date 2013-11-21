@@ -5,7 +5,7 @@
         .col-md-4
           .picture
             = link_to image_tag(user.picture), user
-        .col-md-8.right
+        .col-md-7.right
           %h3= link_to user.name, user
           .offer-count
             = link_to pluralize(user.proposals.count, 'Offer'), user
@@ -21,11 +21,18 @@
               = link_to user.facebook_url do |u|
                 .btn.btn-default
                   <i class="fa fa-facebook"></i>
+        .col-md-1
+          - if user == current_user
+            = link_to edit_user_path(user) do |u|
+              .btn.btn-primary
+                <i class="fa fa-pencil"></i>
 
-    .info 
-      = markdown(user.about)
+    - if !user.about.nil?
+      .info 
+        = markdown(user.about)
 
 
-  - if user == current_user
-    = link_to "Edit my profile", edit_user_path(user)
-    = link_to "Create a new offer", new_user_proposal_path(user)
+  - if user == current_user and defined? show_create_link
+    .proposal.new
+      .main
+        = link_to raw("<i class='fa fa-plus'></i> Create a new offer"), new_user_proposal_path(user)

@@ -27,7 +27,7 @@ class ProposalsController < ApplicationController
     @proposal = @user.proposals.build(proposal_params)
     if @proposal.save
       flash[:success] = "New offer created."
-      redirect_to @proposal
+      redirect_to user_path(@user)
     else
       render :new
     end
@@ -35,7 +35,7 @@ class ProposalsController < ApplicationController
 
   def update
     if @proposal.update(proposal_params)
-      redirect_to @proposal, flash: { success: "Offer updated." }
+      redirect_to user_path(@user), flash: { success: "Offer updated." }
     else
       render :edit
     end
@@ -43,7 +43,7 @@ class ProposalsController < ApplicationController
 
   def destroy
     @proposal.destroy
-    redirect_to user_proposals_path(@user)
+    redirect_to user_path(@user), flash: { success: "proposal was deleted"}
   end
 
   def filter
