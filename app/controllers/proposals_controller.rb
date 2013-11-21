@@ -54,7 +54,7 @@ class ProposalsController < ApplicationController
     @center = { latlng: [52, -20], zoom: 2 }
     @markers = Proposal.recent(50).map do |proposal|
       link = ActionController::Base.helpers.link_to(proposal.title, proposal_path(proposal))
-      { latlng: proposal.latlng, popup: link }
+      { latlng: proposal.latlng, popup: "#{link} hello!" }
     end
   end
 
@@ -65,7 +65,8 @@ class ProposalsController < ApplicationController
   end
 
   def check_for_cancel
-    redirect_to(session.delete(:return_to) || root_path, notice: "Offer wasn't updated.") if params[:cancel]
+    message = %{Offer wasn't #{params[:action] == "create" ? "saved" : "updated"}.}
+    redirect_to(session.delete(:return_to) || root_path, notice: message) if params[:cancel]
   end
 
   def set_proposal

@@ -80,6 +80,7 @@ describe ProposalsController do
             post :create, proposal: attributes_for(:proposal), user_id: @user, cancel: true
           }.to_not change(Proposal, :count)
           expect(response).to redirect_to("previous page")
+          expect(flash[:notice]).to be
         end
       end
 
@@ -222,7 +223,7 @@ describe ProposalsController do
         offer = create :offer, title: "love"
         offer.update(latitude: 1.0, longitude: 2.0)
         get :map
-        expect(assigns(:markers)).to eq [{ latlng: [1.0, 2.0], popup: ActionController::Base.helpers.link_to("love", proposal_path(offer)) }]
+        expect(assigns(:markers)).to eq [{ latlng: [1.0, 2.0], popup: "#{ActionController::Base.helpers.link_to("love", proposal_path(offer))} hello!" }]
       end
     end
   end
