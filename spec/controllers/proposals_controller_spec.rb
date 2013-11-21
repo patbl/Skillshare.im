@@ -108,9 +108,9 @@ describe ProposalsController do
           expect(@proposal.location).to eq 'Tampa'
         end
 
-        it "redirects to the proposal" do
+        it "redirects to the user" do
           patch :update, id: @proposal, proposal: attributes_for(:proposal)
-          expect(response).to redirect_to @proposal
+          expect(response).to redirect_to @user
           expect(assigns(:user)).to eq @user
         end
       end
@@ -148,10 +148,10 @@ describe ProposalsController do
           .to change(Proposal, :count).by(-1)
       end
 
-      it "redirects to users#proposals#index" do
+      it "redirects to user profile" do
         session[:user_id] = @user.id
         delete :destroy, id: @proposal
-        expect(response).to redirect_to user_proposals_path(@user)
+        expect(response).to redirect_to @user
       end
 
       it "doesn't allow a user to delete another user's proposals" do
