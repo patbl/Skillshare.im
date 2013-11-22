@@ -18,13 +18,8 @@ class Proposal < ActiveRecord::Base
     !offer?
   end
 
-  def icon
-    name = case category_list.first
-           when "services" then "suitcase"
-           when "lodging"  then "home"
-           when "goods"    then "gift"
-           end
-    %{<i class="fa fa-#{name}"></i>}
+  def category
+    category_list.first
   end
 
   private

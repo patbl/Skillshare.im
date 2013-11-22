@@ -1,4 +1,6 @@
 class ProposalsController < ApplicationController
+  include ProposalsHelper
+  
   before_action :ensure_signed_in,       only: %i[create new edit update destroy]
   before_action :set_categories,         only: %i[create new edit update]
   before_action :set_proposal,           only: %i[edit show update destroy]
@@ -49,7 +51,7 @@ class ProposalsController < ApplicationController
     @center = { latlng: [33, -20], zoom: 2 }
     @markers = Proposal.recent(50).map do |proposal|
       link = ActionController::Base.helpers.link_to(proposal.title, proposal_path(proposal))
-      { latlng: proposal.latlng, popup: %{#{proposal.icon} #{link}} }
+      { latlng: proposal.latlng, popup: %{#{category_tag(proposal.category)} #{link}} }
     end
   end
 

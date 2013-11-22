@@ -1,13 +1,9 @@
 module ProposalsHelper
-
   def category_icon(category)
     case category
-    when 'lodging'
-      'home'
-    when 'services'
-      'suitcase'
-    when 'goods'
-      'gift'
+    when 'lodging'  then 'home'
+    when 'services' then 'suitcase'
+    when 'goods'    then 'gift'
     end
   end
 
