@@ -3,6 +3,10 @@ module ApplicationHelper
 
   def markdown(text)
     text ||= ""
+    markdown_renderer.render(text).html_safe
+  end
+
+  def markdown_renderer
     markdown_options = {
       no_intra_emphasis: true,
       autolink: true,
@@ -10,8 +14,7 @@ module ApplicationHelper
       quote: true
     }
     html_options = { safe_links_only: true }
-    renderer = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(html_options), markdown_options)
-    renderer.render(text).html_safe
+    Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(html_options), markdown_options)
   end
 
   def alert_type(level)

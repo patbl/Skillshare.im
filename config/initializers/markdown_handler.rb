@@ -1,5 +1,3 @@
-require 'rdiscount'
-
 module MarkdownHandler
   def self.erb
     @erb ||= ActionView::Template.registered_template_handler(:erb)
@@ -7,7 +5,7 @@ module MarkdownHandler
 
   def self.call(template)
     compiled_source = erb.call(template)
-    "RDiscount.new(begin;#{compiled_source};end).to_html"
+    "markdown_renderer.render(begin;#{compiled_source};end).html_safe"
   end
 end
 

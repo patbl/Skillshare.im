@@ -55,7 +55,6 @@ gem 'jbuilder', '~> 1.2'
 gem 'omniauth-facebook'
 gem 'figaro'
 gem 'redcarpet'
-gem 'rdiscount'
 gem 'simple_form'
 gem 'coveralls', require: false
 gem 'acts-as-taggable-on'
