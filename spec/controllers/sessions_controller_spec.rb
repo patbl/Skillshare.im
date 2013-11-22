@@ -13,15 +13,25 @@ describe SessionsController do
   describe "GET :create" do
     before { request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:facebook] }
 
-    it "redirects to the the previous page or home page" do
+    it "redirects to the home page if session[:return_to] not set", :skip do
+      session[:return_to] = nil
       get :create
-      expect(response).to redirect_to(session[:return_to] || root_url)
+      expect(response).to redirect_to(root_url)
     end
 
-    it "redirects to the previous page if there was one" do
+    it "redirects to the previous page if there was one and the user isn't new" do
+      user = create :user
+      expect(user).to receive(:new?).and_return(false)
+      expect(User).to receive(:from_omniauth).with(request.env["omniauth.auth"]).and_return(user)
+
       session[:return_to] = "previous page path"
       get :create
       expect(response).to redirect_to "previous page path"
+    end
+
+    it "redirects to the new-proposal page if the user is new" do
+      get :create # creates a new user
+      expect(response).to redirect_to(new_user_proposal_path(User.last))
     end
 
     it "creates a new user" do
@@ -30,7 +40,7 @@ describe SessionsController do
 
     it "sets the user ID in the session hash" do
       get :create
-      expect(session[:user_id]).to be
+      expect(session[:user_id]).to eq User.last.id
     end
 
     it "lets the user know she signed in" do

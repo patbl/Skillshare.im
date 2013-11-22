@@ -16,8 +16,10 @@ feature "Authentication" do
   end
 
   scenario "clicking on a link that requires that a user be signed in" do
+    user = create :user
+    expect(User).to receive(:from_omniauth).with(anything()).and_return(user)
+    expect(user).to receive(:new?).and_return(false)
     xu = create :user, name: "Xu Li"
-    ed = create :user, name: "Ed Lu"
     visit users_path
 
     click_link "Xu Li"

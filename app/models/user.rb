@@ -25,4 +25,8 @@ class User < ActiveRecord::Base
   def picture(size = 'large')
     "http://graph.facebook.com/#{uid}/picture?type=#{size}"
   end
+
+  def new?
+    created_at > 30.seconds.ago
+  end
 end

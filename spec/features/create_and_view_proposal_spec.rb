@@ -1,9 +1,10 @@
 require 'spec_helper'
 
 feature "Proposal management", slow: true do
+  before { sign_in }
+
   scenario "adds a new proposal" do
-    user = sign_in
-    visit new_user_proposal_path(user)
+    visit new_user_proposal_path(@user)
 
     expect do
       fill_in "Title", with: "12 Cases Of Tinned Dog Food"
@@ -17,10 +18,9 @@ feature "Proposal management", slow: true do
   end
 
   scenario "edits a proposal" do
-    user = sign_in
-    create :offer, title: "melancholy", category_list: "services", user: user
+    create :offer, title: "melancholy", category_list: "services", user: @user
 
-    visit user_path(user)
+    visit user_path(@user)
     click_link "Melancholy"
     click_link "Edit"
 
@@ -36,8 +36,6 @@ feature "Proposal management", slow: true do
   end
 
   scenario "canceling a new proposal" do
-    user = sign_in
-
     visit map_path
     click_link "new-proposal"
     click_button "Save"
@@ -47,8 +45,7 @@ feature "Proposal management", slow: true do
   end
 
   scenario "canceling editing a proposal" do
-    user = sign_in
-    create :offer, title: "stuffed animals", user: user
+    create :offer, title: "stuffed animals", user: @user
 
     visit root_url
     click_link "Stuffed Animals"
@@ -66,7 +63,7 @@ feature "Proposal management", slow: true do
     xu = create :user, name: "Xu Li"
     create :offer, title: "Stuff", user: xu
 
-    user = sign_in
+    visit current_path
     click_link "Stuff"
 
     expect(page).to have_content("Stuff")
@@ -76,7 +73,7 @@ feature "Proposal management", slow: true do
     click_link "Xu Li"
     expect(page).to_not have_link("Create a new offer")
 
-    visit user_path(user)
+    visit user_path(@user)
     expect(page).to have_link("Create a new offer")
   end
 
@@ -97,11 +94,9 @@ feature "Proposal management", slow: true do
   end
 
   scenario "edits a proposal" do
-    user = sign_in
+    create(:offer, title: "Feminist Perspectives on Tort Law", user: @user)
 
-    create(:offer, title: "Feminist Perspectives on Tort Law", user: user)
-
-    visit user_proposals_path(user)
+    visit user_proposals_path(@user)
     expect(page).to have_selector("#offer", count: 1)
 
     click_link "Feminist Perspectives on Tort Law"
@@ -114,8 +109,6 @@ feature "Proposal management", slow: true do
   end
 
   scenario "delete an offer", js: true do
-    sign_in
-
     find("#new-proposal").trigger("click")
     
     fill_in "Title", with: "Dog Food"

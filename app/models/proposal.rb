@@ -20,12 +20,9 @@ class Proposal < ActiveRecord::Base
 
   def icon
     name = case category_list.first
-           when "services"
-             "suitcase"
-           when "lodging"
-             "home"
-           when "goods"
-             "gift"
+           when "services" then "suitcase"
+           when "lodging"  then "home"
+           when "goods"    then "gift"
            end
     %{<i class="fa fa-#{name}"></i>}
   end

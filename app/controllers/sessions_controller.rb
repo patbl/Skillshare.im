@@ -9,7 +9,13 @@ class SessionsController < ApplicationController
   def create
     user = User.from_omniauth(auth_hash)
     session[:user_id] = user.id
-    redirect_to session.delete(:return_to) || root_url, flash: { success: "You signed in successfully." }
+    if user.new?
+      session[:return_to] = new_user_proposal_path(user)
+      message = "Thanks for signing up! Fill out this form to create your first offer."
+    else
+      message = "You signed in successfully." 
+    end
+    redirect_to session.delete(:return_to) || root_url, flash: { success: message }
   end
 
   def failure
@@ -25,6 +31,6 @@ class SessionsController < ApplicationController
   protected
 
   def auth_hash
-    request.env['omniauth.auth']
+    request.env["omniauth.auth"]
   end
 end
