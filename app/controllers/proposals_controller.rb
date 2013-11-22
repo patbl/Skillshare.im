@@ -2,14 +2,13 @@ class ProposalsController < ApplicationController
   before_action :ensure_signed_in,       only: %i[create new edit update destroy]
   before_action :set_categories,         only: %i[create new edit update]
   before_action :set_proposal,           only: %i[edit show update destroy]
-  before_action :set_user_from_params,   only: %i[index create new]
+  before_action :set_user_from_params,   only: %i[create new]
   before_action :set_user_from_proposal, only: %i[edit show update destroy]
   before_action :check_for_cancel,       only: %i[create update]
   before_action :verify_user,            only: %i[create update destroy]
 
   def index
-    @offers = Proposal.offers.where(user_id: @user)
-    @requests = Proposal.requests.where(user_id: @user)
+    @offers = Proposal.offers.tagged_with_or_all(params[:category])
   end
 
   def show
@@ -44,10 +43,6 @@ class ProposalsController < ApplicationController
   def destroy
     @proposal.destroy
     redirect_to user_path(@user), flash: { success: "Offer was deleted"}
-  end
-
-  def filter
-    @offers = Proposal.offers.tagged_with_or_all(params[:category])
   end
 
   def map

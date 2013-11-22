@@ -2,19 +2,20 @@ require 'spec_helper'
 
 describe ProposalsController do
   shared_examples("public access to proposals") do
-    describe "GET #index" do
-      it "assigns all a user's offers to @offers and requests to @requests" do
-        user = create :user
-        offer = create :offer, user: user
-        request = create :request, user: user
+    
+  describe "#index" do
+    before { create :offer, category_list: "goods" }
 
-        get :index, user_id: user
-
-        expect(assigns(:user)).to eq user
-        expect(assigns(:offers)).to eq [offer]
-        expect(assigns(:requests)).to eq [request]
-      end
+    it "gets all the offers when unfiltered" do
+      get :index
+      expect(assigns(:offers)).to eq Proposal.offers
     end
+
+    it "doesn't show anything if there's nothing" do
+      get :index, category: "lodging"
+      expect(assigns(:offers)).to be_empty
+    end
+  end
 
     describe "GET #show" do
       it "assigns the requested proposal to @proposal" do
@@ -169,20 +170,6 @@ describe ProposalsController do
         expect { User.find(@user.id).destroy }
           .to change(Proposal, :count).by(-1)
       end
-    end
-  end
-
-  describe "filtering" do
-    before { create :offer, category_list: "goods" }
-
-    it "gets all the offers when unfiltered" do
-      get :filter
-      expect(assigns(:offers)).to eq Proposal.offers
-    end
-
-    it "doesn't show anything if there's nothing" do
-      get :filter, category: "lodging"
-      expect(assigns(:offers)).to be_empty
     end
   end
 

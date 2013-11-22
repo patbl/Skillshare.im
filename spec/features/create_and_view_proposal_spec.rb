@@ -94,12 +94,10 @@ feature "Proposal management", slow: true do
   end
 
   scenario "edits a proposal" do
-    create(:offer, title: "Feminist Perspectives on Tort Law", user: @user)
+    create(:offer, title: "Feminist Perspectives On Tort Law", user: @user)
 
-    visit user_proposals_path(@user)
-    expect(page).to have_selector("#offer", count: 1)
-
-    click_link "Feminist Perspectives on Tort Law"
+    visit user_path(@user)
+    click_link "Feminist Perspectives On Tort Law"
     click_link "Edit"
     fill_in "Title", with: "Feminist Perspectives In Music Therapy"
     click_button "Save"

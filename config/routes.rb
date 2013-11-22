@@ -1,11 +1,11 @@
 Skillshare::Application.routes.draw do
   resources :users do
-    resources :proposals, shallow: true do
+    resources :proposals, shallow: true, except: :index do
       resources :messages, only: %i[new create]
     end
   end
 
-  match 'proposals', to: 'proposals#filter', via: %i[get post]
+  get 'proposals', to: 'proposals#index', via: %i[get post]
   get 'map', to: 'proposals#map'
 
   # authentication

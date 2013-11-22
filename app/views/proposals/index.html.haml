@@ -1,4 +1,2 @@
-- if @user == current_user
-  = render 'current_user_index'
-- else
-  = render 'other_user_index'
+= render "shared/categories"
+= render partial: "proposals/proposal", collection: @offers
