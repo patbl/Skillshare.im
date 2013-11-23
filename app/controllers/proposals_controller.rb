@@ -49,9 +49,10 @@ class ProposalsController < ApplicationController
 
   def map
     @center = { latlng: [33, -20], zoom: 2 }
-    @markers = Proposal.recent(50).map do |proposal|
+    @markers = Proposal.recent(50).mappable.map do |proposal|
       link = ActionController::Base.helpers.link_to(proposal.title, proposal_path(proposal))
-      { latlng: proposal.latlng, popup: %{#{category_tag(proposal.category)} #{link}} }
+      icon = category_tag(proposal.category)
+      { latlng: proposal.latlng, popup: "#{icon} #{link}" }
     end
   end
 

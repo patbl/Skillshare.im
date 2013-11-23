@@ -9,6 +9,6 @@ module ProposalsHelper
 
   def category_tag(category)
     icon = category_icon(category)
-    "<i class='fa fa-#{icon}'></i>"
+    %{<i class="fa fa-#{icon}"></i>}
   end
 end
