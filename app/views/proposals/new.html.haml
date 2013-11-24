@@ -1,11 +1,13 @@
 %h1 New Offer
-= simple_form_for([@user, @proposal]) do |f|
-  = f.error_notification
-  = f.input :category_list, collection: @categories, label: "Category", :as => :radio_buttons
-  = f.input :title
-  = f.input :location, as: :radio_buttons, collection: [@user.location, "Anywhere"],
-      checked: @proposal.location || @user.location
-  = f.input :description
-  = f.hidden_field :offer, value: true
-  = f.button :submit, "Save"
-  = f.button :submit, "Cancel", name: "cancel"
+.row
+  .col-md-3
+    = simple_form_for([@user, @proposal]) do |f|
+      = f.error_notification
+      = f.input :category_list, collection: @categories, label: "Category", :as => :radio_buttons
+      = f.input :title
+      = f.input :location, as: :radio_buttons, collection: [@user.location, "Anywhere"],
+          checked: @proposal.location || @user.location
+      = f.input :description
+      = f.hidden_field :offer, value: true
+      = f.button :submit, "Save"
+      = f.button :submit, "Cancel", name: "cancel"
