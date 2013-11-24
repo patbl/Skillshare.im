@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
-//= require leaflet
 //= require twitter/bootstrap
+//= require_directory .
 //= require turbolinks
-//= require_tree .

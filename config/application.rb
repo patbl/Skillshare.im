@@ -25,6 +25,7 @@ module Skillshare
     # config.i18n.default_locale = :de
 
     config.assets.initialize_on_precompile = false
+    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
 
     config.action_mailer.smtp_settings = {
       address: "smtp.mandrillapp.com",

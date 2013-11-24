@@ -44,12 +44,11 @@ class ProposalsController < ApplicationController
 
   def destroy
     @proposal.destroy
-    redirect_to user_path(@user), flash: { success: "Offer was deleted"}
+    redirect_to user_path(@user), flash: { success: "Offer was deleted" } 
   end
 
   def map
-    @center = { latlng: [33, -20], zoom: 2 }
-    @markers = Proposal.recent(50).mappable.map do |proposal|
+    @marker_data = Proposal.recent(50).mappable.map do |proposal|
       link = ActionController::Base.helpers.link_to(proposal.title, proposal_path(proposal))
       icon = category_tag(proposal.category)
       { latlng: proposal.latlng, popup: "#{icon} #{link}" }

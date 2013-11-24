@@ -168,7 +168,6 @@ GEM
       multi_json (>= 1.5)
     launchy (2.4.0)
       addressable (~> 2.3)
-    leaflet-rails (0.7.0)
     letter_opener (1.1.2)
       launchy (~> 2.2)
     libv8 (3.16.14.3)
@@ -375,7 +374,6 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   launchy
-  leaflet-rails
   letter_opener
   meta_request
   omniauth-facebook

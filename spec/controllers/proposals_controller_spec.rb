@@ -212,7 +212,7 @@ describe ProposalsController do
         get :map
         path = ActionController::Base.helpers.link_to("love", proposal_path(offer))
         icon = %{<i class="fa fa-home"></i>}
-        expect(assigns(:markers)).to eq [{ latlng: [1.0, 2.0], popup: "#{icon} #{path}"  }]
+        expect(assigns(:marker_data)).to eq [{ latlng: [1.0, 2.0], popup: "#{icon} #{path}"  }]
       end
     end
   end

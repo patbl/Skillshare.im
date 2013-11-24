@@ -3,22 +3,27 @@
   %head
     %meta{ charset: "utf-8" }
     %title Skillshare.im
+    = yield :head if content_for?(:head)
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    -# = stylesheet_link_tag    "application", media: "all"
     = javascript_include_tag "application", "data-turbolinks-track" => true
-    <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700|Oregano' rel='stylesheet' type='text/css'>
+    -# = javascript_include_tag "application"
+    %link{href: "http://fonts.googleapis.com/css?family=Droid+Serif:400,700|Oregano", rel: "stylesheet"}
     = csrf_meta_tags
+
   %body
     #wrap
       = render "shared/header"
-
+  
       .container
         - flash.each do |name, msg|
           %div{ class: alert_type(name) }= msg
-
+  
       .container
         = yield
-
+  
     = render "shared/footer"
-
+  
     %footer
-      = render "shared/analytics"
+      = javascript_include_tag "analytics_tracking"
+      = yield :footer if content_for?(:footer)

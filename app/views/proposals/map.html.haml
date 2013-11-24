@@ -1,2 +1,16 @@
-.container
-  = map(:center => @center, markers: @markers)
+= content_for :head do
+  -# %link{href: "http://cdn.leafletjs.com/leaflet-0.7/leaflet.css", rel: "stylesheet" }
+  -# %script{src: "http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"}
+  = javascript_include_tag "leaflet"
+  = stylesheet_link_tag "leaflet"
+  = javascript_include_tag "leaflet.markercluster"
+  = stylesheet_link_tag "MarkerCluster"
+  = stylesheet_link_tag "MarkerCluster.Default"
+
+%div#map
+
+= content_for :footer do
+  = javascript_tag do
+    -# using a funky name 'cause it's a global variable
+    markerData420 = #{raw @marker_data.to_json};
+  = javascript_include_tag "map/render_map"
