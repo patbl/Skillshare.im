@@ -25,5 +25,5 @@
     = render "shared/footer"
   
     %footer
-      = javascript_include_tag "analytics_tracking"
+      = render "layouts/analytics_tracking"
       = yield :footer if content_for?(:footer)
