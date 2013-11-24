@@ -16,15 +16,18 @@ feature "profile management" do
   end
 
   scenario "saving changes to a profile" do
-    sign_in
-    user = User.last
+    user = sign_in
 
     click_link user.name
     click_link "edit-profile"
-    fill_in "E-mail", with: "coolchick427@hotmail.com"
+    fill_in "Location", with: "Nowhere, Wyoming"
     click_button "Save"
 
     expect(page).to have_selector(".alert-success")
-    expect(user.reload.email).to eq "coolchick427@hotmail.com"
+
+    click_link "Sign Out"
+    sign_in_as user
+    click_link user.name
+    expect(page).to have_content("Nowhere, Wyoming")
   end
 end
