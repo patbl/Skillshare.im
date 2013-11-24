@@ -2,7 +2,7 @@
 
 <% content_for :footer do %>
   <%= javascript_tag do %>
-    markerData420 = <%= raw @marker_data.to_json %>;
+    var markerData = <%= raw @marker_data.to_json %>;
     var map = L.map('map').setView([33, -20], 2);
     L.tileLayer('http://{s}.tile.cloudmade.com/70ce02868fd24c55b1a6c905d1205651/997/256/{z}/{x}/{y}.png', {
         attribution: '© 2013 <a href="http://cloudmade.com/">CloudMade</a> – Map data <a href="http://www.openstreetmap.org/copyright">ODbL</a> 2013 <a href="http://www.openstreetmap.org/">OpenStreetMap.org</a> contributors – <a href="http://cloudmade.com/website-terms-conditions">Terms of Use</a>',
@@ -13,9 +13,9 @@
     var icon = L.icon({iconUrl: '<%= image_path("marker-icon.png") %>',
                        shadowUrl: '<%= image_path("marker-shadow.png") %>'
                       });
-    for(var i = 0; i < markerData420.length; i++) {
-        var latlng = markerData420[i].latlng;
-        var popup = markerData420[i].popup;
+    for(var i = 0; i < markerData.length; i++) {
+        var latlng = markerData[i].latlng;
+        var popup = markerData[i].popup;
         var marker = new L.marker(latlng, {icon: icon}).bindPopup(popup);
         markers.addLayer(marker);
     }
