@@ -8,13 +8,16 @@
         attribution: '© 2013 <a href="http://cloudmade.com/">CloudMade</a> – Map data <a href="http://www.openstreetmap.org/copyright">ODbL</a> 2013 <a href="http://www.openstreetmap.org/">OpenStreetMap.org</a> contributors – <a href="http://cloudmade.com/website-terms-conditions">Terms of Use</a>',
         maxZoom: 18
     }).addTo(map);
-    L.Icon.Default.imagePath = "/assets";
     
     var markers = new L.MarkerClusterGroup();
-    
+    var icon = L.icon({iconUrl: '<%= image_path("marker-icon.png") %>',
+                       shadowUrl: '<%= image_path("marker-shadow.png") %>'
+                      });
     for(var i = 0; i < markerData420.length; i++) {
-        var marker = markerData420[i];
-        markers.addLayer(new L.marker(marker.latlng).bindPopup(marker.popup));
+        var latlng = markerData420[i].latlng;
+        var popup = markerData420[i].popup;
+        var marker = new L.marker(latlng, {icon: icon}).bindPopup(popup);
+        markers.addLayer(marker);
     }
 
     map.addLayer(markers);
