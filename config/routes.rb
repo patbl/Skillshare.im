@@ -5,7 +5,8 @@ Skillshare::Application.routes.draw do
     end
   end
 
-  get 'proposals', to: 'proposals#index', via: %i[get post]
+  root 'proposals#index'
+  root 'proposals#index', as: 'proposals'
   get 'map', to: 'proposals#map'
 
   # authentication
@@ -16,7 +17,6 @@ Skillshare::Application.routes.draw do
   match 'signout', to: 'sessions#destroy', as: 'signout', via: %i[get post]
 
   # static pages
-  root 'pages#home'
   get 'about', to: 'pages#about'
   get 'faq', to: 'pages#faq'
 end

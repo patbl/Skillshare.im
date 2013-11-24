@@ -1,2 +1,14 @@
-= render "shared/categories"
-= render partial: "proposals/proposal", collection: @offers
+.landing
+
+  .heading
+    %h1
+      Sharing Between Effective Altruists!
+    %h3
+      Coffee - Lodging - Mentorship - Capital - Used Goods - Connections - Online Labor
+
+    - unless current_user
+      .facebook-outer
+        = link_to "Sign in with Facebook", signin_path, class: "btn btn-primary btn-lg facebook", role: "button"
+
+  = render "shared/categories"
+  = render partial: "proposals/proposal", collection: @offers
