@@ -1,6 +1,6 @@
 var map = L.map('map').setView([33, -20], 2);
 L.tileLayer('http://{s}.tile.cloudmade.com/70ce02868fd24c55b1a6c905d1205651/997/256/{z}/{x}/{y}.png', {
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+    attribution: '© 2013 <a href="http://cloudmade.com/">CloudMade</a> – Map data <a href="http://www.openstreetmap.org/copyright">ODbL</a> 2013 <a href="http://www.openstreetmap.org/">OpenStreetMap.org</a> contributors – <a href="http://cloudmade.com/website-terms-conditions">Terms of Use</a>',
     maxZoom: 18
 }).addTo(map);
 L.Icon.Default.imagePath = "/assets";
