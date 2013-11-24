@@ -25,7 +25,7 @@
   
     %footer
       = render "layouts/analytics_tracking"
-      - if params[:controller] == "proposals" && params[:action] == "map"
+      - if params["controller"] == "proposals" && params["action"] == "map"
         = javascript_include_tag "proposals/map"
 
       = yield :footer
