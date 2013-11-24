@@ -19,6 +19,9 @@
   }
   .picture{
     float:left;
+    max-height:120px;
+    overflow: hidden;
+    width:120px;
     img{
       width: 118px;
       border-radius:3px
