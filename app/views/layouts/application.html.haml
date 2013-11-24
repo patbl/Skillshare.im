@@ -3,7 +3,6 @@
   %head
     %meta{ charset: "utf-8" }
     %title Skillshare.im
-    = yield :head if content_for?(:head)
     %link{href: "http://cdn.leafletjs.com/leaflet-0.7/leaflet.css", rel: "stylesheet" }
     %script{src: "http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"}
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
@@ -26,4 +25,7 @@
   
     %footer
       = render "layouts/analytics_tracking"
-      = yield :footer if content_for?(:footer)
+      - if params[:controller] == "proposals" && params[:action] == "map"
+        = javascript_include_tag "proposals/map"
+
+      = yield :footer
