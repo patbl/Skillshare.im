@@ -29,5 +29,7 @@ class CreateUsers < ActiveRecord::Migration
         t.timestamps
       end
     end
+
+    add_index :proposals, :user_id
   end
 end

@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20131102183948) do
     t.datetime "updated_at"
   end
 
+  add_index "proposals", ["user_id"], name: "index_proposals_on_user_id"
+
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
