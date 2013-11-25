@@ -34,3 +34,5 @@
           - category = proposal.category_list.first
           = raw(category_tag(category))
           = link_to category, proposals_path(category: category)
+    .request
+      = render partial: "messages/form", locals: {proposal: proposal}
