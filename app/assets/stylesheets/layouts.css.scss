@@ -71,3 +71,21 @@
     }
   }
 }
+
+#footer{
+  height: 50px;
+  .navbar{
+    background: rgba(250,250,250,0.3);
+    border:none;
+    a{
+      color: #333;
+    }
+    .icon a{
+      font-size:26px;
+    }
+  }
+  .navbar-default{
+    background-color:none;
+    border:none;
+  }
+}

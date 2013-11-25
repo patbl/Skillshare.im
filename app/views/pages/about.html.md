@@ -10,5 +10,4 @@ Check out the [FAQ](/faq) to learn more.
 
 Skillshare.im was tenderly hand-crafted with loving-kindness by
 [Ozzie Gooen](http://ozziegooen.com/) and
-[Patrick Brinich-Langlois](http://www.patrickbrinichlanglois.com/),
-who are interesting and compassionate people.
+[Patrick Brinich-Langlois](http://www.patrickbrinichlanglois.com/).
