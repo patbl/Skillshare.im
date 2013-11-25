@@ -5,7 +5,7 @@
       = f.error_notification
       = f.input :title
       = f.input :category_list, collection: @categories, :include_blank => false, :label => "Category"
-      = f.input :location, collection: [@user.location, "Anywhere"],
+      = f.input :location, collection: [current_user.location, "Anywhere"],
           checked: @proposal.location || @user.location, :include_blank => false
       = f.input :description, :input_html => {:rows => 5}
       = f.hidden_field :offer, value: true

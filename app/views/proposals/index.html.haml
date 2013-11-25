@@ -9,4 +9,8 @@
         .facebook-outer
           = link_to "Sign in with Facebook", signin_path, class: "btn btn-primary btn-lg facebook", role: "button"
 = render "shared/categories"
-= render partial: "proposals/proposal", collection: @offers
+- @offers.in_groups_of(3) do |offers|
+  .row
+    - offers.each do |offer|
+      - if !offer.nil?
+        = render partial: "proposals/proposal", collection: [offer]
