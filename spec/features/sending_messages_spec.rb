@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-feature "sending messages" do
+feature "sending messages", :skip do
   scenario "sending a message about an offer" do
     recipient = create :user, name: "Xi Li"
-    offer = create :offer, user: recipient, title: "500 Records"
+    create :offer, user: recipient, title: "500 Records"
     sign_in
 
     click_link "500 Records"
