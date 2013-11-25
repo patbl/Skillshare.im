@@ -3,4 +3,4 @@ bundler_args: --without development
 rvm:
   - "2.0.0"
 env:
-  - SLOW_SPECS=false
+  # - SLOW_SPECS=true
