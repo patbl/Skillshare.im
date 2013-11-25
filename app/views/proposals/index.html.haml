@@ -8,6 +8,5 @@
 
         .facebook-outer
           = link_to "Sign in with Facebook", signin_path, class: "btn btn-primary btn-lg facebook", role: "button"
-
-  = render "shared/categories"
-  = render partial: "proposals/proposal", collection: @offers
+= render "shared/categories"
+= render partial: "proposals/proposal", collection: @offers

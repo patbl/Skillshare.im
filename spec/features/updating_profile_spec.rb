@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature "profile management" do
+feature "profile management", :slow do
   scenario "canceling editing a profile" do
     sign_in
     user = User.last

@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe UsersController do
   describe "guest access" do
-
     describe "GET #show" do
       let(:user) { create(:user) }
 
@@ -20,6 +19,7 @@ describe UsersController do
       end
     end
   end
+
   describe "user access" do
     let(:user) { create(:user) }
     let(:users) { create_list(:user, 2) }
@@ -54,7 +54,7 @@ describe UsersController do
         set_user_session(user)
         patch :update, user: attributes_for(:user, name: "Leon Kass"), id: user
         expect(response).to redirect_to(user)
-        expect(User.find(user).name).to eq "Leon Kass"
+        expect(user.reload.name).to eq "Leon Kass"
         expect(flash[:success]).to be
       end
 
@@ -76,28 +76,12 @@ describe UsersController do
       end
 
       it "doesn't allow the current user to update another user's profile" do
-        good_user = user
+        good_user = create :user, location: "San Francisco"
         bad_user = create :user
         set_user_session(bad_user)
-        patch :update, user: attributes_for(:user), id: good_user
-        expect(response).to redirect_to(root_url)
+        patch :update, user: { location: "North Korea" }, id: good_user
+        expect(good_user.reload.location).to eq "San Francisco"
       end
-    end
-
-    it "GET #destroy denies access" do
-      set_user_session(user)
-      delete :destroy, id: 1
-      expect(response).to redirect_to(root_url)
-    end
-  end
-
-  describe "admin access" do
-    it "allows administrators to delete users" do
-      moribund_user = create :user
-      set_user_session(create(:admin))
-      expect { delete :destroy, id: moribund_user }
-        .to change(User, :count).by(-1)
-      expect(response).to redirect_to users_path
     end
   end
 end

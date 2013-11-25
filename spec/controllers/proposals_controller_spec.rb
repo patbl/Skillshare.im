@@ -1,27 +1,25 @@
 require 'spec_helper'
 
 describe ProposalsController do
-  shared_examples("public access to proposals") do
-    
-  describe "#index" do
-    before { create :offer, category_list: "goods" }
+  shared_examples "public access to proposals" do
+    describe "#index" do
+      before { create :offer, category_list: "goods" }
 
-    it "gets all the offers when unfiltered" do
-      get :index
-      expect(assigns(:offers)).to eq Proposal.offers
-    end
+      it "gets all the offers when unfiltered" do
+        get :index
+        expect(assigns(:offers)).to eq Proposal.offers
+      end
 
-    it "doesn't show anything if there's nothing" do
-      get :index, category: "lodging"
-      expect(assigns(:offers)).to be_empty
+      it "doesn't show anything if there's nothing" do
+        get :index, category: "lodging"
+        expect(assigns(:offers)).to be_empty
+      end
     end
-  end
 
     describe "GET #show" do
       it "assigns the requested proposal to @proposal" do
         proposal = double("a proposal")
         expect(Proposal).to receive(:find).with("123").and_return(proposal)
-        expect(proposal).to receive(:user)
 
         get :show, id: "123"
 
@@ -55,14 +53,14 @@ describe ProposalsController do
     describe "GET #edit", skip_before: true do
       it "assigns the requested proposal to @proposal" do
         session[:user_id] = "123"
-        expect(User).to receive(:find).with("123").and_return("a user")
+        user = build_stubbed(:user)
+        expect(User).to receive(:find).with("123").and_return(user)
 
-        proposal = build_stubbed(:proposal)
-        expect(Proposal).to receive(:find).with("123").and_return(proposal)
+        expect(user.proposals).to receive(:find).with("123").and_return("a proposal")
 
         get :edit, id: "123"
 
-        expect(assigns(:proposal)).to eq proposal
+        expect(assigns(:proposal)).to eq "a proposal"
       end
     end
 
@@ -113,7 +111,6 @@ describe ProposalsController do
         it "redirects to the user" do
           patch :update, id: @proposal, proposal: attributes_for(:proposal)
           expect(response).to redirect_to @user
-          expect(assigns(:user)).to eq @user
         end
       end
 
@@ -146,8 +143,14 @@ describe ProposalsController do
 
     describe "DELETE #destroy" do
       it "deletes the proposal from the database" do
-        expect { delete :destroy, id: @proposal, user_id: @proposal.user }
-          .to change(Proposal, :count).by(-1)
+        session[:user_id] = "1"
+        user = build_stubbed(:user)
+        expect(User).to receive(:find).with("1").and_return(user)
+        proposal = build_stubbed(:proposal)
+        expect(user.proposals).to receive(:find).with("456").and_return(proposal)
+        expect(proposal).to receive(:destroy)
+
+        delete :destroy, id: "456"
       end
 
       it "redirects to user profile" do
@@ -162,8 +165,7 @@ describe ProposalsController do
         proposal = create :proposal, user: nice_user
         session[:user_id] = bad_user
         expect { delete :destroy, id: proposal, user_id: bad_user}
-          .to_not change(Proposal, :count)
-        expect(response).to redirect_to(root_url)
+          .to raise_error(ActiveRecord::RecordNotFound)
       end
 
       it "deletes the user's proposals when the user's account is deleted" do
