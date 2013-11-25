@@ -12,13 +12,13 @@
                 <i class="fa fa-envelope"></i> Request
             - elsif current_user == proposal.user
               = link_to proposal, :method => :delete, class: "btn btn-danger btn-small" do
-                <i class="fa fa-times"></i> 
+                <i class="fa fa-times"></i>
               = link_to edit_proposal_path(proposal), class: "btn btn-primary btn-small" do
-                <i class="fa fa-pencil"></i> 
+                <i class="fa fa-pencil"></i>
             - else
               = link_to new_proposal_message_path(proposal), class: "btn btn-danger btn-small" do
                 <i class="fa fa-envelope"></i> Sign in to request
-          
+
       %p
         = markdown(proposal.description)
     .info
@@ -34,4 +34,3 @@
           - category = proposal.category_list.first
           = raw(category_tag(category))
           = link_to category, proposals_path(category: category)
-

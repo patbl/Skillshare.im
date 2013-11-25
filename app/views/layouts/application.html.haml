@@ -13,16 +13,16 @@
   %body
     #wrap
       = render "shared/header"
-  
+
       .container
         - flash.each do |name, msg|
           %div{ class: alert_type(name) }= msg
-  
+
       .container
         = yield
-  
+
     = render "shared/footer"
-  
+
     %footer
       = render "layouts/analytics_tracking"
 

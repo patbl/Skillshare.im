@@ -1,6 +1,6 @@
 class ProposalsController < ApplicationController
   include ProposalsHelper
-  
+
   before_action :ensure_signed_in,       only: %i[create new edit update destroy]
   before_action :set_categories,         only: %i[create new edit update]
   before_action :set_proposal,           only: %i[edit show update destroy]
@@ -44,7 +44,7 @@ class ProposalsController < ApplicationController
 
   def destroy
     @proposal.destroy
-    redirect_to user_path(@user), flash: { success: "Offer was deleted" } 
+    redirect_to user_path(@user), flash: { success: "Offer was deleted" }
   end
 
   def map
