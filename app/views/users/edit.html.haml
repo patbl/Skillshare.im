@@ -6,7 +6,7 @@
       = f.error_notification
       = f.input :email, label: "E-mail"
       = f.input :location
-      = f.input :about
+      = f.input :about, :input_html => {:rows => 5}
       %br
       %br
       = f.button :submit, "Save"
