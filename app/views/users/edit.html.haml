@@ -1,9 +1,12 @@
 %h1 Edit my profile
 
-= simple_form_for @user do |f|
-  = f.error_notification
-  = f.input :email, label: "E-mail"
-  = f.input :location
-  = f.input :about
-  = f.button :submit, "Save"
-  = f.button :submit, "Cancel", name: "cancel"
+.row
+  .col-md-4
+    = simple_form_for @user do |f|
+      = f.error_notification
+      = f.input :email, label: "E-mail"
+      = f.input :location
+      = f.input :about
+      %br
+      %br
+      = f.button :submit, "Save"

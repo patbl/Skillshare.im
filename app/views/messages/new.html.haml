@@ -1,15 +1,2 @@
-%h2 
-  = "Request Offer #{@proposal.title.titleize}"
-  %br
-  %hr
-.row
-  = render partial: "proposals/proposal", collection: [@proposal]
-.row
-  .col-sm-12
+= render partial: "proposals/proposal", collection: [@proposal], :locals => { show_form: :true}
 
-    = simple_form_for :message, url: proposal_messages_url(@proposal) do |f|
-      .row
-        .col-md-3
-          = f.input :body, as: :text, label: "Message"
-        .col-md-2
-          = f.button :submit, "Request", :class => "btn btn-primary"
