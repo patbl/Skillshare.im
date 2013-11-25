@@ -1,4 +1,1 @@
 = render "proposals/proposal", proposal: @proposal
-- if @user == current_user
-  = link_to "Edit", edit_proposal_path(@proposal)
-  = link_to "Delete", @proposal, method: :delete, data: { confirm: "Are you sure you want to delete this?" }
