@@ -88,6 +88,7 @@ describe ProposalsController do
           expect do
             post :create, user_id: @user, proposal: attributes_for(:invalid_proposal)
           end.to_not change(Proposal, :count)
+          expect(assigns(:user)).to eq @user
           expect(response).to render_template(:new)
         end
       end
