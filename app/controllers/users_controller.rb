@@ -16,20 +16,12 @@ class UsersController < ApplicationController
   end
 
   def update
-    return redirect_to(session[:return_to] || root_url) if params[:cancel]
+    message = "Changes weren't saved."
+    return redirect_to(session.delete(:return_to) || root_url, notice: message) if params[:cancel]
     if current_user.update(user_params)
       redirect_to current_user, flash: { success: "Profile updated." }
     else
       render :edit
-    end
-  end
-
-  def destroy
-    if current_user.admin?
-      User.find(params[:id]).destroy
-      redirect_to users_path, notice: "User successfully deleted."
-    else
-      redirect_to root_url
     end
   end
 

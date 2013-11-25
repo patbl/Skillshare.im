@@ -83,21 +83,5 @@ describe UsersController do
         expect(good_user.reload.location).to eq "San Francisco"
       end
     end
-
-    it "GET #destroy denies access" do
-      set_user_session(user)
-      delete :destroy, id: 1
-      expect(response).to redirect_to(root_url)
-    end
-  end
-
-  describe "admin access" do
-    it "allows administrators to delete users" do
-      moribund_user = create :user
-      set_user_session(create(:admin))
-      expect { delete :destroy, id: moribund_user }
-        .to change(User, :count).by(-1)
-      expect(response).to redirect_to users_path
-    end
   end
 end
