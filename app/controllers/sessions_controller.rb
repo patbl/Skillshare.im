@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       session[:return_to] = new_user_proposal_path(user)
       message = "Thanks for signing up! Fill out this form to create your first offer."
     else
-      message = "You signed in successfully." 
+      message = "You signed in successfully."
     end
     redirect_to session.delete(:return_to) || root_url, flash: { success: message }
   end

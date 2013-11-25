@@ -13,15 +13,6 @@ describe Proposal do
     end
   end
 
-  context "#request?" do
-    it "returns the opposite of what #offer? returns" do
-      proposal.offer = true
-      expect(proposal.request?).to eq(false)
-      proposal.offer = false
-      expect(proposal.request?).to eq(true)
-    end
-  end
-
   context "#latlng" do
     let(:proposal) { build_stubbed(:proposal, latitude: 1, longitude: 2) }
     it "returns an array with the latitude and longitude" do
@@ -30,19 +21,6 @@ describe Proposal do
   end
 
   context "scopes" do
-    context "#requests" do
-      before { create :offer }
-
-      it "returns nil if there aren't any" do
-        expect(Proposal.requests).to be_empty
-      end
-
-      it "returns requests if there are some" do
-        request = create :request
-        expect(Proposal.requests).to match_array Array(request)
-      end
-    end
-
     context "#offers" do
       before { create :request }
 
