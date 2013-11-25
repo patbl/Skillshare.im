@@ -31,6 +31,7 @@ class ProposalsController < ApplicationController
       flash[:success] = "Request successfully sent."
       redirect_to user_path(current_user)
     else
+      @user = current_user
       render :new
     end
   end
