@@ -15,5 +15,6 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require leaflet.markercluster
+//= require leaflet.awesome-markers
 //= require_directory .
 //= require turbolinks

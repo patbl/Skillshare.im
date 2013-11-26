@@ -12,6 +12,7 @@
  *= require font-awesome
  *= require MarkerCluster
  *= require MarkerCluster.Default
+ *= require leaflet.awesome-markers
  *= require_tree .
  */
 
@@ -36,4 +37,3 @@ body {
   /* Pad bottom by footer height */
   padding: 0 0 50px;
 }
-

@@ -10,16 +10,21 @@
     }).addTo(map);
 
     var markers = new L.MarkerClusterGroup();
-    var icon = L.icon({iconUrl: '<%= image_path("marker-icon.png") %>',
-                       shadowUrl: '<%= image_path("marker-shadow.png") %>'
-                      });
+
+    var redMarker = L.AwesomeMarkers.icon({
+                       prefix: 'fa',
+                       icon: 'suitcase',
+                       markerColor: 'blue'
+                       });
+
     for(var i = 0; i < markerData.length; i++) {
-        var latlng = markerData[i].latlng;
-        var popup = markerData[i].popup;
+        var currentMarkerData = markerData[i];
+        var latlng = currentMarkerData.latlng;
+        var popup = currentMarkerData.popup;
+        var icon = L.AwesomeMarkers.icon({prefix: 'fa', icon: currentMarkerData.icon})
         var marker = new L.marker(latlng, {icon: icon}).bindPopup(popup);
         markers.addLayer(marker);
     }
-
     map.addLayer(markers);
   <% end %>
 <% end %>
