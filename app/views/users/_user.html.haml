@@ -31,8 +31,8 @@
       .info
         = markdown(user.about)
 
-
   - if user == current_user and defined? show_create_link
-    .proposal.new
-      .main
-        = link_to raw("<i class='fa fa-plus'></i> Create a new offer"), new_user_proposal_path(user)
+    = link_to(new_user_proposal_path(user)) do
+      .proposal.new
+        .main
+          = raw("<i class='fa fa-plus'></i> Create a new offer")
