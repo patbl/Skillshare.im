@@ -3,10 +3,6 @@ class MessagesController < ApplicationController
 
   before_action :ensure_signed_in
 
-  def new
-    @proposal = Proposal.find(params[:proposal_id])
-  end
-
   def create
     @body = params[:message][:body]
     @proposal = Proposal.find(params[:proposal_id])

@@ -208,13 +208,12 @@ describe ProposalsController do
       end
     end
 
-    describe "GET #map", :focus do
+    describe "GET #map" do
       it "assigns @markers correctly" do
         offer = create :offer, title: "love", category_list: "lodging"
         offer.update(latitude: 1.0, longitude: 2.0)
         get :map
         link = ActionController::Base.helpers.link_to("love", proposal_path(offer))
-        byebug
         expect(assigns(:marker_data)).to eq [{ latlng: [1.0, 2.0], popup: link, icon: "home"  }]
       end
     end
