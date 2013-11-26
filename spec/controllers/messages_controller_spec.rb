@@ -21,12 +21,5 @@ describe MessagesController do
       post :create, proposal_id: proposal, message: { body: "abc" }
       expect(last_email.to).to include(proposal.user.email)
     end
-
-    it "dosn't send the e-mail message if the body is blank" do
-      set_user_session(sender)
-      post :create, proposal_id: proposal, message: { body: "" }
-      expect(response).to render_template(:new)
-      expect(last_email).to be_nil
-    end
   end
 end

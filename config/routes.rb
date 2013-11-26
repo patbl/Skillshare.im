@@ -1,7 +1,7 @@
 Skillshare::Application.routes.draw do
   resources :users, except: %i[new create destroy] do
     resources :proposals, shallow: true, except: :index do
-      resources :messages, only: %i[new create]
+      resources :messages, only: :create
     end
   end
 
