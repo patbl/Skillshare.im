@@ -28,8 +28,7 @@ class ProposalsController < ApplicationController
   def create
     @proposal = current_user.proposals.build(proposal_params)
     if @proposal.save
-      flash[:success] = "Request successfully sent."
-      redirect_to user_path(current_user)
+      redirect_to user_path(current_user), flash: { success: "Offer created." }
     else
       @user = current_user
       render :new
