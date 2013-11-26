@@ -45,7 +45,7 @@ class ProposalsController < ApplicationController
 
   def destroy
     @proposal.destroy
-    redirect_to user_path(current_user), flash: { success: "Offer deleted" }
+    redirect_to user_path(current_user), flash: { success: "Offer deleted." }
   end
 
   def map
