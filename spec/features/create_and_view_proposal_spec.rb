@@ -8,13 +8,13 @@ feature "Proposal management", slow: true do
 
     expect do
       fill_in "Title", with: "12 Cases Of Tinned Dog Food"
-      choose "goods"
+      select "goods"
       fill_in "Description", with: "Abandoned all–dog-food diet. Will ship internationally."
-      choose "Anywhere"
-      click_button "Save"
+      select "Anywhere"
+      click_button "Create"
     end.to change(Proposal, :count).by(1)
     expect(page).to have_content("12 Cases Of Tinned Dog Food")
-    expect(page).to have_content("New offer created.")
+    expect(page).to have_selector(".alert")
   end
 
   scenario "edits a proposal" do
@@ -108,7 +108,7 @@ feature "Proposal management", slow: true do
 
   scenario "delete an offer", js: true do
     find("#new-proposal").trigger("click")
-    
+
     fill_in "Title", with: "Dog Food"
     choose "goods"
     fill_in "Description", with: "Abandoned all–dog-food diet. Will ship internationally."
@@ -116,7 +116,7 @@ feature "Proposal management", slow: true do
 
     click_link "Dog Food"
     click_link "Delete"
-    
+
     expect(page).to_not have_content("Dog Food")
   end
 end
