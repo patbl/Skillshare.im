@@ -1,23 +1,23 @@
 #### What can I share?
 
-There are two questions you should ask yourself when deciding whether to share something:
+There are two questions you should ask yourself when deciding whether
+to share something:
 
 * Will others find it valuable?
 * Is it legal?
 
-Because the site (so far) has only a basic ability to categorize
-offers, anything you post will compete for attention with other
-offers. Please post only things that others are likely to benefit
-from. Other than that, offer whatever you want!
+If your answers were "yes" and "no," respectively, go ahead! If they
+weren't, try to come up with something else.
 
-#### Whom's the site for?
+#### How much does it cost?
+
+Nothing! Everything is free.
+
+#### Who is the site for?
 
 The site is aimed at
 [effective altruists](http://80000hours.org/what-is-an-effective-altruist)—people
 who want to help others in the most effective ways possible.
-Everybody—altruists unconcerned with effectiveness, non-altruists, and
-even purely selfish people—may post offers, though we ask that they
-not avail themselves of other people's offers.
 
 #### How can I help?
 
@@ -26,7 +26,7 @@ Thanks for asking! There are several ways:
 * **Post useful offers.** The site works only as long as people are
   willing to contribute.
 * **Take people up on their offers.** Don't be shy about contacting
-  people. 
+  people.
 * **Improve the site.** If you know Ruby on Rails or front-end web
   development and want to make the site better, grab the code
   [here](https://github.com/patbl/ea-skillshare) and
@@ -47,9 +47,9 @@ you might consider Skillshare.im instead:
 * **Friends.** You're more likely to build relationships with people
   you meet on Skillshare.im than with people you have private
   transactions with.
-* **Non-market goods.** Certain things—like career advice or study
-  buddies—are hard to buy. Skillshare.im helps you connect with people
-  who offer these things.
+* **Non-market goods.** Certain things, like career advice or study
+  buddies, are hard to buy. Skillshare.im helps you connect with
+  people who offer these things.
 * **Flexibility.** While in theory you could work longer hours and
   donate the extra money to charity, this often isn't possible. Many
   people have salaries, or work on schedules set by their employers.
@@ -63,7 +63,7 @@ you might consider Skillshare.im instead:
 
 #### I have a suggestion for the site.
 
-Great! [Let us know](mailto:doesnotexist@skillshare.im).
+Great! [Let us know](mailto:ozzie.gooen@80000hours.org).
 
 #### How can I sound more like Shakira when I sing?
 
