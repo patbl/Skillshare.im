@@ -1,20 +1,6 @@
 require 'spec_helper'
 
-feature "profile management", :slow do
-  scenario "canceling editing a profile" do
-    sign_in
-    user = User.last
-
-    click_link user.name
-    click_link "edit-profile"
-    fill_in "E-mail", with: ""
-    click_button "Save"
-    click_button "Save"
-    click_button "Cancel"
-
-    expect(current_path).to eq user_path(user)
-  end
-
+feature "profile management", :slow, :skip do
   scenario "saving changes to a profile" do
     user = sign_in
 

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature "Authentication" do
+feature "Authentication", :slow do
   scenario "signing in" do
     sign_in
     expect(signed_in?).to be

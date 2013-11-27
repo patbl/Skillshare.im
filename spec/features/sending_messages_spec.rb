@@ -1,18 +1,13 @@
 require 'spec_helper'
 
-feature "sending messages", :skip do
+feature "sending messages", :slow do
   scenario "sending a message about an offer" do
-    recipient = create :user, name: "Xi Li"
+    recipient = create_user name: "Xi"
     create :offer, user: recipient, title: "500 Records"
     sign_in
 
-    click_link "500 Records"
-    click_link "Request"
     click_button "Send"
-    expect(page).to have_selector(".alert-danger")
-    fill_in("Message", with: "hullo there!")
-    click_button "Send"
-
-    expect(page).to have_content("Message sent.")
+    expect(page).to have_selector(".alert-success")
+    expect(current_path).to eq root_path
   end
 end
