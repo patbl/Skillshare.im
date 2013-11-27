@@ -41,11 +41,9 @@ describe ProposalsController do
       end
     end
 
-    describe "GET #new", skip_before: true do
+    describe "GET #new" do
       it "assigns a new proposal to @proposal" do
-        user = create :user
-        set_user_session(user)
-        get :new, user_id: user
+        get :new, user_id: @user
         expect(assigns(:proposal)).to be_a_new(Proposal)
       end
     end
@@ -70,16 +68,14 @@ describe ProposalsController do
           expect {
             post :create, proposal: attributes_for(:proposal), user_id: @user
           }.to change(Proposal, :count).by(1)
-          expect(response).to redirect_to user_path(@user)
+          expect(response).to redirect_to @user
         end
 
-        it "doesn't save the proposal if the user clicks Cancel" do
-          session[:return_to] = "previous page"
+        it "saves the new proposal in the database" do
           expect {
-            post :create, proposal: attributes_for(:proposal), user_id: @user, cancel: true
-          }.to_not change(Proposal, :count)
-          expect(response).to redirect_to("previous page")
-          expect(flash[:notice]).to be
+            post :create, proposal: attributes_for(:proposal), user_id: @user
+          }.to change(Proposal, :count).by(1)
+          expect(response).to redirect_to @user
         end
       end
 
@@ -103,15 +99,10 @@ describe ProposalsController do
 
         it "updates the proposal in the database" do
           patch :update, id: @proposal, proposal:
-            attributes_for(:proposal, title: 'couch', location: 'Tampa')
+            attributes_for(:proposal, title: "couch", location: "Tampa")
           @proposal.reload
-          expect(@proposal.title).to eq 'couch'
-          expect(@proposal.location).to eq 'Tampa'
-        end
-
-        it "redirects to the user" do
-          patch :update, id: @proposal, proposal: attributes_for(:proposal)
-          expect(response).to redirect_to @user
+          expect(@proposal.title).to eq "couch"
+          expect(@proposal.location).to eq "Tampa"
         end
       end
 
@@ -127,17 +118,6 @@ describe ProposalsController do
           patch :update, id: @proposal, user_id: @proposal.user, proposal:
             attributes_for(:proposal, title: nil)
           expect(response).to render_template :edit
-        end
-      end
-
-      context "with cancel" do
-        it "doesn't update the record" do
-          session[:return_to] = "previous page"
-          @proposal.update!(title: "towel")
-          patch :update, id: @proposal, proposal: attributes_for(:proposal, title: "pencil"), cancel: true
-          @proposal.reload
-          expect(@proposal.title).to eq "towel"
-          expect(response).to redirect_to "previous page"
         end
       end
     end

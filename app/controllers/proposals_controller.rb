@@ -1,10 +1,10 @@
 class ProposalsController < ApplicationController
   include ProposalsHelper
 
+  before_action :store_requested_url, only: :show
   before_action :ensure_signed_in, only: %i[create new edit update destroy]
   before_action :set_categories,   only: %i[create new edit update]
   before_action :set_proposal,     only: %i[edit update destroy]
-  before_action :check_for_cancel, only: %i[create update]
 
   def index
     @offers = Proposal.offers.tagged_with_or_all(params[:category])
@@ -18,7 +18,6 @@ class ProposalsController < ApplicationController
   def new
     @proposal = current_user.proposals.new
     @user = current_user
-    session[:return_to] ||= request.referer
   end
 
   def edit
@@ -28,7 +27,7 @@ class ProposalsController < ApplicationController
   def create
     @proposal = current_user.proposals.build(proposal_params)
     if @proposal.save
-      redirect_to user_path(current_user), flash: { success: "Offer created." }
+      redirect_back_or(user_path(current_user), flash: { success: "Offer created." })
     else
       @user = current_user
       render :new
@@ -37,7 +36,7 @@ class ProposalsController < ApplicationController
 
   def update
     if @proposal.update(proposal_params)
-      redirect_to user_path(current_user), flash: { success: "Offer updated." }
+      redirect_back_or(@proposal, flash: { success: "Offer updated." })
     else
       render :edit
     end
@@ -45,7 +44,7 @@ class ProposalsController < ApplicationController
 
   def destroy
     @proposal.destroy
-    redirect_to user_path(current_user), flash: { success: "Offer deleted." }
+    redirect_back_or(user_path(current_user), flash: { success: "Offer deleted." })
   end
 
   def map
@@ -58,21 +57,12 @@ class ProposalsController < ApplicationController
 
   private
 
-  def ensure_signed_in
-    redirect_to signin_path unless current_user
-  end
-
   def set_categories
     @categories = ApplicationHelper::CATEGORIES
   end
 
   def set_proposal
     @proposal = current_user.proposals.find(params[:id])
-  end
-
-  def check_for_cancel
-    message = %{Offer wasn't #{params[:action] == "create" ? "saved" : "updated"}.}
-    redirect_to(session.delete(:return_to) || root_path, notice: message) if params[:cancel]
   end
 
   def proposal_params

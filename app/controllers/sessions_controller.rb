@@ -2,7 +2,6 @@ class SessionsController < ApplicationController
   skip_before_action :verify_authenticity_token if Rails.env.development?
 
   def new
-    session[:return_to] ||= request.referer
     redirect_to "/auth/facebook"
   end
 
@@ -15,7 +14,7 @@ class SessionsController < ApplicationController
     else
       message = "You signed in successfully."
     end
-    redirect_to session.delete(:return_to) || root_url, flash: { success: message }
+    redirect_back_or(root_url, flash: { success: message })
   end
 
   def failure
@@ -23,7 +22,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:user_id] = nil
+    session.delete(:user_id)
     session.delete(:return_to)
     redirect_to root_url, notice: "You signed out successfully."
   end

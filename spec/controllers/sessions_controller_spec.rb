@@ -3,10 +3,8 @@ require 'spec_helper'
 describe SessionsController do
   describe "GET :new" do
     it "redirects to Facebook's auth page" do
-      expect(request).to receive(:referer).and_return("previous page")
       get :new
       expect(response).to redirect_to "/auth/facebook"
-      expect(session[:return_to]).to eq "previous page"
     end
   end
 
@@ -50,7 +48,7 @@ describe SessionsController do
   end
 
   describe "GET :failure" do
-    before { get :failure } 
+    before { get :failure }
 
     it "redirects to the home page" do
       expect(response).to redirect_to(root_url)
