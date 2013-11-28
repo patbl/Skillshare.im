@@ -6,7 +6,7 @@ to share something:
 * Will others find it valuable?
 * Is it legal?
 
-If your answers were "yes" and "no," respectively, go ahead! If they
+If your answers were "yes" and "yes" respectively, go ahead! If they
 weren't, try to come up with something else.
 
 #### How much does it cost?
