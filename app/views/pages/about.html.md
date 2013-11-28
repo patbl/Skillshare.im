@@ -4,7 +4,6 @@ to share their skills, stuff, and even couches with one another.
 
 Helping other help others—what could be more helpful? Not only will
 you improve the world; you'll connect with others in the community.
-You might even meet your soulmate.
 
 Check out the [FAQ](/faq) to learn more.
 
