@@ -7,6 +7,6 @@ jQuery ->
 jQuery ->
   $(".request-btn").click(->
     if $("#sign_out").length > 0
-      index = $(this).parent().parent().parent().parent().parent()
+      index = $(this).parents(".proposal")
       $(index).find(".request").toggleClass("hidden")
   )
