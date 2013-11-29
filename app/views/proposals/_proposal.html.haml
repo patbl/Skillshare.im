@@ -4,7 +4,7 @@
       .row
         .col-md-8
           %h3
-            = link_to(proposal.title.titleize, proposal)
+            = link_to(proposal.title, proposal)
         .col-md-4
           .proposal-btn
             - if current_user && current_user != proposal.user
