@@ -36,5 +36,7 @@ module Skillshare
       authentication: "login", # Mandrill supports 'plain' or 'login'
       domain: "ea-skillshare.herokuapp.com", # your domain to identify your server when connecting
     }
+
+    config.i18n.enforce_available_locales = true
   end
 end
