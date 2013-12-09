@@ -7,7 +7,7 @@ class ProposalsController < ApplicationController
   before_action :set_proposal,     only: %i[edit update destroy]
 
   def index
-    @offers = Proposal.offers.tagged_with_or_all(params[:category])
+    @offers = Proposal.offers.tagged_with_or_all(params[:category]).order(:created_at => :desc)
   end
 
   def show
