@@ -1,39 +1,40 @@
-.col-md-4
-  .proposal
-    .main
-      .row
-        .col-md-8
-          %h3
-            = link_to(proposal.title, proposal)
-        .col-md-4
-          .proposal-btn
-            - if current_user && current_user != proposal.user
-              .btn.btn-danger.btn-small.request-btn
-                <i class="fa fa-envelope"></i> Request
-            - elsif current_user == proposal.user
-              = link_to proposal, method: :delete, class: "btn btn-danger btn-small",
-                                  confirm: "Are you sure you want to delete this offer?" do
-                <i class="fa fa-times"></i>
-              = link_to edit_proposal_path(proposal), class: "btn btn-primary btn-small" do
-                <i class="fa fa-pencil"></i>
-            - else
-              = link_to signin_path, class: "btn btn-danger btn-small" do
-                <i class="fa fa-envelope"></i> Sign in to request
+%tr.proposal
+  %th
+    .user
+      = link_to image_tag(proposal.user.picture("square")), proposal.user
+  %th 
+    .row
+      .col-sm-9
+        %h3
+          = link_to(proposal.title, proposal)
+      .col-sm-3
+        .proposal-btn
+          - if current_user && current_user != proposal.user
+            .btn.btn-danger.btn-small.request-btn
+              <i class="fa fa-envelope"></i> Request
+          - elsif current_user == proposal.user
+            = link_to proposal, method: :delete, class: "btn btn-danger btn-small",
+                                confirm: "Are you sure you want to delete this offer?" do
+              <i class="fa fa-times"></i>
+            = link_to edit_proposal_path(proposal), class: "btn btn-primary btn-small" do
+              <i class="fa fa-pencil"></i>
+          - else
+            = link_to signin_path, class: "btn btn-danger btn-small" do
+              <i class="fa fa-envelope"></i> Sign in to request
 
-      = markdown(proposal.description)
-    .info
-      .left
-        .user
-          = link_to image_tag(proposal.user.picture("small")), proposal.user
-          = link_to proposal.user.name, proposal.user
-      .right
-        - unless proposal.location == "Anywhere"
-          .location
-            <i class="fa fa-map-marker"></i>
-            = proposal.location
-        .category
-          - category = proposal.category_list.first
-          = raw(category_tag(category))
-          = link_to category, proposals_path(category: category)
+    = markdown(proposal.description)
     .request{ class: "hidden" }
       = render partial: "messages/form", locals: {proposal: proposal}
+  %th
+    .info
+      - unless proposal.location == "Anywhere"
+        .location
+          <i class="fa fa-map-marker"></i>
+          = proposal.location
+  %th
+    .info
+      .category
+        - category = proposal.category_list.first
+        = raw(category_tag(category))
+        = link_to category, proposals_path(category: category)
+

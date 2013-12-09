@@ -2,10 +2,10 @@
   .user-card
     .main
       .row
-        .col-sm-4
+        .col-xs-4
           .picture
             = link_to image_tag(user.picture), user
-        .col-sm-7.right
+        .col-xs-7.right
           %h3= link_to user.name, user
           .offer-count
             = link_to pluralize(user.proposals.count, 'Offer'), user
@@ -21,7 +21,7 @@
               = link_to user.facebook_url do |u|
                 .btn.btn-default
                   <i class="fa fa-facebook"></i>
-        .col-sm-1
+        .col-xs-1
           - if user == current_user
             = link_to edit_user_path(user), id: "edit-profile" do |u|
               .btn.btn-primary

@@ -1,8 +1,14 @@
 .row
   = render partial: "users/user", collection: [@user], :locals => { :show_create_link => true }
 
-- @proposals.in_groups_of(3) do |offers|
-  .row
-    - offers.each do |offer|
+%table.table.proposals-table
+  %thead
+    %tr
+      %th
+      %th Offer
+      %th Location
+      %th Type
+  %tbody
+    - @proposals.each do |offer|
       - if !offer.nil?
         = render partial: "proposals/proposal", collection: [offer]
