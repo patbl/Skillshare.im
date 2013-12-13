@@ -11,12 +11,6 @@
 
     var markers = new L.MarkerClusterGroup();
 
-    var redMarker = L.AwesomeMarkers.icon({
-                       prefix: 'fa',
-                       icon: 'suitcase',
-                       markerColor: 'blue'
-                       });
-
     for(var i = 0; i < markerData.length; i++) {
         var currentMarkerData = markerData[i];
         var latlng = currentMarkerData.latlng;
