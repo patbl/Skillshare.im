@@ -22,14 +22,14 @@ describe SessionsController do
       expect(user).to receive(:new?).and_return(false)
       expect(User).to receive(:from_omniauth).with(request.env["omniauth.auth"]).and_return(user)
 
-      session[:return_to] = "previous page path"
+      store_url "previous page path"
       get :create
       expect(response).to redirect_to "previous page path"
     end
 
     it "redirects to the new-proposal page if the user is new" do
       get :create # creates a new user
-      expect(response).to redirect_to(new_user_proposal_path(User.last))
+      expect(response).to redirect_to(edit_user_path(User.last))
     end
 
     it "creates a new user" do
@@ -43,7 +43,7 @@ describe SessionsController do
 
     it "lets the user know she signed in" do
       get :create
-      expect(flash[:success]).to be
+      expect(flash[:notice]).to be
     end
   end
 

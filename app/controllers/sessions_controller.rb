@@ -9,12 +9,10 @@ class SessionsController < ApplicationController
     user = User.from_omniauth(auth_hash)
     session[:user_id] = user.id
     if user.new?
-      session[:return_to] = new_user_proposal_path(user)
-      message = "Thanks for signing up! Fill out this form to create your first offer."
-    else
-      message = "You signed in successfully."
+      store_url edit_user_path(user), notice: "Thanks for signing up! Please check your e-mail address and location, then click Save."
+      store_url new_user_proposal_path(user), notice: "Fill out this form to create your first offer."
     end
-    redirect_back_or(root_url, flash: { success: message })
+    redirect_back_or(root_url, flash: { success: "You signed in successfully." })
   end
 
   def failure
