@@ -1,11 +1,11 @@
-[![Build Status](https://travis-ci.org/patbl/ea-skillshare.png?branch=master)](https://travis-ci.org/patbl/ea-skillshare)
-[![Code Climate](https://codeclimate.com/github/patbl/ea-skillshare.png)](https://codeclimate.com/github/patbl/ea-skillshare)
-[![Coverage Status](https://coveralls.io/repos/patbl/ea-skillshare/badge.png?branch=master)](https://coveralls.io/r/patbl/ea-skillshare?branch=master)
-[![Dependency Status](https://gemnasium.com/patbl/ea-skillshare.png)](https://gemnasium.com/patbl/ea-skillshare)
+[![Build Status](https://travis-ci.org/patbl/skillshare.im.png?branch=master)](https://travis-ci.org/patbl/skillshare.im)
+[![Code Climate](https://codeclimate.com/github/patbl/skillshare.im.png)](https://codeclimate.com/github/patbl/skillshare.im)
+[![Coverage Status](https://coveralls.io/repos/patbl/skillshare.im/badge.png?branch=master)](https://coveralls.io/r/patbl/skillshare.im?branch=master)
+[![Dependency Status](https://gemnasium.com/patbl/skillshare.im.png)](https://coveralls.io/r/patbl/skillshare.im?branch=master)
 
-# EA Skillshare
+# Skillshare.im
 
-EA Skillshare is a Rails app whose purpose is to make it easier for
+Skillshare.im is a Rails app whose purpose is to make it easier for
 effective altruists to help each other out by sharing their skills,
 stuff, and even couches with one another.
 
