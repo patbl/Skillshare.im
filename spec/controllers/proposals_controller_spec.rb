@@ -7,7 +7,7 @@ describe ProposalsController do
 
       it "gets all the offers when unfiltered" do
         get :index
-        expect(assigns(:offers)).to eq Proposal.offers
+        expect(assigns(:offers)).to eq Proposal.offers.order(created_at: :desc)
       end
 
       it "doesn't show anything if there's nothing" do
