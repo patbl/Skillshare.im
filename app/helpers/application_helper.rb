@@ -13,7 +13,7 @@ module ApplicationHelper
       lax_spacing: true,
       quote: true
     }
-    html_options = { safe_links_only: true }
+    html_options = { filter_html: true }
     Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(html_options), markdown_options)
   end
 
