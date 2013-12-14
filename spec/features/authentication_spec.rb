@@ -22,11 +22,9 @@ feature "Authentication", :slow do
     expect(current_path).to eq root_path
   end
 
-  scenario "new user can customize e-mail address and location", slow: false, focus: true do
-    al = create_user name: "Al"
+  scenario "new user can customize e-mail address and location" do
     jo = create_user new_user: true, name: "Jo", email: "samantha@gmail.com"
-    visit users_path
-    click_link "Al"
+    sign_in
 
     expect(current_path).to eq edit_user_path(jo)
     expect(page).to have_content("Please check")
@@ -37,6 +35,6 @@ feature "Authentication", :slow do
     expect(current_path).to eq new_user_proposal_path(jo)
     click_button "Create"
 
-    expect(current_path).to eq
+    expect(current_path).to eq user_proposals_path(jo)
   end
 end

@@ -67,5 +67,17 @@ describe UsersController do
         expect(bad_user.reload.location).to eq "North Korea"
       end
     end
+
+    describe "DELETE #destroy" do
+      it "doesn't let a user delete another user's profile" do
+        good_user = create :user, name: "Charity"
+        bad_user = create :user, location: "Vice"
+        set_user_session(bad_user)
+        expect { delete :destroy, id: good_user }.to change(User, :count).by(-1)
+        expect(response).to redirect_to root_path
+        expect(User.where name: "Charity").to exist
+        expect(User.where name: "Vice").to_not exist
+      end
+    end
   end
 end
