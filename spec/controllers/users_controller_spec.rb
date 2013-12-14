@@ -78,6 +78,14 @@ describe UsersController do
         expect(User.where name: "Charity").to exist
         expect(User.where name: "Vice").to_not exist
       end
+
+      it "deletes a user's offers when the user's account is deleted" do
+        user = create :user
+        create :offer, user: user
+        set_user_session user
+
+        expect { delete :destroy, id: user }.to change(Proposal, :count).by(-1)
+      end
     end
 
     describe "GET #map" do
