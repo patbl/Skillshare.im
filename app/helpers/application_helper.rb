@@ -26,7 +26,7 @@ module ApplicationHelper
     end
   end
 
-  def active?(path)
-    "active" if current_page? path
+  def active?(path = nil, **options)
+    return "active" if current_page? path
   end
 end
