@@ -7,7 +7,7 @@ Skillshare::Application.routes.draw do
 
   root 'proposals#index'
   root 'proposals#index', as: 'proposals'
-  get 'map', to: 'proposals#map'
+  get 'map', to: 'users#map'
 
   # authentication
   resources :sessions, only: %i[new create destroy]

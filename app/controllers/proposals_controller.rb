@@ -47,13 +47,6 @@ class ProposalsController < ApplicationController
     redirect_back_or(user_path(current_user), flash: { success: "Offer deleted." })
   end
 
-  def map
-    @marker_data = User.mappable.map do |user|
-      link = ActionController::Base.helpers.link_to(user.name, user_path(user))
-      { latlng: user.latlng, popup: link.html_safe, icon: "user" }
-    end
-  end
-
   private
 
   def set_categories

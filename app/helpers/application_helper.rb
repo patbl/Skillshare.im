@@ -25,4 +25,8 @@ module ApplicationHelper
     when :error   then "alert alert-danger"
     end
   end
+
+  def active?(path)
+    "active" if current_page?(path)
+  end
 end

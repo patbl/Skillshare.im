@@ -187,15 +187,5 @@ describe ProposalsController do
         expect(response).to require_login
       end
     end
-
-    describe "GET #map" do
-      it "assigns @markers correctly" do
-        user = create :user, name: "Joe"
-        user.update(latitude: 1.0, longitude: 2.0)
-        get :map
-        link = ActionController::Base.helpers.link_to("Joe", user_path(user))
-        expect(assigns(:marker_data)).to eq [{ latlng: [1.0, 2.0], popup: link, icon: "user"  }]
-      end
-    end
   end
 end
