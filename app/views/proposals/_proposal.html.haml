@@ -2,7 +2,7 @@
   %th
     .user
       = link_to image_tag(proposal.user.picture("square")), proposal.user
-  %th 
+  %th
     .row
       .col-sm-9
         %h3
@@ -37,4 +37,3 @@
         - category = proposal.category_list.first
         = raw(category_tag(category))
         = link_to category, proposals_path(category: category)
-
