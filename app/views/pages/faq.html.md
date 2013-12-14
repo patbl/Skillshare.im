@@ -19,6 +19,12 @@ The site is aimed at
 [effective altruists](http://80000hours.org/what-is-an-effective-altruist)—people
 who want to help others in the most effective ways possible.
 
+#### How do I add formatting my offers?
+
+You can use
+[Markdown](http://support.mashery.com/docs/customizing_your_portal/Markdown_Cheat_Sheet)
+to add links, bulleted lists, and other formatting to your offers and profile.
+
 #### How can I help?
 
 Thanks for asking! There are several ways:
