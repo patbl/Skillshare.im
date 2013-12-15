@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :ensure_signed_in, except: :index
+  before_action :ensure_signed_in, except: %i[index map]
 
   def show
     @user = User.find(params[:id])
@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @users = User.all.order(:name)
   end
 
   def edit
@@ -16,9 +16,22 @@ class UsersController < ApplicationController
 
   def update
     if current_user.update(user_params)
-      redirect_to current_user, flash: { success: "Profile updated." }
+      redirect_back_or(current_user, flash: { success: "Profile updated." })
     else
       render :edit
+    end
+  end
+
+  def destroy
+    current_user.destroy!
+    reset_session
+    redirect_to root_path
+  end
+
+  def map
+    @marker_data = User.mappable.map do |user|
+      link = ActionController::Base.helpers.link_to(user.name, user_path(user))
+      { latlng: user.latlng, popup: link.html_safe, icon: "user" }
     end
   end
 

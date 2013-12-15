@@ -6,8 +6,8 @@ module FeatureHelpers
 
   def create_user(new_user: false, **options)
     @user = create :user, options
-    expect(User).to receive(:from_omniauth).with(anything()).and_return(@user)
-    expect(@user).to receive(:new?).and_return(new_user)
+    User.stub(:from_omniauth).with(anything).and_return(@user)
+    @user.stub(:new?) { new_user }
     @user
   end
 

@@ -1,5 +1,5 @@
 Skillshare::Application.routes.draw do
-  resources :users, except: %i[new create destroy] do
+  resources :users, except: %i[new create] do
     resources :proposals, shallow: true, except: :index do
       resources :messages, only: :create
     end
@@ -7,7 +7,7 @@ Skillshare::Application.routes.draw do
 
   root 'proposals#index'
   root 'proposals#index', as: 'proposals'
-  get 'map', to: 'proposals#map'
+  get 'map', to: 'users#map'
 
   # authentication
   resources :sessions, only: %i[new create destroy]

@@ -35,7 +35,7 @@ describe MessagesController do
       it "saves the original page in the session hash" do
         expect(request).to receive(:referer).and_return("previous page")
         post :create, proposal_id: "123"
-        expect(session[:return_to]).to eq "previous page"
+        expect(session[:return_to].first.first).to eq "previous page"
       end
     end
   end

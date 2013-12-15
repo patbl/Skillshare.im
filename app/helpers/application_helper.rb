@@ -13,7 +13,7 @@ module ApplicationHelper
       lax_spacing: true,
       quote: true
     }
-    html_options = { safe_links_only: true }
+    html_options = { filter_html: true }
     Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(html_options), markdown_options)
   end
 
@@ -24,5 +24,9 @@ module ApplicationHelper
     when :alert   then "alert alert-warning"
     when :error   then "alert alert-danger"
     end
+  end
+
+  def active?(path = nil, **options)
+    return "active" if current_page? path
   end
 end

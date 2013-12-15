@@ -10,7 +10,7 @@ class Proposal < ActiveRecord::Base
 
   scope :offers, -> { where offer: true }
   scope :recent, ->(n = 10) { order(created_at: :desc).limit(n) }
-  scope :tagged_with_or_all, ->(tag = nil) { tag ? tagged_with(tag) : all }
+  scope :tagged_with_or_all, ->(tag = nil) { (tag ? tagged_with(tag) : all).order(created_at: :desc) }
 
   private
 

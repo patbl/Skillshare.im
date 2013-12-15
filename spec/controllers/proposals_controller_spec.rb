@@ -7,7 +7,7 @@ describe ProposalsController do
 
       it "gets all the offers when unfiltered" do
         get :index
-        expect(assigns(:offers)).to eq Proposal.offers
+        expect(assigns(:offers)).to eq Proposal.offers.order(created_at: :desc)
       end
 
       it "doesn't show anything if there's nothing" do
@@ -185,16 +185,6 @@ describe ProposalsController do
         proposal = create(:proposal)
         patch :update, id: proposal
         expect(response).to require_login
-      end
-    end
-
-    describe "GET #map" do
-      it "assigns @markers correctly" do
-        offer = create :offer, title: "love", category_list: "lodging"
-        offer.update(latitude: 1.0, longitude: 2.0)
-        get :map
-        link = ActionController::Base.helpers.link_to("love", proposal_path(offer))
-        expect(assigns(:marker_data)).to eq [{ latlng: [1.0, 2.0], popup: link, icon: "home"  }]
       end
     end
   end

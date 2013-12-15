@@ -67,5 +67,35 @@ describe UsersController do
         expect(bad_user.reload.location).to eq "North Korea"
       end
     end
+
+    describe "DELETE #destroy" do
+      it "doesn't let a user delete another user's profile" do
+        good_user = create :user, name: "Charity"
+        bad_user = create :user, location: "Vice"
+        set_user_session(bad_user)
+        expect { delete :destroy, id: good_user }.to change(User, :count).by(-1)
+        expect(response).to redirect_to root_path
+        expect(User.where name: "Charity").to exist
+        expect(User.where name: "Vice").to_not exist
+      end
+
+      it "deletes a user's offers when the user's account is deleted" do
+        user = create :user
+        create :offer, user: user
+        set_user_session user
+
+        expect { delete :destroy, id: user }.to change(Proposal, :count).by(-1)
+      end
+    end
+
+    describe "GET #map" do
+      it "assigns @markers correctly" do
+        user = create :user, name: "Joe"
+        user.update(latitude: 1.0, longitude: 2.0)
+        get :map
+        link = ActionController::Base.helpers.link_to("Joe", user_path(user))
+        expect(assigns(:marker_data)).to eq [{ latlng: [1.0, 2.0], popup: link, icon: "user"  }]
+      end
+    end
   end
 end

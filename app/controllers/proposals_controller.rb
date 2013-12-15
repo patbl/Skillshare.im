@@ -7,7 +7,7 @@ class ProposalsController < ApplicationController
   before_action :set_proposal,     only: %i[edit update destroy]
 
   def index
-    @offers = Proposal.offers.tagged_with_or_all(params[:category]).order(:created_at => :desc)
+    @offers = Proposal.offers.tagged_with_or_all(params[:category])
   end
 
   def show
@@ -45,14 +45,6 @@ class ProposalsController < ApplicationController
   def destroy
     @proposal.destroy
     redirect_back_or(user_path(current_user), flash: { success: "Offer deleted." })
-  end
-
-  def map
-    @marker_data = Proposal.recent(50).mappable.map do |proposal|
-      link = ActionController::Base.helpers.link_to(proposal.title, proposal_path(proposal))
-      icon = category_icon(proposal.category)
-      { latlng: proposal.latlng, popup: link.html_safe, icon: icon }
-    end
   end
 
   private
