@@ -60,4 +60,4 @@ gem 'coveralls', require: false
 gem 'acts-as-taggable-on'
 gem 'font-awesome-rails'
 gem 'geocoder'
-gem "roadie", "~> 2.4.2"
+gem 'roadie', '~> 2.4.2'
