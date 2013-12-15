@@ -12,10 +12,6 @@ class Proposal < ActiveRecord::Base
   scope :recent, ->(n = 10) { order(created_at: :desc).limit(n) }
   scope :tagged_with_or_all, ->(tag = nil) { tag ? tagged_with(tag) : all }
 
-  def category
-    category_list.first
-  end
-
   private
 
   def valid_category

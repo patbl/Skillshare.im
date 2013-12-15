@@ -1,8 +1,8 @@
 %tr.proposal
-  %th
+  %td
     .user
       = link_to image_tag(proposal.user.picture("square")), proposal.user
-  %th 
+  %td
     .row
       .col-sm-9
         %h3
@@ -25,13 +25,13 @@
     = markdown(proposal.description)
     .request{ class: "hidden" }
       = render partial: "messages/form", locals: {proposal: proposal}
-  %th
+  %td
     .info
       - unless proposal.location == "Anywhere"
         .location
           <i class="fa fa-map-marker"></i>
           = proposal.location
-  %th
+  %td
     .info
       .category
         - category = proposal.category_list.first

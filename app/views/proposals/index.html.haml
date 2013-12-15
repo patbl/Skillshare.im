@@ -1,5 +1,5 @@
-.landing
-  - unless current_user
+- unless current_user
+  .landing
     .heading
       %h1
         Sharing Between Effective Altruists!
@@ -8,6 +8,7 @@
 
         .facebook-outer
           = link_to "Sign in with Facebook", signin_path, class: "btn btn-primary btn-lg facebook", role: "button"
+
 = render "shared/categories"
 
 %table.table.proposals-table
@@ -19,5 +20,5 @@
       %th Type
   %tbody
     - @offers.each do |offer|
-      - if !offer.nil?
+      - if offer
         = render partial: "proposals/proposal", collection: [offer]
