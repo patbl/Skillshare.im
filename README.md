@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/patbl/Skillshare.im.png?branch=master)](https://travis-ci.org/patbl/Skillshare.im)
 [![Code Climate](https://codeclimate.com/github/patbl/Skillshare.im.png)](https://codeclimate.com/github/patbl/Skillshare.im)
 [![Coverage Status](https://coveralls.io/repos/patbl/Skillshare.im/badge.png?branch=master)](https://coveralls.io/r/patbl/Skillshare.im?branch=master)
-[![Dependency Status](https://gemnasium.com/patbl/Skillshare.im.png)](https://coveralls.io/r/patbl/Skillshare.im?branch=master)
+[![Dependency Status](https://gemnasium.com/patbl/Skillshare.im.png)](https://gemnasium.com/patbl/Skillshare.im)
 
 # Skillshare.im
 
