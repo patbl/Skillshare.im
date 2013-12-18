@@ -45,7 +45,7 @@ end
 gem 'therubyracer', platforms: :ruby
 gem 'haml-rails'
 gem 'sass-rails'
-gem 'anjlab-bootstrap-rails', '~> 3.0.2.0', require: 'bootstrap-rails'
+gem 'anjlab-bootstrap-rails', '~> 3.0.3.0', require: 'bootstrap-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails'
 gem 'jquery-rails'
@@ -61,3 +61,4 @@ gem 'acts-as-taggable-on'
 gem 'font-awesome-rails'
 gem 'geocoder'
 gem 'roadie', '~> 2.4.2'
+gem 'newrelic_rpm'
