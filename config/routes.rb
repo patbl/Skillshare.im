@@ -8,6 +8,7 @@ Skillshare::Application.routes.draw do
   root 'proposals#index'
   root 'proposals#index', as: 'proposals'
   get 'map', to: 'users#map'
+  get 'proposals', to: 'proposals#index', as: 'proposals_atom'
 
   # authentication
   match 'auth/:provider/callback', to: 'sessions#create',                 via: %i[get post]

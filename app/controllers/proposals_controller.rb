@@ -7,6 +7,11 @@ class ProposalsController < ApplicationController
 
   def index
     @offers = Proposal.offers.tagged_with_or_all(params[:category])
+
+    respond_to do |format|
+      format.html
+      format.atom
+    end
   end
 
   def show
