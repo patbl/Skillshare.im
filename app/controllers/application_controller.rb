@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
   def ensure_signed_in
     unless current_user
-      store_requested_url flash: { success: "You signed in successfully." }
+      store_requested_url
       redirect_to signin_path
     end
   end
@@ -24,12 +24,16 @@ class ApplicationController < ActionController::Base
     store_url request.referer, options
   end
 
-  def store_url(url, **flash_hash)
-    (session[:return_to] ||= []).push [url, flash_hash] if url
+  def store_url(url, options)
+    session[:return_to] ||= []
+    session[:return_to].push [url, options] if url
   end
 
   def redirect_back_or(path, options = {})
-    path, options = session[:return_to].shift if session[:return_to].present?
+    if session[:return_to].present?
+      path, saved_options = session[:return_to].shift
+      options.update(saved_options)
+    end
     redirect_to path, options
   end
 end
