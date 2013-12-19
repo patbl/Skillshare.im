@@ -1,7 +1,6 @@
 class ProposalsController < ApplicationController
   include ProposalsHelper
 
-  before_action :store_requested_url, only: :show
   before_action :ensure_signed_in, only: %i[create new edit update destroy]
   before_action :set_categories,   only: %i[create new edit update]
   before_action :set_proposal,     only: %i[edit update destroy]

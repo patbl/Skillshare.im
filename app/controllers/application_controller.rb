@@ -11,20 +11,12 @@ class ApplicationController < ActionController::Base
 
   def ensure_signed_in
     unless current_user
-      store_requested_url
+      store_url request.fullpath
       redirect_to signin_path
     end
   end
 
-  def store_requested_url(**options)
-    store_url request.fullpath, options
-  end
-
-  def store_previous_url(**options)
-    store_url request.referer, options
-  end
-
-  def store_url(url, options)
+  def store_url(url, **options)
     session[:return_to] ||= []
     session[:return_to].push [url, options] if url
   end
