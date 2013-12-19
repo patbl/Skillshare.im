@@ -10,13 +10,13 @@ Skillshare::Application.routes.draw do
   get 'map', to: 'users#map'
 
   # authentication
-  resources :sessions, only: %i[new create destroy]
-  match 'auth/:provider/callback', to: 'sessions#create', via: %i[get post]
-  match 'auth/failure', to: 'sessions#failure', via: %i[get post]
-  match 'signin', to: 'sessions#new', as: 'signin', via: %i[get post]
-  match 'signout', to: 'sessions#destroy', as: 'signout', via: %i[get post]
+  match 'auth/:provider/callback', to: 'sessions#create',                 via: %i[get post]
+  match 'auth/failure',            to: 'sessions#failure',                via: %i[get post]
+  match 'sessions',                to: 'sessions#create',                 via: %i[get post]
+  match 'signin',                  to: 'sessions#new',     as: 'signin',  via: %i[get post]
+  match 'signout',                 to: 'sessions#destroy', as: 'signout', via: %i[get post]
 
   # static pages
   get 'about', to: 'pages#about'
-  get 'faq', to: 'pages#faq'
+  get 'faq',   to: 'pages#faq'
 end
