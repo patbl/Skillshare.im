@@ -23,4 +23,12 @@ feature "profile management", :slow => false do
 
     expect(current_path).to eq root_path
   end
+
+  scenario "guest viewing someone's profile" do
+    xi = create_user name: "Xi"
+    ed = create_user name: "Ed"
+
+    visit user_path(xi)
+    expect(page).to have_selector(".alert-success")
+  end
 end

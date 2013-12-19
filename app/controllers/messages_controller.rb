@@ -1,7 +1,6 @@
 class MessagesController < ApplicationController
   include ApplicationHelper # for Markdown
 
-  before_action :store_previous_url
   before_action :ensure_signed_in
 
   def create

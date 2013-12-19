@@ -9,20 +9,15 @@ describe MessagesController do
         set_user_session(@sender)
       end
 
-      it "saves the message if things are Kosher" do
+      it "saves the message" do
         post :create, proposal_id: @proposal, message: { body: "abc" }
         expect(response).to redirect_to(@proposal)
+        expect(flash[:success]).to be
       end
 
       it "sends the e-mail message if the record is valid" do
         post :create, proposal_id: @proposal, message: { body: "abc" }
         expect(last_email.to).to include(@proposal.user.email)
-      end
-
-      it "sets the previous page in the session hash" do
-        expect(request).to receive(:referer).and_return("previous page")
-        post :create, proposal_id: @proposal, message: { body: "abc" }
-        expect(response).to redirect_to "previous page"
       end
     end
 
@@ -30,12 +25,6 @@ describe MessagesController do
       it "requires the user to be signed in" do
         post :create, proposal_id: "123"
         expect(response).to redirect_to signin_path
-      end
-
-      it "saves the original page in the session hash" do
-        expect(request).to receive(:referer).and_return("previous page")
-        post :create, proposal_id: "123"
-        expect(session[:return_to].first.first).to eq "previous page"
       end
     end
   end
