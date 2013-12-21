@@ -6,8 +6,8 @@ to share something:
 * Will others find it valuable?
 * Is it legal?
 
-If your answers were "yes" and "yes" respectively, go ahead! If they
-weren't, try to come up with something else.
+If you answered "yes" to both questions, go ahead! If you didn't, try
+to come up with something else.
 
 #### How much does it cost?
 
@@ -16,7 +16,7 @@ Nothing! Everything is free.
 #### Who is the site for?
 
 The site is aimed at
-[effective altruists](http://80000hours.org/what-is-an-effective-altruist)—people
+[effective altruists](http://home.centreforeffectivealtruism.org/)—people
 who want to help others in the most effective ways possible.
 
 #### How do I add formatting my offers?
