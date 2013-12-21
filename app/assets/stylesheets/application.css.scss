@@ -13,7 +13,7 @@
  *= require MarkerCluster
  *= require MarkerCluster.Default
  *= require leaflet.awesome-markers
- *= require_tree .
+ *= require_directory .
  */
 
 /* Sticky footer styles
