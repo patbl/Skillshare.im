@@ -7,17 +7,17 @@ Skillshare::Application.routes.draw do
 
   root 'proposals#index'
   root 'proposals#index', as: 'proposals'
-  get 'map', to: 'users#map'
-  get 'proposals', to: 'proposals#index', as: 'proposals_atom'
+  get 'map'       => 'users#map'
+  get 'proposals' => 'proposals#index', as: 'proposals_atom'
 
   # authentication
-  match 'auth/:provider/callback', to: 'sessions#create',                 via: %i[get post]
-  match 'auth/failure',            to: 'sessions#failure',                via: %i[get post]
-  match 'sessions',                to: 'sessions#create',                 via: %i[get post]
-  match 'signin',                  to: 'sessions#new',     as: 'signin',  via: %i[get post]
-  match 'signout',                 to: 'sessions#destroy', as: 'signout', via: %i[get post]
+  get 'auth/:provider/callback' => 'sessions#create'
+  get 'auth/failure'            => 'sessions#failure'
+  get 'sessions'                => 'sessions#create'
+  get 'signin'                  => 'sessions#new',     as: 'signin'
+  get 'signout'                 => 'sessions#destroy', as: 'signout'
 
   # static pages
-  get 'about', to: 'pages#about'
-  get 'faq',   to: 'pages#faq'
+  get 'about' => 'pages#about'
+  get 'faq'   => 'pages#faq'
 end
