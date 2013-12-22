@@ -8,10 +8,6 @@ module Mappable
                                  latitude IS NOT null") }
   end
 
-  def latlng
-    [latitude, longitude]
-  end
-
   def somewhere?
     location != "Anywhere"
   end

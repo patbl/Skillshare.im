@@ -13,13 +13,6 @@ describe Proposal do
     end
   end
 
-  context "#latlng" do
-    let(:proposal) { build_stubbed(:proposal, latitude: 1, longitude: 2) }
-    it "returns an array with the latitude and longitude" do
-      expect(proposal.latlng).to eq [1, 2]
-    end
-  end
-
   context "scopes" do
     context "#offers" do
       before { create :request }

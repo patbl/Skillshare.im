@@ -29,9 +29,9 @@ class UsersController < ApplicationController
   end
 
   def map
-    @marker_data = User.mappable.map do |user|
-      link = ActionController::Base.helpers.link_to(user.name, user_path(user))
-      { latlng: user.latlng, popup: link.html_safe, icon: "user" }
+    @marker_data = User.mappable.pluck(:id, :name, :latitude, :longitude).map do |id, name, lat, lng|
+      link = ActionController::Base.helpers.link_to(name, user_path(id))
+      { latlng: [lat, lng], popup: link.html_safe, icon: "user" }
     end
   end
 
