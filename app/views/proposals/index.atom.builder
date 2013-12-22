@@ -4,7 +4,7 @@ atom_feed do |feed|
   @offers.each do |offer|
     feed.entry offer do |entry|
       entry.title offer.title
-      entry.content offer.description
+      entry.content markdown(offer.description), type: :html
       entry.author do |author|
         author.name offer.user.name
       end
