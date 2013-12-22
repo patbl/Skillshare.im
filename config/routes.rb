@@ -11,11 +11,11 @@ Skillshare::Application.routes.draw do
   get 'proposals' => 'proposals#index', as: 'proposals_atom'
 
   # authentication
-  get 'auth/:provider/callback' => 'sessions#create'
-  get 'auth/failure'            => 'sessions#failure'
-  get 'sessions'                => 'sessions#create'
-  get 'signin'                  => 'sessions#new',     as: 'signin'
-  get 'signout'                 => 'sessions#destroy', as: 'signout'
+  match 'auth/:provider/callback' => 'sessions#create', via: %i[get post]
+  get 'auth/failure'              => 'sessions#failure'
+  get 'sessions'                  => 'sessions#create'
+  get 'signin'                    => 'sessions#new',     as: 'signin'
+  get 'signout'                   => 'sessions#destroy', as: 'signout'
 
   # static pages
   get 'about' => 'pages#about'

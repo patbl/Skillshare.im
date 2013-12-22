@@ -13,7 +13,7 @@
     .col-sm-3
       .right
         .btn-group
-          - if current_user
+          - if signed_in?
             %button.btn.btn-default.dropdown-toggle{"data-toggle" => "dropdown", type: "button"}
               <i rel="tooltip" title="Profile" class="fa fa-user"></i>
             %ul.pull-right.dropdown-menu{role: "menu"}

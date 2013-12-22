@@ -1,12 +1,11 @@
 module FeatureHelpers
   def sign_in
-    visit root_path
-    first(:link, "Sign in").click
+    visit "auth/facebook"
   end
 
   def create_user(new_user: false, **options)
     @user = create :user, options
-    User.stub(:from_omniauth).with(anything).and_return(@user)
+    User.stub(:make_user).with(anything).and_return(@user)
     @user.stub(:new?) { new_user }
     @user
   end

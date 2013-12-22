@@ -11,7 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131102183948) do
+ActiveRecord::Schema.define(version: 20131221190647) do
+
+  create_table "identities", force: true do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "email"
+    t.string   "name"
+    t.string   "location"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "identities", ["user_id"], name: "index_identities_on_user_id"
 
   create_table "proposals", force: true do |t|
     t.integer  "user_id"
