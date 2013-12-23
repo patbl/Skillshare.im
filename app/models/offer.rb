@@ -1,0 +1,2 @@
+class Offer < Proposal
+end

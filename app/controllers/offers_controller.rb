@@ -1,12 +1,12 @@
-class ProposalsController < ApplicationController
-  include ProposalsHelper
+class OffersController < ApplicationController
+  include OffersHelper
 
   before_action :ensure_signed_in, only: %i[create new edit update destroy]
   before_action :set_categories,   only: %i[create new edit update]
-  before_action :set_proposal,     only: %i[edit update destroy]
+  before_action :set_offer,        only: %i[edit update destroy]
 
   def index
-    @offers = Proposal.offers.tagged_with_or_all(params[:category])
+    @offers = Offer.tagged_with_or_all(params[:category])
 
     respond_to do |format|
       format.html
@@ -15,12 +15,12 @@ class ProposalsController < ApplicationController
   end
 
   def show
-    @proposal = Proposal.find(params[:id])
+    @offer = Offer.find(params[:id])
     @user = current_user
   end
 
   def new
-    @proposal = current_user.proposals.new
+    @offer = current_user.offers.new
     @user = current_user
   end
 
@@ -29,8 +29,8 @@ class ProposalsController < ApplicationController
   end
 
   def create
-    @proposal = current_user.proposals.build(proposal_params)
-    if @proposal.save
+    @offer = current_user.offers.build(proposal_params)
+    if @offer.save
       redirect_back_or(user_path(current_user), flash: { success: "Offer created." })
     else
       @user = current_user
@@ -39,15 +39,15 @@ class ProposalsController < ApplicationController
   end
 
   def update
-    if @proposal.update(proposal_params)
-      redirect_back_or(@proposal, flash: { success: "Offer updated." })
+    if @offer.update(proposal_params)
+      redirect_back_or(@offer, flash: { success: "Offer updated." })
     else
       render :edit
     end
   end
 
   def destroy
-    @proposal.destroy
+    @offer.destroy
     redirect_back_or(user_path(current_user), flash: { success: "Offer deleted." })
   end
 
@@ -57,12 +57,12 @@ class ProposalsController < ApplicationController
     @categories = ApplicationHelper::CATEGORIES
   end
 
-  def set_proposal
-    @proposal = current_user.proposals.find(params[:id])
+  def set_offer
+    @offer = current_user.offers.find(params[:id])
   end
 
   def proposal_params
     attrs = %i[title description location offer category_list]
-    params.require(:proposal).permit(attrs)
+    params.require(:offer).permit(attrs)
   end
 end

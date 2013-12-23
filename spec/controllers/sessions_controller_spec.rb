@@ -27,7 +27,7 @@ describe SessionsController do
       expect(response).to redirect_to "previous page path"
     end
 
-    it "redirects to the new-proposal page if the user is new" do
+    it "redirects to the new-offer page if the user is new" do
       get :create # creates a new user
       expect(response).to redirect_to(edit_user_path(User.last))
     end

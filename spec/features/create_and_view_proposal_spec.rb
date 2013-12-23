@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-feature "Proposal management", :skip, :slow do
+feature "Offer management", :skip, :slow do
   before { sign_in }
 
-  scenario "adds a new proposal" do
+  scenario "adds a new offer" do
     visit new_user_proposal_path(@user)
 
     expect do
@@ -12,12 +12,12 @@ feature "Proposal management", :skip, :slow do
       fill_in "Description", with: "Abandoned all–dog-food diet. Will ship internationally."
       select "Anywhere"
       click_button "Create"
-    end.to change(Proposal, :count).by(1)
+    end.to change(Offer, :count).by(1)
     expect(page).to have_content("12 Cases Of Tinned Dog Food")
     expect(page).to have_selector(".alert")
   end
 
-  scenario "edits a proposal" do
+  scenario "edits a offer" do
     create :offer, title: "melancholy", category_list: "services", user: @user
 
     visit user_path(@user)
@@ -35,16 +35,16 @@ feature "Proposal management", :skip, :slow do
     expect(page).to have_content("Anywhere")
   end
 
-  scenario "canceling a new proposal" do
+  scenario "canceling a new offer" do
     visit map_path
-    click_link "new-proposal"
+    click_link "new-offer"
     click_button "Save"
     click_button "Cancel"
 
     expect(current_path).to eq map_path
   end
 
-  scenario "canceling editing a proposal" do
+  scenario "canceling editing a offer" do
     create :offer, title: "stuffed animals", user: @user
 
     visit root_url
@@ -59,7 +59,7 @@ feature "Proposal management", :skip, :slow do
     expect(page).to have_content("Offer wasn't updated.")
   end
 
-  scenario "view others' proposals" do
+  scenario "view others' Offers" do
     xu = create :user, name: "Xu Li"
     create :offer, title: "Stuff", user: xu
 
@@ -77,23 +77,23 @@ feature "Proposal management", :skip, :slow do
     expect(page).to have_link("Create a new offer")
   end
 
-  scenario "filtering proposals" do
+  scenario "filtering Offers" do
     create :offer, title: "love", category_list: "services"
     create :offer, title: "encouragement", category_list: "services"
     create :offer, title: "crash pad", category_list: "lodging"
 
     visit root_path
     first(:link, "services").click
-    expect(page).to have_selector(".proposal", count: 2)
+    expect(page).to have_selector(".offer", count: 2)
     click_link "lodging"
-    expect(page).to have_selector(".proposal", count: 1)
+    expect(page).to have_selector(".offer", count: 1)
     click_link "All"
-    expect(page).to have_selector(".proposal", count: 3)
+    expect(page).to have_selector(".offer", count: 3)
     click_link "goods"
-    expect(page).to_not have_selector(".proposal")
+    expect(page).to_not have_selector(".offer")
   end
 
-  scenario "edits a proposal" do
+  scenario "edits a offer" do
     create(:offer, title: "Feminist Perspectives On Tort Law", user: @user)
 
     visit user_path(@user)
@@ -107,7 +107,7 @@ feature "Proposal management", :skip, :slow do
   end
 
   scenario "delete an offer", js: true do
-    find("#new-proposal").trigger("click")
+    find("#new-offer").trigger("click")
 
     fill_in "Title", with: "Dog Food"
     choose "goods"

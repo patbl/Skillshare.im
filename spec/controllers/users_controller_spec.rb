@@ -84,7 +84,7 @@ describe UsersController do
         create :offer, user: user
         set_user_session user
 
-        expect { delete :destroy, id: user }.to change(Proposal, :count).by(-1)
+        expect { delete :destroy, id: user }.to change(Offer, :count).by(-1)
       end
     end
 

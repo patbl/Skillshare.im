@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature "profile management", :slow => false do
+feature "profile management", slow: false do
   scenario "saving changes to a profile" do
     user = create_user
     sign_in

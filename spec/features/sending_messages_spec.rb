@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature "sending messages", :slow do
-  scenario "from proposals index page" do
+  scenario "from Offers index page" do
     recipient = create_user name: "Xi"
     offer = create :offer, user: recipient, title: "500 Records"
     create_user name: "Ed"
@@ -12,7 +12,7 @@ feature "sending messages", :slow do
     expect(current_path).to eq proposal_path(offer)
   end
 
-  scenario "from proposal show page" do
+  scenario "from offer show page" do
     recipient = create_user name: "Xi"
     offer = create :offer, user: recipient, title: "500 Records"
     create_user name: "Ed"

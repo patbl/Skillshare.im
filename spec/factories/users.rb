@@ -15,12 +15,12 @@ FactoryGirl.define do
       admin true
     end
 
-    factory :user_with_proposals do
+    factory :user_with_offers do
       ignore do
-        proposals_count 5
+        offers_count 5
       end
       after(:create) do |user, evaluator|
-        create_list(:proposal, evaluator.proposals_count, user: user)
+        create_list(:offer, evaluator.offers_count, user: user)
       end
     end
   end

@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     session[:user_id] = user.id
     if user.new?
       store_url edit_user_path(user), notice: "Thanks for signing up! Please check your e-mail address and location below, then click Save."
-      store_url new_user_proposal_path(user), notice: "Fill out this form to create your first offer."
+      store_url new_user_offer_path(user), notice: "Fill out this form to create your first offer."
     end
     redirect_back_or(root_url, flash: { success: "You signed in successfully." })
   end

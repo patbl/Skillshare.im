@@ -8,7 +8,7 @@ dalai_lama = User.create!(
   about: "The 14th Dalai Lama (religious name: Tenzin Gyatso, shortened from Jetsun Jamphel Ngawang Lobsang Yeshe Tenzin Gyatso, born Lhamo Dondrub,[2] 6 July 1935) is the 14th and current Dalai Lama, as well as the longest lived incumbent. Dalai Lamas are the head monks of the Gelugpa lineage of Tibetan Buddhism. He won the Nobel Peace Prize in 1989, and is also well known for his lifelong advocacy for Tibetans inside and outside Tibet."
 )
 
-Proposal.create!(
+Offer.create!(
   title: "forks and knives",
   description: "My spoons keep disappearing, so I bought a new flatware set. Now I don't know what to do with all my extra forks and knives!",
   location: "Tibet",
@@ -33,7 +33,7 @@ In December 2012, MTV noted Psy's rise from little-known outside of South Korea 
 EOF
 )
 
-Proposal.create!(
+Offer.create!(
   title: "funky dance moves",
   description: "Oppa Gangnam style!",
   location: "Seoul",
@@ -58,7 +58,7 @@ Shakira has won many awards including five MTV Video Music Awards, two Grammy Aw
 EOF
 )
 
-Proposal.create!(
+Offer.create!(
   title: "Rabiosa",
   description: %{ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris neque magna, consequat sed justo vel, mattis aliquam ipsum. Etiam iaculis magna urna, ac vulputate arcu tincidunt sed. Nam ac tellus ac justo dapibus consectetur. Aenean eu sapien lacus. Nulla mattis vulputate dui, feugiat pharetra augue egestas at. Suspendisse enim nunc, lobortis a consequat in, auctor sit amet odio. Nunc tincidunt odio sed leo suscipit rhoncus. Duis tortor turpis, vehicula vitae viverra ut, sollicitudin nec orci. In sodales tempus nibh nec eleifend. Proin malesuada egestas ornare. Nam convallis arcu eget ipsum mollis venenatis. Morbi iaculis a ante vitae consequat. Vivamus egestas justo et scelerisque eleifend. Donec ultricies quis nibh ut viverra.
 
@@ -69,7 +69,7 @@ Etiam sollicitudin mi nec purus lobortis interdum. Pellentesque eget velit solli
   offer: true
 )
 
-Proposal.create!(
+Offer.create!(
   title: "Hips Don't Lie",
   description: %{"Hips Don't Lie" is a song by Colombian singer-songwriter Shakira featuring Haitian rapper Wyclef Jean for the reissue of Shakira's sixth studio album, Oral Fixation, Vol. 2. It was released on February 28, 2006, by Epic Records as the third single from the album. The song was written and produced by Shakira, Jean, and Jerry 'Wonder' Duplessis, and LaTravia Parker. "Hips Don't Lie" is a salsa and reggaeton song, which heavily incorporates samples from Jean's earlier single "Dance Like This" and "Amores Como el Nuestro" written by Omar Alfanno.
 
@@ -80,7 +80,7 @@ Upon its release, "Hips Don't Lie" received generally favorable reviews from mus
   offer: true
 )
 
-Proposal.create!(
+Offer.create!(
   title: "La tortura",
   description: %{ Mauris eget lacus vulputate, placerat odio vitae, consectetur erat. Quisque eget rutrum est. Duis tempus nulla sit amet pulvinar fringilla. Mauris a ullamcorper purus, vitae aliquam tortor. Aliquam nec diam eu dui tempor molestie. Praesent id magna semper, eleifend mi at, egestas ipsum. In hac habitasse platea dictumst. Proin pretium egestas blandit. Nullam orci ligula, sagittis quis orci ac, posuere ullamcorper nulla. Aliquam dictum rhoncus odio.
 
@@ -93,7 +93,7 @@ Vestibulum ut urna feugiat, bibendum diam sit amet, tincidunt nisi. Fusce tempor
   offer: true
 )
 
-Proposal.create!(
+Offer.create!(
   title: "Waka Waka",
   description: %{ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris neque magna, consequat sed justo vel, mattis aliquam ipsum. Etiam iaculis magna urna, ac vulputate arcu tincidunt sed. Nam ac tellus ac justo dapibus consectetur. Aenean eu sapien lacus. Nulla mattis vulputate dui, feugiat pharetra augue egestas at. Suspendisse enim nunc, lobortis a consequat in, auctor sit amet odio. Nunc tincidunt odio sed leo suscipit rhoncus. Duis tortor turpis, vehicula vitae viverra ut, sollicitudin nec orci. In sodales tempus nibh nec eleifend. Proin malesuada egestas ornare. Nam convallis arcu eget ipsum mollis venenatis. Morbi iaculis a ante vitae consequat. Vivamus egestas justo et scelerisque eleifend. Donec ultricies quis nibh ut viverra.
 
@@ -108,7 +108,7 @@ Donec malesuada dui ornare neque adipiscing sagittis. Proin tincidunt vestibulum
   offer: true
 )
 
-Proposal.create!(
+Offer.create!(
   title: "Loca",
   description: %{
 

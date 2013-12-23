@@ -8,7 +8,7 @@
         .col-xs-7.right
           %h3= link_to user.name, user
           .offer-count
-            = link_to pluralize(user.proposals.count, 'Offer'), user
+            = link_to pluralize(user.offers.count, 'Offer'), user
           .location
             <i class="fa fa-map-marker"></i>
             = user.location
@@ -32,7 +32,7 @@
         = markdown(user.about)
 
   - if user == current_user and defined? show_create_link
-    = link_to(new_user_proposal_path(user)) do
+    = link_to(new_user_offer_path(user)) do
       .proposal.new
         .main
           = raw("<i class='fa fa-plus'></i> Create a new offer")

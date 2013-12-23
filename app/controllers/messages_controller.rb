@@ -5,8 +5,8 @@ class MessagesController < ApplicationController
 
   def create
     @body = params[:message][:body]
-    @proposal = Proposal.find(params[:proposal_id])
-    UserMailer.proposal_email(current_user, @body, @proposal).deliver
-    redirect_back_or(@proposal, flash: { success: "Message sent." })
+    @offer = Offer.find(params[:offer_id])
+    UserMailer.proposal_email(current_user, @body, @offer).deliver
+    redirect_back_or(@offer, flash: { success: "Message sent." })
   end
 end

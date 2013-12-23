@@ -7,7 +7,7 @@ describe User do
   it { should validate_presence_of(:email) }
   it { should validate_presence_of(:location) }
 
-  it { should have_many(:proposals).dependent(:destroy) }
+  it { should have_many(:offers).dependent(:destroy) }
 
   context "validations" do
     it "my user factory might not be broken" do

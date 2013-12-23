@@ -1,14 +1,14 @@
 Skillshare::Application.routes.draw do
   resources :users, except: %i[new create] do
-    resources :proposals, shallow: true, except: :index do
+    resources :offers, shallow: true, except: :index do
       resources :messages, only: :create
     end
   end
 
-  root 'proposals#index'
-  root 'proposals#index', as: 'proposals'
+  root 'offers#index'
+  root 'offers#index', as: 'offers'
   get 'map'       => 'users#map'
-  get 'proposals' => 'proposals#index', as: 'proposals_atom'
+  get 'offers' => 'offers#index', as: 'offers_atom'
 
   # authentication
   get 'auth/:provider/callback' => 'sessions#create'
