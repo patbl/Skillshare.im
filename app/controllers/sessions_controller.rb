@@ -5,20 +5,19 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @identity = Identity.find_or_create_with_omniauth(auth)
+    @identity = Identity.find_or_create(auth)
 
     if signed_in?
       if @identity.user == current_user
-        return redirect_back_or root_url, notice: "Already linked to that account!"
+        message = { alert: "You already signed in with that account." }
       else
-        @identity.user = current_user
-        @identity.save!
-        return redirect_back_or root_url, notice: "Successfully linked account!"
+        @identity.update!(user: current_user)
+        message = { notice: "You successfully linked your accounts!" }
       end
     else
       if @identity.user.present?
         self.current_user = @identity.user
-        return redirect_back_or root_url, success: "Successfully signed in!"
+        message = { success: "Successfully signed in!" }
       else
         user = User.make_user(auth)
         @identity.user = user
@@ -28,10 +27,10 @@ class SessionsController < ApplicationController
           store_url edit_user_path(user), notice: "Thanks for signing up! Please check your e-mail address and location below, then click Save."
           store_url new_user_offer_path(user), notice: "Fill out this form to create your first offer."
         end
-        return redirect_back_or root_url, success: "Successfully signed in!"
+        message = { success: "Successfully signed in!" }
       end
     end
-    return_back_or root_url, success: "You signed in successfully."
+    redirect_back_or root_url, message
   end
 
   def failure
