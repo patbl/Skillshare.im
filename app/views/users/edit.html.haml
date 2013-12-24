@@ -4,6 +4,7 @@
   .col-md-4
     = simple_form_for @user do |f|
       = f.error_notification
+      = f.input :name
       = f.input :email, label: "E-mail"
       = f.input :location
       = f.input :about, :input_html => {:rows => 5}

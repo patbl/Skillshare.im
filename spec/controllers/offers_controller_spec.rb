@@ -12,6 +12,7 @@ describe OffersController do
 
       it "doesn't show anything if there's nothing" do
         get :index, category: "lodging"
+        expect(response).to render_template(:index)
         expect(assigns(:offers)).to be_empty
       end
     end
@@ -30,8 +31,6 @@ describe OffersController do
 
   describe "user" do
     it_behaves_like "public access to Offers"
-
-    let(:invalid_proposal) { build(:invalid_proposal) }
 
     before do
       unless example.metadata[:skip_before]
@@ -82,7 +81,7 @@ describe OffersController do
       context "with invalid attributes" do
         it "doesn't save the new offer in the database" do
           expect do
-            post :create, user_id: @user, offer: attributes_for(:invalid_proposal)
+            post :create, user_id: @user, offer: attributes_for(:invalid_offer)
           end.to_not change(Offer, :count)
           expect(assigns(:user)).to eq @user
           expect(response).to render_template(:new)
@@ -106,7 +105,7 @@ describe OffersController do
         end
       end
 
-      context "with invalid attributes" do
+      context "with  attributes" do
         it "doesn't update the offer in the database" do
           patch :update, id: @offer, user_id: @offer.user, offer:
             attributes_for(:offer, title: nil)

@@ -12,7 +12,7 @@ FactoryGirl.define do
       offer.update(location: offer.user.location)
     end
 
-    factory :invalid_proposal do
+    factory :invalid_offer do
       title nil
     end
 

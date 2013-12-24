@@ -20,7 +20,7 @@ describe SessionsController do
     it "redirects to the previous page if there was one and the user isn't new" do
       user = create :user
       expect(user).to receive(:new?).and_return(false)
-      expect(User).to receive(:from_omniauth).with(request.env["omniauth.auth"]).and_return(user)
+      expect(User).to receive(:make_user).with(request.env["omniauth.auth"]).and_return(user)
 
       store_url "previous page path"
       get :create
