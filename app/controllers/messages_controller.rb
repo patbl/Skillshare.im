@@ -7,6 +7,6 @@ class MessagesController < ApplicationController
     @body = params[:message][:body]
     @offer = Offer.find(params[:offer_id])
     UserMailer.proposal_email(current_user, @body, @offer).deliver
-    redirect_back_or(@offer, flash: { success: "Message sent." })
+    redirect_back_or @offer, success: "Message sent."
   end
 end

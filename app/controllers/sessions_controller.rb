@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
     else
       if @identity.user.present?
         self.current_user = @identity.user
-        return redirect_back_or root_url, flash: { success: "Successfully signed in!" }
+        return redirect_back_or root_url, success: "Successfully signed in!"
       else
         user = User.make_user(auth)
         @identity.user = user
@@ -30,14 +30,14 @@ class SessionsController < ApplicationController
           store_url edit_user_path(user), notice: "Thanks for signing up! Please check your e-mail address and location below, then click Save."
           store_url new_user_offer_path(user), notice: "Fill out this form to create your first offer."
         end
-        return redirect_back_or root_url, flash: { success: "Successfully signed in!" }
+        return redirect_back_or root_url, success: "Successfully signed in!"
       end
     end
-    return_back_or(root_url, flash: { success: "You signed in successfully." })
+    return_back_or root_url, success: "You signed in successfully."
   end
 
   def failure
-    redirect_to root_url, flash: { error: "You didn't sign in." }
+    redirect_to root_url, error: "You didn't sign in."
   end
 
   def destroy

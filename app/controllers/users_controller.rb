@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
   def update
     if current_user.update(user_params)
-      redirect_back_or(current_user, flash: { success: "Profile updated." })
+      redirect_back_or current_user, success: "Profile updated."
     else
       render :edit
     end
