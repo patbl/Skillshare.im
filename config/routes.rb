@@ -7,10 +7,12 @@ Skillshare::Application.routes.draw do
 
   root 'offers#index'
   root 'offers#index', as: 'offers'
-  get 'map'       => 'users#map'
+  get 'map'    => 'users#map'
   get 'offers' => 'offers#index', as: 'offers_atom'
 
   # authentication
+  get 'auth/facebook',   as: 'facebook_auth'
+  get 'auth/browser_id', as: 'browser_id_auth'
   match 'auth/:provider/callback' => 'sessions#create', via: %i[get post]
   get 'auth/failure'              => 'sessions#failure'
   get 'sessions'                  => 'sessions#create'

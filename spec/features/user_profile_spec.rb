@@ -26,9 +26,11 @@ feature "profile management", slow: false do
 
   scenario "guest viewing someone's profile" do
     xi = create_user name: "Xi"
-    ed = create_user name: "Ed"
+    create_user name: "Ed"
 
     visit user_path(xi)
-    expect(page).to have_selector(".alert-success")
+    expect(current_path).to eq signin_path
+    first(".facebook").click
+    expect(current_path).to eq user_path(xi)
   end
 end

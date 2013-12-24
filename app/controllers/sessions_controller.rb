@@ -2,7 +2,6 @@ class SessionsController < ApplicationController
   skip_before_action :verify_authenticity_token if Rails.env.development?
 
   def new
-    redirect_to "/auth/facebook"
   end
 
   def create

@@ -1,6 +1,6 @@
 module FeatureHelpers
   def sign_in
-    visit "auth/facebook"
+    visit facebook_auth_path
   end
 
   def create_user(new_user: false, **options)

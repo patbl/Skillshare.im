@@ -4,7 +4,7 @@ describe SessionsController do
   describe "GET :new" do
     it "redirects to Facebook's auth page" do
       get :new
-      expect(response).to redirect_to "/auth/facebook"
+      expect(response).to render_template :new
     end
   end
 
