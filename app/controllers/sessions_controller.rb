@@ -5,8 +5,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @identity = Identity.find_with_omniauth(auth) ||
-                Identity.create_with_omniauth(auth)
+    @identity = Identity.find_or_create_with_omniauth(auth)
 
     if signed_in?
       if @identity.user == current_user

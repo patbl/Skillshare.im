@@ -1,22 +1,9 @@
 class Identity < ActiveRecord::Base
   belongs_to :user
 
-  validates_presence_of :provider, :uid, :email
+  validates_presence_of :provider, :uid
 
-  def self.find_with_omniauth(auth)
-    find_by provider: auth.provider, uid: auth.uid
-  end
-
-  def self.create_with_omniauth(auth)
-    identity = self.new(
-      provider: auth.provider,
-      uid:      auth.uid,
-      email:    auth.info.email,
-      name:     auth[:name],
-      location: auth[:location],
-    )
-
-    identity.save!
-    identity
+  def self.find_or_create_with_omniauth(auth)
+    where(auth.slice(:uid, :provider)).first_or_create
   end
 end
