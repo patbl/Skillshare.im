@@ -8,6 +8,5 @@
         %li.icon= link_to(raw('<i class="fa fa-github"></i>'), "https://github.com/patbl/ea-skillshare")
         %li.icon= mail_to("ozzie.gooen@80000hours.org", raw('<i class="fa fa-envelope"></i>'), target: "_blank")
         %li.icon= link_to(raw('<i class="fa fa-rss"></i>'), offers_atom_url(format: "atom"))
-        - unless Rails.env.production?
-          %li.fb-like{"data-action" => "like", "data-href" => "http://skillshare.im/", "data-layout" => "button_count", "data-share" => "false", "data-show-faces" => "true" }
-          %li <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://skillshare.im/">Tweet</a>
+        %li.fb-like{"data-action" => "like", "data-href" => "http://skillshare.im/", "data-layout" => "button_count", "data-share" => "false", "data-show-faces" => "true" }
+        %li <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://skillshare.im/">Tweet</a>
