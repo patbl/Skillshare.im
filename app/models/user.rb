@@ -8,15 +8,16 @@ class User < ActiveRecord::Base
   validates_presence_of :provider, :uid, :email, :location, :name
   validates_uniqueness_of :uid, scope: :provider
 
-  def self.make_user(auth)
-    user = User.new
-    user.provider = auth.provider
-    user.uid = auth.uid
-    user.email = auth.info.email
-    user.name = auth.info.name
-    user.location = "Somewhere, World"
-    user.save!
-    user
+  def self.find_or_create(auth)
+    where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.email = auth.info.email
+      user.name = auth.info.name
+      user.location = "Somewhere, World"
+      set_facebook_info(user, auth) if auth.provider == :facebook
+      user.save!
+    end
   end
 
   def picture(size = 'large')

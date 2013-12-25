@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
         self.current_user = @identity.user
         message = { success: "Successfully signed in!" }
       else
-        user = User.make_user(auth)
+        user = User.find_or_create(auth)
         @identity.user = user
         user.identities << @identity
         self.current_user = @identity.user

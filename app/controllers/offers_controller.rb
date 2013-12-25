@@ -29,7 +29,7 @@ class OffersController < ApplicationController
   end
 
   def create
-    @offer = current_user.offers.build(proposal_params)
+    @offer = current_user.offers.build(offer_params)
     if @offer.save
       redirect_back_or user_path(current_user), success: "Offer created."
     else
@@ -39,7 +39,7 @@ class OffersController < ApplicationController
   end
 
   def update
-    if @offer.update(proposal_params)
+    if @offer.update(offer_params)
       redirect_back_or @offer, success: "Offer updated."
     else
       render :edit
@@ -61,8 +61,8 @@ class OffersController < ApplicationController
     @offer = current_user.offers.find(params[:id])
   end
 
-  def proposal_params
-    attrs = %i[title description location offer category_list]
+  def offer_params
+    attrs = %i[title description location category_list]
     params.require(:offer).permit(attrs)
   end
 end

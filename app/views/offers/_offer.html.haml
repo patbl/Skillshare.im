@@ -19,7 +19,7 @@
             = link_to edit_offer_path(offer), class: "btn btn-primary btn-small" do
               <i class="fa fa-pencil"></i>
           - else
-            = link_to signin_path, class: "btn btn-danger btn-small" do
+            = link_to facebook_auth_path, class: "btn btn-danger btn-small" do
               <i class="fa fa-envelope"></i> Sign in to request
 
     = markdown(offer.description)
