@@ -43,6 +43,22 @@ describe SessionsController do
         expect(flash[:notice]).to be
       end
 
+      it "sets Facebook data correctly" do
+        get :create
+        attrs = {
+          provider:         "facebook",
+          uid:              "1234567",
+          email:            "joe@bloggs.com",
+          name:             "Joe Bloggs",
+          facebook_url:     "http://www.facebook.com/jbloggs",
+          location:         "Palo Alto, California",
+          oauth_token:      "ABCDEF",
+          oauth_expires_at: Time.at(1321747205).to_datetime
+        }
+        user = User.last
+        attrs.each { |k, v| expect(user.send(k)).to eq v }
+      end
+
       context "previous user" do
         before do
           expect(User).to receive(:new?).and_return(false)
