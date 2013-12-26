@@ -9,13 +9,30 @@ describe SessionsController do
   end
 
   describe "GET :create" do
-    before { request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:facebook] }
-
     context "already signed in" do
+      before do
+        @user = create :user
+        @identity = create :identity
+        set_user_session(@user)
+        Identity.stub(:find_or_create) { @identity }
+      end
 
+      it "associates a new identity with the current user" do
+        get :create
+        expect(@identity.user).to eq @user
+        expect(flash[:notice]).to be
+      end
+
+      it "alerts the user if she tries to sign using the same provider" do
+        @identity.user = @user
+        get :create
+        expect(flash[:alert]).to be
+      end
     end
 
     context "not yet signed in" do
+      before { request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:facebook] }
+
       it "sets the user ID in the session hash" do
         get :create
         expect(session[:user_id]).to eq User.last.id
@@ -26,44 +43,47 @@ describe SessionsController do
         expect(flash[:notice]).to be
       end
 
-      context "new user" do
-          it "redirects to the new-offer page" do
-            get :create # creates a new user
-            expect(response).to redirect_to(edit_user_path(User.last))
-          end
-
-          it "creates a new user" do
-            expect { get :create }.to change(User, :count).by 1
-          end
-      end
-
-      context "returning user" do
+      context "previous user" do
         before do
           expect(User).to receive(:new?).and_return(false)
         end
 
-        context "with previous provider" do
-          it "redirects to the home page if session[:return_to] not set", :skip do
-            session[:return_to] = nil
-            get :create
-            expect(response).to redirect_to(root_url)
-          end
-
-          it "redirects to the previous page if there was one", :skip do
-            user = create :user
-            expect(User).to receive(:make_user).with(request.env["omniauth.auth"]).and_return(user)
-
-            store_url "previous page path"
-            get :create
-            expect(response).to redirect_to "previous page path"
-          end
+        it "redirects to the home page if session[:return_to] not set", :skip do
+          session[:return_to] = nil
+          get :create
+          expect(response).to redirect_to(root_url)
         end
 
-        context "with new provider" do
+        it "redirects to the previous page if there was one", :skip do
+          user = create :user
+          expect(User).to receive(:make_user).with(request.env["omniauth.auth"]).and_return(user)
 
+          store_url "previous page path"
+          get :create
+          expect(response).to redirect_to "previous page path"
         end
       end
 
+      context "new user" do
+        it "redirects to the new-offer page" do
+          get :create # creates a new user
+          expect(response).to redirect_to(edit_user_path(User.last))
+        end
+
+        it "associates the new user with the identity" do
+          identity = create :identity
+          expect(Identity).to receive(:find_or_create).with(request.env["omniauth.auth"]).and_return(identity)
+          get :create
+          expect(User.last.identities).to include identity
+          expect(identity.user).to eq User.last
+          expect(identity.user).to be_a(User)
+          expect(User.last.identities).to_not be_empty
+        end
+
+        it "creates a new user" do
+          expect { get :create }.to change(User, :count).by 1
+        end
+      end
     end
   end
 

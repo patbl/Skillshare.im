@@ -7,29 +7,26 @@ class SessionsController < ApplicationController
   def create
     @identity = Identity.find_or_create(auth)
 
-    if signed_in?
-      if @identity.user == current_user
-        message = { alert: "You already signed in with that account." }
-      else
-        @identity.update!(user: current_user)
-        message = { notice: "You successfully linked your accounts!" }
-      end
-    else
-      if @identity.user.present?
-        self.current_user = @identity.user
-        message = { success: "Successfully signed in!" }
-      else
-        user = User.find_or_create(auth)
-        @identity.user = user
-        user.identities << @identity
-        self.current_user = @identity.user
-        if user.new?
-          store_url edit_user_path(user), notice: "Thanks for signing up! Please check your e-mail address and location below, then click Save."
-          store_url new_user_offer_path(user), notice: "Fill out this form to create your first offer."
-        end
-        message = { success: "Successfully signed in!" }
-      end
-    end
+    message = if signed_in?
+                if @identity.user == current_user
+                  # user attempts to sign in using same provider
+                  { alert: "You already signed in with that account." }
+                else
+                  # user attempts to sign in with a different provider
+                  @identity.update!(user: current_user)
+                  { notice: "You successfully linked your accounts!" }
+                end
+              else
+                # user isn't signed in
+                unless @identity.user
+                  # user doesn't have an account
+                  @user = User.create_from_auth(auth)
+                  @identity.update(user: @user)
+                  redirect_new_user
+                end
+                self.current_user = @identity.user
+                { success: "Successfully signed in!" }
+              end
     redirect_back_or root_url, message
   end
 
@@ -47,5 +44,10 @@ class SessionsController < ApplicationController
 
   def auth
     request.env["omniauth.auth"]
+  end
+
+  def redirect_new_user
+    store_url edit_user_path(@user), notice: "Thanks for signing up! Please check your e-mail address and location below, then click Save."
+    store_url new_user_offer_path(@user), notice: "Fill out this form to create your first offer."
   end
 end

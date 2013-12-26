@@ -5,7 +5,7 @@ module FeatureHelpers
 
   def create_user(new_user: false, **options)
     @user = create :user, options
-    User.stub(:find_or_create).with(anything).and_return(@user)
+    User.stub(:create_from_auth).with(anything).and_return(@user)
     @user.stub(:new?) { new_user }
     @user
   end
