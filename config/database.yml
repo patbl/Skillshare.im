@@ -23,3 +23,9 @@ production:
   database: my_database_production
   pool: 5
   timeout: 5000
+
+staging:
+  adapter: postgresql
+  database: my_database_production
+  pool: 5
+  timeout: 5000
