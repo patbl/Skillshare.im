@@ -2,16 +2,23 @@ class UserMailer < ActionMailer::Base
   helper :application
   default from: "Skillshare.im <requests@skillshare.im>"
 
-  def proposal_email(sender, body, proposal)
-    @recipient = proposal.user
+  def request_mail(requester, body, offer)
+    @requester = requester
     @body = body
-    subject = %[Request for "#{proposal.title}" on Skillshare.im]
-    @greeting = <<EOF
-Hi, #{@recipient.name},
+    @offer = offer
+    @offerer = offer.user
+    subject = %[Request for "#{@offer.title}" on Skillshare.im]
+    from = "#{@offerer.name} via Skillshare.im <#{@requester.email}>"
+    mail(to: @offerer.email, reply_to: @requester.email, subject: subject, from: from)
+  end
 
-#{sender.name} sent you the following message about your offer of #{proposal.title}. You can reply as you would to any e-mail.
-EOF
-    from = "#{@recipient.name} via Skillshare.im <#{sender.email}>"
-    mail(to: @recipient.email, reply_to: sender.email, subject: subject, from: from)
+  def request_confirmation(requester, body, offer)
+    @requester = requester
+    @body = body
+    @offer = offer
+    @offerer = offer.user
+    from = "Skillshare.im"
+    subject = %[Confirmation of request for "#{@offer.title}" on Skillshare.im]
+    mail(to: @requester.email, reply_to: @offerer.email, subject: subject, from: from)
   end
 end
