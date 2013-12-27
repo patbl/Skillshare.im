@@ -29,4 +29,9 @@ module ApplicationHelper
   def active?(path = nil, **options)
     return "active" if current_page? path
   end
+
+  def title(page_title)
+    default_page_title = "Sharing Between Effective Alruists"
+    content_for(:title)  { page_title }
+  end
 end
