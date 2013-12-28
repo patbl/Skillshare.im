@@ -13,9 +13,7 @@
     = csrf_meta_tags
 
   %body
-    #fb-root
-    = javascript_include_tag "facebook_like"
-    = javascript_include_tag "twitter"
+    = render "shared/facebook"
 
     #wrap
       = render "shared/header"
