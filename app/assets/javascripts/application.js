@@ -18,5 +18,5 @@
 //= require leaflet.awesome-markers
 //= require facebook_like
 //= require twitter
-//= require_directory .
+//= require_directory ./global
 //= require turbolinks

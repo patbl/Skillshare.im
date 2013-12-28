@@ -27,7 +27,8 @@ Skillshare::Application.configure do
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
-  config.assets.debug = true
+  config.assets.debug = false
+  config.serve_static_assets = true
   # TODO This messes up the icons, and we'll have to eventually fix that issue
   # config.assets.prefix = "/dev-assets"
 

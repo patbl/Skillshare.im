@@ -4,5 +4,5 @@
   <%= javascript_tag do %>
     window.markerData = <%= raw @marker_data.to_json %>;
   <% end %>
-  <%= javascript_include_tag "page_specific/map" %>
+  <%= javascript_include_tag "map" %>
 <% end %>
