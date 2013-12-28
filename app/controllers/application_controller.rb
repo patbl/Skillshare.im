@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   add_flash_types :success, :error
-  before_action :ensure_signed_in
+  before_action :authorize
 
   private
 
@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
     session[:user_id] = user.nil? ? user : user.id
   end
 
-  def ensure_signed_in
+  def authorize
     unless current_user
       store_url request.fullpath
       redirect_to signin_path

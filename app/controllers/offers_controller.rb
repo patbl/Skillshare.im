@@ -1,7 +1,7 @@
 class OffersController < ApplicationController
   include OffersHelper
 
-  skip_before_action :ensure_signed_in, only: %i[index show]
+  skip_before_action :authorize, only: %i[index show]
   before_action :set_categories, only: %i[create new edit update]
   before_action :set_offer, only: %i[edit update destroy]
 
