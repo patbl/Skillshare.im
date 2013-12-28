@@ -16,5 +16,7 @@
 //= require twitter/bootstrap
 //= require leaflet.markercluster
 //= require leaflet.awesome-markers
+//= require facebook_like
+//= require twitter
 //= require_directory .
 //= require turbolinks
