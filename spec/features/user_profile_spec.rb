@@ -29,8 +29,6 @@ feature "profile management", slow: false do
     create_user name: "Ed"
 
     visit user_path(xi)
-    expect(current_path).to eq signin_path
-    first(".facebook").click
     expect(current_path).to eq user_path(xi)
   end
 end

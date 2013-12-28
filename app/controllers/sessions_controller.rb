@@ -1,7 +1,9 @@
 class SessionsController < ApplicationController
+  skip_before_action :ensure_signed_in
   skip_before_action :verify_authenticity_token if Rails.env.development?
 
   def new
+    redirect_to facebook_auth_url
   end
 
   def create
