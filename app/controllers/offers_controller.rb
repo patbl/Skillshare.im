@@ -31,7 +31,7 @@ class OffersController < ApplicationController
   def create
     @offer = current_user.offers.build(offer_params)
     if @offer.save
-      redirect_back_or user_path(current_user), success: "Offer created."
+      redirect_back_or user_url(current_user), success: "Offer created."
     else
       @user = current_user
       render :new
@@ -48,7 +48,7 @@ class OffersController < ApplicationController
 
   def destroy
     @offer.destroy
-    redirect_back_or user_path(current_user), success: "Offer deleted."
+    redirect_back_or user_url(current_user), success: "Offer deleted."
   end
 
   private

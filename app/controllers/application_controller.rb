@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   def ensure_signed_in
     unless current_user
       store_url request.fullpath
-      redirect_to signin_path
+      redirect_to signin_url
     end
   end
 
