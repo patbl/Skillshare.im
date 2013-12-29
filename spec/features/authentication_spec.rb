@@ -32,9 +32,7 @@ feature "Authentication", :slow do
     fill_in "E-mail", with: "cool_gurl427@hotmail.com"
     click_button "Save"
 
-    expect(current_path).to eq new_user_proposal_path(jo)
+    expect(current_path).to eq new_user_offer_path(jo)
     click_button "Create"
-
-    expect(current_path).to eq user_proposals_path(jo)
   end
 end
