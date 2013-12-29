@@ -1,9 +1,9 @@
 class OffersController < ApplicationController
   include OffersHelper
 
-  before_action :ensure_signed_in, only: %i[create new edit update destroy]
-  before_action :set_categories,   only: %i[create new edit update]
-  before_action :set_offer,        only: %i[edit update destroy]
+  skip_before_action :authorize, only: %i[index show]
+  before_action :set_categories, only: %i[create new edit update]
+  before_action :set_offer, only: %i[edit update destroy]
 
   def index
     @offers = Offer.tagged_with_or_all(params[:category])

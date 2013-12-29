@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :ensure_signed_in, except: %i[index map]
+  skip_before_action :authorize, only: %i[index map]
 
   def show
     @user = User.find(params[:id])

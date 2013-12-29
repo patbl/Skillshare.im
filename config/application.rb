@@ -35,7 +35,7 @@ module Skillshare
       user_name: ENV["MANDRILL_USER_NAME"],
       password: ENV["MANDRILL_PASSWORD"], # SMTP password is any valid API key
       authentication: "login", # Mandrill supports 'plain' or 'login'
-      domain: "ea-skillshare.herokuapp.com", # your domain to identify your server when connecting
+      domain: "skillshare.im", # your domain to identify your server when connecting
     }
 
     config.i18n.enforce_available_locales = true
