@@ -17,11 +17,11 @@ feature "sending messages", :slow do
     offer = create :offer, user: recipient, title: "500 Records"
     create_user name: "Ed"
     sign_in
-    visit proposals_path(offer)
+    visit offers_path(offer)
 
     click_button "Send"
     expect(page).to have_selector(".alert-success")
-    expect(current_path).to eq proposal_path(offer)
+    expect(current_path).to eq offer_path(offer)
   end
 
   scenario "not logged in", skip: true do
