@@ -18,6 +18,7 @@ class UsersController < ApplicationController
     if current_user.update(user_params)
       redirect_back_or current_user, success: "Profile updated."
     else
+      @user = current_user
       render :edit
     end
   end

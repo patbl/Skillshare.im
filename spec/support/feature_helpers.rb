@@ -1,13 +1,16 @@
 module FeatureHelpers
-  def sign_in
+  def sign_in(new_user: false)
+    identity = create(:identity_with_user)
+    Identity.stub(:find_or_create).and_return(identity) unless new_user
     visit facebook_auth_path
+    identity.user
   end
 
-  def create_user(new_user: false, **options)
-    @user = create :user, options
-    User.stub(:create_from_auth).with(anything).and_return(@user)
-    @user.stub(:new?) { new_user }
-    @user
+  def create_user(**options)
+    user = create :user, options
+    identity = create :identity, user: user
+    Identity.stub(:find_or_create).and_return(identity)
+    user
   end
 
   def signed_in?

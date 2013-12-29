@@ -13,7 +13,7 @@ describe OffersController do
       # this breaks intermittently; for some reason the
       # `it_behaves_like` method under the user section below
       # sometimes creates an offer for lodging
-      it "doesn't show anything if there's nothing", :skip do
+      it "doesn't show anything if there's nothing" do
         get :index, category: "lodging"
         expect(response).to render_template(:index)
         expect(assigns(:offers)).to be_empty
@@ -56,11 +56,11 @@ describe OffersController do
         user = build_stubbed(:user)
         expect(User).to receive(:find).with("123").and_return(user)
 
-        expect(user.offers).to receive(:find).with("123").and_return("a offer")
+        expect(user.offers).to receive(:find).with("123").and_return("an offer")
 
         get :edit, id: "123"
 
-        expect(assigns(:offer)).to eq "a offer"
+        expect(assigns(:offer)).to eq "an offer"
       end
     end
 
@@ -108,7 +108,7 @@ describe OffersController do
         end
       end
 
-      context "with  attributes" do
+      context "with invalid attributes" do
         it "doesn't update the offer in the database" do
           patch :update, id: @offer, user_id: @offer.user, offer:
             attributes_for(:offer, title: nil)

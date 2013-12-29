@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
                 else
                   # user attempts to sign in with a different provider
                   @identity.update!(user: current_user)
-                  { notice: "You successfully linked your accounts!" }
+                  { success: "Your accounts are now linked." }
                 end
               else
                 # user isn't signed in
@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
                   redirect_new_user
                 end
                 self.current_user = @identity.user
-                { success: "Successfully signed in!" }
+                { success: "You signed in." }
               end
     redirect_back_or root_url, message
   end

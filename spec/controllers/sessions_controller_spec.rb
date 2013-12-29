@@ -20,7 +20,7 @@ describe SessionsController do
       it "associates a new identity with the current user" do
         get :create
         expect(@identity.user).to eq @user
-        expect(flash[:notice]).to be
+        expect(flash[:success]).to be
       end
 
       it "alerts the user if she tries to sign using the same provider" do
@@ -60,19 +60,10 @@ describe SessionsController do
       end
 
       context "previous user" do
-        before do
-          expect(User).to receive(:new?).and_return(false)
-        end
 
-        it "redirects to the home page if session[:return_to] not set", :skip do
-          session[:return_to] = nil
-          get :create
-          expect(response).to redirect_to(root_url)
-        end
-
-        it "redirects to the previous page if there was one", :skip do
+        it "redirects to the previous page if there was one" do
           user = create :user
-          expect(User).to receive(:make_user).with(request.env["omniauth.auth"]).and_return(user)
+          expect(User).to receive(:create_from_auth).with(request.env["omniauth.auth"]).and_return(user)
 
           store_url "previous page path"
           get :create

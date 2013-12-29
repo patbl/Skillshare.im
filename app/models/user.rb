@@ -23,10 +23,6 @@ class User < ActiveRecord::Base
     "http://graph.facebook.com/#{uid}/picture?type=#{size}"
   end
 
-  def new?
-    created_at > 30.seconds.ago
-  end
-
   private
 
   def self.set_facebook_info(user, auth)

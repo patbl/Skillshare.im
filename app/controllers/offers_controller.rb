@@ -42,6 +42,7 @@ class OffersController < ApplicationController
     if @offer.update(offer_params)
       redirect_back_or @offer, success: "Offer updated."
     else
+      @user = current_user
       render :edit
     end
   end

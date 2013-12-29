@@ -1,3 +1,0 @@
-%h2 Offers
-- offers.each do |offer|
-  #offer= link_to offer.title, offer
