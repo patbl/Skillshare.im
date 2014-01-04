@@ -1,12 +1,11 @@
 source 'http://rubygems.org'
 
-ruby '2.0.0'
+ruby '2.1.0'
 gem 'rails', '4.0.2'
 
 group :test, :development do
   gem 'sqlite3'
   gem 'rspec-rails'
-  gem 'capybara'
   gem 'factory_girl_rails'
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
   gem 'pry-byebug'
