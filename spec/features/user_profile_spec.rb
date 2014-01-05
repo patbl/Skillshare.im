@@ -17,8 +17,7 @@ feature "profile management", :slow do
   end
 
   scenario "deleting profile" do
-    user = create_user
-    sign_in
+    user = sign_in
 
     visit edit_user_path(user)
     click_link "Delete Account"
