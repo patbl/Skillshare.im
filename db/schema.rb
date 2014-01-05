@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140105021217) do
+ActiveRecord::Schema.define(version: 20131224100316) do
 
   create_table "identities", force: true do |t|
     t.string   "provider"
@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 20140105021217) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email"
   end
 
   add_index "identities", ["user_id"], name: "index_identities_on_user_id"
