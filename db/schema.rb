@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131224100316) do
+ActiveRecord::Schema.define(version: 20140106012413) do
 
   create_table "identities", force: true do |t|
     t.string   "provider"
@@ -57,8 +57,6 @@ ActiveRecord::Schema.define(version: 20131224100316) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "provider"
-    t.string   "uid"
     t.string   "name"
     t.string   "email"
     t.string   "facebook_url"
@@ -71,6 +69,7 @@ ActiveRecord::Schema.define(version: 20131224100316) do
     t.boolean  "admin"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "avatar_url"
   end
 
 end

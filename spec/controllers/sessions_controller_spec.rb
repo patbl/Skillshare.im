@@ -46,8 +46,6 @@ describe SessionsController do
       it "sets Facebook data correctly" do
         get :create
         attrs = {
-          provider:         "facebook",
-          uid:              "1234567",
           email:            "joe@bloggs.com",
           name:             "Joe Bloggs",
           facebook_url:     "http://www.facebook.com/jbloggs",

@@ -1,7 +1,7 @@
 %tr.proposal
   %td
     .user
-      = link_to image_tag(offer.user.picture("square")), offer.user
+      = link_to image_tag(avatar_url(offer.user, "square")), offer.user
   %td
     .row
       .col-sm-9

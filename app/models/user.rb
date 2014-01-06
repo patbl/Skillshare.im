@@ -5,13 +5,10 @@ class User < ActiveRecord::Base
 
   include Mappable
 
-  validates_presence_of :provider, :uid, :email, :location, :name
-  validates_uniqueness_of :uid, scope: :provider
+  validates_presence_of :email, :location, :name
 
   def self.create_from_auth(auth)
     create! do |user|
-      user.provider = auth.provider
-      user.uid = auth.uid
       user.email = auth.info.email
       user.name = auth.info.name
       set_facebook_info(user, auth) if auth.provider == 'facebook'
@@ -19,14 +16,13 @@ class User < ActiveRecord::Base
     end
   end
 
-  def picture(size = 'large')
-    "http://graph.facebook.com/#{uid}/picture?type=#{size}"
-  end
-
   private
 
   def self.set_facebook_info(user, auth)
     user.facebook_url = auth.info.urls[:Facebook]
+    # remove attributes from the end of URL ("?type=normal" in the example below)
+    # http://graph.facebook.com/632817960/picture?type=normal
+    user.avatar_url = auth.info.image.sub(/\?.*/, "")
     user.location = auth.info.location
     user.oauth_token = auth.credentials.token
     user.oauth_expires_at = Time.at(auth.credentials.expires_at)
