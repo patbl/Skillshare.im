@@ -41,7 +41,7 @@ module ApplicationHelper
     else
       gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
       size = case size
-             when "square"
+             when "square" then "s=50"
              when "small" then "s=50"
              when "normal" then "s=100"
              when "large" then "s=200"
