@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe SessionsController do
   describe "GET :new" do
-    it "redirects to Facebook's auth page" do
+    it "renders the new template" do
       get :new
-      expect(response).to redirect_to facebook_auth_url
+      expect(response).to render_template(:new)
     end
   end
 

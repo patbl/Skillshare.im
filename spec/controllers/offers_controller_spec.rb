@@ -116,7 +116,7 @@ describe OffersController do
           expect(@offer).to_not be_nil
         end
 
-        it "re-renders the :edit template" do
+        it "re-renders the edit template" do
           patch :update, id: @offer, user_id: @offer.user, offer:
             attributes_for(:offer, title: nil)
           expect(response).to render_template :edit
