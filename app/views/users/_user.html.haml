@@ -7,7 +7,7 @@
             = link_to image_tag(avatar_url(user)), user
         .col-xs-7.right
           %h3= link_to user.name, user
-          .offer-count
+          .proposal-count
             = link_to pluralize(user.offers.count, 'Offer'), user
           .location
             <i class="fa fa-map-marker"></i>

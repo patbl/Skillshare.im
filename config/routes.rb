@@ -1,5 +1,5 @@
 Skillshare::Application.routes.draw do
-  resources :users, except: %i[new create] do
+  resources :users, except: [:new, :create] do
     resources :offers, shallow: true, except: :index do
       resources :messages, only: :create
     end
@@ -13,7 +13,7 @@ Skillshare::Application.routes.draw do
   # authentication
   get 'auth/facebook',   as: 'facebook_auth'
   get 'auth/browser_id', as: 'browser_id_auth'
-  match 'auth/:provider/callback' => 'sessions#create', via: %i[get post]
+  match 'auth/:provider/callback' => 'sessions#create', via: [:get, :post]
   get 'auth/failure'              => 'sessions#failure'
   get 'sessions'                  => 'sessions#create'
   get 'signin'                    => 'sessions#new',     as: 'signin'
