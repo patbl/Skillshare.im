@@ -9,18 +9,7 @@
           = link_to(offer.title, offer)
       .col-sm-3
         .proposal-btn
-          - if current_user && current_user != offer.user
-            .btn.btn-danger.btn-small.request-btn
-              <i class="fa fa-envelope"></i> Request
-          - elsif current_user == offer.user
-            = link_to offer, method: :delete, class: "btn btn-danger btn-small delete-offer-btn",
-                             data: { confirm: "Are you sure you want to delete this offer?" } do
-              <i class="fa fa-times"></i>
-            = link_to edit_offer_path(offer), class: "btn btn-primary btn-small edit-offer-btn" do
-              <i class="fa fa-pencil"></i>
-          - else
-            = link_to facebook_auth_path, class: "btn btn-danger btn-small" do
-              <i class="fa fa-envelope"></i> Sign in to request
+          = offer.button
 
     = markdown(offer.description)
     .request{ class: "hidden" }

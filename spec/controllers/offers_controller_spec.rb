@@ -22,12 +22,13 @@ describe OffersController do
 
     describe "GET #show" do
       it "assigns the requested offer to @offer" do
-        proposal = double("a offer")
-        expect(Offer).to receive(:find).with("123").and_return(proposal)
+        offer = double()
+        expect(Offer).to receive(:find).with("123").and_return(offer)
+        expect(offer).to receive(:decorate).and_return("decorated offer")
 
         get :show, id: "123"
 
-        expect(assigns(:offer)).to eq proposal
+        expect(assigns(:offer)).to eq "decorated offer"
       end
     end
   end

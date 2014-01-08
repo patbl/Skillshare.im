@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @proposals = @user.proposals
+    @offers = @user.offers.decorate
   end
 
   def index

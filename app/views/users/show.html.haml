@@ -11,6 +11,6 @@
       %th Location
       %th Type
   %tbody
-    - @proposals.each do |offer|
+    - @offers.each do |offer|
       - if !offer.nil?
         = render partial: "offers/offer", collection: [offer]

@@ -6,7 +6,7 @@ class OffersController < ApplicationController
   before_action :set_offer, only: %i[edit update destroy]
 
   def index
-    @offers = Offer.tagged_with_or_all(params[:category])
+    @offers = Offer.tagged_with_or_all(params[:category]).decorate
 
     respond_to do |format|
       format.html
@@ -15,7 +15,7 @@ class OffersController < ApplicationController
   end
 
   def show
-    @offer = Offer.find(params[:id])
+    @offer = Offer.find(params[:id]).decorate
     @user = current_user
   end
 

@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
                   redirect_new_user
                 end
                 self.current_user = @identity.user
-                { success: "You signed in." }
+                { success: "You signed in successfully." }
               end
     redirect_back_or root_url, message
   end
