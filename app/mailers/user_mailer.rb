@@ -18,7 +18,6 @@ class UserMailer < ActionMailer::Base
     @offer = offer
     @offerer = offer.user
     subject = %[Confirmation of request for "#{@offer.title}" on Skillshare.im]
-    from = "Skillshare.im"
-    mail(to: @requester.email, reply_to: @offerer.email, subject: subject, from: from)
+    mail(to: @requester.email, reply_to: @offerer.email, subject: subject)
   end
 end
