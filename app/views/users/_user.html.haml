@@ -10,29 +10,29 @@
           .proposal-count
             = link_to pluralize(user.offers.count, 'Offer'), user
           .location
-            <i class="fa fa-map-marker"></i>
+            = fa_tag("map-marker")
             = user.location
-          - if current_user
+          - if signed_in?
             .mail
               = mail_to user.email do |m|
                 .btn.btn-small.btn-default
-                  <i class="fa fa-envelope"></i>
-            .facebook
-              = link_to user.facebook_url do |u|
-                .btn.btn-default
-                  <i class="fa fa-facebook"></i>
+                  = fa_tag("envelope")
+            - if user.linked_to_facebook?
+              .facebook
+                = link_to user.facebook_url do |u|
+                  .btn.btn-default
+                    = fa_tag("facebook")
         .col-xs-1
-          - if user == current_user
+          - if user.current_user?
             = link_to edit_user_path(user), id: "edit-profile" do |u|
               .btn.btn-primary
-                <i class="fa fa-pencil"></i>
+                = fa_tag("pencil")
 
-    - if !user.about.nil?
-      .info
-        = markdown(user.about)
+    .info
+      = markdown(user.about)
 
-  - if user == current_user and defined? show_create_link
+  - if user.current_user? && defined? show_create_link
     = link_to(new_user_offer_path(user)) do
       .proposal.new
         .main
-          = raw("<i class='fa fa-plus'></i> Create a new offer")
+          = fa_tag("plus", "Create a new offer")

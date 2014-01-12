@@ -1,16 +1,13 @@
 = title @user.name
 
 .row
-  = render partial: "users/user", collection: [@user], :locals => { :show_create_link => true }
+  = render @user
 
 %table.table.proposals-table
   %thead
     %tr
-      %th
       %th Offer
       %th Location
       %th Type
   %tbody
-    - @offers.each do |offer|
-      - if !offer.nil?
-        = render partial: "offers/offer", collection: [offer]
+    = render @offers

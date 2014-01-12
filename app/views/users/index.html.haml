@@ -1,7 +1,5 @@
 %h2 Users
 
-- @users.in_groups_of(3) do |users|
+- @users.in_groups_of(3, false) do |users|
   .row
-    - users.each do |user|
-      - if !user.nil?
-        = render partial: "users/user", collection: [user]
+    = render users

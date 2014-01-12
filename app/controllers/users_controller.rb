@@ -2,12 +2,12 @@ class UsersController < ApplicationController
   skip_before_action :authorize, only: %i[index map]
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find(params[:id]).decorate
     @offers = @user.offers.decorate
   end
 
   def index
-    @users = User.all.order(:name)
+    @users = User.all.order(:name).decorate
   end
 
   def edit
