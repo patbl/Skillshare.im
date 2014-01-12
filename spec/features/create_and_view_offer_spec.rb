@@ -19,7 +19,7 @@ feature "offer management", :slow do
     expect(page).to have_selector(".alert")
   end
 
-  scenario "canceling editing a offer" do
+  scenario "canceling editing a offer", :skip do
     create :offer, title: "stuffed animals", user: @user
 
     visit root_url
@@ -47,7 +47,7 @@ feature "offer management", :slow do
     expect(page).to_not have_selector(".proposal")
   end
 
-  scenario "edits a offer" do
+  scenario "edits a offer", :skip do
     create(:offer, title: "Feminist Perspectives On Tort Law", user: @user)
 
     visit user_path(@user)

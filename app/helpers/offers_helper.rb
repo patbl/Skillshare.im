@@ -8,7 +8,11 @@ module OffersHelper
   end
 
   def category_tag(category)
-    icon = category_icon(category)
-    %{<i class="fa fa-#{icon}"></i>}
+    fa_tag(category_icon(category))
+  end
+
+  def fa_tag(icon, text = nil)
+    text &&= " " + text
+    %(<i class="fa fa-#{icon}"></i>#{text}).html_safe
   end
 end

@@ -21,4 +21,4 @@
   %tbody
     - @offers.each do |offer|
       - if offer
-        = render partial: "offers/offer", collection: [offer]
+        = render partial: "offers/offer", locals: { offer: offer }
