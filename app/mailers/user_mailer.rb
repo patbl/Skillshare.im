@@ -1,23 +1,19 @@
 class UserMailer < ActionMailer::Base
   helper :application
-  default from: "Skillshare.im <requests@skillshare.im>"
+  default from: "Skillshare.im <offers@skillshare.im>"
 
-  def request_notification(requester, body, offer)
-    @requester = requester
+  def request_email(requester, body, offer, notification: true)
     @body = body
     @offer = offer
-    @offerer = offer.user
-    subject = %[Request for "#{@offer.title}" on Skillshare.im]
-    from = "#{@offerer.name} via Skillshare.im <#{@requester.email}>"
-    mail(to: @offerer.email, reply_to: @requester.email, subject: subject, from: from)
-  end
-
-  def request_confirmation(requester, body, offer)
-    @requester = requester
-    @body = body
-    @offer = offer
-    @offerer = offer.user
-    subject = %[Confirmation of request for "#{@offer.title}" on Skillshare.im]
-    mail(to: @requester.email, reply_to: @offerer.email, subject: subject)
+    if notification
+      @from_user = requester
+      @to_user = offer.user
+      subject = %[Request for "#{@offer.title}" on Skillshare.im]
+    else
+      @from_user = offer.user
+      @to_user = requester
+      subject = %[Confirmation of request for "#{@offer.title}" on Skillshare.im]
+    end
+    mail(to: @to_user.email, reply_to: @from_user.email, subject: subject)
   end
 end

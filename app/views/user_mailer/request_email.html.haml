@@ -1,0 +1,6 @@
+- if @to_user == @offer.user
+  %p= render "user_mailer/request_notification"
+- else
+  %p= render "user_mailer/request_confirmation"
+
+#box= markdown(@body)

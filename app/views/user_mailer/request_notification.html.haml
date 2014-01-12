@@ -1,9 +1,0 @@
-!!!
-%html
-  %head
-    %meta{charset: "utf-8", content: "text/html", "http-equiv" => "Content-Type"}
-    %link{rel: "stylesheet", href: "email/proposal_email"}
-  %body
-    %p Hi, #{@offerer.name},
-    %p #{@requester.name} sent you the following message about your offer of #{link_to @offer.title, offer_url(@offer)}. You can reply as you would to any e-mail.
-    #box= markdown(@body)
