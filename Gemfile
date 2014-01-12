@@ -40,7 +40,7 @@ group :production do
   gem 'rails_12factor'
 end
 
-gem 'passenger'
+gem 'unicorn'
 gem 'therubyracer', platforms: :ruby
 gem 'haml-rails'
 gem 'sass-rails'
