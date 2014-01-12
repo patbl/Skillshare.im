@@ -8,11 +8,11 @@ class OffersController < ApplicationController
   def index
     respond_to do |format|
       format.html do
-        @offers = Offer.tagged_with_or_all(params[:category]).decorate
+        @offers = Offer.filter_by_tag(params[:category]).decorate
       end
 
       format.atom do
-        @offers = Offer.recent(50)
+        @offers = Offer.recent
         @updated_at = @offers.maximum(:updated_at)
       end
     end
