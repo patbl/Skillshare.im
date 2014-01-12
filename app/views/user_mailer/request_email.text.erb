@@ -1,3 +1,5 @@
-<%= @from_user.name %> sent you the following message about your offer of <%= @offer.title %>. You can reply as you would to any e-mail.
+<% #render "user_mailer/greeting" %>
 
-<%= @body %>
+<%= render @email.template %>
+
+> <%= @email.body %>

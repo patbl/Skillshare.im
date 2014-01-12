@@ -24,6 +24,7 @@ module Skillshare
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.autoload_paths += %W( #{ config.root }/lib/NoWWW)
+    config.autoload_paths += Dir[Rails.root.join('app', 'models', '{**}')]
 
     config.assets.initialize_on_precompile = false
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
