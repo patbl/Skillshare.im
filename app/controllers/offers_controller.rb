@@ -12,7 +12,7 @@ class OffersController < ApplicationController
       end
 
       format.atom do
-        @offers = Offer.all
+        @offers = Offer.recent(50)
         @updated_at = @offers.maximum(:updated_at)
       end
     end
