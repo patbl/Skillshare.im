@@ -216,7 +216,7 @@ GEM
     omniauth-oauth2 (1.1.1)
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
-    passenger (4.0.29)
+    passenger (4.0.33)
       daemon_controller (>= 1.1.0)
       rack
       rake (>= 0.8.1)
