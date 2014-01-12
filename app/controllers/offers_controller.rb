@@ -6,11 +6,15 @@ class OffersController < ApplicationController
   before_action :set_offer, only: %i[edit update destroy]
 
   def index
-    @offers = Offer.tagged_with_or_all(params[:category]).decorate
-
     respond_to do |format|
-      format.html
-      format.atom
+      format.html do
+        @offers = Offer.tagged_with_or_all(params[:category]).decorate
+      end
+
+      format.atom do
+        @offers = Offer.all
+        @updated_at = @offers.maximum(:updated_at)
+      end
     end
   end
 

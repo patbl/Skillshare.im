@@ -3,7 +3,7 @@ require 'spec_helper'
 describe OffersController do
   shared_examples "public access to Offers" do
     describe "#index" do
-      before { create :offer, category_list: "goods" }
+      before { @offer = create(:offer, category_list: "goods") }
 
       it "gets all the offers when unfiltered" do
         get :index
@@ -17,6 +17,13 @@ describe OffersController do
         get :index, category: "lodging"
         expect(response).to render_template(:index)
         expect(assigns(:offers)).to be_empty
+      end
+
+      it "renders the Atom feed" do
+        get :index, format: "atom"
+        expect(response).to render_template(:index)
+        expect(response.content_type).to eq("application/atom+xml")
+        expect(assigns(:updated_at).to_i).to eq @offer.updated_at.to_i
       end
     end
 

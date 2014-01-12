@@ -1,6 +1,6 @@
 atom_feed do |feed|
   feed.title "Skillshare.im Offers"
-  feed.updated @offers.maximum(:updated_at)
+  feed.updated @updated_at
   @offers.each do |offer|
     feed.entry offer do |entry|
       entry.title offer.title
