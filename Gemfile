@@ -4,7 +4,6 @@ ruby '2.1.0'
 gem 'rails', '4.0.2'
 
 group :test, :development do
-  gem 'sqlite3'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
@@ -36,10 +35,10 @@ group :test do
 end
 
 group :production do
-  gem 'pg'
   gem 'rails_12factor'
 end
 
+gem 'pg'
 gem 'unicorn'
 gem 'therubyracer', platforms: :ruby
 gem 'haml-rails'

@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140106012413) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "identities", force: true do |t|
     t.string   "provider"
     t.string   "uid"
@@ -23,7 +26,7 @@ ActiveRecord::Schema.define(version: 20140106012413) do
     t.datetime "updated_at"
   end
 
-  add_index "identities", ["user_id"], name: "index_identities_on_user_id"
+  add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
 
   create_table "proposals", force: true do |t|
     t.integer  "user_id"
@@ -37,7 +40,7 @@ ActiveRecord::Schema.define(version: 20140106012413) do
     t.string   "type"
   end
 
-  add_index "proposals", ["user_id"], name: "index_proposals_on_user_id"
+  add_index "proposals", ["user_id"], name: "index_proposals_on_user_id", using: :btree
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"
@@ -49,8 +52,8 @@ ActiveRecord::Schema.define(version: 20140106012413) do
     t.datetime "created_at"
   end
 
-  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id"
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
+  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
 
   create_table "tags", force: true do |t|
     t.string "name"
