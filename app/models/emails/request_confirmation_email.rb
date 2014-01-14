@@ -3,7 +3,7 @@ class RequestConfirmationEmail < RequestEmail
     super
     @sender = @offer.user
     @recipient = @user
-    subject = %[Confirmation of request for "#{@offer.title}" on Skillshare.im]
+    @subject = %[Confirmation of request for "#{@offer.title}" on Skillshare.im]
   end
 
   def mail_params
