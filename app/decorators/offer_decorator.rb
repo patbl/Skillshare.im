@@ -14,7 +14,7 @@ class OfferDecorator < Draper::Decorator
   end
 
   def request_button
-    content_tag :div, class: "btn btn-danger btn-small" do
+    content_tag :div, class: "btn btn-danger btn-small request-btn" do
       fa_tag("envelope", "Request")
     end
   end
