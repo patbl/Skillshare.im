@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   add_flash_types :success, :error
   before_action :authorize
 
-  private
+  protected
 
   helper_method :current_user, :signed_in?, :guest?
 

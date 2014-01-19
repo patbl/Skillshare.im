@@ -3,6 +3,6 @@ bundler_args: --without development
 rvm:
   - "2.1.0"
 env:
-  # - SLOW_SPECS=true
+  - SLOW_SPECS=true
 before_install:
   - gem install bundler -v '= 1.5.1'

@@ -19,18 +19,6 @@ feature "offer management", :slow do
     expect(page).to have_selector(".alert")
   end
 
-  scenario "canceling editing a offer", :skip do
-    create :offer, title: "stuffed animals", user: @user
-
-    visit root_url
-    click_link "stuffed animals"
-    find(".edit-offer-btn").click
-
-    fill_in "Title", with: ""
-    click_button "Save"
-    click_button "Save"
-  end
-
   scenario "filtering Offers" do
     create :offer, title: "love", category_list: "services"
     create :offer, title: "encouragement", category_list: "services"
@@ -47,12 +35,13 @@ feature "offer management", :slow do
     expect(page).to_not have_selector(".proposal")
   end
 
-  scenario "edits a offer", :skip do
+  scenario "edits a offer" do
     create(:offer, title: "Feminist Perspectives On Tort Law", user: @user)
 
     visit user_path(@user)
     click_link "Feminist Perspectives On Tort Law"
-    find(".edit-offer-btn").click
+    save_and_open_page
+    find(:css, ".btn.btn-primary.btn-small").click
     fill_in "Title", with: "Feminist Perspectives In Music Therapy"
     click_button "Save"
 
