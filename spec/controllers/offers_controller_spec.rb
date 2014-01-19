@@ -16,6 +16,8 @@ describe OffersController do
       it "doesn't show anything if there's nothing" do
         get :index, category: "lodging"
         expect(response).to render_template(:index)
+        p assigns(:offers)
+        p assigns(:offers).empty?
         expect(assigns(:offers)).to be_empty
       end
 
