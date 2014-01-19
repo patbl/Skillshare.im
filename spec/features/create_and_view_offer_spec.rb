@@ -36,16 +36,15 @@ feature "offer management", :slow do
   end
 
   scenario "edits a offer" do
-    create(:offer, title: "Feminist Perspectives On Tort Law", user: @user)
+    create(:offer, title: "Feminist Perspectives on Tort Law", user: @user)
 
     visit user_path(@user)
-    click_link "Feminist Perspectives On Tort Law"
-    save_and_open_page
+    click_link "Feminist Perspectives on Tort Law"
     find(:css, ".btn.btn-primary.btn-small").click
-    fill_in "Title", with: "Feminist Perspectives In Music Therapy"
+    fill_in "Title", with: "Feminist Perspectives in Music Therapy"
     click_button "Save"
 
-    expect(page).to have_content("Feminist Perspectives In Music Therapy")
+    expect(page).to have_content("Feminist Perspectives in Music Therapy")
     expect(page).to have_content("Offer updated.")
   end
 end

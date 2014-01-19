@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe OffersController do
-  shared_examples "public access to Offers" do
+  shared_examples "public access to Offers", skip_before: true do
     describe "#index" do
       before { @offer = create(:offer, category_list: "goods") }
 
@@ -23,7 +23,7 @@ describe OffersController do
         get :index, format: "atom"
         expect(response).to render_template(:index)
         expect(response.content_type).to eq("application/atom+xml")
-        expect(assigns(:updated_at).to_i).to eq @offer.updated_at.to_i
+        expect(assigns(:updated_at)).to be_same_second_as @offer.updated_at
       end
     end
 
