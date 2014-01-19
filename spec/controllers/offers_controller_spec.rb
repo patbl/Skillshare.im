@@ -29,7 +29,7 @@ describe OffersController do
 
     describe "GET #show" do
       it "assigns the requested offer to @offer" do
-        offer = double()
+        offer = double
         expect(Offer).to receive(:find).with("123").and_return(offer)
         expect(offer).to receive(:decorate).and_return("decorated offer")
 
@@ -75,25 +75,22 @@ describe OffersController do
     describe "POST #create" do
       context "with valid attributes" do
         it "saves the new offer in the database" do
-          expect {
-            post :create, offer: attributes_for(:offer), user_id: @user
-          }.to change(Offer, :count).by(1)
+          expect { post :create, offer: attributes_for(:offer), user_id: @user }
+            .to change(Offer, :count).by(1)
           expect(response).to redirect_to @user
         end
 
         it "saves the new offer in the database" do
-          expect {
-            post :create, offer: attributes_for(:offer), user_id: @user
-          }.to change(Offer, :count).by(1)
+          expect { post :create, offer: attributes_for(:offer), user_id: @user }
+            .to change(Offer, :count).by(1)
           expect(response).to redirect_to @user
         end
       end
 
       context "with invalid attributes" do
         it "doesn't save the new offer in the database" do
-          expect do
-            post :create, user_id: @user, offer: attributes_for(:invalid_offer)
-          end.to_not change(Offer, :count)
+          expect { post :create, user_id: @user, offer: attributes_for(:invalid_offer) }
+            .to_not change(Offer, :count)
           expect(assigns(:user)).to eq @user
           expect(response).to render_template(:new)
         end
@@ -102,16 +99,15 @@ describe OffersController do
 
     describe "PATCH #update" do
       context "with valid attributes" do
-        it "located the requested contact" do
+        it "locates the requested contact" do
           patch :update, id: @offer, offer: attributes_for(:offer)
           expect(assigns(:offer)).to eq @offer
         end
 
         it "updates the offer in the database" do
           patch :update, id: @offer, offer:
-            attributes_for(:offer, title: "couch", location: "Tampa")
+            attributes_for(:offer, location: "Tampa")
           @offer.reload
-          expect(@offer.title).to eq "couch"
           expect(@offer.location).to eq "Tampa"
         end
       end
@@ -155,11 +151,11 @@ describe OffersController do
         bad_user = create(:user)
         proposal = create :offer, user: nice_user
         session[:user_id] = bad_user
-        expect { delete :destroy, id: proposal, user_id: bad_user}
+        expect { delete :destroy, id: proposal, user_id: bad_user }
           .to raise_error(ActiveRecord::RecordNotFound)
       end
 
-      it "deletes the user's Offers when the user's account is deleted" do
+      it "deletes the user's offers when the user's account is deleted" do
         expect { User.find(@user.id).destroy }
           .to change(Offer, :count).by(-1)
       end

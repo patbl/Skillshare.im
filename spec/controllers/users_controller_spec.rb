@@ -41,21 +41,25 @@ describe UsersController do
     end
 
     describe "PATCH #update" do
-      it "with valid attributes" do
-        user = create(:user, name: "Leon Crass")
-        set_user_session(user)
-        patch :update, user: attributes_for(:user, name: "Leon Kass"), id: user
-        expect(response).to redirect_to(user)
-        expect(user.reload.name).to eq "Leon Kass"
-        expect(flash[:success]).to be
+      context "with valid attributes" do
+        it "updates the user's profile" do
+          user = create(:user, name: "Leon Crass")
+          set_user_session(user)
+          patch :update, user: attributes_for(:user, name: "Leon Kass"), id: user
+          expect(response).to redirect_to(user)
+          expect(user.reload.name).to eq "Leon Kass"
+          expect(flash[:success]).to be
+        end
       end
 
-      it "with invalid attributes" do
-        user = create(:user, name: "So-and-so")
-        set_user_session(user)
-        patch :update, user: attributes_for(:user, email: ""), id: user
-        expect(response).to render_template :edit
-        expect(user.reload.name).to eq "So-and-so"
+      context "with invalid attributes" do
+        it "doesn't update the user's profile" do
+          user = create(:user, name: "So-and-so")
+          set_user_session(user)
+          patch :update, user: attributes_for(:user, email: ""), id: user
+          expect(response).to render_template :edit
+          expect(user.reload.name).to eq "So-and-so"
+        end
       end
 
       it "doesn't allow the current user to update another user's profile" do
