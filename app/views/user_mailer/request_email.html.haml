@@ -1,5 +1,5 @@
-%p= render 'user_mailer/greeting'
+%p= render 'user_mailer/greeting', email: @email
 
-%p= render @email.template
+%p= render @email.template, email: @email
 
 #box= markdown(@email.body)

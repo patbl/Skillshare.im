@@ -1,1 +1,1 @@
-<%= @email.sender_name %> sent you the following message about your offer of <%= link_to @email.offer_title, offer_url(@email.offer) %>. When you reply to this e-mail your response will be sent directly to <%= @email.sender_name %>.
+<%= email.sender_name %> sent you the following message about your offer of <%= link_to email.offer_title, offer_url(email.offer) %>. When you reply to this e-mail your response will be sent directly to <%= email.sender_name %>.
