@@ -87,6 +87,8 @@ describe SessionsController do
 
         it "creates a new user" do
           expect { get :create }.to change(User, :count).by 1
+          expect(flash[:notice]).to be
+          expect(flash.count).to eq 1
         end
       end
     end

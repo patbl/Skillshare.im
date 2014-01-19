@@ -8,26 +8,28 @@ class SessionsController < ApplicationController
   def create
     @identity = Identity.find_or_create(auth)
 
-    message = if signed_in?
-                if @identity.user == current_user
-                  # user attempts to sign in using same provider
-                  { alert: "You already signed in with that account." }
-                else
-                  # user attempts to sign in with a different provider
-                  @identity.update!(user: current_user)
-                  { success: "Your accounts are now linked." }
-                end
-              else
-                # user isn't signed in
-                unless @identity.user
-                  # user doesn't have an account
-                  @user = User.create_from_auth(auth)
-                  @identity.update(user: @user)
-                  redirect_new_user
-                end
-                self.current_user = @identity.user
-                { success: "You signed in successfully." }
-              end
+    if signed_in?
+      if @identity.user
+        # user attempts to sign in using same provider
+        message = { alert: "You already signed in with that account." }
+      else
+        # user attempts to sign in with a different provider
+        @identity.update!(user: current_user)
+        message = { success: "Your accounts are now linked." }
+      end
+    else
+      # user isn't signed in
+      if @identity.user
+        message = { success: "You signed in successfully." }
+      else
+        # user doesn't have an account
+        @user = User.create_from_auth(auth)
+        @identity.update!(user: @user)
+        redirect_new_user
+        message = {}
+      end
+      self.current_user = @identity.user
+    end
     redirect_back_or root_url, message
   end
 
@@ -48,7 +50,7 @@ class SessionsController < ApplicationController
   end
 
   def redirect_new_user
-    store_url edit_user_url(@user), notice: "Thanks for signing up! Please check your e-mail address and location below, then click Save."
+    store_url edit_user_url(@user), notice: "Thanks for signing up! Please check your e-mail address and location below and click Save."
     store_url new_user_offer_url(@user), notice: "Fill out this form to create your first offer."
   end
 end

@@ -36,11 +36,14 @@ class ApplicationController < ActionController::Base
     session[:return_to].push [url, options] if url
   end
 
-  def redirect_back_or(path, options = {})
-    if session[:return_to].present?
-      path, saved_options = session[:return_to].shift
-      options.update(saved_options)
-    end
+  def get_url
+    (session[:return_to] ||= []).shift
+  end
+
+  def redirect_back_or(default_path, default_options = {})
+    path, options = get_url
+    path = path.presence || default_path
+    options = options.presence || default_options
     redirect_to path, options
   end
 end
