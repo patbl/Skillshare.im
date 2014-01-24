@@ -1,4 +1,4 @@
-class OfferDecorator < Draper::Decorator
+class OfferDecorator < ApplicationDecorator
   include Draper::LazyHelpers
 
   delegate_all

@@ -13,30 +13,36 @@ Identity.create!(
   user: dalai_lama
 )
 
-Offer.create!(
-  title: "forks and knives",
-  description: "My spoons keep disappearing, so I bought a new flatware set. Now I don't know what to do with all my extra forks and knives!",
-  location: "Tibet",
-  category_list: "goods",
-  user: dalai_lama,
-)
+100.times do |i|
+  Offer.create!(
+    title: "#{i} forks and knives",
+    description: "My spoons keep disappearing, so I bought a new flatware set. Now I don't know what to do with all my extra forks and knives!",
+    location: "Tibet",
+    category_list: "goods",
+    user: dalai_lama,
+  )
+end
 
-shakira = User.create!(
-  facebook_url: "http://www.facebook.com/shakira",
-  name: "Shakira",
-  email: "potus@whitehouse.gov",
-  avatar_url: "http://graph.facebook.com/5027904559/picture",
-  location: "Barranquilla, Colombia",
-  about: %{Shakira Isabel Mebarak Ripoll (pronounced: [ʃaˈkiɾa isaˈβel meβa'ɾak riˈpol]; born February 2, 1977),[2] known professionally as Shakira (English /ʃəˈkɪərə/,[3] Spanish: [ʃaˈkiɾa]), is a Colombian singer-songwriter, dancer, record producer, choreographer and model. Born and raised in Barranquilla, she began performing in school, demonstrating Latin, Arabic, and rock and roll influences and belly dancing abilities. Shakira released her first studio albums, Magia and Peligro, in the early 1990s, failing to attain commercial success; however, she rose to prominence in Latin America with her major-label debut, Pies Descalzos (1996), and her fourth album, Dónde Están los Ladrones? (1998).
+100.times do |i|
+  shakira = User.create!(
+    facebook_url: "http://www.facebook.com/shakira",
+    name: "Shakira",
+    email: "shakira#{i}@gmail.com",
+    avatar_url: "http://graph.facebook.com/5027904559/picture",
+    location: "Barranquilla, Colombia",
+    about: %{Shakira Isabel Mebarak Ripoll (pronounced: [ʃaˈkiɾa isaˈβel meβa'ɾak riˈpol]; born February 2, 1977),[2] known professionally as Shakira (English /ʃəˈkɪərə/,[3] Spanish: [ʃaˈkiɾa]), is a Colombian singer-songwriter, dancer, record producer, choreographer and model. Born and raised in Barranquilla, she began performing in school, demonstrating Latin, Arabic, and rock and roll influences and belly dancing abilities. Shakira released her first studio albums, Magia and Peligro, in the early 1990s, failing to attain commercial success; however, she rose to prominence in Latin America with her major-label debut, Pies Descalzos (1996), and her fourth album, Dónde Están los Ladrones? (1998).
 
 Shakira has won many awards including five MTV Video Music Awards, two Grammy Awards, eight Latin Grammy Awards, seven Billboard Music Awards, twenty-eight Billboard Latin Music Awards and has been Golden Globe-nominated. She has a star on the Hollywood Walk of Fame, and she is the highest-selling Colombian artist of all time, having sold a total of 125 million records worldwide, over 70 million albums and 55 million singles.[5][6][7][8][9][10] Her U.S. album sales stand at 9.9 million.[11] Outside of her work in the music industry, Shakira is also involved in philanthropic activities through charity work and benefit concerts, notably her Pies Descalzos Foundation, her performance at the "Clinton Global Initiative" created by former U.S. President Bill Clinton, and her invitation to the Oval Office by President Barack Obama in February 2010 to discuss early childhood development.[12]}
-)
+  )
 
-Identity.create!(
-  provider: "facebook",
-  uid: "5027904559",
-  user: shakira
-)
+  Identity.create!(
+    provider: "facebook",
+    uid: "5027904559#{i}",
+    user: shakira
+  )
+end
+
+shakira = User.last
 
 Offer.create!(
   title: "Hips Don't Lie",
@@ -59,7 +65,7 @@ Donec malesuada dui ornare neque adipiscing sagittis. Proin tincidunt vestibulum
 )
 
 gravatar_user = User.create!(
-  name: "John Somebody",
+  name: "Gravatar User",
   email: "patbl@live.com",
   location: "Somewhere, World",
   about: "Just an ordinary, average guy."
@@ -83,7 +89,7 @@ no_gravatar_user = User.create!(
   name: "No-Gravatar User",
   email: "doesnotexist@hotmail.com",
   location: "Somewhere, World",
-  about: "Just an ordinary, average guy."
+  about: "I haven't had the time to upload a picture to Gravatar, or I don't know how to, or it seems like too much trouble."
 )
 
 Identity.create!(

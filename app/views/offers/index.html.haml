@@ -22,3 +22,5 @@
     - @offers.each do |offer|
       - if offer
         = render partial: "offers/offer", locals: { offer: offer }
+
+= paginate @offers, theme: 'twitter-bootstrap-3'

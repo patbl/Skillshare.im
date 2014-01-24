@@ -8,7 +8,7 @@ class OffersController < ApplicationController
   def index
     respond_to do |format|
       format.html do
-        @offers = Offer.filter_by_tag(params[:category]).decorate
+        @offers = Offer.filter_by_tag(params[:category]).page(params[:page]).per(30).decorate
       end
 
       format.atom do

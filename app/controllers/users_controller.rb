@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all.order(:name).decorate
+    @users = User.order(:name).page(params[:page]).per(30).decorate
   end
 
   def edit
