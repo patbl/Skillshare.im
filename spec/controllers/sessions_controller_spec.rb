@@ -14,7 +14,7 @@ describe SessionsController do
         @user = create :user
         @identity = create :identity
         set_user_session(@user)
-        Identity.stub(:find_or_create) { @identity }
+        allow(Identity).to receive(:find_or_create).and_return(@identity)
       end
 
       it "associates a new identity with the current user" do

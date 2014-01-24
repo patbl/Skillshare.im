@@ -19,8 +19,13 @@ require 'capybara/rspec'
 require 'capybara/poltergeist'
 Capybara.javascript_driver = :poltergeist
 
-# Requires supporting ruby files with custom matchers and macros, etc,
-# in spec/support/ and its subdirectories.
+# Requires supporting ruby files with custom matchers and macros, etc, in
+# spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
+# run as spec files by default. This means that files in spec/support that end
+# in _spec.rb will both be required and run as specs, causing the specs to be
+# run twice. It is recommended that you do not name files matching this glob to
+# end with _spec.rb. You can configure this pattern with with the --pattern
+# option on the command line or in ~/.rspec, .rspec or `.rspec-local`.
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 # Checks for pending migrations before tests are run.
@@ -55,7 +60,6 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 
-  config.treat_symbols_as_metadata_keys_with_true_values = true
   config.run_all_when_everything_filtered = true
   config.filter_run :focus
   config.filter_run_excluding :slow unless ENV["SLOW_SPECS"]
@@ -87,39 +91,39 @@ OmniAuth.config.mock_auth[:basic] = OmniAuth::AuthHash.new(
   }
 )
 OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({
-  :provider => 'facebook',
-  :uid => '1234567',
-  :info => {
-    :nickname => 'jbloggs',
-    :email => 'joe@bloggs.com',
-    :name => 'Joe Bloggs',
-    :first_name => 'Joe',
-    :last_name => 'Bloggs',
-    :image => 'http://graph.facebook.com/1234567/picture?type=square',
-    :urls => { :Facebook => 'http://www.facebook.com/jbloggs' },
-    :location => 'Palo Alto, California',
-    :verified => true
-  },
-  :credentials => {
-    :token => 'ABCDEF', # OAuth 2.0 access_token, which you may wish to store
-    :expires_at => 1321747205, # when the access token expires (it always will)
-    :expires => true # this will always be true
-  },
-  :extra => {
-    :raw_info => {
-      :id => '1234567',
+    :provider => 'facebook',
+    :uid => '1234567',
+    :info => {
+      :nickname => 'jbloggs',
+      :email => 'joe@bloggs.com',
       :name => 'Joe Bloggs',
       :first_name => 'Joe',
       :last_name => 'Bloggs',
-      :link => 'http://www.facebook.com/jbloggs',
-      :username => 'jbloggs',
-      :location => { :id => '123456789', :name => 'Palo Alto, California' },
-      :gender => 'male',
-      :email => 'joe@bloggs.com',
-      :timezone => -8,
-      :locale => 'en_US',
-      :verified => true,
-      :updated_time => '2011-11-11T06:21:03+0000'
+      :image => 'http://graph.facebook.com/1234567/picture?type=square',
+      :urls => { :Facebook => 'http://www.facebook.com/jbloggs' },
+      :location => 'Palo Alto, California',
+      :verified => true
+    },
+    :credentials => {
+      :token => 'ABCDEF', # OAuth 2.0 access_token, which you may wish to store
+      :expires_at => 1321747205, # when the access token expires (it always will)
+      :expires => true # this will always be true
+    },
+    :extra => {
+      :raw_info => {
+        :id => '1234567',
+        :name => 'Joe Bloggs',
+        :first_name => 'Joe',
+        :last_name => 'Bloggs',
+        :link => 'http://www.facebook.com/jbloggs',
+        :username => 'jbloggs',
+        :location => { :id => '123456789', :name => 'Palo Alto, California' },
+        :gender => 'male',
+        :email => 'joe@bloggs.com',
+        :timezone => -8,
+        :locale => 'en_US',
+        :verified => true,
+        :updated_time => '2011-11-11T06:21:03+0000'
+      }
     }
-  }
 })
