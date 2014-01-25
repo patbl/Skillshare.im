@@ -50,7 +50,7 @@ class SessionsController < ApplicationController
   end
 
   def redirect_new_user
-    store_url edit_user_url(@user), notice: "Thanks for signing up! Please check your e-mail address and location below and click Save."
-    store_url new_user_offer_url(@user), notice: "Fill out this form to create your first offer."
+    store_url edit_user_url(@user), notice: %{Thanks for signing up! Please check the information below and click "Save."}
+    store_url new_user_offer_url(@user), notice: "Create your first offer now! Or click on the gift icon above to see what other people are offering."
   end
 end
