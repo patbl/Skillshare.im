@@ -13,8 +13,6 @@
     = csrf_meta_tags
 
   %body
-    = render "shared/facebook"
-
     #wrap
       = render "shared/header"
 
@@ -32,6 +30,6 @@
 
       = yield :footer
 
-    = unless signed_in?
+    - unless signed_in?
       %div#dialog{title: "Sign in or sign up"}
         = render "shared/sign_in"
