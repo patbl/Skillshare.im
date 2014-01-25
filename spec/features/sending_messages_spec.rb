@@ -23,15 +23,4 @@ feature "sending messages", :slow do
     expect(page).to have_selector(".alert-success")
     expect(current_path).to eq offer_path(offer)
   end
-
-  scenario "not logged in" do
-    ed = create_user name: "Ed"
-    offer = create :offer, user: ed, title: "coffee"
-    create_user name: "Xi"
-
-    visit root_path
-    click_link "coffee"
-    click_link "Sign in to request"
-    expect(current_path).to eq root_path
-  end
 end

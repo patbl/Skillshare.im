@@ -9,19 +9,6 @@ feature "Authentication", :slow do
     expect(signed_out?).to be
   end
 
-  scenario "clicking on a link that requires that a user be signed in" do
-    xu = create :user, name: "Xu Li"
-    visit users_path
-
-    ed = create_user name: "Ed Lu"
-    click_link "Xu Li"
-    expect(current_path).to eq user_path(xu)
-    expect(signed_in_as?(ed)).to be
-
-    click_link "Sign Out"
-    expect(current_path).to eq root_path
-  end
-
   scenario "new user can customize e-mail address and location" do
     sign_in new_user: true
     user = User.last

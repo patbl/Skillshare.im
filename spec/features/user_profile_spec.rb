@@ -24,12 +24,4 @@ feature "profile management", :slow do
 
     expect(current_path).to eq root_path
   end
-
-  scenario "guest viewing someone's profile" do
-    xi = create_user name: "Xi"
-    create_user name: "Ed"
-
-    visit user_path(xi)
-    expect(current_path).to eq user_path(xi)
-  end
 end

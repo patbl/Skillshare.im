@@ -20,7 +20,7 @@ class OfferDecorator < ApplicationDecorator
   end
 
   def sign_in_button
-    link_to facebook_auth_path, class: "btn btn-danger btn-small" do
+    link_to sign_in_path, class: "btn btn-danger btn-small sign-in-btn" do
       fa_tag("envelope", "Sign in to request")
     end
   end

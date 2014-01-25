@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
   def authorize
     unless current_user
       store_url request.fullpath
-      redirect_to facebook_auth_path
+      redirect_to sign_in_path
     end
   end
 

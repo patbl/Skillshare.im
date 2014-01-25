@@ -16,8 +16,8 @@ Skillshare::Application.routes.draw do
   match 'auth/:provider/callback' => 'sessions#create', via: [:get, :post]
   get 'auth/failure'              => 'sessions#failure'
   get 'sessions'                  => 'sessions#create'
-  get 'signin'                    => 'sessions#new',     as: 'signin'
-  get 'signout'                   => 'sessions#destroy', as: 'signout'
+  get 'signin'                    => 'sessions#new',     as: 'sign_in'
+  get 'signout'                   => 'sessions#destroy', as: 'sign_out'
 
   # static pages
   get 'about' => 'pages#about'

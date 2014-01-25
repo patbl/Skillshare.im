@@ -29,7 +29,7 @@ describe MessagesController do
     context "guest" do
       it "requires the user to be signed in" do
         post :create, offer_id: "123"
-        expect(response).to redirect_to facebook_auth_path
+        expect(response).to redirect_to sign_in_path
       end
     end
   end

@@ -67,6 +67,10 @@ you might consider Skillshare.im instead:
 * **Community.** By participating in Skillshare.im, you're helping the
   effective-altruism movement grow.
 
+#### Why isn't my profile picture showing?
+
+If you didn't sign in with Facebook, you'll need use Gravatar to display a profile picture. Go to [Gravatar](http://gravatar.com), create an account (using the same e-mail address you used on Skillshare.im), and upload your picture.
+
 #### I have a suggestion for the site.
 
 Great! [Let us know](mailto:ozzie.gooen@80000hours.org).
