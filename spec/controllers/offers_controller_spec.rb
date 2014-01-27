@@ -1,12 +1,13 @@
 require 'spec_helper'
 
 describe OffersController do
-  shared_examples "public access to Offers" do
+  shared_examples "public access to offers" do
     describe "#index" do
       before { @offer = create(:offer, category_list: "goods") }
 
       describe "when unfiltered" do
         it "gets all the offers when unfiltered" do
+
           get :index
           expect(assigns(:offers)).to eq Offer.order(created_at: :desc)
         end
@@ -16,7 +17,7 @@ describe OffersController do
         it "doesn't show anything if there's nothing" do
           get :index, category: "lodging"
           expect(response).to render_template(:index)
-          expect(assigns(:offers)).to match_array []
+          expect(assigns(:offers)).to be_empty
         end
 
         it "shows offers from the relevant category if they exist" do
@@ -60,7 +61,7 @@ describe OffersController do
 
   describe "user" do
     context "looking at stuff" do
-      it_behaves_like "public access to Offers"
+      it_behaves_like "public access to offers"
     end
 
     context "changing stuff" do
@@ -168,7 +169,7 @@ describe OffersController do
           expect(response).to redirect_to @user
         end
 
-        it "doesn't allow a user to delete another user's Offers" do
+        it "doesn't allow a user to delete another user's offers" do
           nice_user = create(:user)
           bad_user = create(:user)
           proposal = create :offer, user: nice_user
@@ -186,7 +187,7 @@ describe OffersController do
   end
 
   describe "guest" do
-    it_behaves_like "public access to Offers"
+    it_behaves_like "public access to offers"
 
     describe "GET #new" do
       it "requires log in" do

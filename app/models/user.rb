@@ -10,9 +10,9 @@ class User < ActiveRecord::Base
   def self.create_from_auth(auth)
     create! do |user|
       user.email = auth.info.email
-      user.name = "Your name here"
-      user.location = "Your location here"
       set_facebook_info(user, auth) if auth.provider == "facebook"
+      user.name ||= "Your name here"
+      user.location ||= "Your location here"
     end
   end
 
