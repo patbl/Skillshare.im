@@ -1,5 +1,3 @@
-= render "shared/facebook"
-
 #footer
   %nav.navbar.navbar-default{ role: "navigation" }
     .container
@@ -12,4 +10,6 @@
         %li.icon= link_to(fa_tag("rss"), offers_atom_url(format: "atom"))
         %li
           %div.fb-like{"data-action" => "like", "data-href" => "http://skillshare.im/", "data-layout" => "button_count", "data-share" => "false", "data-show-faces" => "true" }
-        %li= render "shared/twitter"
+        %li
+          %a{href: "https://twitter.com/share", class: "twitter-share-button", 'data-size' => "medium"}
+          %script{src: "//platform.twitter.com/widgets.js"}

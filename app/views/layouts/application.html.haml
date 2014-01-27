@@ -6,8 +6,10 @@
     = favicon_link_tag "favicon.ico"
     %link{href: "http://cdn.leafletjs.com/leaflet-0.7/leaflet.css", rel: "stylesheet" }
     %script{src: "http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"}
+    %script{src: "//platform.twitter.com/widgets.js"}
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
+    = javascript_include_tag "facebook_like"
     = auto_discovery_link_tag(:atom, offers_atom_url(format: "atom"))
     %link{href: "http://fonts.googleapis.com/css?family=Droid+Serif:400,700|Oregano", rel: "stylesheet"}
     = csrf_meta_tags
