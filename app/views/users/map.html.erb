@@ -1,8 +1,0 @@
-<div id="map"></div>
-
-<% content_for :footer do %>
-  <%= javascript_tag do %>
-    window.markerData = <%= raw @marker_data.to_json %>;
-  <% end %>
-  <%= javascript_include_tag "map" %>
-<% end %>

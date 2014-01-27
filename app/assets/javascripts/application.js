@@ -19,7 +19,5 @@
 //= require jquery-ui/jquery.ui.button
 //= require jquery-ui/jquery.ui.dialog
 //= require twitter/bootstrap
-//= require leaflet.markercluster
-//= require leaflet.awesome-markers
 //= require_directory ./global
 //= require turbolinks
