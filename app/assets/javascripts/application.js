@@ -13,7 +13,11 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
-//= require jquery.ui.dialog
+//= require jquery-ui/jquery.ui.core
+//= require jquery-ui/jquery.ui.widget
+//= require jquery-ui/jquery.ui.position
+//= require jquery-ui/jquery.ui.button
+//= require jquery-ui/jquery.ui.dialog
 //= require twitter/bootstrap
 //= require leaflet.markercluster
 //= require leaflet.awesome-markers

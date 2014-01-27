@@ -21,4 +21,4 @@
               %li= link_to "Sign Out", sign_out_path, id: "sign_out"
             = link_to raw('<i rel="tooltip" title="Create Offer" class="fa fa-plus"></i>'), new_user_offer_path(current_user), class: "new-offer-btn"
           - else
-            = link_to "Sign in or sign up", sign_in_path, class: "btn btn-primary sign-in sign-in-btn", role: "button"
+            = link_to "Sign in or sign up", sign_in_path, class: "btn btn-primary btn-lg sign-in-btn", role: "button"

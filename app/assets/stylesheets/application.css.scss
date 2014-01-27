@@ -14,7 +14,9 @@
  *= require MarkerCluster.Default
  *= require leaflet.awesome-markers
  *= require persona-buttons
- *= require jquery.ui.dialog
+ *= require jquery-ui/jquery.ui.core
+ *= require jquery-ui/jquery.ui.theme
+ *= require jquery-ui/jquery.ui.dialog
  *= require_directory .
  */
 
