@@ -1,3 +1,22 @@
-.ui-widget-content a {
-  color: white;
+.ui-widget-content {
+  a {
+    color: white;
+  }
+}
+
+.sign-in-option {
+  display: inline-block;
+  vertical-align: top;
+  width: 275px;
+}
+
+.persona-fb span {
+  &:after {
+	  background: url('fb-small.png') center no-repeat;
+	  background-position: -5px
+  }
+}
+
+.sign-in-description a {
+  color: darkred;
 }

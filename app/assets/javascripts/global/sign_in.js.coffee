@@ -1,5 +1,5 @@
 jQuery ->
-  $(".sign-in-btn").on('click', (e)->
+  $(".sign-in-btn").on 'click', (e)->
     e.preventDefault()
 
     # prevent focus on the first item in the dialog
@@ -7,10 +7,6 @@ jQuery ->
       undefined
 
     target = $(".sign-in-btn")
-    $("#dialog").dialog(
-      position:
-        my: 'center top'
-        at: 'center bottom'
-        of: target
-    )
-  )
+    $("#dialog").dialog
+      modal: true
+      width: 600

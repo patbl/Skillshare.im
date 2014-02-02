@@ -1,29 +1,32 @@
-= link_to "Sign in with Facebook", facebook_auth_path, class: "btn btn-primary facebook", role: "button"
+%div.sign-in-option
+  = link_to facebook_auth_path, class: "persona-button persona-fb" do
+    %span Sign in with Facebook
+  %div We won't post anything.
 
-%br
-%br
+%div.sign-in-option
+  %form#browser_id_form{ action: "/auth/browser_id/callback" }
+    %input{ type: "hidden", name: "assertion" }
+    %a{ href: "#", class: "persona-button dark" }
+      %span Sign in with your e-mail
+  %div.sign-in-description
+    <a href="https://login.persona.org/about" target="_blank">Mozilla Persona</a> is a simple sign-in system from the non-profit behind Firefox.
 
-%form#browser_id_form{ action: "/auth/browser_id/callback" }
-  %input{ type: "hidden", name: "assertion" }
-  %a{ href: "#", class: "persona-button dark" }
-    %span Sign in with your e-mail
+  %script{src: "https://login.persona.org/include.js", type: "text/javascript"}
+  :javascript
+    function loginViaEmail() {
+      navigator.id.get(function(assertion) {
+        if (assertion) {
+          $('input[name=assertion]').val(assertion);
+          $('#browser_id_form').submit();
+        } else {
+          window.location = "\#{failure_path}"
+        }
+      });
+    }
 
-%script{src: "https://login.persona.org/include.js", type: "text/javascript"}
-:javascript
-  function loginViaEmail() {
-    navigator.id.get(function(assertion) {
-      if (assertion) {
-        $('input[name=assertion]').val(assertion);
-        $('#browser_id_form').submit();
-      } else {
-        window.location = "\#{failure_path}"
-      }
+    $(function() {
+      $('#browser_id_form a').click(function() {
+        loginViaEmail();
+        return false;
+      });
     });
-  }
-
-  $(function() {
-    $('#browser_id_form a').click(function() {
-      loginViaEmail();
-      return false;
-    });
-  });
