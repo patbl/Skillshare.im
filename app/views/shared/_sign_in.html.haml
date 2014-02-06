@@ -12,21 +12,4 @@
     <a href="https://login.persona.org/about" target="_blank">Mozilla Persona</a> is a simple sign-in system from the non-profit behind Firefox.
 
   %script{src: "https://login.persona.org/include.js", type: "text/javascript"}
-  :javascript
-    function loginViaEmail() {
-      navigator.id.get(function(assertion) {
-        if (assertion) {
-          $('input[name=assertion]').val(assertion);
-          $('#browser_id_form').submit();
-        } else {
-          window.location = "\#{failure_path}"
-        }
-      });
-    }
-
-    $(function() {
-      $('#browser_id_form a').click(function() {
-        loginViaEmail();
-        return false;
-      });
-    });
+  = render "shared/persona_js"
