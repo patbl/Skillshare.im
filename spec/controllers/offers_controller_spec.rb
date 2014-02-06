@@ -113,7 +113,7 @@ describe OffersController do
         context "with invalid attributes" do
           it "doesn't save the new offer in the database" do
             expect { post :create, user_id: @user, offer: attributes_for(:invalid_offer) }
-              .to_not change(Offer, :count)
+              .not_to change(Offer, :count)
             expect(assigns(:user)).to eq @user
             expect(response).to render_template(:new)
           end
@@ -140,7 +140,7 @@ describe OffersController do
             patch :update, id: @offer, user_id: @offer.user, offer:
               attributes_for(:offer, title: nil)
             @offer.reload
-            expect(@offer).to_not be_nil
+            expect(@offer).not_to be_nil
           end
 
           it "re-renders the edit template" do

@@ -20,7 +20,7 @@ describe UsersController do
       it "assigns the current user to @user" do
         set_user_session(user)
         get :show, id: user
-        expect(assigns(:user)).to_not be_nil
+        expect(assigns(:user)).not_to be_nil
       end
     end
 
@@ -84,7 +84,7 @@ describe UsersController do
         expect { delete :destroy, id: good_user }.to change(User, :count).by(-1)
         expect(response).to redirect_to root_path
         expect(User.where name: "Charity").to exist
-        expect(User.where name: "Vice").to_not exist
+        expect(User.where name: "Vice").not_to exist
       end
 
       it "deletes a user's offers when the user's account is deleted" do

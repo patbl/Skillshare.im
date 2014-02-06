@@ -82,7 +82,7 @@ describe SessionsController do
           expect(User.last.identities).to include identity
           expect(identity.user).to eq User.last
           expect(identity.user).to be_a(User)
-          expect(User.last.identities).to_not be_empty
+          expect(User.last.identities).not_to be_empty
         end
 
         it "creates a new user" do

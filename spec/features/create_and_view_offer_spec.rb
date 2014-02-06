@@ -32,7 +32,7 @@ feature "offer management", :slow do
     click_link "All"
     expect(page).to have_selector(".proposal", count: 3)
     click_link "goods"
-    expect(page).to_not have_selector(".proposal")
+    expect(page).not_to have_selector(".proposal")
   end
 
   scenario "edits a offer" do
