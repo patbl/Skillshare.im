@@ -1,4 +1,4 @@
-Skillshare.im is a place for a place for
+Skillshare.im is a place for
 [effective altruists](http://80000hours.org/what-is-an-effective-altruist)
 to share their skills, stuff, and even couches with one another.
 
