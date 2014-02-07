@@ -1,11 +1,13 @@
 require 'spec_helper'
 
 feature "profile management", :slow do
-  scenario "saving changes to a profile" do
-    user = sign_in
-    visit user_path(user)
-
+  before do
+    @user = sign_in
+    visit user_path(@user)
     find("#edit-profile").click
+  end
+
+  scenario "saving changes to a profile" do
     fill_in "Location", with: ""
     click_button "Save"
 
@@ -14,14 +16,21 @@ feature "profile management", :slow do
 
     expect(page).to have_selector(".alert-success")
     expect(page).to have_content("Nowhere, Wyoming")
+
+    visit users_path
+    user_count_equals 1
   end
 
   scenario "deleting profile" do
-    user = sign_in
-
-    visit edit_user_path(user)
     click_link "Delete Account"
 
     expect(current_path).to eq root_path
+
+    visit users_path
+    user_count_equals 0
+  end
+
+  def user_count_equals(n)
+    expect(page).to have_selector(".user-card", count: n)
   end
 end

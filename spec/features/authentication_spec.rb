@@ -3,10 +3,10 @@ require 'spec_helper'
 feature "Authentication", :slow do
   scenario "signing in" do
     sign_in
-    expect(signed_in?).to be
+    expect(signed_in?).to be true
 
     click_link "Sign Out"
-    expect(signed_out?).to be
+    expect(signed_out?).to be true
   end
 
   scenario "new user can customize e-mail address and location" do

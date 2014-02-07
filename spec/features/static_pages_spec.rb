@@ -1,9 +1,7 @@
 require 'spec_helper'
 
 feature "visiting static pages" do
-  before do
-    visit root_path
-  end
+  before { visit root_path }
 
   scenario "visiting the 'about' page" do
     click_link "About"
