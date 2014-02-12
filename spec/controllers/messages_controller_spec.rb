@@ -5,7 +5,7 @@ describe MessagesController do
     context "user" do
       let(:sender) { create(:user, email: "abc@def.com") }
       let(:recipient) { build(:user, email: "jan@hotmail.com") }
-      let(:offer) { build(:offer, user: recipient) }
+      let(:offer) { create(:offer, user: recipient) }
 
       before { set_user_session(sender) }
 
