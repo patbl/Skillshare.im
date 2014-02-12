@@ -21,13 +21,19 @@ feature "profile management", :slow do
     user_count_equals 1
   end
 
-  scenario "deleting profile" do
+  scenario "user deleting own profile" do
     click_link "Delete Account"
 
     expect(current_path).to eq root_path
 
     visit users_path
     user_count_equals 0
+  end
+
+  scenario "admin deleting user's profile" do
+    @user.destroy!
+
+    visit root_path
   end
 
   def user_count_equals(n)

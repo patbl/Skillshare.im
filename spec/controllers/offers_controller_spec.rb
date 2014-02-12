@@ -66,11 +66,9 @@ describe OffersController do
 
     context "changing stuff" do
       before do |example|
-        unless example.metadata[:skip_before]
-          @offer = create(:offer, category_list: "lodging", title: "qqqqqq")
-          @user = @offer.user
-          set_user_session(@user)
-        end
+        @offer = create(:offer, category_list: "lodging", title: "qqqqqq")
+        @user = @offer.user
+        set_user_session(@user)
       end
 
 
@@ -81,17 +79,11 @@ describe OffersController do
         end
       end
 
-      describe "GET #edit", skip_before: true do
+      describe "GET #edit" do
         it "assigns the requested offer to @offer" do
-          session[:user_id] = "123"
-          user = build_stubbed(:user)
-          expect(User).to receive(:find).with("123").and_return(user)
+          get :edit, id: @offer
 
-          expect(user.offers).to receive(:find).with("123").and_return("an offer")
-
-          get :edit, id: "123"
-
-          expect(assigns(:offer)).to eq "an offer"
+          expect(assigns(:offer)).to eq @offer
         end
       end
 
@@ -153,18 +145,10 @@ describe OffersController do
 
       describe "DELETE #destroy" do
         it "deletes the offer from the database" do
-          session[:user_id] = "1"
-          user = build_stubbed(:user)
-          expect(User).to receive(:find).with("1").and_return(user)
-          offer = build_stubbed(:offer)
-          expect(user.offers).to receive(:find).with("456").and_return(offer)
-          expect(offer).to receive(:destroy)
-
-          delete :destroy, id: "456"
+          expect { delete :destroy, id: @offer }.to change(Offer, :count).by(-1)
         end
 
         it "redirects to user profile" do
-          session[:user_id] = @user.id
           delete :destroy, id: @offer
           expect(response).to redirect_to @user
         end
@@ -176,11 +160,6 @@ describe OffersController do
           session[:user_id] = bad_user
           expect { delete :destroy, id: proposal, user_id: bad_user }
             .to raise_error(ActiveRecord::RecordNotFound)
-        end
-
-        it "deletes the user's offers when the user's account is deleted" do
-          expect { User.find(@user.id).destroy }
-            .to change(Offer, :count).by(-1)
         end
       end
     end
