@@ -1,4 +1,4 @@
-module OffersHelper
+module ProposalsHelper
   def category_icon(category)
     case category
     when 'lodging'  then 'home'

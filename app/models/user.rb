@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :proposals, dependent: :destroy
   has_many :offers, dependent: :destroy
+  has_many :wanteds, dependent: :destroy
   has_many :identities, dependent: :destroy
 
   include Mappable

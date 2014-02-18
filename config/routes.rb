@@ -3,12 +3,18 @@ Skillshare::Application.routes.draw do
     resources :offers, shallow: true, except: :index do
       resources :messages, only: :create
     end
+    resources :wanteds, shallow: true, except: :index, controller: "proposals", type: "Wanted" do
+      resources :messages, only: :create
+    end
   end
 
   root 'offers#index'
   root 'offers#index', as: 'offers'
   get 'map'    => 'users#map'
   get 'offers' => 'offers#index', as: 'offers_atom'
+
+  # get 'offers' => 'proposals#index', type: "Offer"
+  get 'wanteds' => 'proposals#index', type: "Wanted"
 
   # authentication
   get 'auth/facebook',   as: 'facebook_auth'

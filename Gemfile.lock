@@ -181,6 +181,8 @@ GEM
       addressable (~> 2.3)
     letter_opener (1.2.0)
       launchy (~> 2.2)
+    libnotify (0.8.2)
+      ffi (>= 1.0.11)
     libv8 (3.16.14.3)
     listen (2.4.0)
       celluloid (>= 0.15.2)
@@ -406,6 +408,7 @@ DEPENDENCIES
   kaminari
   launchy
   letter_opener
+  libnotify
   meta_request
   newrelic_rpm
   omniauth-browserid

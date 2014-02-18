@@ -1,10 +1,4 @@
-class OffersController < ApplicationController
-  include OffersHelper
-
-  skip_before_action :authorize, only: %i[index show]
-  before_action :set_categories, only: %i[create new edit update]
-  before_action :set_offer, only: %i[edit update destroy]
-
+class OffersController < ProposalsController
   def index
     respond_to do |format|
       format.html do
@@ -58,16 +52,12 @@ class OffersController < ApplicationController
 
   private
 
-  def set_categories
-    @categories = ApplicationHelper::CATEGORIES
-  end
-
-  def set_offer
-    @offer = current_user.offers.find(params[:id])
-  end
-
   def offer_params
     attrs = %i[title description location category_list]
     params.require(:offer).permit(attrs)
+  end
+
+  def set_offer
+    @offer = current_user.proposals.find(params[:id])
   end
 end
