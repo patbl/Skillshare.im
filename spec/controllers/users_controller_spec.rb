@@ -17,10 +17,19 @@ describe UsersController do
     let(:users) { create_list(:user, 2) }
 
     describe "GET #show" do
-      it "assigns the current user to @user" do
+      before do
         set_user_session(user)
+      end
+
+      it "assigns the current user to @user" do
         get :show, id: user
         expect(assigns(:user)).not_to be_nil
+      end
+
+      it "assigns the user's proposals to @proposals" do
+        offer = create :offer, user: user
+        get :show, id: user
+        expect(assigns(:proposals)).to eq [offer]
       end
     end
 

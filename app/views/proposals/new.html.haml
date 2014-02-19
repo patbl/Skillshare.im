@@ -1,7 +1,7 @@
-%h1 New Offer
+%h1 New Proposal
 .row
   .col-md-4
-    = simple_form_for([@user, @offer]) do |f|
+    = simple_form_for([@user, @proposal]) do |f|
       = f.error_notification
       = f.input :title
       = f.input :category_list, collection: @categories, include_blank: false, label: "Category"

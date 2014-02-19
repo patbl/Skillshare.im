@@ -61,6 +61,7 @@ describe ProposalsController do
         it "assigns a new wanted to @wanted" do
           get :new, user_id: @user, type: "Wanted"
           expect(assigns(:proposal)).to be_a_new(Wanted)
+          expect(assigns(:user)).to eq @user
         end
       end
 
@@ -70,19 +71,24 @@ describe ProposalsController do
 
           expect(assigns(:proposal)).to eq @wanted
         end
-      end
 
+        it "assings the user to @user" do
+          get :edit, id: @wanted, type: "Wanted"
+
+          expect(assigns(:user)).to eq @user
+        end
+      end
 
       describe "POST #create" do
         context "with valid attributes" do
           it "saves the new wanted in the database" do
-            expect { post :create, proposal: attributes_for(:wanted), user_id: @user, type: "Wanted" }
+            expect { post :create, wanted: attributes_for(:wanted), user_id: @user, type: "Wanted" }
               .to change(Wanted, :count).by(1)
             expect(response).to redirect_to @user
           end
 
           it "saves the new offer in the database" do
-            expect { post :create, proposal: attributes_for(:wanted), user_id: @user, type: "Wanted" }
+            expect { post :create, wanted: attributes_for(:wanted), user_id: @user, type: "Wanted" }
               .to change(Wanted, :count).by(1)
             expect(response).to redirect_to @user
           end
@@ -90,7 +96,7 @@ describe ProposalsController do
 
         context "with invalid attributes" do
           it "doesn't save the new offer in the database" do
-            expect { post :create, user_id: @user, proposal: attributes_for(:invalid_wanted), type: "Wanted" }
+            expect { post :create, user_id: @user, wanted: attributes_for(:invalid_wanted), type: "Wanted" }
               .not_to change(Wanted, :count)
             expect(assigns(:user)).to eq @user
             expect(response).to render_template(:new)
@@ -102,12 +108,12 @@ describe ProposalsController do
       describe "PATCH #update" do
         context "with valid attributes" do
           it "locates the requested contact" do
-            patch :update, id: @wanted, proposal: attributes_for(:proposal), type: "Wanted"
+            patch :update, id: @wanted, wanted: attributes_for(:proposal), type: "Wanted"
             expect(assigns(:proposal)).to eq @wanted
           end
 
           it "updates the offer in the database" do
-            patch :update, id: @wanted, proposal: attributes_for(:wanted, location: "Tampa"), type: "Wanted"
+            patch :update, id: @wanted, wanted: attributes_for(:wanted, location: "Tampa"), type: "Wanted"
             @wanted.reload
             expect(@wanted.location).to eq "Tampa"
           end
@@ -115,14 +121,14 @@ describe ProposalsController do
 
         context "with invalid attributes" do
           it "doesn't update the offer in the database" do
-            patch :update, id: @wanted, user_id: @wanted.user, proposal:
+            patch :update, id: @wanted, user_id: @wanted.user, wanted:
               attributes_for(:wanted, title: nil), type: "Wanted"
             @wanted.reload
             expect(@wanted).not_to be_nil
           end
 
           it "re-renders the edit template" do
-            patch :update, id: @wanted, user_id: @wanted.user, proposal:
+            patch :update, id: @wanted, user_id: @wanted.user, wanted:
               attributes_for(:wanted, title: nil), type: "Wanted"
             expect(response).to render_template :edit
           end

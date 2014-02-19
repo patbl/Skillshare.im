@@ -1,12 +1,12 @@
 atom_feed do |feed|
-  feed.title "Skillshare.im Offers"
+  feed.title "Skillshare.im Proposals"
   feed.updated @updated_at
-  @offers.each do |offer|
-    feed.entry offer do |entry|
-      entry.title offer.title
-      entry.content markdown(offer.description), type: :html
+  @proposals.each do |proposal|
+    feed.entry proposal do |entry|
+      entry.title proposal.title
+      entry.content markdown(proposal.description), type: :html
       entry.author do |author|
-        author.name offer.user.name
+        author.name proposal.user.name
       end
     end
   end

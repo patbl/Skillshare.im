@@ -1,0 +1,32 @@
+%tr.proposal
+  %td
+    .user
+      = link_to image_tag(avatar_url(proposal.user, "square")), proposal.user
+  %td
+    .row
+      .col-sm-9
+        %h3
+          #FIXME
+          - if proposal.instance_of? Offer
+            = link_to(proposal.title, offer_path(proposal))
+          - else
+            = link_to(proposal.title, wanted_path(proposal))
+      .col-sm-3
+        .proposal-btn
+          = proposal.button
+
+    = markdown(proposal.description)
+    .request{ class: "hidden" }
+      = render partial: "messages/form", locals: {proposal: proposal}
+  %td
+    .info
+      - unless proposal.location == "Anywhere"
+        .location
+          = fa_tag("map-marker")
+          = proposal.location
+  %td
+    .info
+      .category
+        - category = proposal.category_list.first
+        = raw(category_tag(category))
+        = link_to category, proposals_path(category: category)

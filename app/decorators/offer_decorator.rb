@@ -27,7 +27,7 @@ class OfferDecorator < ApplicationDecorator
 
   def delete_button
     link_to offer, method: :delete, class: "btn btn-danger btn-small",
-    data: { confirm: "Are you sure you want to delete this offer?" } do
+    data: { confirm: "Are you sure you want to delete this?" } do
       fa_tag("times")
     end
   end

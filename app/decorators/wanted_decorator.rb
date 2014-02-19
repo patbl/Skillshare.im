@@ -26,15 +26,15 @@ class WantedDecorator < ApplicationDecorator
   end
 
   def delete_button
-    link_to offer, method: :delete, class: "btn btn-danger btn-small",
-    data: { confirm: "Are you sure you want to delete this offer?" } do
+    link_to proposal, method: :delete, class: "btn btn-danger btn-small",
+    data: { confirm: "Are you sure you want to delete this?" } do
       fa_tag("times")
     end
   end
 
   def edit_button
-    link_to edit_offer_path(offer), class: "btn btn-primary btn-small" do
-      fa_tag("pencil")
-    end
+    # link_to edit_proposal_path(proposal), class: "btn btn-primary btn-small" do
+      # fa_tag("pencil")
+    # end
   end
 end

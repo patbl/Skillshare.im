@@ -1,19 +1,19 @@
 Skillshare::Application.routes.draw do
   resources :users, except: [:new, :create] do
-    resources :offers, shallow: true, except: :index do
+    resources :wanteds, shallow: true, except: :index, controller: "proposals", type: "Wanted" do
       resources :messages, only: :create
     end
-    resources :wanteds, shallow: true, except: :index, controller: "proposals", type: "Wanted" do
+    resources :offers, shallow: true, except: :index, controller: "proposals", type: "Offer" do
       resources :messages, only: :create
     end
   end
 
-  root 'offers#index'
-  root 'offers#index', as: 'offers'
+  root 'proposals#index', type: "Proposal"
+  root 'proposals#index', type: "Proposal", as: 'proposals'
   get 'map'    => 'users#map'
-  get 'offers' => 'offers#index', as: 'offers_atom'
+  get 'offers' => 'proposals#index', type: "Proposal", as: 'offers_atom'
 
-  # get 'offers' => 'proposals#index', type: "Offer"
+  get 'offers' => 'proposals#index', type: "Offer"
   get 'wanteds' => 'proposals#index', type: "Wanted"
 
   # authentication

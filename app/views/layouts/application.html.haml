@@ -1,4 +1,3 @@
-!!!
 %html
   %head
     %meta{ charset: "utf-8" }
@@ -14,7 +13,7 @@
     %script{src: "//platform.twitter.com/widgets.js"}
     = javascript_include_tag "facebook_like"
 
-    = auto_discovery_link_tag(:atom, offers_atom_url(format: "atom"))
+    -# = auto_discovery_link_tag(:atom, proposals_atom_url(format: "atom"))
     = csrf_meta_tags
 
   %body

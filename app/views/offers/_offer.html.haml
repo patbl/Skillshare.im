@@ -6,14 +6,14 @@
     .row
       .col-sm-9
         %h3
-          = link_to(offer.title, offer)
+          = link_to(offer.title, wanted_path(offer))
       .col-sm-3
         .proposal-btn
           = offer.button
 
     = markdown(offer.description)
     .request{ class: "hidden" }
-      = render partial: "messages/form", locals: {offer: offer}
+      = render partial: "messages/form", locals: {proposal: offer}
   %td
     .info
       - unless offer.location == "Anywhere"
@@ -25,4 +25,4 @@
       .category
         - category = offer.category_list.first
         = raw(category_tag(category))
-        = link_to category, offers_path(category: category)
+        = link_to category, proposals_path(category: category)

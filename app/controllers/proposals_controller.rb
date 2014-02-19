@@ -8,8 +8,7 @@ class ProposalsController < ApplicationController
   def index
     respond_to do |format|
       format.html do
-        @proposals = Proposal.where(type: params[:type]).
-          filter_by_tag(params[:category]).page(params[:page]).per(30).decorate
+        @proposals = ProposalDecorator.decorate_collection(Proposal.recent.filter_by_tag(params[:category]).page(params[:page]).per(30))
       end
 
       format.atom do
@@ -17,23 +16,27 @@ class ProposalsController < ApplicationController
         @updated_at = @proposals.maximum(:updated_at)
       end
     end
+  end
 
+  def show
+    # untested
+    @proposal = Proposal.find(params[:id]).decorate
+    @user = current_user
   end
 
   def new
-    type = params[:type].underscore.pluralize
-    @proposal = current_user.public_send(type).new
-    # @user = current_user
+    @proposal = current_user.public_send(type_of_proposal).new
+    @user = current_user
   end
 
   def edit
+    @user = @proposal.user
   end
 
   def create
-    type = params[:type].underscore.pluralize
-    @proposal = current_user.public_send(type).build(proposal_params)
+    @proposal = current_user.public_send(type_of_proposal).build(proposal_params)
     if @proposal.save
-      redirect_back_or user_url(current_user), success: "Offer created."
+      redirect_back_or user_url(current_user), success: "Created."
     else
       @user = current_user
       render :new
@@ -42,7 +45,7 @@ class ProposalsController < ApplicationController
 
   def update
     if @proposal.update(proposal_params)
-      redirect_back_or @proposal, success: "Offer updated."
+      redirect_back_or @proposal, success: "Updated."
     else
       @user = current_user
       render :edit
@@ -51,7 +54,7 @@ class ProposalsController < ApplicationController
 
   def destroy
     @proposal.destroy
-    redirect_back_or user_url(current_user), success: "Offer deleted."
+    redirect_back_or user_url(current_user), success: "Deleted."
   end
 
   private
@@ -66,6 +69,10 @@ class ProposalsController < ApplicationController
 
   def proposal_params
     attrs = %i[title description location category_list]
-    params.require(:proposal).permit(attrs)
+    params.require(params[:type].downcase).permit(attrs)
+  end
+
+  def type_of_proposal
+    params[:type].underscore.pluralize
   end
 end

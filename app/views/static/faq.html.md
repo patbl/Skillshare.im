@@ -19,11 +19,11 @@ The site is aimed at
 [effective altruists](http://home.centreforeffectivealtruism.org/)—people
 who want to help others in the most effective ways possible.
 
-#### How do I add formatting my offers?
+#### How do I add formatting my offers and wanteds?
 
 You can use
 [Markdown](http://support.mashery.com/docs/customizing_your_portal/Markdown_Cheat_Sheet)
-to add links, bulleted lists, and other formatting to your offers and profile.
+to add links, bulleted lists, and other formatting to your offers, wanteds, and profile.
 
 #### How can I help?
 

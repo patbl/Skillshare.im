@@ -37,7 +37,7 @@ feature "offer management", :slow do
     click_button "Save"
 
     expect(page).to have_content("Feminist Perspectives in Music Therapy")
-    expect(page).to have_content("Offer updated.")
+    expect(page).to have_content("Updated.")
   end
 
   scenario "deletes an offer" do
@@ -48,6 +48,10 @@ feature "offer management", :slow do
     click_delete_button
 
     user_sees_n_offers 0
+  end
+
+  scenario "create a wanted", skip: true do
+    visit new_user_wanted_path(@user)
   end
 
   def user_sees_n_offers(n)

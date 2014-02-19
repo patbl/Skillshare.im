@@ -16,7 +16,7 @@ feature "sending messages", :slow do
   end
 
   scenario "from offer show page" do
-    visit offers_path(@offer)
+    visit proposals_path(@offer)
     click_button "Send"
 
     expect(page).to have_selector(".alert-success")
