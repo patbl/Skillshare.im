@@ -9,25 +9,25 @@ class ProposalDecorator < ApplicationDecorator
     elsif current_user == user
       delete_button + edit_button
     else
-      request_button
+      contact_button
     end
   end
 
-  def request_button
+  def contact_button
     content_tag :div, class: "btn btn-danger btn-small request-btn" do
-      fa_tag("envelope", "Request")
+      fa_tag("envelope", verb.titleize)
     end
   end
 
   def sign_in_button
     link_to sign_in_path, class: "btn btn-danger btn-small sign-in-btn" do
-      fa_tag("envelope", "Sign in to request")
+      fa_tag("envelope", "Sign in to #{verb}")
     end
   end
 
   def delete_button
     link_to proposal, method: :delete, class: "btn btn-danger btn-small",
-                      data: { confirm: "Are you sure you want to delete this?" } do
+                      data: { confirm: "Are you sure you want to delete this #{noun}?" } do
       fa_tag("times")
     end
   end

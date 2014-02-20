@@ -1,40 +1,13 @@
-class WantedDecorator < ApplicationDecorator
+class WantedDecorator < ProposalDecorator
   include Draper::LazyHelpers
 
   delegate_all
 
-  def button
-    if guest?
-      sign_in_button
-    elsif current_user == user
-      delete_button + edit_button
-    else
-      request_button
-    end
+  def noun
+    "wanted"
   end
 
-  def request_button
-    content_tag :div, class: "btn btn-danger btn-small request-btn" do
-      fa_tag("envelope", "Request")
-    end
-  end
-
-  def sign_in_button
-    link_to sign_in_path, class: "btn btn-danger btn-small sign-in-btn" do
-      fa_tag("envelope", "Sign in to request")
-    end
-  end
-
-  def delete_button
-    link_to proposal, method: :delete, class: "btn btn-danger btn-small",
-    data: { confirm: "Are you sure you want to delete this?" } do
-      fa_tag("times")
-    end
-  end
-
-  def edit_button
-    # link_to edit_proposal_path(proposal), class: "btn btn-primary btn-small" do
-      # fa_tag("pencil")
-    # end
+  def verb
+    "offer"
   end
 end

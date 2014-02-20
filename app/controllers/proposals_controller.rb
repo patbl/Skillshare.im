@@ -8,7 +8,7 @@ class ProposalsController < ApplicationController
   def index
     respond_to do |format|
       format.html do
-        @proposals = ProposalDecorator.decorate_collection(Proposal.recent.filter_by_tag(params[:category]).page(params[:page]).per(30))
+        @proposals = Proposal.recent.filter_by_tag(params[:category]).page(params[:page]).per(30).decorate
       end
 
       format.atom do
