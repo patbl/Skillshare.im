@@ -1,3 +1,5 @@
+User.delete_all
+
 dalai_lama = User.create!(
   facebook_url: "http://www.facebook.com/DalaiLama",
   name: "His Holiness the Dalai Lama",
@@ -43,6 +45,16 @@ Shakira has won many awards including five MTV Video Music Awards, two Grammy Aw
 end
 
 shakira = User.last
+
+100.times do |n|
+  Wanted.create!(
+    title: "#{n} new songs",
+    description: "&c., &c.",
+    location: "Anywhere",
+    category_list: "services",
+    user: shakira,
+  )
+end
 
 Offer.create!(
   title: "Hips Don't Lie",

@@ -39,7 +39,7 @@ describe ProposalsController do
       end
 
       it "renders the Atom feed" do
-        get :index, format: "atom", type: "Wanted"
+        get :index, format: "atom", type: "Proposal"
         expect(response).to render_template(:index)
         expect(response.content_type).to eq("application/atom+xml")
         expect(assigns(:updated_at)).to be_same_second_as @wanted.updated_at

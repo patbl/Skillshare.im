@@ -11,7 +11,7 @@ Skillshare::Application.routes.draw do
   root 'proposals#index', type: "Proposal"
   root 'proposals#index', type: "Proposal", as: 'proposals'
   get 'map'    => 'users#map'
-  get 'offers' => 'proposals#index', type: "Proposal", as: 'offers_atom'
+  get 'proposals' => 'proposals#index', type: "Proposal", as: 'proposals_atom'
 
   get 'offers' => 'proposals#index', type: "Offer"
   get 'wanteds' => 'proposals#index', type: "Wanted"
