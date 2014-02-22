@@ -1,7 +1,7 @@
-#### What can I share?
+#### What can I offer?
 
 There are two questions you should ask yourself when deciding whether
-to share something:
+to offer something:
 
 * Will others find it valuable?
 * Is it legal?
@@ -30,14 +30,16 @@ to add links, bulleted lists, and other formatting to your offers, wanteds, and 
 Thanks for asking! There are several ways:
 
 * **Post useful offers.** The site works only as long as people are
-  willing to contribute.
-* **Take people up on their offers.** Don't be shy about contacting
-  people.
+willing to contribute.
+* **See if you can fulfill any wanteds.** You can be notified of new
+  wanteds by [Twitter]("https://twitter.com/Skillshare_im") or
+  [RSS](http://localhost:3000/proposals.atom).
+* **Take people up on their offers.** Don't be shy about asking for
+  stuff on the site—that's why people put it there!
 * **Improve the site.** If you know Ruby on Rails or front-end web
   development and want to make the site better, grab the code
-  [here](https://github.com/patbl/ea-skillshare) and
-  [send us an e-mail](mailto:doesnotexist@skillshare.im).
-* **Tell your friends!** But wait till the site is ready.
+  [here](https://github.com/patbl/ea-skillshare) or
+  [send us an e-mail](mailto:pbrinichlanglois@gmail.com).
 
 #### What if I don't have anything to offer?
 
@@ -69,11 +71,11 @@ you might consider Skillshare.im instead:
 
 #### Why isn't my profile picture showing?
 
-If you didn't sign in with Facebook, you'll need use Gravatar to display a profile picture. Go to [Gravatar](http://gravatar.com), create an account (using the same e-mail address you used on Skillshare.im), and upload your picture.
+If you didn't sign in with Facebook, you'll need use Gravatar to display a profile picture. Go to [Gravatar](http://gravatar.com), create an account (using the same e-mail address you used on Skillshare.im), and upload your picture there.
 
 #### I have a suggestion for the site.
 
-Great! [Let us know](mailto:ozzie.gooen@80000hours.org).
+Great! [Let us know](mailto:pbrinichlanglois@gmail.com).
 
 #### How can I sound more like Shakira when I sing?
 
