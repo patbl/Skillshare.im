@@ -26,7 +26,7 @@ class ProposalsController < ApplicationController
   end
 
   def new
-    @proposal = current_user.public_send(type_of_proposal).new
+    @proposal = current_user.public_send(type_of_proposal).new.decorate
     @user = current_user
   end
 
@@ -35,7 +35,7 @@ class ProposalsController < ApplicationController
   end
 
   def create
-    @proposal = current_user.public_send(type_of_proposal).build(proposal_params)
+    @proposal = current_user.public_send(type_of_proposal).build(proposal_params).decorate
     if @proposal.save
       redirect_back_or user_url(current_user), success: "Created."
     else
