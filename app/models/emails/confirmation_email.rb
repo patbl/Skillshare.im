@@ -1,9 +1,9 @@
-class RequestConfirmationEmail < RequestEmail
+class ConfirmationEmail < ProposalEmail
   def initialize(*)
     super
-    @sender = @offer.user
+    @sender = @proposal.user
     @recipient = @user
-    @subject = %[Confirmation of request for "#{@offer.title}" on Skillshare.im]
+    @subject = %[Your message about "#{@proposal.title}" was sent]
   end
 
   def mail_params

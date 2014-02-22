@@ -1,10 +1,10 @@
 source 'http://rubygems.org'
 
 ruby '2.1.0'
-gem 'rails', '4.0.2'
+gem 'rails', '4.0.3'
 
 group :test, :development do
-  gem 'rspec-rails', '~> 3.0.0.beta1'
+  gem 'rspec-rails', '3.0.0.beta1'
   gem 'factory_girl_rails'
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
   gem 'pry-byebug'

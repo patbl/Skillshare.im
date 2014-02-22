@@ -26,7 +26,7 @@ describe ProposalsController do
         end
       end
 
-      it "paginates offers", skip: true do
+      xit "paginates offers" do
         filtered_offers = double
         expect(Proposal).to receive(:filter_by_tag).and_return(filtered_offers)
         paginated_offers = double

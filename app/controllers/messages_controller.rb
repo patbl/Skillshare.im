@@ -3,11 +3,17 @@ class MessagesController < ApplicationController
 
   def create
     @body = params[:message][:body]
-    @offer = Offer.find(params[:offer_id])
-    notification_email = RequestNotificationEmail.new(current_user, @body, @offer)
-    confirmation_email = RequestConfirmationEmail.new(current_user, @body, @offer)
-    UserMailer.request_email(notification_email).deliver
-    UserMailer.request_email(confirmation_email).deliver
-    redirect_back_or @offer, success: "Message sent."
+    @proposal = Proposal.find(proposal_id).decorate
+    notification_email = NotificationEmail.new(current_user, @body, @proposal)
+    confirmation_email = ConfirmationEmail.new(current_user, @body, @proposal)
+    UserMailer.proposal_email(notification_email).deliver
+    UserMailer.proposal_email(confirmation_email).deliver
+    redirect_back_or @proposal, success: "Message sent."
+  end
+
+  protected
+
+  def proposal_id
+    params[:offer_id] || params[:wanted_id]
   end
 end

@@ -63,7 +63,6 @@ RSpec.configure do |config|
   config.run_all_when_everything_filtered = true
   config.filter_run :focus
   config.filter_run_excluding :slow unless ENV["SLOW_SPECS"]
-  config.filter_run_excluding :skip
 
   config.before(:each) { GC.disable }
   config.after(:each) { GC.enable }

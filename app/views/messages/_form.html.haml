@@ -1,9 +1,9 @@
 .request-bar
   Message
 .form
-  = simple_form_for :message, url: offer_messages_url(proposal) do |f|
+  = simple_form_for :message, url: proposal.create_message_url do |f|
     .row
       .col-md-9
-        = f.input :body, as: :text, class: "form-control", label: false, input_html: {value: "I would like to accept this offer!"}
+        = f.input :body, as: :text, class: "form-control", label: false, input_html: { value: proposal.default_message }
       .col-md-3
         = f.button :submit, "Send"

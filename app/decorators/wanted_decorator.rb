@@ -10,4 +10,16 @@ class WantedDecorator < ProposalDecorator
   def verb
     "offer"
   end
+
+  def create_message_url
+    offer_messages_url(self)
+  end
+
+  def show_url
+    wanted_url(self)
+  end
+
+  def default_message
+    "I would like to fulfill your request!"
+  end
 end
