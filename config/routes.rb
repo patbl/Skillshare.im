@@ -26,5 +26,5 @@ Skillshare::Application.routes.draw do
   get 'signout'                   => 'sessions#destroy', as: 'sign_out'
 
   # static pages
-  get ':action' => 'static#:action'
+  get ':action' => 'pages#:action'
 end
