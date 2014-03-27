@@ -1,8 +1,5 @@
 #map
 
-%script{src: "http://beta.mapquestapi.com/sdk/leaflet/v0.1/mq-map.js?key=Fmjtd%7Cluur2luzlu%2C7w%3Do5-901w5y"}
-
-- content_for :footer do
-  = javascript_tag do
+= javascript_tag do
     window.markerData = #{raw @marker_data.to_json};
-  = javascript_include_tag "map"
+= javascript_include_tag "map"
