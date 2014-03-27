@@ -1,5 +1,5 @@
 def describe_proposal(proposal)
-  text = "#{proposal.class}: #{proposal.description}"
+  text = "[#{proposal.class}] #{proposal.description}"
   markdown(text)
 end
 
