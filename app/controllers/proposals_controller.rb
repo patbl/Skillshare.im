@@ -1,15 +1,15 @@
 class ProposalsController < ApplicationController
   include ProposalsHelper
 
-  skip_before_action :authorize, only: %i[index show]
+  skip_before_action :authorize, only: %i[index home show]
   before_action :set_categories, only: %i[create new edit update]
   before_action :set_offer, only: %i[edit update destroy]
 
   def index
     respond_to do |format|
       format.html do
-        klass = params[:type].constantize
-        @proposals = klass.recent.filter_by_tag(params[:category]).page(params[:page]).per(30).decorate
+        @klass = params[:type].constantize
+        @proposals = @klass.recent.filter_by_tag(params[:category]).page(params[:page]).per(30).decorate
       end
 
       format.atom do
@@ -17,6 +17,11 @@ class ProposalsController < ApplicationController
         @updated_at = @proposals.maximum(:updated_at)
       end
     end
+  end
+
+  def home
+    @offers = Offer.recent(10).decorate
+    @wanteds = Wanted.recent(10).decorate
   end
 
   def show

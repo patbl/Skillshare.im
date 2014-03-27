@@ -8,8 +8,8 @@ Skillshare::Application.routes.draw do
     end
   end
 
-  root 'proposals#index', type: "Proposal"
-  root 'proposals#index', type: "Proposal", as: 'proposals'
+  root 'proposals#home'
+  root 'proposals#home', as: 'proposals'
   get 'map'    => 'users#map'
   get 'proposals' => 'proposals#index', type: "Proposal", as: 'proposals_atom'
 

@@ -15,13 +15,13 @@ class ProposalDecorator < ApplicationDecorator
 
   def contact_button
     content_tag :div, class: "btn btn-danger btn-small request-btn" do
-      fa_tag("envelope", verb.titleize)
+      fa_tag("envelope", text: verb.titleize)
     end
   end
 
   def sign_in_button
     link_to sign_in_path, class: "btn btn-danger btn-small sign-in-btn" do
-      fa_tag("envelope", "Sign in to #{verb}")
+      fa_tag("envelope", text: "Sign in to #{verb}")
     end
   end
 

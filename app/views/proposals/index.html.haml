@@ -1,18 +1,10 @@
-- unless current_user
-  .landing
-    .heading
-      %h1
-        Sharing Between Effective Altruists!
-      %h3
-        Coffee - Lodging - Mentorship - Capital - Used Goods - Connections - Online Labor
-
 = render "shared/categories"
 
 %table.table.proposals-table
   %thead
     %tr
       %th
-      %th Proposal
+      %th= @klass
       %th Location
       %th Type
   %tbody

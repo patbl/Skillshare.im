@@ -1,0 +1,32 @@
+- unless current_user
+  .landing
+    .heading
+      %h1
+        Sharing Between Effective Altruists!
+      %h3
+        Coffee - Lodging - Mentorship - Capital - Used Goods - Connections - Online Labor
+
+%table.table.proposals-table.mini-table.left
+  %thead
+    %tr
+      %th Recent Offers
+  %tbody
+    - @offers.each do |proposal|
+      - if proposal
+        = render partial: "proposals/mini_proposal", locals: { proposal: proposal }
+    %tr
+      %td.more
+        = link_to fa_tag(offer_icon, text: "More offers"), offers_path, class: "more"
+
+
+%table.table.proposals-table.mini-table.right
+  %thead
+    %tr
+      %th Recent Wanteds
+  %tbody
+    - @wanteds.each do |proposal|
+      - if proposal
+        = render partial: "proposals/mini_proposal", locals: { proposal: proposal }
+    %tr
+      %td.more
+        = link_to fa_tag(wanted_icon, text: "More wanteds"), wanteds_path, class: "more"

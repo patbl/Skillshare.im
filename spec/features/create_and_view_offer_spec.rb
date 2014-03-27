@@ -13,10 +13,11 @@ feature "offer management", :slow do
   scenario "filtering Offers" do
     create :offer, title: "love", category_list: "services"
 
-    visit root_path
+    visit offers_path
     user_sees_n_offers 1
 
     filter_on_category "services"
+    # save_and_open_page
     user_sees_n_offers 1
 
     filter_on_category "goods"

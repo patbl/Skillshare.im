@@ -2,9 +2,11 @@ require 'spec_helper'
 
 describe ProposalsController do
   shared_examples "public access to offers" do
-    describe "#index" do
-      before { @wanted = create(:wanted, category_list: "goods") }
+    before do
+      @wanted = create(:wanted, category_list: "goods")
+    end
 
+    describe "#index" do
       describe "when unfiltered" do
         it "gets all the offers when unfiltered" do
 
@@ -26,16 +28,16 @@ describe ProposalsController do
         end
       end
 
-      xit "paginates offers" do
+      it "paginates offers" do
         filtered_offers = double
         expect(Proposal).to receive(:filter_by_tag).and_return(filtered_offers)
         paginated_offers = double
         expect(filtered_offers).to receive(:page).with("2").and_return paginated_offers
         paginated_offers.stub_chain(:per, :decorate).and_return "decorated offers"
 
-        get :index, page: "2"
+        get :index, page: "2", type: "Offer"
 
-        expect(assigns(:offers)).to eq "decorated offers"
+        expect(assigns(:proposals)).to eq "decorated offers"
       end
 
       it "renders the Atom feed" do
@@ -43,6 +45,14 @@ describe ProposalsController do
         expect(response).to render_template(:index)
         expect(response.content_type).to eq("application/atom+xml")
         expect(assigns(:updated_at)).to be_same_second_as @wanted.updated_at
+      end
+    end
+
+    describe "#home" do
+      it "assigns offers" do
+        get :home
+        expect(assigns(:offers)).to be_empty
+        expect(assigns(:wanteds)).to match_array [@wanted]
       end
     end
   end

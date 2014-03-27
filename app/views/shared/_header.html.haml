@@ -6,8 +6,8 @@
     .col-sm-6
       .logos
         .icons
-          = link_to raw('<i rel="tooltip" title="Offers" class="fa fa-gift"></i>'), :offers, class: active?(offers_path)
-          = link_to raw('<i rel="tooltip" title="Wanteds" class="fa fa-share"></i>'), :wanteds, class: active?(wanteds_path)
+          = link_to fa_tag(offer_icon, tooltip: "Offers"), :offers, class: active?(offers_path)
+          = link_to fa_tag(wanted_icon, tooltip: "Wanteds"), :wanteds, class: active?(wanteds_path)
           = link_to raw('<i rel="tooltip" title="Users" class="fa fa-group"></i>'), :users, class: active?(users_path)
           = link_to raw('<i rel="tooltip" title="Map" class="fa fa-globe"></i>'), :map, class: active?(map_path)
 
