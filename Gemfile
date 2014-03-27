@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 ruby '2.1.0'
-gem 'rails', '4.0.3'
+gem 'rails', '4.0.4'
 
 group :test, :development do
   gem 'rspec-rails', '3.0.0.beta1'
@@ -50,7 +50,6 @@ gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jquery-turbolinks'
-gem 'jbuilder', '~> 1.2'
 gem 'omniauth-facebook'
 gem 'omniauth-browserid'
 gem 'figaro'
@@ -60,7 +59,7 @@ gem 'coveralls', require: false
 gem 'acts-as-taggable-on'
 gem 'font-awesome-rails'
 gem 'geocoder'
-gem 'roadie', '~> 2.4.2'
+gem 'roadie', '~> 2.4.3'
 gem 'newrelic_rpm'
 gem 'draper'
 gem 'kaminari'
