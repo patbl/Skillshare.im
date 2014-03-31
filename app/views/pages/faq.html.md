@@ -19,6 +19,14 @@ The site is aimed at
 [effective altruists](http://home.centreforeffectivealtruism.org/)—people
 who want to help others in the most effective ways possible.
 
+#### What data about me do you store?
+
+When you send someone an offer or request, we store only the metadata
+(e.g., who sent it, when it was sent), not the message itself. When
+you reply to a message someone sent you regarding an offer or wanted
+you placed on the site, your response goes directly to the recipient,
+so we don't have any record of it at all.
+
 #### How do I add formatting my offers and wanteds?
 
 You can use

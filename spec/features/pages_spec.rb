@@ -1,7 +1,10 @@
 require 'spec_helper'
 
 feature "visiting static pages" do
-  before { visit root_path }
+  before do
+    user = sign_in
+    visit user_path user
+  end
 
   scenario "visiting the 'about' page" do
     click_link "About"
