@@ -8,6 +8,7 @@ class MessagesController < ApplicationController
     confirmation_email = ConfirmationEmail.new(current_user, @body, @proposal)
     UserMailer.proposal_email(notification_email).deliver
     UserMailer.proposal_email(confirmation_email).deliver
+    @proposal.record(current_user)
     redirect_back_or @proposal, success: "Message sent."
   end
 

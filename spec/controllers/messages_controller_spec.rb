@@ -7,22 +7,28 @@ describe MessagesController do
       let(:recipient) { build(:user, email: "jan@hotmail.com") }
       let(:offer) { create(:offer, user: recipient) }
 
-      before { set_user_session(sender) }
+      before do
+        set_user_session(sender)
+        post :create, offer_id: offer, message: { body: "abc" }, type: "Offer"
+      end
 
       it "redirects the user to the offer page" do
-        post :create, wanted_id: offer, message: { body: "abc" }, type: "Wanted"
         expect(response).to redirect_to(offer)
         expect(flash[:success]).to be
       end
 
       it "sends the e-mail message to the offerer" do
-        post :create, wanted_id: offer, message: { body: "abc" }, type: "Wanted"
         expect(last_n_emails(2) { |email| email.to }).to include(offer.user.email)
       end
 
       it "sends a confirmation message to the requester" do
-        post :create, wanted_id: offer, message:  { body: "abc" }, type: "Wanted"
         expect(last_n_emails(2) { |email| email.to }).to include(sender.email)
+      end
+
+      it "records requisitions" do
+        expect {
+          post :create, offer_id: offer, message: { body: "abc" }, type: "Offer"
+        }.to change(Requisition, :count).by(1)
       end
     end
 

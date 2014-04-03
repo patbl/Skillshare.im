@@ -3,13 +3,6 @@ require 'spec_helper'
 describe Offer do
   it_behaves_like "Mappable"
 
-  describe "validations" do
-    it "is valid with everything filled in" do
-      offer = build :offer
-      expect(offer).to be_valid
-    end
-  end
-
   describe "geocoding" do
     context "location is 'Anywhere'" do
       it "isn't geocoded" do
@@ -25,6 +18,32 @@ describe Offer do
         expect(offer).to receive(:geocode)
         offer.save
       end
+    end
+  end
+
+  describe "#requisitions" do
+    context "with no requisitions" do
+      it "is empty" do
+        offer = build(:offer)
+        expect(offer.requisitions).to be_empty
+      end
+    end
+  end
+
+  describe "#record" do
+    it "creates a requisition" do
+      offer = build :offer
+      requester = build :user
+      expect(Requisition).to receive(:create).with(offer: offer, requester: requester, offerer: offer.user)
+      offer.record(requester)
+    end
+
+    it "allows access to requisitions" do
+      offer = build :offer
+      requester = build :user
+
+      expect { offer.record(requester) }.to change(Requisition, :count).by(1)
+      expect(offer.requisitions.count).to eq 1
     end
   end
 end
