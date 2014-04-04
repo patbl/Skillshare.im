@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140402231612) do
+ActiveRecord::Schema.define(version: 20140404033634) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "fulfillments", force: true do |t|
+    t.integer  "fulfiller_id"
+    t.integer  "wanter_id"
+    t.integer  "wanted_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "fulfillments", ["fulfiller_id"], name: "index_fulfillments_on_fulfiller_id", using: :btree
+  add_index "fulfillments", ["wanted_id"], name: "index_fulfillments_on_wanted_id", using: :btree
+  add_index "fulfillments", ["wanter_id"], name: "index_fulfillments_on_wanter_id", using: :btree
 
   create_table "identities", force: true do |t|
     t.string   "provider"
