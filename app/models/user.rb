@@ -20,11 +20,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  # DELETE
-  def linked_to_facebook?
-    !!facebook_url
-  end
-
   private
 
   def self.set_facebook_info(user, auth)
