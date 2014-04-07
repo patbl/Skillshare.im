@@ -1,8 +1,11 @@
 class User < ActiveRecord::Base
-  has_many :proposals, dependent: :destroy
-  has_many :offers, dependent: :destroy
-  has_many :wanteds, dependent: :destroy
-  has_many :identities, dependent: :destroy
+  has_many :proposals,     dependent: :destroy
+  has_many :offers,        dependent: :destroy
+  has_many :wanteds,       dependent: :destroy
+  has_many :identities,    dependent: :destroy
+  has_many :subscriptions, dependent: :destroy
+
+  after_create :subscribe_user
 
   include Mappable
 
@@ -17,6 +20,7 @@ class User < ActiveRecord::Base
     end
   end
 
+  # DELETE
   def linked_to_facebook?
     !!facebook_url
   end
@@ -34,5 +38,9 @@ class User < ActiveRecord::Base
 
     user.oauth_token = auth.credentials.token
     user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+  end
+
+  def subscribe_user
+    Subscription.create(user: self)
   end
 end
