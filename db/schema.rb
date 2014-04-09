@@ -67,8 +67,8 @@ ActiveRecord::Schema.define(version: 20140405193121) do
   add_index "requisitions", ["requester_id"], name: "index_requisitions_on_requester_id", using: :btree
 
   create_table "subscriptions", force: true do |t|
-    t.boolean  "subscribed"
     t.integer  "user_id"
+    t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

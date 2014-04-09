@@ -39,7 +39,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    attrs = %i[email location name about]
-    params.require(:user).permit(attrs)
+    params.require(:user).permit(:email, :location, :name, :about, subscriptions_attributes: [:id, :active])
   end
 end

@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
 
   validates_presence_of :email, :location, :name
 
+  accepts_nested_attributes_for :subscriptions
+
   def self.create_from_auth(auth)
     create! do |user|
       user.email = auth.info.email
@@ -36,6 +38,6 @@ class User < ActiveRecord::Base
   end
 
   def subscribe_user
-    Subscription.create(user: self)
+    Subscription.create(user: self, active: true)
   end
 end

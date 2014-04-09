@@ -7,7 +7,13 @@
       = f.input :name
       = f.input :email, label: "E-mail"
       = f.input :location
-      = f.input :about, :input_html => {:rows => 5}, label:"About (use Markdown for formatting)"
+      = f.input :about, input_html: { rows: 5 }, label: "About (use Markdown for formatting)"
+      = f.label "E-mail notifications"
+      %br
+      = f.simple_fields_for :subscriptions do |subscription|
+        = subscription.label subscription.object.name
+        = subscription.check_box :active, id: "new"
+        %br
       %br
       %br
       = f.button :submit, "Save"
