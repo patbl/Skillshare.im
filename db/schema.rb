@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20140410232946) do
   create_table "subscriptions", force: true do |t|
     t.integer  "user_id"
     t.boolean  "active"
+    t.integer  "frequency"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

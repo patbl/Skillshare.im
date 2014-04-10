@@ -13,7 +13,8 @@ describe User do
     let(:user) { create(:user) }
 
     it "creates a subscription" do
-      expect(user.subscriptions.first).to be_a Subscription
+      subscription = user.subscriptions.first
+      expect(subscription.frequency).to eq "biweekly"
     end
   end
 end
