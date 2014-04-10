@@ -19,10 +19,10 @@ module ApplicationHelper
 
   def alert_type(level)
     case level
-    when :notice  then "alert alert-info"
-    when :success then "alert alert-success"
-    when :alert   then "alert alert-warning"
-    when :error   then "alert alert-danger"
+    when "notice"  then "alert alert-info"
+    when "success" then "alert alert-success"
+    when "alert"   then "alert alert-warning"
+    when "error"   then "alert alert-danger"
     end
   end
 

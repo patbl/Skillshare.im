@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 ruby '2.1.0'
-gem 'rails', '4.0.4'
+gem 'rails', '4.1.0'
 
 group :test, :development do
   gem 'rspec-rails', '3.0.0.beta1'
@@ -65,3 +65,4 @@ gem 'draper'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem 'sprockets', '=2.11.0'
+gem 'whenever', require: false
