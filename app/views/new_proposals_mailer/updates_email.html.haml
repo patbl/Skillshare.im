@@ -1,0 +1,17 @@
+%h3 Hey #{@user.name},
+
+%p.lead There's some new stuff on Skillshare.im:
+
+- unless @offers.empty?
+  %h4 New offers
+  %ul.callout
+    - @offers.each do |offer|
+      %li= link_to offer.title, offer_url(offer)
+
+- unless @wanteds.empty?
+  %h4 New wanteds
+  %ul.callout
+    - @wanteds.each do |wanted|
+      %li= link_to wanted.title, wanted
+
+%p #{link_to "Manage e-mail preferences", edit_user_url(@user)}
