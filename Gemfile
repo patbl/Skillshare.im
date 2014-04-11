@@ -65,4 +65,3 @@ gem 'draper'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem 'sprockets', '=2.11.0'
-gem 'whenever', require: false
