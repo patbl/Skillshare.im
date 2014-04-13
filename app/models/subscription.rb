@@ -32,7 +32,11 @@ class Subscription < ActiveRecord::Base
   end
 
   def send_email
-    SubscriptionMailer.public_send(name, self).deliver if ready?
+    send_email! if ready?
+  end
+
+  def send_email!
+    SubscriptionMailer.public_send(name, self).deliver
   end
 
   def self.send_emails
