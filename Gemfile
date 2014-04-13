@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '2.1.0'
+ruby '2.1.1'
 gem 'rails', '4.1.0'
 
 group :test, :development do
@@ -33,6 +33,7 @@ group :test do
   gem 'poltergeist'
   gem 'launchy'
   gem 'database_cleaner'
+  gem 'rake'
 end
 
 group :production do
