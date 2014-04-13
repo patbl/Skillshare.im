@@ -1,6 +1,6 @@
-%h3 Hey #{@user.name},
+%h4 Hey, #{@user.name},
 
-%p.lead There's some new stuff on Skillshare.im:
+%p.lead We're just letting you know what's been posted recently on #{link_to "Skillshare.im", "http://skillshare.im"}.
 
 - unless @offers.empty?
   %h4 New offers
