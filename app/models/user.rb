@@ -38,6 +38,6 @@ class User < ActiveRecord::Base
   end
 
   def subscribe_user
-    Subscription.create(user: self, active: true, frequency: :biweekly)
+    Subscription.create(user: self, active: true, frequency: :biweekly, name: :updates)
   end
 end

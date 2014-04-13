@@ -3,5 +3,7 @@
 FactoryGirl.define do
   factory :subscription do
     user
+    frequency :biweekly
+    name :updates
   end
 end

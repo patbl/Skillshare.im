@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 20140410232946) do
     t.integer  "user_id"
     t.boolean  "active"
     t.integer  "frequency"
+    t.integer  "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -4,12 +4,13 @@ class CreateSubscriptions < ActiveRecord::Migration
       t.references :user, index: true
       t.boolean :active
       t.integer :frequency
+      t.integer :name
 
       t.timestamps
     end
 
     User.all.each do |user|
-      Subscription.create!(user: user, active: true, frequency: :biweekly) if user.subscriptions.empty?
+      Subscription.create!(user: user, active: true, frequency: :biweekly, name: :updates) if user.subscriptions.empty?
     end
   end
 

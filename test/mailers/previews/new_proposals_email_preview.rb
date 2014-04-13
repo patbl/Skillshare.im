@@ -3,6 +3,6 @@ class NewProposalsMailerPreview < ActionMailer::Preview
     @user = FactoryGirl.create :user
     @offers = FactoryGirl.create_list :offer, 3
     @wanteds = FactoryGirl.create_list :wanted, 1
-    NewProposalsMailer.updates_email(@user, @offers, @wanteds)
+    SubscriptionMailer.updates(@user, @offers, @wanteds)
   end
 end
