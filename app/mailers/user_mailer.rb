@@ -1,4 +1,5 @@
 class UserMailer < ActionMailer::Base
+  helper :application
   default from: "Skillshare.im <notifications@skillshare.im>"
 
   def proposal_email(email)
