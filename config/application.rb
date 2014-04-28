@@ -24,20 +24,11 @@ module Skillshare
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.autoload_paths += %W( #{ config.root }/lib/NoWWW)
+    config.autoload_paths += %W( #{ config.root }/lib/mail)
     config.autoload_paths += Dir[Rails.root.join('app', 'models', '{**}')]
 
     config.assets.initialize_on_precompile = false
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
-
-    config.action_mailer.smtp_settings = {
-      address: "smtp.mandrillapp.com",
-      port: 25, # ports 587 and 2525 are also supported with STARTTLS
-      enable_starttls_auto: true, # detects and uses STARTTLS
-      user_name: ENV["MANDRILL_USER_NAME"],
-      password: ENV["MANDRILL_PASSWORD"], # SMTP password is any valid API key
-      authentication: "login", # Mandrill supports 'plain' or 'login'
-      domain: "skillshare.im", # your domain to identify your server when connecting
-    }
 
     config.i18n.enforce_available_locales = true
   end
