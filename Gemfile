@@ -4,7 +4,7 @@ ruby '2.1.1'
 gem 'rails', '4.1.0'
 
 group :test, :development do
-  gem 'rspec-rails', '3.0.0.beta1'
+  gem 'rspec-rails', '~> 3.0.0.beta2'
   gem 'factory_girl_rails'
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
   gem 'pry-byebug'
@@ -29,7 +29,7 @@ end
 group :test do
   gem 'simplecov', require: false
   gem 'ffaker'
-  gem 'capybara'
+  gem 'capybara', github: 'jnicklas/capybara', branch: 'master'
   gem 'poltergeist'
   gem 'launchy'
   gem 'database_cleaner'

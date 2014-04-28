@@ -51,10 +51,6 @@ feature "offer management", :slow do
     user_sees_n_offers 0
   end
 
-  scenario "create a wanted", skip: true do
-    visit new_user_wanted_path(@user)
-  end
-
   def user_sees_n_offers(n)
     expect(page).to have_selector(".proposal", count: n)
   end

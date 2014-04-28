@@ -33,7 +33,7 @@ describe ProposalsController do
         expect(Proposal).to receive(:filter_by_tag).and_return(filtered_offers)
         paginated_offers = double
         expect(filtered_offers).to receive(:page).with("2").and_return paginated_offers
-        paginated_offers.stub_chain(:per, :decorate).and_return "decorated offers"
+        allow(paginated_offers).to receive_message_chain(:per, :decorate).and_return("decorated offers")
 
         get :index, page: "2", type: "Offer"
 

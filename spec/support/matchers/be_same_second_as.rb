@@ -3,11 +3,11 @@ RSpec::Matchers.define :be_same_second_as do |expected_time|
     actual_time.to_i == expected_time.to_i
   end
 
-  failure_message_for_should do |actual|
+  failure_message do |actual|
     "expected #{actual_time} would be the same second as #{expected_time}"
   end
 
-  failure_message_for_should_not do |actual|
+  failure_message_when_negated do |actual|
     "expected #{actual_time} would not be the same second as #{expected_time}"
   end
 

@@ -11,5 +11,5 @@ ActionMailer::Base.smtp_settings = {
 
 ActionMailer::Base.default_url_options = { host: "localhost:3000" }
 
-require 'development_mail_interceptor' #add this line
+require 'development_mail_interceptor'
 ActionMailer::Base.register_interceptor(DevelopmentMailInterceptor) if Rails.env.staging? || Rails.env.development?

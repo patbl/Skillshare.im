@@ -3,11 +3,11 @@ RSpec::Matchers.define :require_login do |attribute|
     expect(attribute).to redirect_to Rails.application.routes.url_helpers.sign_in_path
   end
 
-  failure_message_for_should do |actual|
+  failure_message do |actual|
     "expected to require login to access the method"
   end
 
-  failure_message_for_should_not do |actual|
+  failure_message_when_negated do |actual|
     "expected not to require login to access the method"
   end
 
