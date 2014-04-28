@@ -20,8 +20,6 @@ can arrange a Skype chat if it would be helpful.
 
 Here are some important points:
 
-* EA Skillshare uses Ruby 2.1. You should probably use a Ruby environment manager, such as RVM or rbenv.
+* EA Skillshare uses Ruby 2.1.1. You should probably use a Ruby environment manager, such as RVM or rbenv.
 
 * EA Skillshare uses Facebook for authentication. I've created two Facebook apps: one for development and testing (which can communicate with localhost:3000), and one for production (which can communicate with http://skillshare.im). Perhaps it's possible to use a single app, but I haven't been able to figure out how to do so. To get Facebook authentication working, you'll need to set a couple of environment variables. I used the Figaro gem (here's a [good tutorial](http://railsapps.github.io/rails-environment-variables.html)). If you message me and you seem legit, I'll send you the API keys and secrets that I'm using. Alternatively, you can set up your own Facebook app, but it would be better for us to be working off the same one.
-
-* Whoever wrote the feature specs made them annoyingly fragile. Since they keep breaking, they're tagged with `slow`, which disables them. If you want to run them, use `rspec -t slow`. Or if you want them to run by default, add `SLOW_SPECS: true` to your `application.yml` file.
