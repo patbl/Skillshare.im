@@ -6,3 +6,8 @@ env:
   - SLOW_SPECS=true
 before_install:
   - gem install bundler -v '= 1.5.1'
+before_script:
+  rake db:create
+script:
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - bundle exec rspec spec
