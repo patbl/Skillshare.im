@@ -1,10 +1,12 @@
 Skillshare::Application.routes.draw do
   resources :users, except: [:new, :create] do
-    resources :wanteds, shallow: true, except: :index, controller: "proposals", type: "Wanted" do
-      resources :messages, only: :create
-    end
-    resources :offers, shallow: true, except: :index, controller: "proposals", type: "Offer" do
-      resources :messages, only: :create
+    with_options except: :index, shallow: true, controller: "proposals" do |options|
+      options.resources :wanteds, type: "Wanted" do
+        resources :messages, only: :create
+      end
+      options.resources :offers, type: "Offer" do
+        resources :messages, only: :create
+      end
     end
   end
 
