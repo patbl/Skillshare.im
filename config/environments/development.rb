@@ -33,4 +33,6 @@ Skillshare::Application.configure do
   # config.assets.prefix = "/dev-assets"
 
   config.middleware.use Rack::LiveReload
+
+  ActionMailer::Base.default_url_options = { host: "localhost:3000" }
 end
