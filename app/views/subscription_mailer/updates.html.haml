@@ -12,6 +12,6 @@
   %h4 New wanteds
   %ul.callout
     - @wanteds.each do |wanted|
-      %li= link_to wanted.title, wanted
+      %li= link_to wanted.title, wanted_url(wanted)
 
 %p= link_to "Manage e-mail preferences", edit_user_url(@user)
