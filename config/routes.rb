@@ -27,6 +27,8 @@ Skillshare::Application.routes.draw do
   get 'signin'                    => 'sessions#new',     as: 'sign_in'
   get 'signout'                   => 'sessions#destroy', as: 'sign_out'
 
+  get 'statistics' => 'statistics#index'
+
   # static pages
   get ':action' => 'pages#:action'
 end

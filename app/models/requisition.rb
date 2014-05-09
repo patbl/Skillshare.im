@@ -1,4 +1,6 @@
 class Requisition < ActiveRecord::Base
+  include Measurable
+  
   belongs_to :requester, class_name: "User"
   belongs_to :offerer, class_name: "User"
   belongs_to :offer

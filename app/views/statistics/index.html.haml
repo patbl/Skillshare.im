@@ -1,0 +1,41 @@
+%table
+  %tr
+    %td Users
+    %td= @user_count
+  %tr
+    %td Offers
+    %td= @offer_count
+  %tr
+    %td Wanteds
+    %td= @wanted_count
+
+%table
+  %tr
+    %td Requisitions
+    %td= @requisition_count
+  %tr
+    %td Fulfillments
+    %td= @fulfillment_count
+
+%br
+
+%table
+  %tr
+    %td Month
+    %td Fulfillments
+  - @fulfillments_by_month.each do |date, count|
+    %tr
+      %td= date.to_time.strftime("%Y %B")
+      %td
+      %td= count
+
+%br
+
+%table
+  %tr
+    %td Month
+    %td Requisitions
+  - @requisitions_by_month.each do |date, count|
+    %tr
+      %td= date.to_time.strftime("%Y %B")
+      %td= count
