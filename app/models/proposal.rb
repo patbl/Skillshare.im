@@ -1,4 +1,8 @@
 class Proposal < ActiveRecord::Base
+  searchable do
+    text :title, :description
+  end
+
   belongs_to :user
   acts_as_taggable_on :categories
 
