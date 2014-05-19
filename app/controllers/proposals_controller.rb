@@ -11,7 +11,7 @@ class ProposalsController < ApplicationController
         @search = Proposal.search do
           fulltext params[:search]
         end
-        @results = @search.result
+        @results = @search.results
         @klass = params[:type].constantize
         @proposals = @klass.recent.filter_by_tag(params[:category]).page(params[:page]).per(30).decorate
       end

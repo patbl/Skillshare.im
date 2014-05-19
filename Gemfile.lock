@@ -134,6 +134,9 @@ GEM
       railties (>= 3.2, < 5.0)
     formatador (0.2.4)
     geocoder (1.2.0)
+    gibbon (1.1.2)
+      httparty
+      multi_json (>= 1.3.4)
     grit (2.5.0)
       diff-lcs (~> 1.1)
       mime-types (~> 1.15)
@@ -170,6 +173,9 @@ GEM
     hike (1.2.3)
     hirb (0.7.1)
     http_parser.rb (0.6.0)
+    httparty (0.13.1)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.6.9)
     jquery-rails (3.1.0)
       railties (>= 3.0, < 5.0)
@@ -371,6 +377,8 @@ GEM
       rails (>= 3)
       sunspot (= 2.1.1)
     sunspot_solr (2.1.1)
+    sunspot_test (0.4.0)
+      sunspot_rails (>= 1.2.1)
     term-ansicolor (1.3.0)
       tins (~> 1.0)
     therubyracer (0.12.1)
@@ -419,6 +427,7 @@ DEPENDENCIES
   figaro
   font-awesome-rails
   geocoder
+  gibbon
   guard-bundler
   guard-livereload
   guard-rails
@@ -454,6 +463,7 @@ DEPENDENCIES
   sprockets (= 2.11.0)
   sunspot_rails
   sunspot_solr
+  sunspot_test
   therubyracer
   turbolinks
   uglifier (>= 1.3.0)

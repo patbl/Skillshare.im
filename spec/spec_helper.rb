@@ -15,6 +15,7 @@ require 'rspec/rails'
 require 'rspec/autorun'
 require 'capybara/rails'
 require 'capybara/rspec'
+require 'sunspot_test/rspec'
 
 require 'capybara/poltergeist'
 Capybara.javascript_driver = :poltergeist

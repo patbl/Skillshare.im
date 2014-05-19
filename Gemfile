@@ -34,6 +34,7 @@ group :test do
   gem 'launchy'
   gem 'database_cleaner'
   gem 'rake'
+  gem 'sunspot_test'
 end
 
 group :production do
@@ -68,3 +69,4 @@ gem 'bootstrap-kaminari-views'
 gem 'sprockets', '=2.11.0'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
+gem 'gibbon'
