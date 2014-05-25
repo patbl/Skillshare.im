@@ -156,9 +156,9 @@ GEM
       multi_json (~> 1.8)
     guard-rails (0.5.0)
       guard (>= 2.0.0)
-    guard-rspec (4.2.2)
-      guard (~> 2.1, >= 2.1)
-      rspec (~> 3.0.0.beta, >= 2.14, < 4.0)
+    guard-rspec (4.2.9)
+      guard (~> 2.1)
+      rspec (>= 2.14, < 4.0)
     guard-spring (0.0.4)
       guard
       spring
@@ -431,7 +431,7 @@ DEPENDENCIES
   guard-bundler
   guard-livereload
   guard-rails
-  guard-rspec
+  guard-rspec (~> 4.2.8)
   guard-spring
   haml-rails
   jazz_hands!
@@ -455,6 +455,7 @@ DEPENDENCIES
   rake
   redcarpet
   roadie (~> 2.4.3)
+  rspec (~> 3.0.0.beta2)
   rspec-rails (~> 3.0.0.beta2)
   sass-rails
   simple_form

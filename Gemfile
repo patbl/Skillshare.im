@@ -4,6 +4,7 @@ ruby '2.1.1'
 gem 'rails', '4.1.1'
 
 group :test, :development do
+  gem 'rspec', '~> 3.0.0.beta2'
   gem 'rspec-rails', '~> 3.0.0.beta2'
   gem 'factory_girl_rails'
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
@@ -12,7 +13,7 @@ end
 
 group :development do
   gem 'guard-rails'
-  gem 'guard-rspec'
+  gem 'guard-rspec', '~> 4.2.8'
   gem 'guard-spring'
   gem 'spring-commands-rspec'
   gem 'guard-bundler'
