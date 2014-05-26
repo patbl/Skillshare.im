@@ -10,15 +10,20 @@ class User < ActiveRecord::Base
   include Mappable
 
   validates_presence_of :email, :location, :name
+  validate :valid_name, on: :update
+  validate :valid_location, on: :update
 
   accepts_nested_attributes_for :subscriptions
+
+  LOCATION_PLACEHOLDER = "Your location here"
+  NAME_PLACEHOLDER = "Your name here"
 
   def self.create_from_auth(auth)
     create! do |user|
       user.email = auth.info.email
       set_facebook_info(user, auth) if auth.provider == "facebook"
-      user.name ||= "Your name here"
-      user.location ||= "Your location here"
+      user.name ||= NAME_PLACEHOLDER
+      user.location ||= LOCATION_PLACEHOLDER
     end
   end
 
@@ -39,5 +44,13 @@ class User < ActiveRecord::Base
 
   def subscribe_user
     Subscription.create(user: self, active: true, frequency: :biweekly, name: :updates)
+  end
+
+  def valid_name
+    errors.add(:name, %["#{name}" isn't a valid name.]) if name == NAME_PLACEHOLDER
+  end
+
+  def valid_location
+    errors.add(:location, %["#{location} isn't a valid location"]) if location == LOCATION_PLACEHOLDER
   end
 end

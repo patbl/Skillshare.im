@@ -17,4 +17,18 @@ describe User do
       expect(subscription.frequency).to eq "biweekly"
     end
   end
+
+  it "doesn't allow 'Your name here' on update" do
+    user = create :user, name: "Your name here"
+    expect {
+      user.update!(about: "I'm too lazy to type my name")
+    }.to raise_error(ActiveRecord::RecordInvalid)
+  end
+
+  it "doesn't allow 'Your location here' on update" do
+    user = create :user, location: "Your location here"
+    expect {
+      user.update!(about: "I'm too lazy to type my location")
+    }.to raise_error(ActiveRecord::RecordInvalid)
+  end
 end
