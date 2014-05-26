@@ -8,10 +8,6 @@ class ProposalsController < ApplicationController
   def index
     respond_to do |format|
       format.html do
-        @search = Proposal.search do
-          fulltext params[:search]
-        end
-        @results = @search.results
         @klass = params[:type].constantize
         @proposals = @klass.recent.filter_by_tag(params[:category]).page(params[:page]).per(30).decorate
       end

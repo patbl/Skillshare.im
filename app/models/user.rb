@@ -47,10 +47,10 @@ class User < ActiveRecord::Base
   end
 
   def valid_name
-    errors.add(:name, %["#{name}" isn't a valid name.]) if name == NAME_PLACEHOLDER
+    errors.add(:name, %["#{name}" isn't a valid name]) if name == NAME_PLACEHOLDER
   end
 
   def valid_location
-    errors.add(:location, %["#{location} isn't a valid location"]) if location == LOCATION_PLACEHOLDER
+    errors.add(:location, %["#{location}" isn't a valid location]) if location == LOCATION_PLACEHOLDER
   end
 end
