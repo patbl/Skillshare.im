@@ -6,7 +6,7 @@
         %li= link_to("FAQ", "/faq")
         %li.icon= link_to(fa_tag("twitter"), "https://twitter.com/Skillshare_im")
         %li.icon= link_to(fa_tag("github"), "https://github.com/patbl/ea-skillshare")
-        %li.icon= mail_to("pbrinichlanglois@gmail.com", fa_tag("envelope"), target: "_blank")
+        %li.icon= mail_to(ENV["SUPPORT_EMAIL"], fa_tag("envelope"), target: "_blank", subject: "Skillshare.im feedback")
         %li.icon= link_to(fa_tag("rss"), proposals_atom_url(format: "atom"))
         %li
           %div.fb-like{"data-action" => "like", "data-href" => "http://skillshare.im/", "data-layout" => "button_count", "data-share" => "false", "data-show-faces" => "true" }
