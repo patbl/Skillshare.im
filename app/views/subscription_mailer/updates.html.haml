@@ -14,4 +14,4 @@
     - @wanteds.each do |wanted|
       %li= link_to wanted.title, wanted_url(wanted)
 
-%p= link_to "Manage e-mail preferences", edit_user_url(@user)
+%p= link_to "Unsubscribe", unsubscribe_path(@subscription.secure_key)

@@ -3,7 +3,6 @@ require 'spec_helper'
 describe Subscription do
   let(:subscription) { build(:subscription, frequency: :biweekly) }
   describe "validations" do
-
     context "invalid subscription" do
       it "requires a user" do
         subscription.user = nil
@@ -15,6 +14,14 @@ describe Subscription do
       it "requires a user" do
         expect(subscription).to be_valid
       end
+    end
+  end
+
+  describe "#secure_key" do
+    it "generates a random key on creation" do
+      expect(subscription.secure_key).to be nil
+      subscription.save!
+      expect(subscription.secure_key).to be_present
     end
   end
 

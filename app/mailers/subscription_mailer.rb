@@ -6,6 +6,7 @@ class SubscriptionMailer < ActionMailer::Base
     @user = subscription.user
     @offers = Offer.where created_at: subscription.period
     @wanteds = Wanted.where created_at: subscription.period
+    @subscription = subscription
     mail(to: @user.email, subject: "New offers and wanteds on Skillshare.im")
   end
 end
