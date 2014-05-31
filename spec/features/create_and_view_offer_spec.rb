@@ -17,11 +17,11 @@ feature "offer management", :slow do
     user_sees_n_offers 1
 
     filter_on_category "services"
-    # save_and_open_page
     user_sees_n_offers 1
 
     filter_on_category "goods"
     user_sees_n_offers 0
+    expect(nothing_here_message?).to be true
 
     filter_on_category "All"
     user_sees_n_offers 1
@@ -53,6 +53,10 @@ feature "offer management", :slow do
 
   def user_sees_n_offers(n)
     expect(page).to have_selector(".proposal", count: n)
+  end
+
+  def nothing_here_message?
+    expect(page).to have_selector(".nothing-here")
   end
 
   def filter_on_category(services)
