@@ -2,8 +2,9 @@
 
 .row
   = render @user
+  .col-md-8
 
-%table.table
+    %table.table.proposals-table
 
-  %tbody
-    = render partial: "proposals/proposal", collection: @proposals
+      %tbody
+        = render partial: "proposals/proposal", collection: @proposals

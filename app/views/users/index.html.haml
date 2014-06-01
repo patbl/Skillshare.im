@@ -2,6 +2,9 @@
 
 - @users.in_groups_of(3, false) do |users|
   .row
-    = render users
+    - for user in users
+      = render partial: "user", locals: { user: user, description_size: 150}
 
 = paginate @users, theme: 'twitter-bootstrap-3'
+
+

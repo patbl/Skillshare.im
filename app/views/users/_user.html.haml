@@ -30,7 +30,10 @@
                 = fa_tag("pencil")
 
     .info
-      = markdown(user.about)
+      - if local_assigns.has_key? :description_size
+        = markdown(truncate(user.about, length: description_size))
+      - else 
+        = markdown(user.about)
 
   - if user.current_user? && defined? show_create_link
     = link_to(new_user_offer_path(user)) do

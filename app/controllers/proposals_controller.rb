@@ -27,7 +27,7 @@ class ProposalsController < ApplicationController
   def show
     # untested
     @proposal = Proposal.find(params[:id]).decorate
-    @user = current_user
+    @user = @proposal.user.decorate
   end
 
   def new
