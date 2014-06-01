@@ -1,0 +1,6 @@
+.categories
+  .category
+    = link_to "All", filtered_proposal_path
+  - ApplicationHelper::CATEGORIES.each do |category|
+    .category
+      = link_to category.titleize, filtered_proposal_path(category)

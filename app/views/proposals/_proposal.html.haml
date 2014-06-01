@@ -1,7 +1,7 @@
 %tr.proposal
   %td
     .user
-      = link_to image_tag(avatar_url(proposal.user, "square")), proposal.user
+      = link_to image_tag(avatar_url(proposal.user)), proposal.user
   %td
     .row
       .col-sm-9
@@ -15,18 +15,26 @@
         .proposal-btn
           = proposal.button
 
-    = markdown(proposal.description)
+    - if description_size
+      = markdown(truncate(proposal.description, :length => description_size))
+    - else
+      = markdown(proposal.description)
+
+    .row
+      .col-sm-12
+        .info
+          .name
+            = link_to proposal.user.name, proposal.user
+          - unless proposal.location == "Anywhere"
+            .location
+              = fa_tag("map-marker")
+              = proposal.location
+          .category
+            - category = proposal.category_list.first
+            = raw(category_tag(category))
+            = link_to category, proposals_path(category: category)
+          .date
+            = fa_tag("calendar-o")
+            = time_ago_in_words(proposal.created_at) + " ago"
     .request{ class: "hidden" }
       = render partial: "messages/form", locals: {proposal: proposal}
-  %td
-    .info
-      - unless proposal.location == "Anywhere"
-        .location
-          = fa_tag("map-marker")
-          = proposal.location
-  %td
-    .info
-      .category
-        - category = proposal.category_list.first
-        = raw(category_tag(category))
-        = link_to category, proposals_path(category: category)

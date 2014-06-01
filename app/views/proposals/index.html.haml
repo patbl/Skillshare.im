@@ -1,18 +1,15 @@
-= render "shared/categories"
+.row
+  .col-sm-2
+    .h2 Offers
+    = render "categories"
+  .col-sm-10
+    %table.table.proposals-table
+      %tbody
+        - @proposals.each do |proposal|
+          - if proposal
+            = render partial: "proposals/proposal", locals: { proposal: proposal, description_size: 250 }
 
-%table.table.proposals-table
-  %thead
-    %tr
-      %th
-      %th= name_for(@klass, capitalized: true, plural: true)
-      %th Location
-      %th Type
-  %tbody
-    - @proposals.each do |proposal|
-      - if proposal
-        = render partial: "proposals/proposal", locals: { proposal: proposal }
-
-= paginate @proposals, theme: 'twitter-bootstrap-3'
+    = paginate @proposals, theme: 'twitter-bootstrap-3'
 - if @proposals.empty?
   %div.nothing-here
     There's nothing in this category. Sorry!

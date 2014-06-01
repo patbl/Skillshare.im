@@ -36,6 +36,19 @@
     font-size:1em;
     margin-bottom:9px;
   }
+  .user{
+    float:left;
+    font-size:1em;
+    margin: 4px 0 0 5px;
+    a{
+      color: #888;
+    }
+    img{
+      max-width: 73px;
+      border-radius:3px;
+      max-height: 300px;
+    }
+  }
   .info{
     color: #aaa;
     font-size:0.8em;
@@ -45,25 +58,22 @@
     .fa{
       color: #888;
     }
+    .name{
+      float:left;
+      margin-right: 21px;
+    }
     .category{
       float:left;
+      margin-right:21px;
     }
     .location{
       margin-right:21px;
       float:left;
     }
-    .user{
+    .date{
       float:left;
-      font-size:1em;
-      a{
-        color: #888;
-      }
-      img{
-        width:19px;
-        border-radius:3px;
-        margin-right:7px;
-      }
     }
+
   }
   .request{
     float:left;
@@ -80,7 +90,26 @@
   }
 
 }
+.categories{
+  color: rgba(30,30,30,0.7);
+  margin-bottom:10px;
+  .category{
+    float:left;
+    width:100%;
+  a{ color: rgba(30,30,30,0.7);
+    float:left;
+    padding: 3px 5px;
+    border-radius: 3px;
+    margin:3px;
+    font-size:1.3em;
+    &:hover{
+      background: rgba(0,0,0,0.1);
+      text-decoration:none;
+    }
 
+  }
+}
+}
 .proposals-table{
   background: rgba(250,250,250,0.3);
 }
