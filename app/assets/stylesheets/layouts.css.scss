@@ -40,6 +40,7 @@
   .right{
     float:right;
     .btn-default, .fa{
+      box-shadow:none;
       font-size:37px;
       float:right;
       background: none;
@@ -62,9 +63,6 @@
         background: none;
       }
     }
-    .fa-plus{
-      margin: 7px 5px;
-    }
     .sign-in-btn{
       margin-top:16px;
       color: white;
@@ -79,15 +77,25 @@
 }
 
 #footer{
-  height: 50px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 55px;
+  width: 100%;
   .navbar{
     background: rgba(250,250,250,0.3);
+    margin-bottom: 0;
     border:none;
     a{
       color: #333;
     }
     .icon a{
       font-size:26px;
+    }
+    .social {
+      margin-top:17px;
+      margin-left:21px;
     }
   }
   .navbar-default{
@@ -158,21 +166,16 @@
 /* Sticky footer styles
 -------------------------------------------------- */
 
-html,
+html{
+  position:relative;
+  min-height:100%;
+}
 body {
-  height: 100%;
+  margin-bottom:55px;
   //background-color: #eee;
   background-image: url("http://bowlabs.files.wordpress.com/2013/11/retina_wood.png");
   /*background-image: url(image_path("/backgrounds/retina_wood.png"))
   /* The html and body elements cannot have any padding or margin. */
 }
 
-/* Wrapper for page content to push down footer */
-#wrap {
-  min-height: 100%;
-  height: auto;
-  /* Negative indent footer by its height */
-  margin: 0 auto -50px;
-  /* Pad bottom by footer height */
-  padding: 0 0 50px;
-}
+

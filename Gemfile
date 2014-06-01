@@ -24,7 +24,8 @@ group :development do
   gem 'binding_of_caller'
   gem 'meta_request'
   gem 'letter_opener'
-  gem 'libnotify'
+  gem 'libnotify' if /linux/ =~ RUBY_PLATFORM
+  gem 'growl' if /darwin/ =~ RUBY_PLATFORM
 end
 
 group :test do
@@ -41,7 +42,6 @@ group :production do
   gem 'rails_12factor'
 end
 
-gem 'pg'
 gem 'unicorn'
 gem 'therubyracer', platforms: :ruby
 gem 'haml-rails'
@@ -68,3 +68,5 @@ gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem 'sprockets', '=2.11.0'
 gem 'gibbon'
+
+gem 'pg'
