@@ -1,22 +1,13 @@
 class Subscription < ActiveRecord::Base
   belongs_to :user
-  validates_presence_of :user, :frequency, :name
+  validates_presence_of :user, :frequency
   enum frequency: [:biweekly]
-  enum name: [:updates]
   before_save :generate_secure_key
 
   EPOCH = Date.new(1970, 1, 1)
   FREQUENCIES = {
     "biweekly" => 14
   }
-
-  DESCRIPTIONS = {
-    "updates" => "New offers and requests"
-  }
-
-  def description
-    "#{DESCRIPTIONS[name]} (#{frequency})"
-  end
 
   def generate_secure_key
     self.secure_key = SecureRandom.urlsafe_base64

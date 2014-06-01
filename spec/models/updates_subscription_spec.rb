@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Subscription do
-  let(:subscription) { build(:subscription, frequency: :biweekly) }
+describe UpdatesSubscription do
+  let(:subscription) { build(:updates_subscription, frequency: :biweekly) }
   describe "validations" do
     context "invalid subscription" do
       it "requires a user" do
@@ -36,6 +36,14 @@ describe Subscription do
         date = Date.new(1970, 1, day)
         expect(subscription.due?(date)).to be false
       end
+    end
+  end
+
+  describe "#new_stuff" do
+    it "returns the number of items posted in the last two weeks" do
+      create :offer, created_at: 3.weeks.ago
+      new_wanted = create :wanted, created_at: 13.days.ago + 10 # add ten seconds
+      expect(subscription.new_items).to eq 1
     end
   end
 end

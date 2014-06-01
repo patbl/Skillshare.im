@@ -16,10 +16,10 @@ feature "offer management", :slow do
     visit offers_path
     user_sees_n_offers 1
 
-    filter_on_category "self-improvement"
+    filter_on_category "Self Improvement"
     user_sees_n_offers 1
 
-    filter_on_category "tutoring"
+    filter_on_category "Tutoring"
     user_sees_n_offers 0
     expect(nothing_here_message?).to be true
 
