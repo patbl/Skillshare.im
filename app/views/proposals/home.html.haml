@@ -4,8 +4,12 @@
       .heading
         %h1
           Sharing Between Effective Altruists!
-        %h3
-          Coffee - Lodging - Mentorship - Capital - Used Goods - Connections - Online Labor
+        .home-categories-outer
+          .home-categories
+            - ApplicationHelper::CATEGORIES.each do |category|
+              .category
+                = link_to category.titleize, root_path(category:category)
+
 
   .row.proposals-table-outer
     .col-md-6
