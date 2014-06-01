@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe UpdatesSubscription, :focus do
+describe UpdatesSubscription do
   let(:subscription) { build(:updates_subscription, frequency: :biweekly, last_sent: Date.today) }
   describe "validations" do
     context "invalid subscription" do
@@ -48,7 +48,7 @@ describe UpdatesSubscription, :focus do
     end
   end
 
-  describe "#enough_new_items?", focus: true do
+  describe "#enough_new_items?" do
     describe "when there are at least four items" do
       it "returns true" do
         subscription.stub(:new_items).and_return(4)

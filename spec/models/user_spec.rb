@@ -12,7 +12,7 @@ describe User do
   context "after creating a user" do
     let(:user) { create(:user) }
 
-    fit "creates a subscription" do
+    it "creates a subscription" do
       subscription = user.subscriptions.first
       expect(subscription.frequency).to eq "biweekly"
       expect(subscription.last_sent).to eq  Date.today
