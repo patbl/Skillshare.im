@@ -1,20 +1,24 @@
 .home{
   .landing{
-    margin-bottom:80px;
+    margin-bottom:20px;
+    width:100%;
+    float:left;
     .heading{
-      .home-categories-outer{
-        float:left;
-        width:100%;
-        .home-categories{
-          margin:auto;
-          width:90%;
-          .category{
-            float:left;
-            font-size:1.6em;
-            margin:0 12px;
-            a{
-              color: rgba(0, 0, 0, 0.3);
-            }
+      float:left;
+      width:100%;
+    }
+    .home-categories-outer{
+      float:left;
+      width:100%;
+      .home-categories{
+        margin:auto;
+        width:90%;
+        .category{
+          float:left;
+          font-size:1.6em;
+          margin:0 12px;
+          a{
+            color: rgba(0, 0, 0, 0.3);
           }
         }
       }
