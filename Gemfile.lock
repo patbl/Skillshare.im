@@ -141,7 +141,6 @@ GEM
       diff-lcs (~> 1.1)
       mime-types (~> 1.15)
       posix-spawn (~> 0.3.6)
-    growl (1.0.3)
     guard (2.6.1)
       formatador (>= 0.2.4)
       listen (~> 2.7)
@@ -195,6 +194,8 @@ GEM
       addressable (~> 2.3)
     letter_opener (1.2.0)
       launchy (~> 2.2)
+    libnotify (0.8.2)
+      ffi (>= 1.0.11)
     libv8 (3.16.14.3)
     listen (2.7.4)
       celluloid (>= 0.15.2)
@@ -414,7 +415,6 @@ DEPENDENCIES
   font-awesome-rails
   geocoder
   gibbon
-  growl
   guard-bundler
   guard-livereload
   guard-rails
@@ -427,6 +427,7 @@ DEPENDENCIES
   kaminari
   launchy
   letter_opener
+  libnotify
   meta_request
   newrelic_rpm
   omniauth-browserid

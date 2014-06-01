@@ -38,4 +38,12 @@ describe UpdatesSubscription do
       end
     end
   end
+
+  describe "#new_stuff" do
+    it "returns the number of items posted in the last two weeks" do
+      create :offer, created_at: 3.weeks.ago
+      new_wanted = create :wanted, created_at: 13.days.ago + 10 # add ten seconds
+      expect(subscription.new_items).to eq 1
+    end
+  end
 end
