@@ -6,4 +6,17 @@ class UpdatesSubscription < Subscription
   def new_items
     Proposal.where(created_at: self.period).count
   end
+
+  def enough_new_items?
+    new_items >= 4
+  end
+
+  def ready?
+    super && enough_new_items?
+  end
+  
+  def send_email!
+    SubscriptionMailer.updates(self).deliver
+    update(last_sent: Date.today)
+  end
 end

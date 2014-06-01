@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
   end
 
   def subscribe_user
-    UpdatesSubscription.create(user: self, active: true, frequency: :biweekly)
+    UpdatesSubscription.create(user: self, active: true, frequency: :biweekly, last_sent: Date.today)
   end
 
   def valid_name
