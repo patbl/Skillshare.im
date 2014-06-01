@@ -10,23 +10,23 @@
   .row.proposals-table-outer
     .col-md-6
       %h2 
-        = link_to 'Offers', offers_path
+        = link_to 'New Offers', offers_path
       %table.table.proposals-table
         %tbody
           - @offers.each do |proposal|
             - if proposal
               = render partial: "proposals/proposal", locals: { proposal: proposal, description_size: 110  }
       %h2 
-        = link_to 'More Offers', offers_path
+        = link_to 'More', offers_path
 
     .col-md-6
       %h2
-        = link_to name_for('wanted', plural: true).titleize, wanteds_path
+        = link_to 'New ' +  name_for('wanted', plural: true).titleize, wanteds_path
       %table.table.proposals-table
         %tbody
           - @wanteds.each do |proposal|
             - if proposal
               = render partial: "proposals/proposal", locals: { proposal: proposal, description_size: 150 }
       %h2
-        = link_to 'More ' + name_for('wanted', plural: true).titleize, wanteds_path
+        = link_to 'More ', wanteds_path
         

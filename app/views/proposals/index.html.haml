@@ -1,6 +1,7 @@
 .row
   .col-sm-2
-    .h2 Offers
+    .h2 
+      = name_for(@klass.name, plural: true).titleize
     = render "categories"
   .col-sm-10
     %table.table.proposals-table
