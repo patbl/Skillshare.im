@@ -11,7 +11,7 @@ class Subscription < ActiveRecord::Base
   }
 
   DESCRIPTIONS = {
-    "updates" => "New offers and wanteds"
+    "updates" => "New offers and requests"
   }
 
   def description

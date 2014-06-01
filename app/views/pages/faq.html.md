@@ -23,15 +23,15 @@ who want to help others in the most effective ways possible.
 
 When you send someone an offer or request, we store only the metadata
 (e.g., who sent it, when it was sent), not the message itself. When
-you reply to a message someone sent you regarding an offer or wanted
+you reply to a message someone sent you regarding an offer or request
 you placed on the site, your response goes directly to the recipient,
 so we don't have any record of it at all.
 
-#### How do I add formatting my offers and wanteds?
+#### How do I add formatting my offers and requests?
 
 You can use
 [Markdown](http://support.mashery.com/docs/customizing_your_portal/Markdown_Cheat_Sheet)
-to add links, bulleted lists, and other formatting to your offers, wanteds, and profile.
+to add links, bulleted lists, and other formatting to your offers, requests, and profile.
 
 #### How can I help?
 
@@ -39,8 +39,8 @@ Thanks for asking! There are several ways:
 
 * **Post useful offers.** The site works only as long as people are
 willing to contribute.
-* **See if you can fulfill any wanteds.** You can be notified of new
-  wanteds by [Twitter]("https://twitter.com/Skillshare_im") or
+* **See if you can fulfill any requests.** You can be notified of new
+  requests by [Twitter]("https://twitter.com/Skillshare_im") or
   [RSS](http://localhost:3000/proposals.atom).
 * **Take people up on their offers.** Don't be shy about asking for
   stuff on the site—that's why people put it there!

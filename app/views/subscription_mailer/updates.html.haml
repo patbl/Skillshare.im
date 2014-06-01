@@ -9,7 +9,7 @@
       %li= link_to offer.title, offer_url(offer)
 
 - unless @wanteds.empty?
-  %h4 New wanteds
+  %h4 New #{name_for('wanted', plural: true)}
   %ul.callout
     - @wanteds.each do |wanted|
       %li= link_to wanted.title, wanted_url(wanted)

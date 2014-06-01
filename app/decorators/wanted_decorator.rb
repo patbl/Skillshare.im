@@ -4,7 +4,7 @@ class WantedDecorator < ProposalDecorator
   delegate_all
 
   def noun
-    "wanted"
+    "request"
   end
 
   def verb

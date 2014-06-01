@@ -22,11 +22,11 @@
 %table.table.proposals-table.mini-table.right
   %thead
     %tr
-      %th Recent Wanteds
+      %th Recent #{name_for('wanted', plural: true, capitalized: true)}
   %tbody
     - @wanteds.each do |proposal|
       - if proposal
         = render partial: "proposals/mini_proposal", locals: { proposal: proposal }
     %tr
       %td.more
-        = link_to fa_tag(wanted_icon, text: "More wanteds"), wanteds_path, class: "more"
+        = link_to fa_tag(wanted_icon, text: "More #{name_for('wanted', plural: true)}"), wanteds_path, class: "more"
