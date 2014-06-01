@@ -1,5 +1,6 @@
 module ApplicationHelper
-  CATEGORIES = %w[services lodging goods]
+  CATEGORIES = %w[career effective\ altruism lodging programming
+    self-improvement tutoring writing other]
 
   def markdown(text)
     text ||= ""
@@ -48,5 +49,13 @@ module ApplicationHelper
              end
       "http://gravatar.com/avatar/#{gravatar_id}.png?#{size}&d=mm"
     end
+  end
+
+  def name_for(klass, plural: false, capitalized: false)
+    klass = klass.to_s
+    klass = "request" if klass.downcase == "wanted"
+    klass << "s" if plural
+    klass = klass[0].upcase + klass[1..-1] if capitalized
+    klass
   end
 end

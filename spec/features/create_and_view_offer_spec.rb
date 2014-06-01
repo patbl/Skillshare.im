@@ -11,15 +11,15 @@ feature "offer management", :slow do
   end
 
   scenario "filtering Offers" do
-    create :offer, title: "love", category_list: "services"
+    create :offer, title: "love", category_list: "self-improvement"
 
     visit offers_path
     user_sees_n_offers 1
 
-    filter_on_category "services"
+    filter_on_category "self-improvement"
     user_sees_n_offers 1
 
-    filter_on_category "goods"
+    filter_on_category "tutoring"
     user_sees_n_offers 0
     expect(nothing_here_message?).to be true
 
@@ -59,9 +59,9 @@ feature "offer management", :slow do
     expect(page).to have_selector(".nothing-here")
   end
 
-  def filter_on_category(services)
+  def filter_on_category(category)
     within(".categories") do
-      click_link services
+      click_link category
     end
   end
 
@@ -73,11 +73,10 @@ feature "offer management", :slow do
     find(:css, ".btn.btn-danger.btn-small").click
   end
 
-  def create_offer_with_form(title, category = "goods", location = "Anywhere")
+  def create_offer_with_form(title, category = "tutoring")
     visit new_user_offer_path(@user)
     fill_in "Title", with: title
     select category
-    select location
     click_button "Create"
   end
 end

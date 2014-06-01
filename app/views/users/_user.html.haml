@@ -9,7 +9,7 @@
           %h3= link_to user.name, user
           .proposal-count
             = link_to pluralize(user.offers.count, 'Offer'), user
-            = link_to pluralize(user.wanteds.count, 'Wanteds'), user
+            = link_to pluralize(user.wanteds.count, name_for('wanted', capitalized: true)), user
           .location
             = fa_tag("map-marker")
             = user.location
