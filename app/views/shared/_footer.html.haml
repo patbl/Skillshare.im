@@ -8,8 +8,8 @@
         %li.icon= link_to(fa_tag("github"), "https://github.com/patbl/ea-skillshare")
         %li.icon= mail_to(ENV["SUPPORT_EMAIL"], fa_tag("envelope"), target: "_blank", subject: "Skillshare.im feedback")
         %li.icon= link_to(fa_tag("rss"), proposals_atom_url(format: "atom"))
-        %li
+        %li.social
           %div.fb-like{"data-action" => "like", "data-href" => "http://skillshare.im/", "data-layout" => "button_count", "data-share" => "false", "data-show-faces" => "true" }
-        %li
+        %li.social
           %a{href: "https://twitter.com/share", class: "twitter-share-button", 'data-size' => "medium"}
           %script{src: "//platform.twitter.com/widgets.js"}

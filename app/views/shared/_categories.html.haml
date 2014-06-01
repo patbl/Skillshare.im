@@ -1,8 +1,0 @@
-.categories
-  .inner-area
-    .category
-      = link_to "All", filtered_proposal_path
-    - ApplicationHelper::CATEGORIES.each do |category|
-      .category
-        - tag = "#{category_tag(category)} #{category}"
-        = link_to raw(tag), filtered_proposal_path(category)

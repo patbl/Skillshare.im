@@ -3,12 +3,7 @@
 .row
   = render @user
 
-%table.table.proposals-table
-  %thead
-    %tr
-      %th 
-      %th Description
-      %th Location
-      %th Type
+%table.table
+
   %tbody
     = render partial: "proposals/proposal", collection: @proposals

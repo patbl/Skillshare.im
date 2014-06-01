@@ -1,32 +1,32 @@
-- unless current_user
-  .landing
-    .heading
-      %h1
-        Sharing Between Effective Altruists!
-      %h3
-        Coffee - Lodging - Mentorship - Capital - Used Goods - Connections - Online Labor
+.home
+  - unless current_user
+    .landing
+      .heading
+        %h1
+          Sharing Between Effective Altruists!
+        %h3
+          Coffee - Lodging - Mentorship - Capital - Used Goods - Connections - Online Labor
 
-%table.table.proposals-table.mini-table.left
-  %thead
-    %tr
-      %th Recent Offers
-  %tbody
-    - @offers.each do |proposal|
-      - if proposal
-        = render partial: "proposals/mini_proposal", locals: { proposal: proposal }
-    %tr
-      %td.more
-        = link_to fa_tag(offer_icon, text: "More offers"), offers_path, class: "more"
+  .row.proposals-table-outer
+    .col-md-6
+      %h2 
+        = link_to 'New Offers', offers_path
+      %table.table.proposals-table
+        %tbody
+          - @offers.each do |proposal|
+            - if proposal
+              = render partial: "proposals/proposal", locals: { proposal: proposal, description_size: 110  }
+      %h2 
+        = link_to 'More', offers_path
 
-
-%table.table.proposals-table.mini-table.right
-  %thead
-    %tr
-      %th Recent #{name_for('wanted', plural: true, capitalized: true)}
-  %tbody
-    - @wanteds.each do |proposal|
-      - if proposal
-        = render partial: "proposals/mini_proposal", locals: { proposal: proposal }
-    %tr
-      %td.more
-        = link_to fa_tag(wanted_icon, text: "More #{name_for('wanted', plural: true)}"), wanteds_path, class: "more"
+    .col-md-6
+      %h2
+        = link_to 'New ' +  name_for('wanted', plural: true).titleize, wanteds_path
+      %table.table.proposals-table
+        %tbody
+          - @wanteds.each do |proposal|
+            - if proposal
+              = render partial: "proposals/proposal", locals: { proposal: proposal, description_size: 150 }
+      %h2
+        = link_to 'More ', wanteds_path
+        
