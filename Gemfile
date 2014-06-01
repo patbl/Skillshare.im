@@ -35,7 +35,6 @@ group :test do
   gem 'launchy'
   gem 'database_cleaner'
   gem 'rake'
-  gem 'sunspot_test'
 end
 
 group :production do

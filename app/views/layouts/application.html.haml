@@ -19,6 +19,9 @@
   %body
     %div#fb-root
 
+    %div#feedback
+      %a{href: "mailto:#{ENV['SUPPORT_EMAIL']}?subject=Skillshare.im feedback", target: "_blank"} feedback
+
     #wrap
       = render "shared/header"
 
