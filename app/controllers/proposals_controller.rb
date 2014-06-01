@@ -20,8 +20,8 @@ class ProposalsController < ApplicationController
   end
 
   def home
-    @offers = Offer.recent(10).decorate
-    @wanteds = Wanted.recent(10).decorate
+    @offers = Offer.filter_by_tag(params[:category]).recent(10).decorate
+    @wanteds = Wanted.filter_by_tag(params[:category]).recent(10).decorate
   end
 
   def show

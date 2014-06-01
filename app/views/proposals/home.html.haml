@@ -1,32 +1,43 @@
 .home
-  - unless current_user
-    .landing
+  .landing
+    - unless current_user
       .heading
         %h1
           Sharing Between Effective Altruists!
-        %h3
-          Coffee - Lodging - Mentorship - Capital - Used Goods - Connections - Online Labor
+    .home-categories-outer
+      .home-categories
+        - ApplicationHelper::CATEGORIES.each do |category|
+          .category
+            = link_to category.titleize, root_path(category:category)
 
   .row.proposals-table-outer
     .col-md-6
-      %h2 
-        = link_to 'New Offers', offers_path
-      %table.table.proposals-table
-        %tbody
-          - @offers.each do |proposal|
-            - if proposal
-              = render partial: "proposals/proposal", locals: { proposal: proposal, description_size: 110  }
-      %h2 
-        = link_to 'More', offers_path
+      - if @offers.count > 0
+        %h2 
+          = link_to 'New Offers', offers_path
+        %table.table.proposals-table
+          %tbody
+            - @offers.each do |proposal|
+              - if proposal
+                = render partial: "proposals/proposal", locals: { proposal: proposal, description_size: 110  }
+        %h2 
+          = link_to 'More', offers_path
+      - else
+        %h2 No Offers in This Category
 
     .col-md-6
-      %h2
-        = link_to 'New ' +  name_for('wanted', plural: true).titleize, wanteds_path
-      %table.table.proposals-table
-        %tbody
-          - @wanteds.each do |proposal|
-            - if proposal
-              = render partial: "proposals/proposal", locals: { proposal: proposal, description_size: 150 }
-      %h2
-        = link_to 'More ', wanteds_path
-        
+      - if @wanteds.count > 0
+        %h2
+          = link_to 'New ' +  name_for('wanted', plural: true).titleize, wanteds_path
+        %table.table.proposals-table
+          %tbody
+            - @wanteds.each do |proposal|
+              - if proposal
+                = render partial: "proposals/proposal", locals: { proposal: proposal, description_size: 150 }
+        %h2
+          = link_to 'More ', wanteds_path
+      - else
+        %h2 No Requests in This Category
+          
+
+ 
