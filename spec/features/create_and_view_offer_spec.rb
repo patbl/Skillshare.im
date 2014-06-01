@@ -19,7 +19,7 @@ feature "offer management", :slow do
     filter_on_category "Self Improvement"
     user_sees_n_offers 1
 
-    filter_on_category "Tutoring"
+    filter_on_category "Lodging"
     user_sees_n_offers 0
     expect(nothing_here_message?).to be true
 
@@ -73,7 +73,7 @@ feature "offer management", :slow do
     find(:css, ".btn.btn-danger.btn-small").click
   end
 
-  def create_offer_with_form(title, category = "tutoring")
+  def create_offer_with_form(title, category = "writing")
     visit new_user_offer_path(@user)
     fill_in "Title", with: title
     select category
