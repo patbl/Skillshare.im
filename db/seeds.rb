@@ -1,6 +1,6 @@
 User.delete_all
 
-dalai_lama = User.create!(
+dalai_lama = User.create(
   facebook_url: "http://www.facebook.com/DalaiLama",
   name: "His Holiness the Dalai Lama",
   email: "patbl@outlook.com",
@@ -9,14 +9,14 @@ dalai_lama = User.create!(
   about: "The 14th Dalai Lama (religious name: Tenzin Gyatso, shortened from Jetsun Jamphel Ngawang Lobsang Yeshe Tenzin Gyatso, born Lhamo Dondrub,[2] 6 July 1935) is the 14th and current Dalai Lama, as well as the longest lived incumbent. Dalai Lamas are the head monks of the Gelugpa lineage of Tibetan Buddhism. He won the Nobel Peace Prize in 1989, and is also well known for his lifelong advocacy for Tibetans inside and outside Tibet."
 )
 
-Identity.create!(
+Identity.create(
   provider: "facebook",
   uid: "339188887615",
   user: dalai_lama
 )
 
 100.times do |i|
-  Offer.create!(
+  Offer.create(
     title: "#{i} forks and knives",
     description: "My spoons keep disappearing, so I bought a new flatware set. Now I don't know what to do with all my extra forks and knives!",
     location: "Tibet",
@@ -26,7 +26,7 @@ Identity.create!(
 end
 
 100.times do |i|
-  shakira = User.create!(
+  shakira = User.create(
     facebook_url: "http://www.facebook.com/shakira",
     name: "Shakira",
     email: "shakira#{i}@gmail.com",
@@ -37,7 +37,7 @@ end
 Shakira has won many awards including five MTV Video Music Awards, two Grammy Awards, eight Latin Grammy Awards, seven Billboard Music Awards, twenty-eight Billboard Latin Music Awards and has been Golden Globe-nominated. She has a star on the Hollywood Walk of Fame, and she is the highest-selling Colombian artist of all time, having sold a total of 125 million records worldwide, over 70 million albums and 55 million singles.[5][6][7][8][9][10] Her U.S. album sales stand at 9.9 million.[11] Outside of her work in the music industry, Shakira is also involved in philanthropic activities through charity work and benefit concerts, notably her Pies Descalzos Foundation, her performance at the "Clinton Global Initiative" created by former U.S. President Bill Clinton, and her invitation to the Oval Office by President Barack Obama in February 2010 to discuss early childhood development.[12]}
   )
 
-  Identity.create!(
+  Identity.create(
     provider: "facebook",
     uid: "5027904559#{i}",
     user: shakira
@@ -47,7 +47,7 @@ end
 shakira = User.last
 
 100.times do |n|
-  Wanted.create!(
+  Wanted.create(
     title: "#{n} new songs",
     description: "&c., &c.",
     location: "Anywhere",
@@ -56,7 +56,7 @@ shakira = User.last
   )
 end
 
-Offer.create!(
+Offer.create(
   title: "Hips Don't Lie",
   description: %{"Hips Don't Lie" is a song by Colombian singer-songwriter Shakira featuring Haitian rapper Wyclef Jean for the reissue of Shakira's sixth studio album, Oral Fixation, Vol. 2. It was released on February 28, 2006, by Epic Records as the third single from the album. The song was written and produced by Shakira, Jean, and Jerry 'Wonder' Duplessis, and LaTravia Parker. "Hips Don't Lie" is a salsa and reggaeton song, which heavily incorporates samples from Jean's earlier single "Dance Like This" and "Amores Como el Nuestro" written by Omar Alfanno.
 
@@ -66,7 +66,7 @@ Upon its release, "Hips Don't Lie" received generally favorable reviews from mus
   user: shakira,
 )
 
-Offer.create!(
+Offer.create(
   title: "Waka Waka",
   description: %{ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris neque magna, consequat sed justo vel, mattis aliquam ipsum. Etiam iaculis magna urna, ac vulputate arcu tincidunt sed. Nam ac tellus ac justo dapibus consectetur. Aenean eu sapien lacus. Nulla mattis vulputate dui, feugiat pharetra augue egestas at. Suspendisse enim nunc, lobortis a consequat in, auctor sit amet odio. Nunc tincidunt odio sed leo suscipit rhoncus. Duis tortor turpis, vehicula vitae viverra ut, sollicitudin nec orci. In sodales tempus nibh nec eleifend. Proin malesuada egestas ornare. Nam convallis arcu eget ipsum mollis venenatis. Morbi iaculis a ante vitae consequat. Vivamus egestas justo et scelerisque eleifend. Donec ultricies quis nibh ut viverra.
 
@@ -76,20 +76,20 @@ Donec malesuada dui ornare neque adipiscing sagittis. Proin tincidunt vestibulum
   user: shakira,
 )
 
-gravatar_user = User.create!(
+gravatar_user = User.create(
   name: "Gravatar User",
   email: "patbl@live.com",
   location: "Somewhere, World",
   about: "Just an ordinary, average guy."
 )
 
-Identity.create!(
+Identity.create(
   provider: "browser_id",
   uid: "123",
   user: gravatar_user
 )
 
-Offer.create!(
+Offer.create(
   title: "Skillz",
   description: "Something useful.",
   location: "Somewhere, World",
@@ -97,20 +97,20 @@ Offer.create!(
   user: gravatar_user
 )
 
-no_gravatar_user = User.create!(
+no_gravatar_user = User.create(
   name: "No-Gravatar User",
   email: "doesnotexist@hotmail.com",
   location: "Somewhere, World",
   about: "I haven't had the time to upload a picture to Gravatar, or I don't know how to, or it seems like too much trouble."
 )
 
-Identity.create!(
+Identity.create(
   provider: "browser_id",
   uid: "456",
   user: no_gravatar_user
 )
 
-Offer.create!(
+Offer.create(
   title: "Skillz",
   description: "Something else useful.",
   location: "Somewhere, World",
