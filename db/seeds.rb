@@ -20,7 +20,7 @@ Identity.create!(
     title: "#{i} forks and knives",
     description: "My spoons keep disappearing, so I bought a new flatware set. Now I don't know what to do with all my extra forks and knives!",
     location: "Tibet",
-    category_list: "goods",
+    category_list: "self-improvement",
     user: dalai_lama,
   )
 end
@@ -51,7 +51,7 @@ shakira = User.last
     title: "#{n} new songs",
     description: "&c., &c.",
     location: "Anywhere",
-    category_list: "services",
+    category_list: "writing",
     user: shakira,
   )
 end
@@ -62,7 +62,7 @@ Offer.create!(
 
 Upon its release, "Hips Don't Lie" received generally favorable reviews from music critics. It received several accolades, including a People's Choice Award, an MTV Latin America Video Music Award, and an MTV Video Music Award. "Hips Don't Lie" reached the number-one spot on charts in at least 55 countries[1] including the US Billboard Hot 100, becoming her first number-one single in the country. It also broke the record for the most radio plays in a single week in the United States. The song was eventually certified double-platinum by the Recording Industry Association of America (RIAA), where it has sold over five million copies. It additionally topped charts in nations including Australia, Italy, and the United Kingdom. Having sold over ten million copies by the turn of the decade, the track became the best-selling single of the 21st century[2] in physical singles and digital downloads combined. It is widely recognized as one of Shakira's signature songs.},
   location: "Barcelona, Spain",
-  category_list: "goods",
+  category_list: "self-improvement",
   user: shakira,
 )
 
@@ -72,7 +72,7 @@ Offer.create!(
 
 Donec malesuada dui ornare neque adipiscing sagittis. Proin tincidunt vestibulum mi, nec faucibus dolor bibendum sit amet. Duis imperdiet ligula quis viverra mattis. Phasellus nibh ante, pharetra in commodo sed, dignissim sit amet risus. Nam lacinia ipsum lectus, at ornare metus euismod ut. Maecenas vel nisl et lectus interdum mattis. Etiam sagittis ac ipsum ut molestie. Cras hendrerit sagittis fringilla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam et nisl vel nunc scelerisque congue id et risus. Nunc blandit neque vel tortor pulvinar, in varius augue tempor. Morbi vel porttitor velit. Quisque quis sapien malesuada, ornare felis non, egestas erat. Sed volutpat id orci quis dictum. Cras nec dolor sed metus ornare tincidunt vitae sit amet mauris.},
   location: "Barcelona, Spain",
-  category_list: "goods",
+  category_list: "self-improvement",
   user: shakira,
 )
 
@@ -93,7 +93,7 @@ Offer.create!(
   title: "Skillz",
   description: "Something useful.",
   location: "Somewhere, World",
-  category_list: "services",
+  category_list: "writing",
   user: gravatar_user
 )
 
@@ -114,6 +114,6 @@ Offer.create!(
   title: "Skillz",
   description: "Something else useful.",
   location: "Somewhere, World",
-  category_list: "services",
+  category_list: "writing",
   user: no_gravatar_user
 )

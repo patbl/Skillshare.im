@@ -4,8 +4,7 @@
     = simple_form_for([@user, @proposal]) do |f|
       = f.error_notification
       = f.input :title
-      = f.input :category_list, collection: @categories, include_blank: false, label: "Category"
-      = f.input :location, collection: [current_user.location, "Anywhere"], selected: "Anywhere" , include_blank: false
+      = f.input :category_list, collection: @categories, label: "Category"
       = f.input :description, input_html: { rows: 5 }, label: "Description (use Markdown for formatting)"
       %br
       = f.button :submit, "Create"

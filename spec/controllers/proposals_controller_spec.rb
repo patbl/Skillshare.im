@@ -3,7 +3,7 @@ require 'spec_helper'
 describe ProposalsController do
   shared_examples "public access to offers" do
     before do
-      @wanted = create(:wanted, category_list: "goods")
+      @wanted = create(:wanted, category_list: "tutoring")
     end
 
     describe "#index" do
@@ -23,7 +23,7 @@ describe ProposalsController do
         end
 
         it "shows offers from the relevant category if they exist" do
-          get :index, category: "goods", type: "Wanted"
+          get :index, category: "tutoring", type: "Wanted"
           expect(assigns(:proposals)).to match_array [@wanted]
         end
       end

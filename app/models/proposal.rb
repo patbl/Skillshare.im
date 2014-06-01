@@ -2,10 +2,8 @@ class Proposal < ActiveRecord::Base
   belongs_to :user
   acts_as_taggable_on :categories
 
-  include Mappable
-
   validates :title, length: { minimum: 3, maximum: 70 }
-  validates_presence_of :title, :location, :user, :category_list
+  validates_presence_of :title, :user, :category_list
   validate :valid_category
 
   scope :recent, ->(n = 50) { order(created_at: :desc).limit(n) }
