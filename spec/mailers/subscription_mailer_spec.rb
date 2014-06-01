@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe SubscriptionMailer do
   describe "updates" do
-    let!(:subscription) { create :subscription, frequency: :biweekly }
+    let!(:subscription) { create :updates_subscription }
     let!(:offer) { create :offer }
     let!(:old_offer) { create :offer, title: "too old", created_at: 15.days.ago }
     let!(:wanted) { create :wanted }

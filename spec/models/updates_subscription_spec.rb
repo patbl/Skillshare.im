@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Subscription do
-  let(:subscription) { build(:subscription, frequency: :biweekly) }
+describe UpdatesSubscription do
+  let(:subscription) { build(:updates_subscription, frequency: :biweekly) }
   describe "validations" do
     context "invalid subscription" do
       it "requires a user" do

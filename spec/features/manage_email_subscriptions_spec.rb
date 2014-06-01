@@ -16,7 +16,7 @@ describe "Manage e-mail subscriptions" do
     end
 
     it "allows the user to unsubscribe with one click" do
-      subscription = create :subscription, active: true
+      subscription = create :updates_subscription, active: true
       expect(subscription.active?).to be true
       visit "/unsubscribe/#{subscription.secure_key}"
       expect(subscription.reload.active?).to be false
