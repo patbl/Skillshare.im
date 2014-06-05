@@ -10,3 +10,4 @@ jQuery ->
     $("#dialog").dialog
       modal: true
       width: 600
+      position: ['top', 150]
