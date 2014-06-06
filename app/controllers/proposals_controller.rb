@@ -9,7 +9,7 @@ class ProposalsController < ApplicationController
     respond_to do |format|
       format.html do
         @klass = params[:type].constantize
-        @proposals = @klass.recent.filter_by_tag(params[:category]).page(params[:page]).per(30).decorate
+        @proposals = @klass.filter_by_tag(params[:category]).page(params[:page]).per(30).decorate
       end
 
       format.atom do
