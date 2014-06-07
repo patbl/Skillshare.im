@@ -123,9 +123,8 @@ describe ProposalsController do
           end
 
           it "updates the offer in the database" do
-            patch :update, id: @wanted, wanted: attributes_for(:wanted, location: "Tampa"), type: "Wanted"
-            @wanted.reload
-            expect(@wanted.location).to eq "Tampa"
+            patch :update, id: @wanted, wanted: attributes_for(:wanted, title: "Steampunk"), type: "Wanted"
+            expect(@wanted.reload.title).to eq "Steampunk"
           end
         end
 

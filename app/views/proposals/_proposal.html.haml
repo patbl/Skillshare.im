@@ -25,10 +25,6 @@
         .info
           .name
             = link_to proposal.user.name, proposal.user
-          - unless proposal.location == "Anywhere"
-            .location
-              = fa_tag("map-marker")
-              = proposal.location
           .category
             - category = proposal.category_list.first
             = raw(category_tag(category))
