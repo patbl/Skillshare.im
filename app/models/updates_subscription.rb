@@ -14,9 +14,9 @@ class UpdatesSubscription < Subscription
   def ready?
     super && enough_new_items?
   end
-  
+
   def send_email!
     SubscriptionMailer.updates(self).deliver
-    update(last_sent: Date.today)
+    update(last_sent: Time.now)
   end
 end

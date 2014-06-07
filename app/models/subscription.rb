@@ -20,8 +20,8 @@ class Subscription < ActiveRecord::Base
     last_sent...Date.tomorrow
   end
 
-  def due?(current_date = Date.today)
-    current_date - last_sent >= days_in_period
+  def due?(current_time = Time.now)
+    ((current_time - last_sent) / 1.day).to_i >= days_in_period
   end
 
   def ready?
