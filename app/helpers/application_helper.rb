@@ -1,5 +1,5 @@
 module ApplicationHelper
-  CATEGORIES = %w[academics career effective\ altruism lodging programming
+  CATEGORIES = %w[academics career donations effective\ altruism lodging programming
     self-improvement writing other]
 
   def markdown(text)
