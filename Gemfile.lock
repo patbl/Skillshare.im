@@ -141,7 +141,6 @@ GEM
       diff-lcs (~> 1.1)
       mime-types (~> 1.15)
       posix-spawn (~> 0.3.6)
-    growl (1.0.3)
     guard (2.6.1)
       formatador (>= 0.2.4)
       listen (~> 2.7)
@@ -414,7 +413,6 @@ DEPENDENCIES
   font-awesome-rails
   geocoder
   gibbon
-  growl
   guard-bundler
   guard-livereload
   guard-rails
