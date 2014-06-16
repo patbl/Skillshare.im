@@ -8,7 +8,7 @@
         .icons
           = link_to fa_tag(offer_icon, tooltip: "Offers"), :offers, class: active?(offers_path)
           = link_to fa_tag(wanted_icon, tooltip: name_for('wanted', plural: true, capitalized: true)), :wanteds, class: active?(wanteds_path)
-          = link_to raw('<i rel="tooltip" title="Users" class="fa fa-group"></i>'), :users, class: active?(users_path)
+          = link_to raw('<i rel="tooltip" title="Community" class="fa fa-group"></i>'), :users, class: active?(users_path)
 
     .col-sm-3
       .right
