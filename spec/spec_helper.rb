@@ -12,7 +12,6 @@ SimpleCov.start 'rails'
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-require 'rspec/autorun'
 require 'capybara/rails'
 require 'capybara/rspec'
 
@@ -63,7 +62,6 @@ RSpec.configure do |config|
 
   config.run_all_when_everything_filtered = true
   config.filter_run :focus
-  config.filter_run_excluding :slow unless ENV["SLOW_SPECS"]
 
   config.before(:each) { GC.disable }
   config.after(:each) { GC.enable }
@@ -75,6 +73,7 @@ RSpec.configure do |config|
   config.include MailerMacros
   config.include LoginMacros
   config.before(:each) { reset_email }
+  config.infer_spec_type_from_file_location!
 end
 
 OmniAuth.config.test_mode = true

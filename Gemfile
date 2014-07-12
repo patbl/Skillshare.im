@@ -4,8 +4,8 @@ ruby '2.1.2'
 gem 'rails', '4.1.1'
 
 group :test, :development do
-  gem 'rspec', '~> 3.0.0.beta2'
-  gem 'rspec-rails', '~> 3.0.0.beta2'
+  gem 'rspec'
+  gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
   gem 'pry-byebug'
