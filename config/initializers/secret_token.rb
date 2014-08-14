@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Skillshare::Application.config.secret_key_base = '95815c50d55d1513da20584f7c644db0650a548b0e121c89bf6a80531d5263b79fc7cc4c1bddb49f0d0739177e04396c465014c23508a31218ccec08defb92e2'
+Skillshare::Application.config.secret_key_base = ENV['SKILLSHARE_SECRET_TOKEN']
