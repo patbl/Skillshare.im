@@ -8,8 +8,8 @@ capybara-*.html
 .rvmrc
 /.bundle
 /vendor/bundle
-/log/*
-/tmp/*
+/log
+/tmp
 /db/*.sqlite3
 /public/system/*
 /coverage/
@@ -22,4 +22,3 @@ config/initializers/secret_token.rb
 db/test.sqlite3-journal
 /config/application.yml
 .idea
-/solr
