@@ -11,9 +11,10 @@ module ProposalsHelper
     fa_tag(category_icon(category))
   end
 
-  def fa_tag(icon, text: nil, tooltip: nil)
+  def fa_tag(icon, text: nil, tooltip: nil, placement: nil)
     text &&= " " + text
-    tooltip &&= %(rel="tooltip" title="#{tooltip}" )
+    placement ||= "bottom"
+    tooltip &&= %(data-toggle="tooltip" title="#{tooltip}" data-placement="#{placement}" )
     %(<i #{tooltip}class="fa fa-#{icon}"></i>#{text}).html_safe
   end
 
@@ -23,6 +24,10 @@ module ProposalsHelper
 
   def offer_icon
     "gift"
+  end
+
+  def community_icon
+    "group"
   end
 
   def filtered_proposal_path(category = nil)
