@@ -8,12 +8,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.order(:name).page(params[:page]).per(30).decorate
-    if params[:page].nil? or params[:page] == 1
-    @marker_data = User.mappable.pluck(:id, :name, :latitude, :longitude).map do |id, name, lat, lng|
-      link = ActionController::Base.helpers.link_to(name, user_path(id))
-      { latlng: [lat, lng], popup: link.html_safe, icon: "user" }
-    end
-    end
+    generate_marker_data if params[:page].nil? || params[:page] == 1
   end
 
   def edit
@@ -36,15 +31,19 @@ class UsersController < ApplicationController
   end
 
   def map
-    @marker_data = User.mappable.pluck(:id, :name, :latitude, :longitude).map do |id, name, lat, lng|
-      link = ActionController::Base.helpers.link_to(name, user_path(id))
-      { latlng: [lat, lng], popup: link.html_safe, icon: "user" }
-    end
+    generate_marker_data
   end
 
   private
 
   def user_params
     params.require(:user).permit(:email, :location, :name, :ea_profile, :about, subscriptions_attributes: [:id, :active])
+  end
+
+  def generate_marker_data
+    @marker_data = User.mappable.pluck(:id, :name, :latitude, :longitude).map do |id, name, lat, lng|
+        link = ActionController::Base.helpers.link_to(name, user_path(id))
+        { latlng: [lat, lng], popup: link.html_safe, icon: "user" }
+    end
   end
 end
