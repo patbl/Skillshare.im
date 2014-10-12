@@ -13,16 +13,14 @@
           .location
             = fa_tag("map-marker")
             = user.location
-          - if signed_in?
-            .mail
-              = mail_to user.email do |m|
-                .btn.btn-small.btn-default
-                  = fa_tag("envelope")
-            - if user.facebook_url?
-              .facebook
-                = link_to user.facebook_url do |u|
+          .user-profile-links
+            - if signed_in?
+              .user-profile-link
+                = mail_to user.email do |m|
                   .btn.btn-default
-                    = fa_tag("facebook")
+                    = fa_tag("envelope")
+              = user.profile_link(:facebook_url, "facebook")
+              = user.profile_link(:ea_profile, "external-link")
         .col-xs-1
           - if user.current_user?
             = link_to edit_user_path(user), id: "edit-profile" do |u|
@@ -32,7 +30,7 @@
     .info
       - if local_assigns.has_key? :description_size
         = markdown(truncate(user.about, length: description_size))
-      - else 
+      - else
         = markdown(user.about)
 
   - if user.current_user? && defined? show_create_link
