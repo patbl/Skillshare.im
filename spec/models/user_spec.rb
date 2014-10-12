@@ -32,4 +32,13 @@ describe User do
       user.update!(about: "I'm too lazy to type my location")
     }.to raise_error(ActiveRecord::RecordInvalid)
   end
+
+  describe "#to_url" do
+    it "returns the URL for the user" do
+      user = build :user
+      allow(user).to receive(:id).and_return(789)
+      expect(user.to_url).to eq "http://skillshare.im/users/789"
+    end
+  end
+
 end

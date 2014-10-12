@@ -27,6 +27,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def to_url
+    "http://skillshare.im/users/#{self.id}"
+  end
+
   private
 
   def self.set_facebook_info(user, auth)
