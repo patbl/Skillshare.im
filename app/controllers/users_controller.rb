@@ -45,6 +45,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :location, :name, :about, subscriptions_attributes: [:id, :active])
+    params.require(:user).permit(:email, :location, :name, :ea_profile, :about, subscriptions_attributes: [:id, :active])
   end
 end
