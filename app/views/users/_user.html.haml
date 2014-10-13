@@ -14,9 +14,9 @@
             = fa_tag("map-marker")
             = user.location
           .user-profile-links
-            = user.profile_link(:email, "envelope", new_tab: true)
-            = user.profile_link(:facebook_url, "facebook", new_tab: true)
-            = user.profile_link(:ea_profile, "external-link", public: true, new_tab: true)
+            = user.profile_link(:email, "envelope")
+            = user.profile_link(:facebook_url, "facebook")
+            = user.profile_link(:ea_profile, "external-link", public: true)
         .col-xs-1
           - if user.current_user?
             = link_to edit_user_path(user), id: "edit-profile" do |u|
