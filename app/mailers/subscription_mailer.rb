@@ -1,6 +1,6 @@
 class SubscriptionMailer < ActionMailer::Base
   helper :application
-  default from: "updates@skillshare.im", reply_to: ENV["SUPPORT_EMAIL"]
+  default from: "Skillshare.im <updates@skillshare.im>", reply_to: ENV["SUPPORT_EMAIL"]
 
   def updates(subscription)
     @user = subscription.user
