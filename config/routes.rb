@@ -12,7 +12,6 @@ Skillshare::Application.routes.draw do
 
   root 'proposals#home'
   root 'proposals#home', as: 'proposals'
-  get 'map' => 'users#map'
   get 'proposals' => 'proposals#index', type: "Proposal", as: 'proposals_atom'
 
   get 'offers' => 'proposals#index', type: "Offer"

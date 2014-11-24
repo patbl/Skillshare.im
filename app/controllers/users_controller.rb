@@ -30,10 +30,6 @@ class UsersController < ApplicationController
     redirect_to root_url
   end
 
-  def map
-    generate_marker_data
-  end
-
   private
 
   def user_params
