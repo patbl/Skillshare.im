@@ -3,6 +3,25 @@ require 'spec_helper'
 feature "offer management", :slow do
   before { @user = sign_in }
 
+  scenario "viewing a new offer" do
+    create :offer, title: "A bear hug", category_list: "self-improvement", description: "Dangerously cuddly."
+
+    visit offers_path
+    click_link "A bear hug"
+
+    expect(page).to have_css "meta[charset='utf-8']", visible: false
+    expect(page).to have_css "meta[property='og:title'][content='A bear hug']", visible: false
+    expect(page).to have_css "meta[property='og:description'][content='Dangerously cuddly.']", visible: false
+    expect(page).to have_css "meta[property='og:description'][content='Dangerously cuddly.']", visible: false
+    expect(page).to have_css "meta[property='og:type'][content='website']", visible: false
+
+    url = URI.parse(current_url)
+    expect(page).to have_css "meta[property='og:url'][content='#{url}']", visible: false
+
+    image_url = avatar_url(@user)
+    expect(page).to have_css "meta[property='og:image'][content='#{image_url}']", visible: false
+  end
+
   scenario "adds a new offer" do
     create_offer_with_form("12 Cases Of Tinned Dog Food")
 

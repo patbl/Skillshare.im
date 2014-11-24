@@ -72,6 +72,7 @@ RSpec.configure do |config|
 
   config.include MailerMacros
   config.include LoginMacros
+  config.include ApplicationHelper
   config.before(:each) { reset_email }
   config.infer_spec_type_from_file_location!
 end

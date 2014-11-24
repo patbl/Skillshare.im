@@ -4,3 +4,10 @@
   .col-md-8
     %table.table.proposals-table
       = render "proposals/proposal", proposal: @proposal
+
+- content_for :for_head do
+  %meta{ property: "og:title", content: @proposal.title }
+  %meta{ property: "og:description", content: @proposal.description }
+  %meta{ property: "og:url", content: request.original_url }
+  %meta{ property: "og:type", content: "website" }
+  %meta{ property: "og:image", content: avatar_url(@user) }
