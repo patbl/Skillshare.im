@@ -8,3 +8,10 @@
 
       %tbody
         = render partial: "proposals/proposal", collection: @proposals
+
+- content_for :for_head do
+  %meta{ property: "og:title", content: @user.name }
+  %meta{ property: "og:description", content: @user.about }
+  %meta{ property: "og:url", content: request.original_url }
+  %meta{ property: "og:type", content: "profile" }
+  %meta{ property: "og:image", content: avatar_url(@user) }
