@@ -10,9 +10,6 @@
  *= require custom
  *= require font-awesome
  *= require persona-buttons
- *= require MarkerCluster
- *= require MarkerCluster.Default
- *= require leaflet.awesome-markers
  *= require jquery-ui/jquery.ui.core
  *= require jquery-ui/jquery.ui.theme
  *= require jquery-ui/jquery.ui.dialog
