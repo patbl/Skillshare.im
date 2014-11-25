@@ -43,10 +43,10 @@ describe UsersController do
       end
 
       it "assigns @markers correctly" do
-        user = create :user, name: "Joe"
+        user = create :user, first_name: "Joe", last_name: "Green"
         user.update(latitude: 1.0, longitude: 2.0)
         get :index
-        link = ActionController::Base.helpers.link_to("Joe", user_path(user))
+        link = ActionController::Base.helpers.link_to("Joe Green", user_path(user))
         expect(assigns(:marker_data)).to eq [{ latlng: [1.0, 2.0], popup: link, icon: "user"  }]
       end
     end
@@ -94,13 +94,13 @@ describe UsersController do
 
     describe "DELETE #destroy" do
       it "doesn't let a user delete another user's profile" do
-        good_user = create :user, name: "Charity"
-        bad_user = create :user, location: "Vice"
+        good_user = create :user, first_name: "Charity"
+        bad_user = create :user, first_name: "Vice"
         set_user_session(bad_user)
         expect { delete :destroy, id: good_user }.to change(User, :count).by(-1)
         expect(response).to redirect_to root_path
-        expect(User.where name: "Charity").to exist
-        expect(User.where name: "Vice").not_to exist
+        expect(User.where first_name: "Charity").to exist
+        expect(User.where first_name: "Vice").not_to exist
       end
 
       it "deletes a user's offers when the user's account is deleted" do

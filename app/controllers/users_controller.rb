@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.order(:name).page(params[:page]).per(30).decorate
+    @users = User.order(:first_name, :last_name).page(params[:page]).per(30).decorate
     generate_marker_data if params[:page].nil? || params[:page] == 1
   end
 
@@ -37,8 +37,9 @@ class UsersController < ApplicationController
   end
 
   def generate_marker_data
-    @marker_data = User.mappable.pluck(:id, :name, :latitude, :longitude).map do |id, name, lat, lng|
-        link = ActionController::Base.helpers.link_to(name, user_path(id))
+    @marker_data = User.mappable.pluck(
+      :id, :first_name, :last_name, :latitude, :longitude).map do |id, first_name, last_name, lat, lng|
+        link = ActionController::Base.helpers.link_to("#{first_name} #{last_name}", user_path(id))
         { latlng: [lat, lng], popup: link.html_safe, icon: "user" }
     end
   end
