@@ -9,21 +9,15 @@ class User < ActiveRecord::Base
 
   include Mappable
 
-  validates_presence_of :email, :location, :name
-  validate :valid_name, on: :update
-  validate :valid_location, on: :update
+  validates_presence_of :email
+  validates_presence_of :first_name, :last_name, :location, on: :update
 
   accepts_nested_attributes_for :subscriptions
-
-  LOCATION_PLACEHOLDER = "Your location here"
-  NAME_PLACEHOLDER = "Your name here"
 
   def self.create_from_auth(auth)
     create! do |user|
       user.email = auth.info.email
       set_facebook_info(user, auth) if auth.provider == "facebook"
-      user.name ||= NAME_PLACEHOLDER
-      user.location ||= LOCATION_PLACEHOLDER
     end
   end
 
@@ -31,10 +25,20 @@ class User < ActiveRecord::Base
     "http://skillshare.im/users/#{self.id}"
   end
 
+  def name
+    if first_name && last_name
+      "#{first_name} #{last_name}"
+    else
+      read_attribute(:name)
+    end
+  end
+
   private
 
   def self.set_facebook_info(user, auth)
     user.name = auth.info.name
+    user.first_name = auth.info.first_name
+    user.last_name = auth.info.last_name
     user.location = auth.info.location
     user.facebook_url = auth.info.urls[:Facebook]
 
@@ -48,13 +52,5 @@ class User < ActiveRecord::Base
 
   def subscribe_user
     UpdatesSubscription.create(user: self, active: true, frequency: :biweekly, last_sent: Date.today)
-  end
-
-  def valid_name
-    errors.add(:name, %["#{name}" isn't a valid name]) if name == NAME_PLACEHOLDER
-  end
-
-  def valid_location
-    errors.add(:location, %["#{location}" isn't a valid location]) if location == LOCATION_PLACEHOLDER
   end
 end

@@ -4,7 +4,8 @@
   .col-md-4
     = simple_form_for @user do |f|
       = f.error_notification
-      = f.input :name
+      = f.input :first_name
+      = f.input :last_name
       = f.input :email, label: "E-mail (required to offer and request things)"
       = f.input :location
       = f.input :ea_profile, label: link_to("Effective Altruism Profile Link (optional)", "http://effectivealtruismhub.com/user/profiles", target: "_blank"), placeholder: "http://effectivealtruismhub.com/user/your-name"

@@ -4,13 +4,15 @@ feature "profile management", :slow do
   context "viewing a profile" do
     before do
       @user = sign_in
-      @user.update name: "Lisa", about: "A nice person."
+      @user.update first_name: "Lisa", last_name: "Owens", about: "A nice person."
       visit user_path(@user)
     end
 
     scenario "Open Graph tags show up" do
       expect(page).to have_css "meta[charset='utf-8']", visible: false
-      expect(page).to have_css "meta[property='og:title'][content='Lisa']", visible: false
+      expect(page).to have_css "meta[property='og:title'][content='Lisa Owens']", visible: false
+      expect(page).to have_css "meta[property='og:first_name'][content='Lisa']", visible: false
+      expect(page).to have_css "meta[property='og:last_name'][content='Owens']", visible: false
       expect(page).to have_css "meta[property='og:description'][content='A nice person.']", visible: false
       expect(page).to have_css "meta[property='og:type'][content='profile']", visible: false
 
@@ -33,7 +35,13 @@ feature "profile management", :slow do
       fill_in "Location", with: ""
       click_button "Save"
 
+      fill_in "First name", with: ""
+      click_button "Save"
+
       fill_in "Location", with: "Nowhere, Wyoming"
+      click_button "Save"
+
+      fill_in "First name", with: "Joe"
       click_button "Save"
 
       expect(page).to have_selector(".alert-success")

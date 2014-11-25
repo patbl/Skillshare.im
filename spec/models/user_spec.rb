@@ -1,4 +1,5 @@
 require 'spec_helper'
+require Rails.root.join("spec/models/concerns/mappable_spec.rb")
 
 describe User do
   it_behaves_like "Mappable"
@@ -19,17 +20,10 @@ describe User do
     end
   end
 
-  it "doesn't allow 'Your name here' on update" do
-    user = create :user, name: "Your name here"
+  it "doesn't allow a blank name on update" do
+    user = create :user, first_name: ""
     expect {
       user.update!(about: "I'm too lazy to type my name")
-    }.to raise_error(ActiveRecord::RecordInvalid)
-  end
-
-  it "doesn't allow 'Your location here' on update" do
-    user = create :user, location: "Your location here"
-    expect {
-      user.update!(about: "I'm too lazy to type my location")
     }.to raise_error(ActiveRecord::RecordInvalid)
   end
 
