@@ -29,7 +29,7 @@ end
 group :test do
   gem 'simplecov', require: false
   gem 'ffaker'
-  gem 'capybara', github: 'jnicklas/capybara', branch: 'master'
+  gem 'capybara'
   gem 'poltergeist'
   gem 'launchy'
   gem 'database_cleaner'

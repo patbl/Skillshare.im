@@ -11,6 +11,8 @@
 
 - content_for :for_head do
   %meta{ property: "og:title", content: @user.name }
+  %meta{ property: "og:first_name", content: @user.first_name }
+  %meta{ property: "og:last_name", content: @user.last_name }
   %meta{ property: "og:description", content: @user.about }
   %meta{ property: "og:url", content: request.original_url }
   %meta{ property: "og:type", content: "profile" }

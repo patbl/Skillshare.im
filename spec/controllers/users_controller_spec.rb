@@ -63,22 +63,22 @@ describe UsersController do
     describe "PATCH #update" do
       context "with valid attributes" do
         it "updates the user's profile" do
-          user = create(:user, name: "Leon Crass")
+          user = create(:user, last_name: "Crass")
           set_user_session(user)
-          patch :update, user: attributes_for(:user, name: "Leon Kass"), id: user
+          patch :update, user: attributes_for(:user, last_name: "Kass"), id: user
           expect(response).to redirect_to(user)
-          expect(user.reload.name).to eq "Leon Kass"
+          expect(user.reload.last_name).to eq "Kass"
           expect(flash[:success]).to be
         end
       end
 
       context "with invalid attributes" do
         it "doesn't update the user's profile" do
-          user = create(:user, name: "So-and-so")
+          user = create(:user, first_name: "So-and-so")
           set_user_session(user)
-          patch :update, user: attributes_for(:user, email: ""), id: user
+          patch :update, user: attributes_for(:user, first_name: "Mr. Right", email: ""), id: user
           expect(response).to render_template :edit
-          expect(user.reload.name).to eq "So-and-so"
+          expect(user.reload.first_name).to eq "So-and-so"
         end
       end
 

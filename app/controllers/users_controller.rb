@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :location, :name, :ea_profile, :about, subscriptions_attributes: [:id, :active])
+    params.require(:user).permit(:email, :location, :first_name, :last_name, :ea_profile, :about, subscriptions_attributes: [:id, :active])
   end
 
   def generate_marker_data

@@ -2,7 +2,8 @@ require 'ffaker'
 
 FactoryGirl.define do
   factory :user do |n|
-    name "#{Faker::Name.first_name} #{Faker::Name.last_name}"
+    first_name Faker::Name.first_name
+    last_name Faker::Name.last_name
     email Faker::Internet.email
     location "#{Faker::Address.city}, #{Faker::Address.country}"
     sequence(:oauth_token) { |n| "oauth#{n}" }
