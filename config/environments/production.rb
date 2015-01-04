@@ -19,11 +19,6 @@ Skillshare::Application.configure do
   # For large-scale production use, consider using a caching reverse proxy like nginx, varnish or squid.
   # config.action_dispatch.rack_cache = true
 
-  # Enable Rails's static asset server (Apache or nginx will already do this).
-  # Should be disabled, but I tried for many hours with no success. (The Twitter and Facebook buttons
-  # and the map don't display properly.
-  config.serve_static_assets = true
-
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass

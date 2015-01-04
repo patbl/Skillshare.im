@@ -30,6 +30,11 @@ module Skillshare
     config.assets.initialize_on_precompile = false
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
 
+    # Enable Rails's static asset server (Apache or nginx will already do this).
+    # Should be disabled, but I tried for many hours with no success. (The Twitter and Facebook buttons
+    # and the map don't display properly.
+    config.serve_static_files = true
+
     config.i18n.enforce_available_locales = true
   end
 end
