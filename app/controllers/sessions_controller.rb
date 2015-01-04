@@ -46,7 +46,10 @@ class SessionsController < ApplicationController
   protected
 
   def auth
-    request.env["omniauth.auth"]
+    ActionController::Parameters.new(request.env["omniauth.auth"])
+      .permit(:provider, :uid,
+              info: [:email, :first_name, :last_name, :location, :image, urls: [:Facebook]],
+              credentials: [:token, :expires_at])
   end
 
   def redirect_new_user

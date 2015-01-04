@@ -58,10 +58,9 @@ describe SessionsController do
       end
 
       context "previous user" do
-
         it "redirects to the previous page if there was one" do
           user = create :user
-          expect(User).to receive(:create_from_auth).with(request.env["omniauth.auth"]).and_return(user)
+          expect(User).to receive(:create_from_auth).and_return(user)
 
           store_url "previous page path"
           get :create
@@ -77,7 +76,7 @@ describe SessionsController do
 
         it "associates the new user with the identity" do
           identity = create :identity
-          expect(Identity).to receive(:find_or_create).with(request.env["omniauth.auth"]).and_return(identity)
+          expect(Identity).to receive(:find_or_create).and_return(identity)
           get :create
           expect(User.last.identities).to include identity
           expect(identity.user).to eq User.last

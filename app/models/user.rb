@@ -16,8 +16,9 @@ class User < ActiveRecord::Base
 
   def self.create_from_auth(auth)
     create! do |user|
-      user.email = auth.info.email
-      set_facebook_info(user, auth) if auth.provider == "facebook"
+      auth_hash = OmniAuth::AuthHash.new(auth)
+      user.email = auth_hash.info.email
+      set_facebook_info(user, auth_hash) if auth_hash.provider == "facebook"
     end
   end
 
