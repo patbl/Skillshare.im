@@ -13,7 +13,7 @@ end
 
 group :development do
   gem 'guard-rails'
-  gem 'guard-rspec', '~> 4.2.8'
+  gem 'guard-rspec'
   gem 'guard-spring'
   gem 'spring-commands-rspec'
   gem 'guard-bundler'
@@ -44,8 +44,8 @@ gem 'unicorn'
 gem 'therubyracer', platforms: :ruby
 gem 'haml-rails'
 gem 'sass-rails'
-gem 'bootstrap-sass', '~> 3.1.1'
-gem 'uglifier', '>= 1.3.0'
+gem 'bootstrap-sass'
+gem 'uglifier'
 gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
@@ -64,7 +64,6 @@ gem 'newrelic_rpm'
 gem 'draper'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
-gem 'sprockets', '=2.11.0'
 gem 'gibbon'
 
 gem 'pg'

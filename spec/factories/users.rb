@@ -15,7 +15,7 @@ FactoryGirl.define do
     end
 
     factory :user_with_offers do
-      ignore do
+      transient do
         offers_count 5
       end
       after(:create) do |user, evaluator|
