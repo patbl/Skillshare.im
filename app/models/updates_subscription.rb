@@ -16,7 +16,7 @@ class UpdatesSubscription < Subscription
   end
 
   def send_email!
-    SubscriptionMailer.updates(self).deliver
+    SubscriptionMailer.updates(self).deliver_now
     update(last_sent: Time.now)
   end
 end

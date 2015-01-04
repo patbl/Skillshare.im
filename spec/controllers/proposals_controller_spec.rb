@@ -156,7 +156,7 @@ describe ProposalsController do
 
         it "doesn't allow a user to delete another user's offers" do
           bad_user = create(:user)
-          session[:user_id] = bad_user
+          session[:user_id] = bad_user.id
           expect { delete :destroy, id: @wanted, type: "Wanted" }
             .to raise_error(ActiveRecord::RecordNotFound)
         end

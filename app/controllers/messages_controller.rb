@@ -6,8 +6,8 @@ class MessagesController < ApplicationController
     @proposal = Proposal.find(proposal_id).decorate
     notification_email = NotificationEmail.new(current_user, @body, @proposal)
     confirmation_email = ConfirmationEmail.new(current_user, @body, @proposal)
-    UserMailer.proposal_email(notification_email).deliver
-    UserMailer.proposal_email(confirmation_email).deliver
+    UserMailer.proposal_email(notification_email).deliver_now
+    UserMailer.proposal_email(confirmation_email).deliver_now
     @proposal.record(current_user)
     redirect_back_or @proposal, success: "Message sent."
   end
