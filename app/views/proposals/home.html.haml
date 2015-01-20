@@ -13,14 +13,14 @@
   .row.proposals-table-outer
     .col-md-6
       - if @offers.count > 0
-        %h2 
+        %h2
           = link_to 'New Offers', offers_path
         %table.table.proposals-table
           %tbody
             - @offers.each do |proposal|
               - if proposal
                 = render partial: "proposals/proposal", locals: { proposal: proposal, description_size: 110  }
-        %h2 
+        %h2
           = link_to 'More', offers_path
       - else
         %h2 No Offers in This Category
@@ -38,6 +38,3 @@
           = link_to 'More ', wanteds_path
       - else
         %h2 No Requests in This Category
-          
-
- 

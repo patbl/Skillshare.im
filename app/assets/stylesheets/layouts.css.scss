@@ -1,3 +1,5 @@
+@import 'variables';
+
 .header{
   margin-top:19px;
   margin-bottom:26px;
@@ -170,4 +172,21 @@ body {
   background-image: url("http://bowlabs.files.wordpress.com/2013/11/retina_wood.png");
   /*background-image: url(image_path("/backgrounds/retina_wood.png"))
   /* The html and body elements cannot have any padding or margin. */
+}
+
+.top-banner {
+  background-color: $light-blue;
+  height: 100px;
+  width: 100%
+}
+
+.top-banner-clickable {
+  display: block;
+  width: 100%;
+  height: 100px;
+  line-height: 100px;
+  text-decoration: none;
+  font-size: 22px;
+  text-align: center;
+  color: white;
 }

@@ -1,3 +1,5 @@
+@import 'variables';
+
 #feedback {
   height: 104px;
   width: 104px;
@@ -13,7 +15,7 @@
 
 #feedback a {
   display: block;
-  background: #428bca;
+  background: $light-blue;
   height: 20px;
   width: 80px;
   padding: 0 0 5px 3px;
