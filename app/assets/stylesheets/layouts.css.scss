@@ -186,7 +186,11 @@ body {
   height: 100px;
   line-height: 100px;
   text-decoration: none;
-  font-size: 22px;
+  font-size: 2vw;
   text-align: center;
   color: white;
+  &:hover {
+    text-decoration: none;
+    color: white;
+  }
 }

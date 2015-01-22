@@ -1,3 +1,3 @@
-- if params['category'] == 'career'
+- if params["category"] == "career" || @proposal.try(:category_list).try(:include?, "career")
   .top-banner
     %a.top-banner-clickable{ href: "http://effectivealtruismhub.com/career-help", target: "_blank" } Interested in career advice? You should also check out the career-advice page on the Effective Altruism Hub!
