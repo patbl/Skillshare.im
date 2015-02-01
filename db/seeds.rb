@@ -2,7 +2,8 @@ User.delete_all
 
 dalai_lama = User.create(
   facebook_url: "http://www.facebook.com/DalaiLama",
-  name: "His Holiness the Dalai Lama",
+  first_name: "His Holiness",
+  last_name: "the Dalai Lama",
   email: "patbl@outlook.com",
   avatar_url: "http://graph.facebook.com/339188887615/picture",
   location: "Tibet",
@@ -27,7 +28,8 @@ end
 100.times do |i|
   shakira = User.create(
     facebook_url: "http://www.facebook.com/shakira",
-    name: "Shakira",
+    first_name: "Shakira",
+    last_name: "Isabel Mebarak Ripoll",
     email: "shakira#{i}@gmail.com",
     avatar_url: "http://graph.facebook.com/5027904559/picture",
     location: "Barranquilla, Colombia",
@@ -73,7 +75,8 @@ Donec malesuada dui ornare neque adipiscing sagittis. Proin tincidunt vestibulum
 )
 
 gravatar_user = User.create(
-  name: "Gravatar User",
+  first_name: "Gravatar",
+  last_name: "User",
   email: "patbl@live.com",
   location: "Somewhere, World",
   about: "Just an ordinary, average guy."
@@ -93,7 +96,8 @@ Offer.create(
 )
 
 no_gravatar_user = User.create(
-  name: "No-Gravatar User",
+  first_name: "No-Gravatar",
+  last_name: "User",
   email: "doesnotexist@hotmail.com",
   location: "Somewhere, World",
   about: "I haven't had the time to upload a picture to Gravatar, or I don't know how to, or it seems like too much trouble."
