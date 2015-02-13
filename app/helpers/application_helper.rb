@@ -52,10 +52,10 @@ module ApplicationHelper
   end
 
   def name_for(klass, plural: false, capitalized: false)
-    klass = klass.to_s
-    klass = "request" if klass.downcase == "wanted"
-    klass << "s" if plural
-    klass = klass[0].upcase + klass[1..-1] if capitalized
-    klass
+    name = klass.to_s
+    name = "request" if klass.downcase == "wanted"
+    name = name.pluralize if plural
+    name = name.capitalize if capitalized
+    name
   end
 end
