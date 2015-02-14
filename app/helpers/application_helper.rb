@@ -32,8 +32,7 @@ module ApplicationHelper
   end
 
   def title(page_title)
-    default_page_title = "Sharing Between Effective Alruists"
-    content_for(:title)  { page_title }
+    content_for(:title) { page_title }
   end
 
   def avatar_url(user, size = "large")
