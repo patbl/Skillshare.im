@@ -1,6 +1,6 @@
 = title @proposal.title
 .row
-  = render partial: "users/user", locals: { user: @user, description_size: 150}
+  = render @user, description_size: 150
   .col-md-8
     %table.table.proposals-table
       = render "proposals/proposal", proposal: @proposal

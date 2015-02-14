@@ -6,11 +6,7 @@
     .row
       .col-sm-9
         %h3
-          #FIXME
-          - if proposal.instance_of? Offer
-            = link_to(proposal.title, offer_path(proposal))
-          - else
-            = link_to(proposal.title, wanted_path(proposal))
+          = link_to(proposal.title, proposal)
       .col-sm-3
         .proposal-btn
           = proposal.button
