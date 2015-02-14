@@ -15,10 +15,7 @@
         .proposal-btn
           = proposal.button
 
-    - if local_assigns.has_key? :description_size
-      = markdown(truncate(proposal.description, :length => description_size))
-    - else
-      = markdown(proposal.description)
+    = markdown(truncate(proposal.description, length: local_assigns.fetch(:description_size, Float::INFINITY)))
 
     .row
       .col-sm-12
