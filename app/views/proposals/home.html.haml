@@ -17,9 +17,8 @@
           = link_to 'New Offers', offers_path
         %table.table.proposals-table
           %tbody
-            - @offers.each do |proposal|
-              - if proposal
-                = render partial: "proposals/proposal", locals: { proposal: proposal, description_size: 110  }
+            - @offers.each do |offer|
+              = render partial: "proposals/proposal", locals: { proposal: offer, description_size: 110  }
         %h2
           = link_to 'More', offers_path
       - else
@@ -28,12 +27,11 @@
     .col-md-6
       - if @wanteds.count > 0
         %h2
-          = link_to 'New ' +  name_for('wanted', plural: true).titleize, wanteds_path
+          = link_to 'New ' +  name_for('wanted', plural: true, capitalized: true), wanteds_path
         %table.table.proposals-table
           %tbody
-            - @wanteds.each do |proposal|
-              - if proposal
-                = render partial: "proposals/proposal", locals: { proposal: proposal, description_size: 150 }
+            - @wanteds.each do |wanted|
+              = render partial: "proposals/proposal", locals: { proposal: wanted, description_size: 150 }
         %h2
           = link_to 'More ', wanteds_path
       - else
