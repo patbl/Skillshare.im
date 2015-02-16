@@ -14,7 +14,7 @@ module ApplicationHelper
       lax_spacing: true,
       quote: true
     }
-    html_options = { filter_html: true }
+    html_options = { filter_html: true, link_attributes: { rel: "nofollow" } }
     Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(html_options), markdown_options)
   end
 
