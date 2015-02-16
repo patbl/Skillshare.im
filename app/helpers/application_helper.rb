@@ -1,10 +1,12 @@
 module ApplicationHelper
+  include WordBreakHelper
+
   CATEGORIES = %w[academics career donations effective\ altruism lodging programming
     self-improvement writing other]
 
   def markdown(text)
     text ||= ""
-    markdown_renderer.render(text).html_safe
+    break_words(markdown_renderer.render(text), 40, escape_first: false).html_safe
   end
 
   def markdown_renderer
