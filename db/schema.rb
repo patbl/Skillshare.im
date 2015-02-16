@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20141125045755) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "fulfillments", force: true do |t|
+  create_table "fulfillments", force: :cascade do |t|
     t.integer  "fulfiller_id"
     t.integer  "wanter_id"
     t.integer  "wanted_id"
@@ -28,10 +28,10 @@ ActiveRecord::Schema.define(version: 20141125045755) do
   add_index "fulfillments", ["wanted_id"], name: "index_fulfillments_on_wanted_id", using: :btree
   add_index "fulfillments", ["wanter_id"], name: "index_fulfillments_on_wanter_id", using: :btree
 
-  create_table "identities", force: true do |t|
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "oauth_token"
+  create_table "identities", force: :cascade do |t|
+    t.string   "provider",         limit: 255
+    t.string   "uid",              limit: 255
+    t.string   "oauth_token",      limit: 255
     t.datetime "oauth_expires_at"
     t.integer  "user_id"
     t.datetime "created_at"
@@ -40,18 +40,18 @@ ActiveRecord::Schema.define(version: 20141125045755) do
 
   add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
 
-  create_table "proposals", force: true do |t|
+  create_table "proposals", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "title"
+    t.string   "title",       limit: 255
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "type"
+    t.string   "type",        limit: 255
   end
 
   add_index "proposals", ["user_id"], name: "index_proposals_on_user_id", using: :btree
 
-  create_table "requisitions", force: true do |t|
+  create_table "requisitions", force: :cascade do |t|
     t.integer  "requester_id"
     t.integer  "offerer_id"
     t.integer  "offer_id"
@@ -63,52 +63,52 @@ ActiveRecord::Schema.define(version: 20141125045755) do
   add_index "requisitions", ["offerer_id"], name: "index_requisitions_on_offerer_id", using: :btree
   add_index "requisitions", ["requester_id"], name: "index_requisitions_on_requester_id", using: :btree
 
-  create_table "subscriptions", force: true do |t|
+  create_table "subscriptions", force: :cascade do |t|
     t.integer  "user_id"
     t.boolean  "active"
     t.integer  "frequency"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "secure_key"
-    t.string   "type"
+    t.string   "secure_key", limit: 255
+    t.string   "type",       limit: 255
     t.datetime "last_sent"
   end
 
   add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id", using: :btree
 
-  create_table "taggings", force: true do |t|
+  create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
-    t.string   "taggable_type"
+    t.string   "taggable_type", limit: 255
     t.integer  "tagger_id"
-    t.string   "tagger_type"
+    t.string   "tagger_type",   limit: 255
     t.string   "context",       limit: 128
     t.datetime "created_at"
   end
 
   add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
 
-  create_table "tags", force: true do |t|
-    t.string  "name"
-    t.integer "taggings_count", default: 0
+  create_table "tags", force: :cascade do |t|
+    t.string  "name",           limit: 255
+    t.integer "taggings_count",             default: 0
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
-  create_table "users", force: true do |t|
-    t.string   "email"
-    t.string   "facebook_url"
-    t.string   "location"
+  create_table "users", force: :cascade do |t|
+    t.string   "email",            limit: 255
+    t.string   "facebook_url",     limit: 255
+    t.string   "location",         limit: 255
     t.float    "latitude"
     t.float    "longitude"
-    t.string   "oauth_token"
+    t.string   "oauth_token",      limit: 255
     t.datetime "oauth_expires_at"
     t.text     "about"
     t.boolean  "admin"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "avatar_url"
-    t.string   "ea_profile"
+    t.string   "avatar_url",       limit: 255
+    t.string   "ea_profile",       limit: 255
     t.string   "first_name"
     t.string   "last_name"
   end
