@@ -29,7 +29,7 @@
                   %li= link_to "Sign Out", sign_out_path, id: "sign_out"
 
           - else
-            = link_to "Sign in or sign up", sign_in_path, class: "btn btn-primary btn-lg sign-in-btn", role: "button"
+            = link_to "Sign in or sign up", sign_in_path, class: "btn btn-primary btn-lg sign-in-btn js-sign-in-btn", role: "button"
 
 :javascript
   $(function () { $("[data-toggle='tooltip']").tooltip(); })
