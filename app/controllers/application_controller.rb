@@ -14,12 +14,12 @@ class ApplicationController < ActionController::Base
     nil
   end
 
-  def signed_in?
-    !!current_user
+  def guest?
+    !current_user
   end
 
-  def guest?
-    !signed_in?
+  def signed_in?
+    !guest?
   end
 
   def current_user=(user)
@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize
-    unless current_user
+    if guest?
       store_url request.fullpath
       redirect_to sign_in_path
     end
