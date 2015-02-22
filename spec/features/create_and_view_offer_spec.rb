@@ -22,6 +22,18 @@ feature "offer management", :slow do
     expect(page).to have_css "meta[property='og:image'][content='#{image_url}']", visible: false
   end
 
+  context "from the home page" do
+    scenario "a user navigates to the new-offer form" do
+      click_link "Offer Something"
+      expect(page).to have_selector("form.new_offer")
+    end
+
+    scenario "a user navigates to the new-request form" do
+      click_link "Request Something"
+      expect(page).to have_selector("form.new_wanted")
+    end
+  end
+
   scenario "adds a new offer" do
     create_offer_with_form("12 Cases Of Tinned Dog Food")
 
