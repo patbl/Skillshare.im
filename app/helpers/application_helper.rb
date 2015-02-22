@@ -54,7 +54,7 @@ module ApplicationHelper
 
   def name_for(klass, plural: false, capitalized: false)
     name = klass.to_s
-    name = "request" if klass.downcase == "wanted"
+    name = "request" if name.downcase == "wanted"
     name = name.pluralize if plural
     name = name.capitalize if capitalized
     name
