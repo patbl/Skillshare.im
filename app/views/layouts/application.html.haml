@@ -2,19 +2,7 @@
   %head
     %meta{ charset: "utf-8" }
     %title Skillshare.im - #{yield(:title).presence || "Sharing Between Effective Altruists" }
-    = favicon_link_tag "favicon.ico"
-
-    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
-    %link{ rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Droid+Serif:400,700|Oregano" }
-
-    = javascript_include_tag "application", "data-turbolinks-track" => true
-    %script{ src: "//platform.twitter.com/widgets.js" }
-
-    = auto_discovery_link_tag(:atom, proposals_atom_url(format: "atom"))
-    = csrf_meta_tags
-
-    - if content_for? :for_head
-      = yield :for_head
+    = render 'layouts/dependencies'
 
   %body
     %div#fb-root
