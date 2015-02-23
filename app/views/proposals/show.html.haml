@@ -5,7 +5,7 @@
     %table.table.proposals-table
       = render "proposals/proposal", proposal: @proposal
 
-- content_for :for_head do
+- content_for :head do
   %meta{ property: "og:title", content: @proposal.title }
   %meta{ property: "og:description", content: @proposal.description }
   %meta{ property: "og:url", content: request.original_url }

@@ -9,7 +9,7 @@
       %tbody
         = render partial: "proposals/proposal", collection: @proposals
 
-- content_for :for_head do
+- content_for :head do
   %meta{ property: "og:title", content: @user.name }
   %meta{ property: "og:first_name", content: @user.first_name }
   %meta{ property: "og:last_name", content: @user.last_name }
