@@ -7,8 +7,10 @@ group :test, :development do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
-  gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
   gem 'pry-byebug'
+  gem 'awesome_print'
+  gem 'pry-rails'
+  gem 'hirb'
 end
 
 group :development do
@@ -20,10 +22,9 @@ group :development do
   gem 'guard-livereload', require: false
   gem 'rack-livereload'
   gem 'quiet_assets'
-  gem 'better_errors'
-  gem 'binding_of_caller'
   gem 'meta_request'
   gem 'letter_opener'
+  gem 'web-console'
 end
 
 group :test do
