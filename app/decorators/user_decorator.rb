@@ -5,8 +5,8 @@ class UserDecorator < ApplicationDecorator
     self == h.current_user
   end
 
-  def profile_link(attribute, logo, public: false, tooltip: nil)
-    return unless h.signed_in? || public
+  def profile_link(attribute, logo, guest_visible: false, tooltip: nil)
+    return unless h.signed_in? || guest_visible
     link = user.public_send(attribute)
     return unless link
     h.content_tag :div, class: "user-profile-link" do

@@ -2,34 +2,17 @@ require 'spec_helper'
 
 describe UsersController do
   describe "guest access" do
-    describe "GET #show" do
-      let(:user) { create(:user) }
+    let(:user) { create(:user) }
 
+    describe "GET #show" do
       it "redirects to the sign-in page" do
         get :show, id: user
-        expect(response).to require_login
-      end
-    end
-  end
-
-  describe "user access" do
-    let(:user) { create(:user) }
-    let(:users) { create_list(:user, 2) }
-
-    describe "GET #show" do
-      before do
-        set_user_session(user)
+        expect(response).not_to require_login
       end
 
       it "assigns the current user to @user" do
         get :show, id: user
         expect(assigns(:user)).not_to be_nil
-      end
-
-      it "assigns the user's proposals to @proposals" do
-        offer = create :offer, user: user
-        get :show, id: user
-        expect(assigns(:proposals)).to eq [offer]
       end
     end
 
@@ -49,7 +32,18 @@ describe UsersController do
         link = ActionController::Base.helpers.link_to("Joe Green", user_path(user))
         expect(assigns(:marker_data)).to eq [{ latlng: [1.0, 2.0], popup: link, icon: "user"  }]
       end
+
+      it "assigns the user's proposals to @proposals" do
+        offer = create :offer, user: user
+        get :show, id: user
+        expect(assigns(:proposals)).to eq [offer]
+      end
     end
+  end
+
+  describe "user access" do
+    let(:user) { create(:user) }
+    let(:users) { create_list(:user, 2) }
 
     describe "GET #edit" do
       it "allows the current user to edit her profile" do

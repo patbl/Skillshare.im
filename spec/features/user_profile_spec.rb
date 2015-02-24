@@ -1,7 +1,32 @@
 require 'spec_helper'
 
 feature "profile management", :slow do
-  context "viewing a profile" do
+  context "guest viewing a profile" do
+    scenario "redirecting from /users to /community" do
+      visit "/users"
+
+      expect(current_path).to eq users_path
+    end
+
+    scenario "redirecting from /users/1 to /community/1" do
+      user = create :user
+
+      visit "/users/#{user.id}"
+
+      expect(current_path).to eq user_path(user)
+    end
+
+    scenario "e-mail address isn't displayed" do
+      user = create :user, email: "abc@gmail.com"
+
+      visit user_path(user)
+
+      expect(page).to have_no_css("a[href='mailto:#{user.email}']")
+      expect(page.html).not_to match(/#{user.email}/)
+    end
+  end
+
+  context "user viewing a profile" do
     before do
       @user = sign_in
       @user.update first_name: "Lisa", last_name: "Owens", about: "A nice person."

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :authorize, only: %i[index map]
+  skip_before_action :authorize, only: %i[index map show]
 
   def show
     @user = User.find(params[:id]).decorate

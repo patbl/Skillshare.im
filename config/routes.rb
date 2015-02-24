@@ -10,6 +10,9 @@ Skillshare::Application.routes.draw do
     end
   end
 
+  get "users/:id", to: redirect("community/%{id}")
+  get "users", to: redirect("community")
+
   root 'proposals#home'
   root 'proposals#home', as: 'proposals'
   get 'proposals' => 'proposals#index', type: "Proposal", as: 'proposals_atom'
