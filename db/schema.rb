@@ -109,8 +109,8 @@ ActiveRecord::Schema.define(version: 20141125045755) do
     t.datetime "updated_at"
     t.string   "avatar_url",       limit: 255
     t.string   "ea_profile",       limit: 255
-    t.string   "first_name"
-    t.string   "last_name"
+    t.string   "first_name",       limit: 255
+    t.string   "last_name",        limit: 255
   end
 
 end
