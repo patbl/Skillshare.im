@@ -16,13 +16,14 @@ feature "profile management", :slow do
       expect(current_path).to eq user_path(user)
     end
 
-    scenario "e-mail address isn't displayed" do
-      user = create :user, email: "abc@gmail.com"
+    scenario "appropriate links are displayed" do
+      user = create :user, email: "abc@gmail.com", ea_profile: ""
 
       visit user_path(user)
 
       expect(page).to have_no_css("a[href='mailto:#{user.email}']")
       expect(page.html).not_to match(/#{user.email}/)
+      expect(page).to have_no_selector("a.ea_profile")
     end
   end
 
