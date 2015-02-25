@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   end
 
   def to_url
-    "http://skillshare.im/users/#{self.id}"
+    "http://skillshare.im/community/#{self.id}"
   end
 
   def full_name
