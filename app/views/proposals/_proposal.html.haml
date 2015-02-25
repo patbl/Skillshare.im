@@ -17,7 +17,7 @@
       .col-sm-12
         .info
           .name
-            = link_to proposal.user.name, proposal.user
+            = link_to proposal.user.full_name, proposal.user
           .category
             - category = proposal.category_list.first
             = raw(category_tag(category))

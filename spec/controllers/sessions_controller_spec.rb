@@ -47,7 +47,8 @@ describe SessionsController do
         get :create
         attrs = {
           email:            "joe@bloggs.com",
-          name:             "Joe Bloggs",
+          first_name:       "Joe",
+          last_name:        "Bloggs",
           facebook_url:     "http://www.facebook.com/jbloggs",
           location:         "Palo Alto, California",
           oauth_token:      "ABCDEF",

@@ -6,11 +6,11 @@ class ProposalEmail
   end
 
   def recipient_name
-    @recipient.name
+    @recipient.full_name
   end
 
   def sender_name
-    @sender.name
+    @sender.full_name
   end
 
   def proposal_title

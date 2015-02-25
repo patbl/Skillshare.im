@@ -11,7 +11,7 @@ atom_feed do |feed|
       entry.title proposal.title
       entry.content describe_proposal(proposal), type: :html
       entry.author do |author|
-        author.name proposal.user.name
+        author.full_name proposal.user.full_name
       end
     end
   end

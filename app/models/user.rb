@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
     create! do |user|
       auth_hash = OmniAuth::AuthHash.new(auth)
       user.email = auth_hash.info.email
+      user.first_name = user.email.split("@").first.capitalize
+      user.last_name = "Surname"
       set_facebook_info(user, auth_hash) if auth_hash.provider == "facebook"
     end
   end
@@ -26,12 +28,8 @@ class User < ActiveRecord::Base
     "http://skillshare.im/users/#{self.id}"
   end
 
-  def name
-    if first_name && last_name
-      "#{first_name} #{last_name}"
-    else
-      read_attribute(:name)
-    end
+  def full_name
+    "#{first_name} #{last_name}"
   end
 
   private

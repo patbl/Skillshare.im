@@ -22,6 +22,6 @@ module FeatureHelpers
   end
 
   def signed_in_as?(user)
-    page.has_selector?(".dropdown-menu", text: user.name)
+    page.has_selector?(".dropdown-menu", text: user.full_name)
   end
 end

@@ -4,7 +4,7 @@ namespace :user_data do
     include ActionView::Helpers::UrlHelper
     User.find_each do |user|
       url = Rails.application.routes.url_helpers.user_url(user, host: "http://skillshare.im")
-      name = user.name
+      name = user.full_name
       email = user.email
       puts [name, email, url].join(";")
     end

@@ -1,4 +1,4 @@
-= title @user.name
+= title @user.full_name
 
 .row
   = render @user
@@ -10,7 +10,7 @@
         = render partial: "proposals/proposal", collection: @proposals
 
 - content_for :head do
-  %meta{ property: "og:title", content: @user.name }
+  %meta{ property: "og:title", content: @user.full_name }
   %meta{ property: "og:first_name", content: @user.first_name }
   %meta{ property: "og:last_name", content: @user.last_name }
   %meta{ property: "og:description", content: @user.about }
