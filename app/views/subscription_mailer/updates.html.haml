@@ -14,4 +14,6 @@
     - @wanteds.each do |wanted|
       %li= link_to wanted.title, wanted_url(wanted)
 
+%p.lead Thanks,<br>The Skillshare.im Team
+
 %p= link_to "Unsubscribe", unsubscribe_url(@subscription.secure_key)
