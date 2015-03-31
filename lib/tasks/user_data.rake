@@ -21,4 +21,24 @@ namespace :user_data do
       end
     end
   end
+
+  desc "Print a digest of the last x offers."
+  task :digest, [:count] =>  :environment do |task, args|
+    count = args[:count].try(:to_i) || 20
+    proposals = Proposal
+               .order(created_at: :desc)
+               .limit(count)
+               .group_by { |proposal| proposal.type }
+    print_digest_data(proposals["Wanted"])
+    print_digest_data(proposals["Offer"])
+  end
+
+  def print_digest_data(proposals)
+    puts "\n#{proposals.first.type}s\n\n"
+    proposals.each do |proposal|
+      puts proposal.title
+      puts Rails.application.routes.url_helpers.send("#{proposal.type.downcase}_url".to_sym, proposal)
+      puts
+    end
+  end
 end
