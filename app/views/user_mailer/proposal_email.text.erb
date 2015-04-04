@@ -1,5 +1,7 @@
 <%= render "user_mailer/greeting", email: @email %>
 
-<%= render @email.template, email: @email %>
+<%= render @email.body_template, email: @email %>
 
-> <%= @email.body %>
+<%= @email.body %>
+
+<%= render @email.footer_template, email: @email %>

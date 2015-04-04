@@ -6,10 +6,14 @@ class ProposalEmail
   end
 
   def recipient_name
-    @recipient.full_name
+    @recipient.first_name
   end
 
-  def sender_name
+  def sender_first_name
+    @sender.first_name
+  end
+
+  def sender_full_name
     @sender.full_name
   end
 
@@ -17,7 +21,11 @@ class ProposalEmail
     @proposal.title
   end
 
-  def template
-    "user_mailer/#{self.class.to_s.underscore}"
+  def body_template
+    "user_mailer/#{self.class.to_s.underscore}_body"
+  end
+
+  def footer_template
+    "user_mailer/#{self.class.to_s.underscore}_footer"
   end
 end
