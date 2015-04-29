@@ -14,10 +14,9 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :subscriptions
 
-  def self.create_from_auth(auth)
-    create! do |user|
-      auth_hash = OmniAuth::AuthHash.new(auth)
-      user.email = auth_hash.info.email
+  def self.find_or_create_from_auth!(auth)
+    auth_hash = OmniAuth::AuthHash.new(auth)
+    find_or_create_by!(email: auth_hash.info.email) do |user|
       user.first_name = user.email.split("@").first.capitalize
       user.last_name = "Surname"
       set_facebook_info(user, auth_hash) if auth_hash.provider == "facebook"

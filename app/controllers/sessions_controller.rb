@@ -22,8 +22,7 @@ class SessionsController < ApplicationController
       if @identity.user
         message = { success: "You signed in successfully." }
       else
-        # user doesn't have an account
-        @user = User.create_from_auth(auth)
+        @user = User.find_or_create_from_auth!(auth)
         @identity.update!(user: @user)
         redirect_new_user
         message = {}
