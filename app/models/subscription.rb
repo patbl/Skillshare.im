@@ -2,7 +2,7 @@ class Subscription < ActiveRecord::Base
   belongs_to :user
   validates_presence_of :user, :frequency
   enum frequency: [:biweekly]
-  before_save :generate_secure_key
+  before_create :generate_secure_key
 
   FREQUENCIES = {
     "biweekly" => 14

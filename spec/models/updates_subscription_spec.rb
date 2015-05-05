@@ -9,6 +9,11 @@ describe UpdatesSubscription do
       subscription.save!
       expect(subscription.secure_key).to be_present
     end
+
+    it "maintains its original key after being updated" do
+      subscription.save!
+      expect { subscription.update(active: false) }.not_to change { subscription.secure_key }
+    end
   end
 
   describe "#due?" do
