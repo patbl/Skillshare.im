@@ -11,7 +11,8 @@
         .proposal-btn
           = proposal.button
 
-    = markdown(truncate(proposal.description, length: local_assigns.fetch(:description_size, Float::INFINITY)))
+    .proposal-description
+      = markdown(truncate(proposal.description, length: local_assigns.fetch(:description_size, Float::INFINITY)))
 
     .row
       .col-sm-12
