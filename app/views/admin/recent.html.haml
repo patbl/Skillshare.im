@@ -1,0 +1,17 @@
+%table.table
+  %thead
+    %tr
+      %th Recent Offers
+  - @offers.each do |offer|
+    %tr
+      %td= offer.title
+      %td= offer_url(offer)
+
+%table.table
+  %thead
+    %tr
+      %th Recent Requests
+  - @wanteds.each do |wanted|
+    %tr
+      %td= wanted.title
+      %td= wanted_url(wanted)

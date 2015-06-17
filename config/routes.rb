@@ -29,7 +29,11 @@ Skillshare::Application.routes.draw do
   get 'signin'                    => 'sessions#new',     as: 'sign_in'
   get 'signout'                   => 'sessions#destroy', as: 'sign_out'
 
-  get 'statistics' => 'statistics#index'
+  namespace :admin do
+    get 'statistics'
+    get 'recent'
+  end
+
   get 'unsubscribe/:secure_key' => 'subscriptions#unsubscribe', as: 'unsubscribe'
 
   # static pages

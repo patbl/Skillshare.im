@@ -1,6 +1,7 @@
-class StatisticsController < ApplicationController
+class AdminController < ApplicationController
   skip_before_action :authorize
-  def index
+
+  def statistics
     @user_count = User.count
     @offer_count = Offer.count
     @wanted_count = Wanted.count
@@ -8,5 +9,11 @@ class StatisticsController < ApplicationController
     @fulfillment_count = Fulfillment.count
     @fulfillments_by_month = Fulfillment.group_by_month
     @requisitions_by_month = Requisition.group_by_month
+  end
+
+  def recent
+    start_time = Integer(params[:days]).days.ago
+    @offers = Offer.where("created_at > ?", start_time)
+    @wanteds = Wanted.where("created_at > ?", start_time)
   end
 end
