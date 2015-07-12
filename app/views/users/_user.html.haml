@@ -14,9 +14,9 @@
             = fa_tag("map-marker")
             = user.location
           .user-profile-links
-            = user.profile_link(:email, "envelope", tooltip: "E-mail")
-            = user.profile_link(:facebook_url, "facebook", tooltip: "Facebook")
-            = user.profile_link(:ea_profile, "external-link", tooltip: "Effective Altruism Hub", guest_visible: true)
+            = user.email_link
+            = user.facebook_link
+            = user.ea_hub_profile_link
         .col-xs-1
           - if user.current_user?
             = link_to edit_user_path(user), id: "edit-profile" do |u|
