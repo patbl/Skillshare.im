@@ -1,7 +1,8 @@
+- user = proposal.user.decorate
 %tr.proposal
   %td
     .user
-      = link_to image_tag(avatar_url(proposal.user)), proposal.user
+      = link_to image_tag(avatar_url(user)), user
   %td
     .row
       .col-sm-9
@@ -17,8 +18,7 @@
     .row
       .col-sm-12
         .info
-          .name
-            = link_to proposal.user.full_name, proposal.user
+          .name= user.proposal_user_profile_link
           .category
             - category = proposal.category_list.first
             = raw(category_tag(category))
