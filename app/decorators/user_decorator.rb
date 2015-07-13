@@ -40,7 +40,7 @@ class UserDecorator < ApplicationDecorator
   def ea_hub_profile_link(klass: "")
     return unless user.ea_profile.present?
 
-    h.link_to "EA Hub", user.ea_profile, target: "_blank", class: klass
+    h.link_to "EA Profile", user.ea_profile, target: "_blank", class: klass
   end
 
   def proposal_user_profile_link
