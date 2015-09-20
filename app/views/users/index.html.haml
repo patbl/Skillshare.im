@@ -19,7 +19,7 @@
   = javascript_include_tag "map"
 
 %br
-- @users.in_groups_of(3, false) do |users|
+- @users.each_slice(3) do |users|
   .row
     - for user in users
       = render partial: "user", locals: { user: user, description_size: 150}

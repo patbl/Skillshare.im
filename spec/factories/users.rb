@@ -1,13 +1,13 @@
 require 'ffaker'
 
 FactoryGirl.define do
-  factory :user do |n|
-    first_name Faker::Name.first_name
-    last_name Faker::Name.last_name
-    email Faker::Internet.email
-    location "#{Faker::Address.city}, #{Faker::Address.country}"
+  factory :user do
+    first_name FFaker::Name.first_name
+    last_name FFaker::Name.last_name
+    email FFaker::Internet.email
+    location "#{FFaker::Address.city}, #{FFaker::Address.country}"
     sequence(:oauth_token) { |n| "oauth#{n}" }
-    about Faker::Lorem.paragraphs.join "\n\n"
+    about FFaker::Lorem.paragraphs.join "\n\n"
     oauth_expires_at 1.month.from_now
 
     factory :admin do

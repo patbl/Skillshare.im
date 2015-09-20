@@ -62,6 +62,6 @@ gem 'newrelic_rpm'
 gem 'draper'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
-gem 'gibbon'
+gem 'gibbon', '~> 1.1.0'
 
 gem 'pg'
