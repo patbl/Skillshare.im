@@ -2,6 +2,6 @@
 %html
   %head
     %meta{ charset: "utf-8", content: "text/html", "http-equiv" => "Content-Type" }
-    %link{ rel: "stylesheet", href: "email/new_proposals_mailer" }
+    = stylesheet_link_tag "email/new_proposals_mailer"
   %body
     = yield

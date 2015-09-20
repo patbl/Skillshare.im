@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 ruby '2.2.2'
-gem 'rails', '4.2.0'
+gem 'rails', '4.2.1'
 
 group :test, :development do
   gem 'rspec'
@@ -14,12 +14,7 @@ group :test, :development do
 end
 
 group :development do
-  gem 'guard-rails'
-  gem 'guard-rspec'
-  gem 'guard-spring'
   gem 'spring-commands-rspec'
-  gem 'guard-bundler'
-  gem 'guard-livereload', require: false
   gem 'rack-livereload'
   gem 'quiet_assets'
   gem 'meta_request'
@@ -44,6 +39,7 @@ end
 gem 'unicorn'
 gem 'therubyracer', platforms: :ruby
 gem 'haml-rails'
+gem 'sass'
 gem 'sass-rails'
 gem 'bootstrap-sass'
 gem 'uglifier'
@@ -60,7 +56,8 @@ gem 'coveralls', require: false
 gem 'acts-as-taggable-on'
 gem 'font-awesome-rails'
 gem 'geocoder'
-gem 'roadie', '~> 2.4.3'
+gem 'roadie'
+gem 'roadie-rails'
 gem 'newrelic_rpm'
 gem 'draper'
 gem 'kaminari'
