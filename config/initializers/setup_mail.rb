@@ -11,4 +11,4 @@ ActionMailer::Base.smtp_settings = {
 require 'development_mail_interceptor'
 ActionMailer::Base.register_interceptor(DevelopmentMailInterceptor) if Rails.env.staging? || Rails.env.development?
 
-Gibbon::Export.api_key = ENV["MAILCHIMP_API_KEY"]
+Gibbon::Request.api_key = ENV["MAILCHIMP_API_KEY"]
