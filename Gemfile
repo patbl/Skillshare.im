@@ -11,10 +11,15 @@ group :test, :development do
   gem 'awesome_print'
   gem 'pry-rails'
   gem 'hirb'
+  gem 'spring-commands-rspec'
+  gem 'guard-rails'
+  gem 'guard-rspec'
+  gem 'guard-livereload'
+  gem 'guard-bundler'
+  gem 'libnotify'
 end
 
 group :development do
-  gem 'spring-commands-rspec'
   gem 'rack-livereload'
   gem 'quiet_assets'
   gem 'meta_request'
