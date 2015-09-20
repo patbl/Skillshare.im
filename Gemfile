@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 ruby '2.2.2'
-gem 'rails', '4.2.1'
+gem 'rails', '4.2.4'
 
 group :test, :development do
   gem 'rspec'
