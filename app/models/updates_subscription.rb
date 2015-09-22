@@ -20,3 +20,22 @@ class UpdatesSubscription < Subscription
     update(last_sent: Time.now)
   end
 end
+
+# == Schema Information
+#
+# Table name: subscriptions
+#
+#  id         :integer          not null, primary key
+#  user_id    :integer
+#  active     :boolean
+#  frequency  :integer
+#  created_at :datetime
+#  updated_at :datetime
+#  secure_key :string(255)
+#  type       :string(255)
+#  last_sent  :datetime
+#
+# Indexes
+#
+#  index_subscriptions_on_user_id  (user_id)
+#

@@ -20,10 +20,11 @@ group :test, :development do
 end
 
 group :development do
-  gem 'rack-livereload'
-  gem 'quiet_assets'
-  gem 'meta_request'
+  gem 'annotate'
   gem 'letter_opener'
+  gem 'meta_request'
+  gem 'quiet_assets'
+  gem 'rack-livereload'
   gem 'web-console'
 end
 

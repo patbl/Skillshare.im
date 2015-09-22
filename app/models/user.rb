@@ -51,3 +51,25 @@ class User < ActiveRecord::Base
     UpdatesSubscription.create(user: self, active: true, frequency: :biweekly, last_sent: Date.today)
   end
 end
+
+# == Schema Information
+#
+# Table name: users
+#
+#  id               :integer          not null, primary key
+#  email            :string(255)
+#  facebook_url     :string(255)
+#  location         :string(255)
+#  latitude         :float
+#  longitude        :float
+#  oauth_token      :string(255)
+#  oauth_expires_at :datetime
+#  about            :text
+#  admin            :boolean
+#  created_at       :datetime
+#  updated_at       :datetime
+#  avatar_url       :string(255)
+#  ea_profile       :string(255)
+#  first_name       :string(255)
+#  last_name        :string(255)
+#
