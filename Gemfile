@@ -42,6 +42,7 @@ group :production do
   gem 'rails_12factor'
 end
 
+gem 'active_model_serializers', '~> 0.10.0.rc3'
 gem 'acts-as-taggable-on'
 gem 'bootstrap-kaminari-views'
 gem 'bootstrap-sass'

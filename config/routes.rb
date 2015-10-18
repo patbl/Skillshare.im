@@ -38,4 +38,10 @@ Skillshare::Application.routes.draw do
 
   # static pages
   get ':action' => 'pages#:action'
+
+  namespace :api do
+    namespace :v0 do
+      resources :users, only: :show
+    end
+  end
 end
