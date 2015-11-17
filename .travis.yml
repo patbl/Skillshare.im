@@ -1,8 +1,8 @@
 sudo: false
 language: ruby
-bundler_args: --without development production
+bundler_args: "--without development production"
 rvm:
-  - "2.2.2"
+  - 2.2.2
 env:
   - SLOW_SPECS=true SKILLSHARE_SECRET_TOKEN=22d4eeff3dd0cdb77751cfd9b98dd442e7fd5ea9fad41c0331a89670df18589ffa96699300f9412fb2c456161903a6edc5b567c420ff6a573782e42a28375ac8
 before_install:
@@ -12,3 +12,6 @@ before_script:
 script:
   - RAILS_ENV=test bundle exec rake db:migrate --trace
   - bundle exec rspec spec
+deploy:
+  api_key:
+    secure: <%= ENV["TRAVIS_API_KEY"] %>
