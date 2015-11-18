@@ -13,5 +13,6 @@ script:
   - RAILS_ENV=test bundle exec rake db:migrate --trace
   - bundle exec rspec spec
 deploy:
+  provider: heroku
   api_key:
     secure: <%= ENV["TRAVIS_API_KEY"] %>
