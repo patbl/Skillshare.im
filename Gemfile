@@ -36,6 +36,7 @@ group :test do
   gem 'launchy'
   gem 'database_cleaner'
   gem 'rake'
+  gem 'email_spec'
 end
 
 group :production do
