@@ -16,6 +16,7 @@ group :test, :development do
   gem 'guard-rspec'
   gem 'guard-livereload'
   gem 'guard-bundler'
+  gem 'growl'
   gem 'libnotify'
 end
 

@@ -128,6 +128,7 @@ GEM
     git-version-bump (0.15.1)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    growl (1.0.3)
     guard (2.13.0)
       formatador (>= 0.2.4)
       listen (>= 2.7, <= 4.0)
@@ -416,6 +417,7 @@ DEPENDENCIES
   font-awesome-rails
   geocoder
   gibbon
+  growl
   guard-bundler
   guard-livereload
   guard-rails
