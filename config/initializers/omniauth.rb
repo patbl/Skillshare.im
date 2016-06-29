@@ -1,15 +1,16 @@
 OmniAuth.config.logger = Rails.logger
 Rails.application.config.middleware.use OmniAuth::Builder do
   options = {
-    scope: 'email,user_location',
+    scope: "email,user_location,public_profile",
     image_size: :normal,
+    info_fields: "first_name,last_name,location,link,email",
     client_options: {
-      site: 'https://graph.facebook.com/v2.6',
+      site: "https://graph.facebook.com/v2.6",
       authorize_url: "https://www.facebook.com/v2.6/dialog/oauth",
     },
     token_params: { parse: :json },
   }
-  provider :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'], options
+  provider :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_APP_SECRET"], options
   provider :browser_id
   provider :developer, fields: %i[name], uid_field: :name if Rails.env.development?
 end
