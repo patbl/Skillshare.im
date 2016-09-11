@@ -13,11 +13,6 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
-//= require jquery-ui/jquery.ui.core
-//= require jquery-ui/jquery.ui.widget
-//= require jquery-ui/jquery.ui.position
-//= require jquery-ui/jquery.ui.button
-//= require jquery-ui/jquery.ui.dialog
 //= require bootstrap
 //= require_directory ./global
 //= require turbolinks

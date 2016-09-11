@@ -10,8 +10,5 @@
  *= require custom
  *= require font-awesome
  *= require persona-buttons
- *= require jquery-ui/jquery.ui.core
- *= require jquery-ui/jquery.ui.theme
- *= require jquery-ui/jquery.ui.dialog
  *= require_directory .
  */
