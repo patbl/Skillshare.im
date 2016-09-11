@@ -167,11 +167,8 @@ html{
   min-height:100%;
 }
 body {
-  margin-bottom:55px;
-  //background-color: #eee;
-  background-image: url("http://bowlabs.files.wordpress.com/2013/11/retina_wood.png");
-  /*background-image: url(image_path("/backgrounds/retina_wood.png"))
-  /* The html and body elements cannot have any padding or margin. */
+  margin-bottom: 55px;
+  background-image: image-url("backgrounds/retina_wood.png");
 }
 
 .top-banner {
