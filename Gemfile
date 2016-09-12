@@ -1,7 +1,7 @@
 source "http://rubygems.org"
 
 ruby "2.3.1"
-gem "rails", "4.2.4"
+gem "rails", "5.0.0.1"
 
 group :test, :development do
   gem "awesome_print"
@@ -22,9 +22,6 @@ end
 group :development do
   gem "annotate"
   gem "letter_opener"
-  gem "meta_request"
-  gem "quiet_assets"
-  gem "rack-livereload"
   gem "web-console"
 end
 
@@ -36,6 +33,7 @@ group :test do
   gem "launchy"
   gem "poltergeist"
   gem "rake"
+  gem "rails-controller-testing"
   gem "simplecov", require: false
 end
 
@@ -43,13 +41,14 @@ group :production do
   gem "rails_12factor"
 end
 
-gem "active_model_serializers", "~> 0.10.0.rc3"
+gem "active_model_serializers"
+gem "activemodel-serializers-xml"
 gem "acts-as-taggable-on"
 gem "bootstrap-kaminari-views"
 gem "bootstrap-sass"
 gem "coffee-rails"
 gem "coveralls", require: false
-gem "draper"
+gem "draper", "~> 3.0.0.pre1"
 gem "figaro"
 gem "font-awesome-rails"
 gem "geocoder"

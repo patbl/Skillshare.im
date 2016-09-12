@@ -4,7 +4,7 @@ describe ApplicationController, type: :controller do
   controller do
     def index
       @current_user = current_user
-      render text: "hey there"
+      render body: "hey there"
     end
   end
 

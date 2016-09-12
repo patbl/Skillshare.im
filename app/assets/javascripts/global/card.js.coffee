@@ -5,8 +5,7 @@ jQuery ->
     -> $(this).find(".proposal-btn").fadeOut(10))
 
 jQuery ->
-  $(".request-btn").click(->
+  $(".request-btn").click ->
     if $("#sign_out").length > 0
       index = $(this).parents(".proposal")
       $(index).find(".request").toggleClass("hidden")
-  )

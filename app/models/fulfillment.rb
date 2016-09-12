@@ -1,4 +1,4 @@
-class Fulfillment < ActiveRecord::Base
+class Fulfillment < ApplicationRecord
   include Measurable
 
   belongs_to :fulfiller, class_name: "User"

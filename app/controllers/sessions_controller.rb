@@ -45,7 +45,8 @@ class SessionsController < ApplicationController
   protected
 
   def auth
-    ActionController::Parameters.new(request.env["omniauth.auth"])
+    ActionController::Parameters
+      .new(request.env.fetch("omniauth.auth", {}))
       .permit(:provider, :uid,
               info: [:email, :first_name, :last_name, :location, :image, urls: [:Facebook]],
               credentials: [:token, :expires_at])

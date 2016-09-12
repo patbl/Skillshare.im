@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   has_many :proposals,     dependent: :destroy
   has_many :offers,        dependent: :destroy
   has_many :wanteds,       dependent: :destroy
@@ -43,8 +43,8 @@ class User < ActiveRecord::Base
     # http://graph.facebook.com/632817960/picture?type=normal
     user.avatar_url = auth.info.image.sub(/\?.*/, "")
 
-    user.oauth_token = auth.credentials.token
-    user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+    user.oauth_token = auth.credentials.fetch(:token)
+    user.oauth_expires_at = Time.at(auth.credentials.fetch(:expires_at))
   end
 
   def subscribe_user

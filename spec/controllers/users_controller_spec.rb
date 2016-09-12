@@ -6,12 +6,12 @@ describe UsersController do
 
     describe "GET #show" do
       it "redirects to the sign-in page" do
-        get :show, id: user
+        get :show, params: { id: user }
         expect(response).not_to require_login
       end
 
       it "assigns the current user to @user" do
-        get :show, id: user
+        get :show, params: { id: user }
         expect(assigns(:user)).not_to be_nil
       end
     end
@@ -21,7 +21,7 @@ describe UsersController do
         paginated_users = double()
         expect(User).to receive(:page).with("1").and_return(paginated_users)
         allow(paginated_users).to receive_message_chain(:per, :decorate).and_return("decorated users")
-        get :index, page: "1"
+        get :index, params: { page: "1" }
         expect(assigns(:users)).to eq "decorated users"
       end
 
@@ -35,7 +35,7 @@ describe UsersController do
 
       it "assigns the user's proposals to @proposals" do
         offer = create :offer, user: user
-        get :show, id: user
+        get :show, params: { id: user }
         expect(assigns(:proposals)).to eq [offer]
       end
     end
@@ -48,7 +48,7 @@ describe UsersController do
     describe "GET #edit" do
       it "allows the current user to edit her profile" do
         set_user_session(user)
-        get :edit, id: user
+        get :edit, params: { id: user }
         expect(response).to render_template :edit
         expect(assigns(:user)).to eq user
       end
@@ -59,7 +59,7 @@ describe UsersController do
         it "updates the user's profile" do
           user = create(:user, last_name: "Crass")
           set_user_session(user)
-          patch :update, user: attributes_for(:user, last_name: "Kass"), id: user
+          patch :update, params: { user: attributes_for(:user, last_name: "Kass"), id: user }
           expect(response).to redirect_to(user)
           expect(user.reload.last_name).to eq "Kass"
           expect(flash[:success]).to be
@@ -70,7 +70,7 @@ describe UsersController do
         it "doesn't update the user's profile" do
           user = create(:user, first_name: "So-and-so")
           set_user_session(user)
-          patch :update, user: attributes_for(:user, first_name: "Mr. Right", email: ""), id: user
+          patch :update, params: { user: attributes_for(:user, first_name: "Mr. Right", email: ""), id: user }
           expect(response).to render_template :edit
           expect(user.reload.first_name).to eq "So-and-so"
         end
@@ -80,7 +80,7 @@ describe UsersController do
         good_user = create :user, location: "San Francisco"
         bad_user = create :user, location: "New York"
         set_user_session(bad_user)
-        patch :update, user: { location: "North Korea" }, id: good_user
+        patch :update, params: { user: { location: "North Korea" }, id: good_user }
         expect(good_user.reload.location).to eq "San Francisco"
         expect(bad_user.reload.location).to eq "North Korea"
       end
@@ -91,7 +91,9 @@ describe UsersController do
         good_user = create :user, first_name: "Charity"
         bad_user = create :user, first_name: "Vice"
         set_user_session(bad_user)
-        expect { delete :destroy, id: good_user }.to change(User, :count).by(-1)
+        expect {
+          delete :destroy, params: { id: good_user }
+        }.to change(User, :count).by(-1)
         expect(response).to redirect_to root_path
         expect(User.where first_name: "Charity").to exist
         expect(User.where first_name: "Vice").not_to exist
@@ -102,7 +104,9 @@ describe UsersController do
         create :offer, user: user
         set_user_session user
 
-        expect { delete :destroy, id: user }.to change(Offer, :count).by(-1)
+        expect {
+          delete :destroy, params: { id: user }
+        }.to change(Offer, :count).by(-1)
       end
     end
   end

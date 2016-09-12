@@ -31,8 +31,6 @@ Skillshare::Application.configure do
   # TODO This messes up the icons, and we'll have to eventually fix that issue
   # config.assets.prefix = "/dev-assets"
 
-  config.middleware.use Rack::LiveReload
-
   config.action_mailer.default_url_options = { host: "localhost:3000" }
 
   Rails.application.routes.default_url_options[:host]= 'localhost:3000'

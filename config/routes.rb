@@ -13,31 +13,31 @@ Skillshare::Application.routes.draw do
   get "users/:id", to: redirect("community/%{id}")
   get "users", to: redirect("community")
 
-  root 'proposals#home'
-  root 'proposals#home', as: 'proposals'
-  get 'proposals' => 'proposals#index', type: "Proposal", as: 'proposals_atom'
+  root "proposals#home"
+  root "proposals#home", as: "proposals"
+  get "proposals" => "proposals#index", type: "Proposal", as: "proposals_atom"
 
-  get 'offers' => 'proposals#index', type: "Offer"
-  get 'wanteds' => 'proposals#index', type: "Wanted"
+  get "offers" => "proposals#index", type: "Offer"
+  get "wanteds" => "proposals#index", type: "Wanted"
 
   # authentication
-  get 'auth/facebook',   as: 'facebook_auth'
-  get 'auth/browser_id', as: 'browser_id_auth'
-  match 'auth/:provider/callback' => 'sessions#create', via: [:get, :post]
-  get 'auth/failure'              => 'sessions#failure'
-  get 'sessions'                  => 'sessions#create'
-  get 'signin'                    => 'sessions#new',     as: 'sign_in'
-  get 'signout'                   => 'sessions#destroy', as: 'sign_out'
+  get "auth/facebook",   as: "facebook_auth"
+  get "auth/browser_id", as: "browser_id_auth"
+  match "auth/:provider/callback" => "sessions#create", via: [:get, :post]
+  get "auth/failure"              => "sessions#failure"
+  get "sessions"                  => "sessions#create"
+  get "signin"                    => "sessions#new",     as: "sign_in"
+  get "signout"                   => "sessions#destroy", as: "sign_out"
 
   namespace :admin do
-    get 'statistics'
-    get 'recent'
+    get "statistics"
+    get "recent"
   end
 
-  get 'unsubscribe/:secure_key' => 'subscriptions#unsubscribe', as: 'unsubscribe'
+  get "unsubscribe/:secure_key" => "subscriptions#unsubscribe", as: "unsubscribe"
 
   # static pages
-  get ':action' => 'pages#:action'
+  get ":action" => "pages#:action"
 
   namespace :api do
     namespace :v0 do

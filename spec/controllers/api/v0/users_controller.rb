@@ -6,7 +6,7 @@ RSpec.describe Api::V0::UsersController, type: :controller do
 
   describe "GET #show" do
     it "returns something sensible" do
-      get :show, id: "1"
+      get :show, params: { id: "1" }
 
       body = JSON.parse(response.body)
       attributes = body["data"]["attributes"]

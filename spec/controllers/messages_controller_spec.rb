@@ -9,7 +9,7 @@ describe MessagesController do
 
       before do
         set_user_session(sender)
-        post :create, offer_id: offer, message: { body: "abc" }, type: "Offer"
+        post :create, params: { offer_id: offer, message: { body: "abc" }, type: "Offer" }
       end
 
       it "redirects the user to the offer page" do
@@ -27,14 +27,14 @@ describe MessagesController do
 
       it "records requisitions" do
         expect {
-          post :create, offer_id: offer, message: { body: "abc" }, type: "Offer"
+          post :create, params: { offer_id: offer, message: { body: "abc" }, type: "Offer" }
         }.to change(Requisition, :count).by(1)
       end
     end
 
     context "guest" do
       it "requires the user to be signed in" do
-        post :create, wanted_id: "123", type: "Wanted"
+        post :create, params: { wanted_id: "123", type: "Wanted" }
         expect(response).to redirect_to sign_in_path
       end
     end

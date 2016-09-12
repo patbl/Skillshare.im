@@ -17,7 +17,7 @@ describe AdminController do
     let!(:old_offer) { create(:offer, created_at: 31.days.ago) }
 
     it "assigns recent offers" do
-      get :recent, days: "30"
+      get :recent, params: { days: "30" }
 
       expect(assigns(:offers)).to match_array [new_offer]
     end

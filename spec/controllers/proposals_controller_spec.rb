@@ -10,20 +10,20 @@ describe ProposalsController do
       describe "when unfiltered" do
         it "gets all the offers when unfiltered" do
 
-          get :index, type: "Wanted"
+          get :index, params: { type: "Wanted" }
           expect(assigns(:proposals)).to match_array Wanted.order(created_at: :desc)
         end
       end
 
       describe "when filtered" do
         it "doesn't show anything if there's nothing" do
-          get :index, category: "lodging", type: "Wanted"
+          get :index, params: { category: "lodging", type: "Wanted" }
           expect(response).to render_template(:index)
           expect(assigns(:proposals)).to be_empty
         end
 
         it "shows offers from the relevant category if they exist" do
-          get :index, category: "tutoring", type: "Wanted"
+          get :index, params: { category: "tutoring", type: "Wanted" }
           expect(assigns(:proposals)).to match_array [@wanted]
         end
       end
@@ -35,13 +35,13 @@ describe ProposalsController do
         expect(filtered_offers).to receive(:page).with("2").and_return paginated_offers
         allow(paginated_offers).to receive_message_chain(:per, :decorate).and_return("decorated offers")
 
-        get :index, page: "2", type: "Offer"
+        get :index, params: { page: "2", type: "Offer" }
 
         expect(assigns(:proposals)).to eq "decorated offers"
       end
 
       it "renders the Atom feed" do
-        get :index, format: "atom", type: "Proposal"
+        get :index, params: { format: "atom", type: "Proposal" }
         expect(response).to render_template(:index)
         expect(response.content_type).to eq("application/atom+xml")
         expect(assigns(:updated_at)).to be_same_second_as @wanted.updated_at
@@ -69,7 +69,7 @@ describe ProposalsController do
 
       describe "GET #new" do
         it "assigns a new wanted to @wanted" do
-          get :new, user_id: @user, type: "Wanted"
+          get :new, params: { user_id: @user, type: "Wanted" }
           expect(assigns(:proposal)).to be_a_new(Wanted)
           expect(assigns(:user)).to eq @user
         end
@@ -77,13 +77,13 @@ describe ProposalsController do
 
       describe "GET #edit" do
         it "assigns the requested wanted to @proposal" do
-          get :edit, id: @wanted, type: "Wanted"
+          get :edit, params: { id: @wanted, type: "Wanted" }
 
           expect(assigns(:proposal)).to eq @wanted
         end
 
         it "assings the user to @user" do
-          get :edit, id: @wanted, type: "Wanted"
+          get :edit, params: { id: @wanted, type: "Wanted" }
 
           expect(assigns(:user)).to eq @user
         end
@@ -92,22 +92,25 @@ describe ProposalsController do
       describe "POST #create" do
         context "with valid attributes" do
           it "saves the new wanted in the database" do
-            expect { post :create, wanted: attributes_for(:wanted), user_id: @user, type: "Wanted" }
-              .to change(Wanted, :count).by(1)
+            expect {
+              post :create, params: { wanted: attributes_for(:wanted), user_id: @user, type: "Wanted" }
+            }.to change(Wanted, :count).by(1)
             expect(response).to redirect_to @user
           end
 
           it "saves the new offer in the database" do
-            expect { post :create, wanted: attributes_for(:wanted), user_id: @user, type: "Wanted" }
-              .to change(Wanted, :count).by(1)
+            expect {
+              post :create, params: { wanted: attributes_for(:wanted), user_id: @user, type: "Wanted" }
+            }.to change(Wanted, :count).by(1)
             expect(response).to redirect_to @user
           end
         end
 
         context "with invalid attributes" do
           it "doesn't save the new offer in the database" do
-            expect { post :create, user_id: @user, wanted: attributes_for(:invalid_wanted), type: "Wanted" }
-              .not_to change(Wanted, :count)
+            expect {
+              post :create, params: { user_id: @user, wanted: attributes_for(:invalid_wanted), type: "Wanted" }
+            }.not_to change(Wanted, :count)
             expect(assigns(:user)).to eq @user
             expect(response).to render_template(:new)
           end
@@ -118,27 +121,30 @@ describe ProposalsController do
       describe "PATCH #update" do
         context "with valid attributes" do
           it "locates the requested contact" do
-            patch :update, id: @wanted, wanted: attributes_for(:proposal), type: "Wanted"
+            patch :update, params: { id: @wanted, wanted: attributes_for(:proposal), type: "Wanted" }
             expect(assigns(:proposal)).to eq @wanted
           end
 
           it "updates the offer in the database" do
-            patch :update, id: @wanted, wanted: attributes_for(:wanted, title: "Steampunk"), type: "Wanted"
+            patch :update, params: { id: @wanted, wanted: attributes_for(:wanted, title: "Steampunk"), type: "Wanted" }
             expect(@wanted.reload.title).to eq "Steampunk"
           end
         end
 
         context "with invalid attributes" do
           it "doesn't update the offer in the database" do
-            patch :update, id: @wanted, user_id: @wanted.user, wanted:
-              attributes_for(:wanted, title: nil), type: "Wanted"
+            patch :update,
+                  params: {
+                    id: @wanted,
+                    user_id: @wanted.user,
+                    wanted: attributes_for(:wanted, title: nil), type: "Wanted"
+                  }
             @wanted.reload
             expect(@wanted).not_to be_nil
           end
 
           it "re-renders the edit template" do
-            patch :update, id: @wanted, user_id: @wanted.user, wanted:
-              attributes_for(:wanted, title: nil), type: "Wanted"
+            patch :update, params: { id: @wanted, user_id: @wanted.user, wanted: attributes_for(:wanted, title: nil), type: "Wanted" }
             expect(response).to render_template :edit
           end
         end
@@ -146,19 +152,22 @@ describe ProposalsController do
 
       describe "DELETE #destroy" do
         it "deletes the offer from the database" do
-          expect { delete :destroy, id: @wanted, type: "Wanted" }.to change(Wanted, :count).by(-1)
+          expect {
+            delete :destroy, params: { id: @wanted, type: "Wanted" }
+          }.to change(Wanted, :count).by(-1)
         end
 
         it "redirects to user profile" do
-          delete :destroy, id: @wanted, type: "Wanted"
+          delete :destroy, params: { id: @wanted, type: "Wanted" }
           expect(response).to redirect_to @user
         end
 
         it "doesn't allow a user to delete another user's offers" do
           bad_user = create(:user)
           session[:user_id] = bad_user.id
-          expect { delete :destroy, id: @wanted, type: "Wanted" }
-            .to raise_error(ActiveRecord::RecordNotFound)
+          expect {
+            delete :destroy, params: { id: @wanted, type: "Wanted" }
+          }.to raise_error(ActiveRecord::RecordNotFound)
         end
       end
     end
@@ -166,32 +175,30 @@ describe ProposalsController do
   end
 
   describe "guest" do
-    # it_behaves_like "public access to offers"
-
     describe "GET #new" do
       it "requires log in" do
-        get :new, user_id: 123, type: "Wanted"
+        get :new, params: { user_id: 123, type: "Wanted" }
         expect(response).to require_login
       end
     end
 
     describe "GET #edit" do
       it "requires log in" do
-        get :edit, id: 123, type: "Wanted"
+        get :edit, params: { id: 123, type: "Wanted" }
         expect(response).to require_login
       end
     end
 
     describe "POST #create" do
       it "requires log in" do
-        post :create, user_id: 123, type: "Wanted"
+        post :create, params: { user_id: 123, type: "Wanted" }
         expect(response).to require_login
       end
     end
 
     describe "PATCH #update" do
       it "requires login" do
-        patch :update, id: "123", type: "Wanted"
+        patch :update, params: { id: "123", type: "Wanted" }
         expect(response).to require_login
       end
     end
