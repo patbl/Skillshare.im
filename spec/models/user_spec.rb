@@ -1,5 +1,4 @@
 require 'spec_helper'
-require Rails.root.join("spec/models/concerns/mappable_spec.rb")
 
 describe User do
   it_behaves_like "Mappable"
