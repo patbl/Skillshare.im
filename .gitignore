@@ -23,3 +23,4 @@ db/test.sqlite3-journal
 /config/application.yml
 .idea
 .DS_Store
+spec/support/examples.txt
