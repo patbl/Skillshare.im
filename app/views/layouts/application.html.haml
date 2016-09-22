@@ -25,7 +25,3 @@
       = render "layouts/analytics_tracking"
 
       = yield :footer
-
-    - unless signed_in?
-      %div#dialog{title: "Sign in or sign up"}
-        = render "shared/sign_in"

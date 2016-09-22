@@ -1,1 +1,15 @@
-= render "shared/sign_in"
+%div.sign-in-option
+  = link_to facebook_auth_path, class: "persona-button persona-fb" do
+    %span Sign in with Facebook
+  %div We won't post anything.
+
+%div.sign-in-option
+  %form#browser_id_form{ action: "/auth/browser_id/callback" }
+    %input{ type: "hidden", name: "assertion" }
+    %a{ href: "#", class: "persona-button dark" }
+      %span Sign in with your e-mail
+  %div.sign-in-description
+    <a href="https://login.persona.org/about" target="_blank">Mozilla Persona</a> is a simple sign-in system from the non-profit behind Firefox.
+
+  %script{src: "https://login.persona.org/include.js", type: "text/javascript"}
+  = render "shared/persona_js"
