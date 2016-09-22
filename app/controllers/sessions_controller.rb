@@ -32,6 +32,19 @@ class SessionsController < ApplicationController
     redirect_back_or root_url, message
   end
 
+  def create_with_password
+    log_in = LogInWithPassword
+               .new(*password_params.values_at(:email, :password))
+               .tap(&:call)
+
+    if log_in.success?
+      self.current_user = log_in.user
+      redirect_back_or(root_url, success: "You signed in successfully.")
+    else
+      render(:new)
+    end
+  end
+
   def failure
     redirect_to root_url, error: "You didn't sign in."
   end
@@ -50,6 +63,10 @@ class SessionsController < ApplicationController
       .permit(:provider, :uid,
               info: [:email, :first_name, :last_name, :location, :image, urls: [:Facebook]],
               credentials: [:token, :expires_at])
+  end
+
+  def password_params
+    params.require(:session).permit(:email, :password)
   end
 
   def redirect_new_user

@@ -58,6 +58,7 @@ GEM
     autoprefixer-rails (6.4.1.1)
       execjs
     awesome_print (1.7.0)
+    bcrypt (3.1.11)
     bootstrap-kaminari-views (0.0.5)
       kaminari (>= 0.13)
       rails (>= 3.1)
@@ -394,6 +395,7 @@ DEPENDENCIES
   acts-as-taggable-on
   annotate
   awesome_print
+  bcrypt
   bootstrap-kaminari-views
   bootstrap-sass
   capybara

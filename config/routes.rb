@@ -21,13 +21,14 @@ Skillshare::Application.routes.draw do
   get "wanteds" => "proposals#index", type: "Wanted"
 
   # authentication
-  get "auth/facebook",   as: "facebook_auth"
+  get "auth/facebook", as: "facebook_auth"
   get "auth/browser_id", as: "browser_id_auth"
   match "auth/:provider/callback" => "sessions#create", via: [:get, :post]
-  get "auth/failure"              => "sessions#failure"
-  get "sessions"                  => "sessions#create"
-  get "signin"                    => "sessions#new",     as: "sign_in"
-  get "signout"                   => "sessions#destroy", as: "sign_out"
+  get "auth/failure" => "sessions#failure"
+  get "sessions" => "sessions#create"
+  get "signin" => "sessions#new", as: "sign_in"
+  post "signin" => "sessions#create_with_password", as: "create_with_password"
+  get "signout" => "sessions#destroy", as: "sign_out"
 
   namespace :admin do
     get "statistics"

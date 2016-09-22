@@ -1,14 +1,14 @@
 require 'spec_helper'
 
 describe SessionsController do
-  describe "GET :new" do
+  describe "#new" do
     it "renders the new template" do
       get :new
       expect(response).to render_template(:new)
     end
   end
 
-  describe "GET :create" do
+  describe "#create" do
     context "already signed in" do
       before do
         @user = create :user
@@ -111,7 +111,45 @@ describe SessionsController do
     end
   end
 
-  describe "GET :failure" do
+  describe "#create_with_password" do
+    context "when an account with that email address exists" do
+      let!(:user) { create(:user, email: "shakira@gmail.com") }
+      let!(:identity) { create(:password_identity, password: "hunter2", user: user) }
+
+      context "when the password is correct" do
+        let(:params) { { session: { email: "shakira@gmail.com", password: "hunter2" } } }
+
+        it "signs you in" do
+          post :create_with_password, params: params
+
+          expect(session[:user_id]).to eq user.id
+          expect(response).to redirect_to(root_url)
+        end
+      end
+
+      context "when the password is wrong" do
+        let(:params) { { session: { email: "shakira@gmail.com", password: "hunter3" } } }
+
+        it "re-renders the page" do
+          post :create_with_password, params: params
+
+          expect(session[:user_id]).to be nil
+          expect(response).to render_template(:new)
+        end
+      end
+    end
+
+    context "when the email address doesn't exist" do
+      it "re-renders the page" do
+        post :create_with_password, params: { session: { email: "shakira@gmail.com", password: "hunter2" } }
+
+        expect(session[:user_id]).to be nil
+        expect(response).to render_template(:new)
+      end
+    end
+  end
+
+  describe "#failure" do
     before { get :failure }
 
     it "redirects to the home page" do
@@ -123,7 +161,7 @@ describe SessionsController do
     end
   end
 
-  describe "DELETE :destroy" do
+  describe "#destroy" do
     it "should set the session user_id to nil" do
       user = build_stubbed(:user)
       set_user_session(user)

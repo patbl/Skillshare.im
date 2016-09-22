@@ -13,3 +13,14 @@
 
   %script{src: "https://login.persona.org/include.js", type: "text/javascript"}
   = render "shared/persona_js"
+
+%h2 Sign in with e-mail
+
+= form_for(:session, url: create_with_password_path) do |form|
+  = form.label(:email)
+  = form.email_field(:email)
+
+  = form.label(:password)
+  = form.password_field(:password)
+
+  = form.submit "Log in"

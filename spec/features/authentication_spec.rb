@@ -9,6 +9,19 @@ feature "Authentication", :slow do
     expect(signed_out?).to be true
   end
 
+  scenario "signing in with a password" do
+    user = create(:user, email: "shakira@gmail.com", first_name: "Shakira", last_name: "Mebarak Ripoll")
+    create(:password_identity, password: "hunter2", user: user)
+
+    visit sign_in_path
+    expect(page).to have_content "Sign in with e-mail"
+    fill_in("Email", with: "shakira@gmail.com")
+    fill_in("Password", with: "hunter2")
+    click_button "Log in"
+    expect(page).to have_content "Shakira Mebarak Ripoll"
+    expect(page.current_path).to eq(root_path)
+  end
+
   scenario "new user can customize e-mail address and location" do
     sign_in new_user: true
     user = User.last

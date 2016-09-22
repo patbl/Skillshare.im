@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :offers,        dependent: :destroy
   has_many :wanteds,       dependent: :destroy
   has_many :identities,    dependent: :destroy
+  has_one :password_identity, dependent: :destroy
   has_many :subscriptions, dependent: :destroy
 
   after_create :subscribe_user
