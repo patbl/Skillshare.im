@@ -52,8 +52,7 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 
-  config.run_all_when_everything_filtered = true
-  config.filter_run :focus
+  config.filter_run_when_matching focus: true
 
   config.before(:each) { GC.disable }
   config.after(:each) { GC.enable }
