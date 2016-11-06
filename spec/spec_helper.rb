@@ -62,8 +62,6 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.include Capybara::DSL, type: :feature
   config.include FeatureHelpers, type: :feature
-  config.include EmailSpec::Helpers
-  config.include EmailSpec::Matchers
 
   config.include MailerMacros
   config.include LoginMacros

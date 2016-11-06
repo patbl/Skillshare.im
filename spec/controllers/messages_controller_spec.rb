@@ -18,11 +18,11 @@ describe MessagesController do
       end
 
       it "sends the e-mail message to the offerer" do
-        expect(find_email(offer.user.email)).to be_present
+        expect(ActionMailer::Base.deliveries.flat_map(&:to)).to include(offer.user.email)
       end
 
       it "sends a confirmation message to the requester" do
-        expect(find_email(sender.email)).to be_present
+        expect(ActionMailer::Base.deliveries.flat_map(&:to)).to include(sender.email)
       end
 
       it "records requisitions" do

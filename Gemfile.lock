@@ -100,10 +100,6 @@ GEM
     em-websocket (0.5.1)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
-    email_spec (2.1.0)
-      htmlentities (~> 4.3.3)
-      launchy (~> 2.1)
-      mail (~> 2.6.3)
     erubis (2.7.0)
     eventmachine (1.2.0.1)
     execjs (2.7.0)
@@ -170,7 +166,6 @@ GEM
       haml (~> 4.0.0)
       nokogiri (~> 1.6.0)
       ruby_parser (~> 3.5)
-    htmlentities (4.3.4)
     http_parser.rb (0.6.0)
     i18n (0.7.0)
     jquery-rails (4.2.1)
@@ -390,7 +385,6 @@ DEPENDENCIES
   coveralls
   database_cleaner
   draper (~> 3.0.0.pre1)
-  email_spec
   factory_girl_rails
   ffaker
   figaro
