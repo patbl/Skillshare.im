@@ -82,12 +82,6 @@ gravatar_user = User.create(
   about: "Just an ordinary, average guy."
 )
 
-Identity.create(
-  provider: "browser_id",
-  uid: "123",
-  user: gravatar_user
-)
-
 Offer.create(
   title: "Skillz",
   description: "Something useful.",
@@ -101,12 +95,6 @@ no_gravatar_user = User.create(
   email: "doesnotexist@hotmail.com",
   location: "Somewhere, World",
   about: "I haven't had the time to upload a picture to Gravatar, or I don't know how to, or it seems like too much trouble."
-)
-
-Identity.create(
-  provider: "browser_id",
-  uid: "456",
-  user: no_gravatar_user
 )
 
 Offer.create(

@@ -22,7 +22,6 @@ Skillshare::Application.routes.draw do
 
   # authentication
   get "auth/facebook", as: "facebook_auth"
-  get "auth/browser_id", as: "browser_id_auth"
   match "auth/:provider/callback" => "sessions#create", via: [:get, :post]
   get "auth/failure" => "sessions#failure"
   get "sessions" => "sessions#create"
