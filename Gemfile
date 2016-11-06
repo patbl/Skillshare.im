@@ -62,6 +62,7 @@ gem "roadie-rails"
 gem "sass"
 gem "sass-rails"
 gem "simple_form"
+gem "sprockets", '~> 4.0.0.beta4'
 gem "therubyracer", platforms: :ruby
 gem "turbolinks"
 gem "uglifier"
