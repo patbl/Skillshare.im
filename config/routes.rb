@@ -37,12 +37,6 @@ Skillshare::Application.routes.draw do
 
   get "unsubscribe/:secure_key" => "subscriptions#unsubscribe", as: "unsubscribe"
 
-  namespace :api do
-    namespace :v0 do
-      resources :users, only: :show
-    end
-  end
-
   # static pages
   get "faq", to: "pages#faq"
   get "about", to: "pages#about"

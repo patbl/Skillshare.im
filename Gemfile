@@ -41,8 +41,6 @@ group :production do
   gem "rails_12factor"
 end
 
-gem "active_model_serializers"
-gem "activemodel-serializers-xml"
 gem "acts-as-taggable-on"
 gem "bcrypt"
 gem "bootstrap-kaminari-views"
