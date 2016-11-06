@@ -33,4 +33,9 @@ class MailerPreview < ActionMailer::Preview
     email = NotificationEmail.new(user, Faker::HipsterIpsum.paragraphs.join("\n\n"), request)
     UserMailer.proposal_email(email)
   end
+
+  def new_login_instructions
+    user = User.order("random()").take
+    UserMailer.new_login_instructions(user, "hunter2")
+  end
 end

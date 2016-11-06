@@ -17,4 +17,14 @@ namespace :one_time do
       end
     end
   end
+
+  task backfill_password_digests: :environment do
+    User.find_each do |user|
+      password = SecureRandom.hex(5)
+      user.build_password_identity(password: password).save!
+
+      next if user.identities.none? { |identity| identity.provider == "browser_id" }
+      UserMailer.new_login_instructions(user, password).deliver_now
+    end
+  end
 end
