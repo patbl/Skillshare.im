@@ -11,7 +11,6 @@ group :test, :development do
   gem "guard-livereload"
   gem "guard-rails"
   gem "guard-rspec"
-  gem "hirb"
   gem "pry-byebug"
   gem "pry-rails"
   gem "rspec"

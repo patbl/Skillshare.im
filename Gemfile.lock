@@ -159,7 +159,6 @@ GEM
       html2haml (>= 1.0.1)
       railties (>= 4.0.1)
     hashie (3.4.4)
-    hirb (0.7.3)
     honeybadger (2.6.1)
     html2haml (2.0.0)
       erubis (~> 2.7.0)
@@ -397,7 +396,6 @@ DEPENDENCIES
   guard-rails
   guard-rspec
   haml-rails
-  hirb
   honeybadger
   jquery-rails
   jquery-turbolinks
