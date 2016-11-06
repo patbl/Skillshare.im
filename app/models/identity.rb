@@ -5,7 +5,7 @@ class Identity < ApplicationRecord
   validates_uniqueness_of :uid, scope: :provider
 
   def self.find_or_create(auth)
-    where(auth.slice(:uid, :provider)).first_or_create
+    find_or_create_by(auth.slice(:uid, :provider))
   end
 end
 
