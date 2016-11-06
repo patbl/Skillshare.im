@@ -8,7 +8,7 @@
         .icons
           = link_to fa_tag(offer_icon, tooltip: "Offers"), :offers, class: active?(offers_path)
           = link_to fa_tag(wanted_icon, tooltip: name_for('wanted', plural: true, capitalized: true)), :wanteds, class: active?(wanteds_path)
-          = link_to fa_tag(community_icon, tooltip: "Community"), :users, class: active?(users_path), "data-no-turbolink" => true
+          = link_to fa_tag(community_icon, tooltip: "Community"), :users, class: active?(users_path)
 
     .col-sm-3
       .right

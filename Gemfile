@@ -52,7 +52,6 @@ gem "geocoder"
 gem "haml-rails"
 gem "honeybadger"
 gem "jquery-rails"
-gem "jquery-turbolinks"
 gem "kaminari"
 gem "newrelic_rpm"
 gem "omniauth-facebook"
@@ -64,7 +63,6 @@ gem "sass-rails"
 gem "simple_form"
 gem "sprockets", '~> 4.0.0.beta4'
 gem "therubyracer", platforms: :ruby
-gem "turbolinks"
 gem "uglifier"
 gem "unicorn"
 
