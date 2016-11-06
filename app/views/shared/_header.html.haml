@@ -28,8 +28,9 @@
                   %li= current_user.decorate.internal_profile_link
                   %li= link_to "Sign Out", sign_out_path, id: "sign_out"
 
-          - else
-            = link_to "Sign in or sign up", sign_in_path, class: "btn btn-primary btn-lg sign-in-btn js-sign-in-btn", role: "button"
+          - elsif request.path != sign_in_path
+            = link_to sign_in_path do
+              .btn.btn-primary.btn-lg.sign-in-btn Sign in
 
 :javascript
   $(function () { $("[data-toggle='tooltip']").tooltip(); })
