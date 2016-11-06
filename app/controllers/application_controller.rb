@@ -28,15 +28,15 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize
-    if guest?
-      store_url request.fullpath
-      redirect_to sign_in_path
-    end
+    return unless guest?
+
+    store_url(request.fullpath)
+    redirect_to(sign_in_path)
   end
 
   def store_url(url, **options)
     session[:return_to] ||= []
-    session[:return_to].push [url, options] if url
+    session[:return_to] << [url, options]
   end
 
   def get_url
@@ -45,8 +45,8 @@ class ApplicationController < ActionController::Base
 
   def redirect_back_or(default_path, default_options = {})
     path, options = get_url
-    path = path.presence || default_path
-    options = options.presence || default_options
-    redirect_to path, options
+    path ||= default_path
+    options = default_options.merge(options || {})
+    redirect_to(path, options)
   end
 end
