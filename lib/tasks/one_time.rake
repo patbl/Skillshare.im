@@ -20,10 +20,10 @@ namespace :one_time do
 
   task backfill_password_digests: :environment do
     User.find_each do |user|
+      next if user.identities.none? { |identity| identity.provider == "browser_id" }
+
       password = SecureRandom.hex(5)
       user.build_password_identity(password: password).save!
-
-      next if user.identities.none? { |identity| identity.provider == "browser_id" }
       UserMailer.new_login_instructions(user, password).deliver_now
     end
   end
