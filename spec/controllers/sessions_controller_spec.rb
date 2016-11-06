@@ -59,23 +59,6 @@ describe SessionsController do
       end
 
       context "previous user" do
-        context "with new identity" do
-          before do
-            email = OmniAuth.config.mock_auth[:facebook][:info][:email]
-            @user = create(:user, email: email)
-            @persona_identity = create(:identity, provider: 'browser_id', user: @user)
-          end
-
-          it "associates the new identity with the old user account" do
-            get :create
-
-            expect(@user.identities.count).to eq 2
-            expect(Identity.first.provider).to eq 'browser_id'
-            expect(Identity.last.provider).to eq 'facebook'
-            expect(Identity.first.user).to eq Identity.last.user
-          end
-        end
-
         it "redirects to the previous page if there was one" do
           user = create :user
           expect(User).to receive(:find_or_create_from_auth!).and_return(user)

@@ -14,10 +14,10 @@ feature "Authentication", :slow do
     create(:password_identity, password: "hunter2", user: user)
 
     visit sign_in_path
-    expect(page).to have_content "Sign in with e-mail"
+    expect(page).to have_content "sign in with e-mail"
     fill_in("Email", with: "shakira@gmail.com")
     fill_in("Password", with: "hunter2")
-    click_button "Log in"
+    click_button "Sign in"
     expect(page).to have_content "Shakira Mebarak Ripoll"
     expect(page.current_path).to eq(root_path)
   end
