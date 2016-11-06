@@ -40,10 +40,10 @@ group :production do
 end
 
 gem "acts-as-taggable-on"
+gem "babel-transpiler"
 gem "bcrypt"
 gem "bootstrap-kaminari-views"
 gem "bootstrap-sass"
-gem "coffee-rails"
 gem "coveralls", require: false
 gem "draper", "~> 3.0.0.pre1"
 gem "figaro"

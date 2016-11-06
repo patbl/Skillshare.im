@@ -53,6 +53,10 @@ GEM
     autoprefixer-rails (6.4.1.1)
       execjs
     awesome_print (1.7.0)
+    babel-source (5.8.35)
+    babel-transpiler (0.7.0)
+      babel-source (>= 4.0, < 6)
+      execjs (~> 2.0)
     bcrypt (3.1.11)
     bootstrap-kaminari-views (0.0.5)
       kaminari (>= 0.13)
@@ -71,13 +75,6 @@ GEM
       xpath (~> 2.0)
     cliver (0.3.2)
     coderay (1.1.1)
-    coffee-rails (4.2.1)
-      coffee-script (>= 2.2.0)
-      railties (>= 4.0.0, < 5.2.x)
-    coffee-script (2.4.1)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.10.0)
     concurrent-ruby (1.0.2)
     coveralls (0.8.15)
       json (>= 1.8, < 3)
@@ -373,11 +370,11 @@ DEPENDENCIES
   acts-as-taggable-on
   annotate
   awesome_print
+  babel-transpiler
   bcrypt
   bootstrap-kaminari-views
   bootstrap-sass
   capybara
-  coffee-rails
   coveralls
   database_cleaner
   draper (~> 3.0.0.pre1)

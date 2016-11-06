@@ -3,4 +3,5 @@
 //= link email/new_proposals_mailer.css
 
 //= link application.js
-//= link map.js
+
+//= link favicon.ico
