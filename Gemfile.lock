@@ -118,9 +118,6 @@ GEM
       railties (>= 3.2, < 5.1)
     formatador (0.2.5)
     geocoder (1.4.0)
-    gibbon (2.2.4)
-      faraday (>= 0.9.1)
-      multi_json (>= 1.11.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     growl (1.0.3)
@@ -389,7 +386,6 @@ DEPENDENCIES
   figaro
   font-awesome-rails
   geocoder
-  gibbon
   growl
   guard-bundler
   guard-livereload
