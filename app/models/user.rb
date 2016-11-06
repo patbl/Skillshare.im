@@ -13,7 +13,7 @@ class User < ApplicationRecord
   validates_presence_of :email
   validates_presence_of :first_name, :last_name, :location, on: :update
 
-  accepts_nested_attributes_for :subscriptions
+  accepts_nested_attributes_for :subscriptions, :password_identity
 
   def self.find_or_create_from_auth!(auth)
     auth_hash = OmniAuth::AuthHash.new(auth)

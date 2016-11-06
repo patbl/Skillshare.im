@@ -22,5 +22,9 @@ FactoryGirl.define do
         create_list(:offer, evaluator.offers_count, user: user)
       end
     end
+
+    trait :has_password do
+      password_identity
+    end
   end
 end

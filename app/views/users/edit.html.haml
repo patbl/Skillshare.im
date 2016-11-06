@@ -10,6 +10,9 @@
       = f.input :location
       = f.input :ea_profile, label: link_to("Effective Altruism Profile Link (optional)", "http://effectivealtruismhub.com/user/profiles", target: "_blank"), placeholder: "http://effectivealtruismhub.com/user/your-name"
       = f.input :about, input_html: { rows: 5 }, label: "About (optional; use Markdown for formatting)"
+      = f.simple_fields_for :password_identity do |identity|
+        = identity.input :password, label: "New password"
+        = identity.input :password_confirmation, label: "Confirm new password"
       = f.label "E-mail notifications"
       %br
       = f.simple_fields_for :subscriptions do |subscription|

@@ -55,6 +55,45 @@ describe UsersController do
     end
 
     describe "PATCH #update" do
+      context "when changing a password" do
+        let(:user) { create(:user, :has_password) }
+
+        before do
+          set_user_session(user)
+        end
+
+        context "when the passwords match" do
+          it "updates the user's password" do
+            expect {
+              patch :update, params: { id: user.id,
+                                       user: {
+                                         password_identity_attributes: {
+                                           password: "somethingnew",
+                                           password_confirmation: "somethingnew"
+                                         }
+                                       }
+                                     }
+            }.to change { user.reload.password_identity.password_digest }
+            expect(flash[:success]).to be_present
+          end
+        end
+
+        context "when the passwords don't match" do
+          it "doesn't update the password" do
+            expect {
+              patch :update, params: { id: user.id,
+                                       user: {
+                                         password_identity_attributes: {
+                                           password: "somethingnew",
+                                           password_confirmation: "somethingew"
+                                         }
+                                       }
+                                     }
+            }.not_to change { user.reload.password_identity.password_digest }
+          end
+        end
+      end
+
       context "with valid attributes" do
         it "updates the user's profile" do
           user = create(:user, last_name: "Crass")

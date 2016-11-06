@@ -53,6 +53,7 @@ feature "profile management", :slow do
   context "managing a profile" do
     before do
       @user = sign_in
+      @user.create_password_identity(password: "passw0rd")
       visit user_path(@user)
       find("#edit-profile").click
     end
@@ -75,6 +76,26 @@ feature "profile management", :slow do
 
       visit users_path
       user_count_equals 1
+    end
+
+    context "updating a password" do
+      scenario "when the passwords match" do
+        fill_in "New password", with: "hunter2"
+        fill_in "Confirm new password", with: "hunter2"
+
+        click_button "Save"
+
+        expect(page).to have_selector(".alert-success")
+      end
+
+      scenario "when the passwords don't match" do
+        fill_in "New password", with: "hunter2"
+        fill_in "Confirm new password", with: "hunter3"
+
+        click_button "Save"
+
+        expect(page).to have_content("doesn't match")
+      end
     end
 
     scenario "user deleting own profile" do

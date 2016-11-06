@@ -33,7 +33,20 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :location, :first_name, :last_name, :ea_profile, :about, subscriptions_attributes: [:id, :active])
+    params.require(:user).permit(
+      :email,
+      :location,
+      :first_name,
+      :last_name,
+      :ea_profile,
+      :about,
+      subscriptions_attributes: [:id, :active],
+      password_identity_attributes: [:id, :password, :password_confirmation],
+    ).tap do |permitted_params|
+      if permitted_params.dig(:password_identity_attributes, :password).blank?
+        permitted_params.delete("password_identity_attributes")
+      end
+    end
   end
 
   def generate_marker_data
