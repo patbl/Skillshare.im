@@ -1,0 +1,7 @@
+@import "variables";
+
+@each $colorName, $color in $colors {
+  .u-tc#{$colorName} {
+    color: $color;
+  }
+}
