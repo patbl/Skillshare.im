@@ -24,3 +24,4 @@ db/test.sqlite3-journal
 .idea
 .DS_Store
 spec/support/examples.txt
+TAGS
