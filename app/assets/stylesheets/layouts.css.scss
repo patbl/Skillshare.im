@@ -1,4 +1,4 @@
-@import 'variables';
+@import "variables";
 
 .header{
   margin-top:19px;
@@ -120,10 +120,10 @@
       margin-top: 33px;
     }
     h2{
-      color: rgba(0, 0, 0, 0.5);
+      color: $gray;
       font-size:27px;
       a{
-        color: rgba(0, 0, 0, 0.5);
+        color: $gray;
       }
     }
     h3{
@@ -150,10 +150,10 @@
 html{
   body{
     h2{
-      color: rgba(0, 0, 0, 0.5);
+      color: $gray;
       font-size:27px;
       a{
-        color: rgba(0, 0, 0, 0.5);
+        color: $gray;
       }
     }
   }

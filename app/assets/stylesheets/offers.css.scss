@@ -1,3 +1,5 @@
+@import "variables";
+
 .proposal{
   &:hover{
     background-color: #f6f6f6;
@@ -115,7 +117,7 @@
     text-align:center;
   }
   h2 a{
-    color: rgba(0,0,0,0.5);
+    color: $gray;
     font-size:27px;
   }
   h2:last-child{
