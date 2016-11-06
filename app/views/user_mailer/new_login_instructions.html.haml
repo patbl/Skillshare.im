@@ -3,7 +3,9 @@
 %p You have previously used Mozilla Persona to log in to your Skillshare.im account. Mozilla Persona is being shut down soon, so you will need to use a password to log into your Skillshare.im account in the future.
 
 %div <strong>Password:</strong> #{@password}
-%div <strong>URL:</strong> #{sign_in_url}
+%div <strong>Sign-in page:</strong> #{sign_in_url}
+
+%p You can update your password on #{link_to "your profile page", edit_user_url(@recipient)}.
 
 %br
 
