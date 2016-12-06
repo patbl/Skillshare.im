@@ -26,6 +26,22 @@ describe User do
     }.to raise_error(ActiveRecord::RecordInvalid)
   end
 
+  describe ".find_or_create_from_auth!" do
+    context "when the auth hash is missing the info attribute" do
+      it "logs the auth hash" do
+        auth = OmniAuth.config.mock_auth[:facebook].dup.tap do |auth|
+          auth.delete(:info)
+        end
+        logger = instance_double(ActiveSupport::Logger).tap do |logger|
+          expect(logger).to receive(:info).with(/missing/)
+        end
+        allow(Rails).to receive(:logger).and_return(logger)
+
+        described_class.find_or_create_from_auth!(auth)
+      end
+    end
+  end
+
   describe "#to_url" do
     it "returns the URL for the user" do
       user = build :user
@@ -33,5 +49,4 @@ describe User do
       expect(user.to_url).to eq "http://skillshare.im/community/789"
     end
   end
-
 end

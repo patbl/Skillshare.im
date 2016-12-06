@@ -17,6 +17,12 @@ class User < ApplicationRecord
 
   def self.find_or_create_from_auth!(auth)
     auth_hash = OmniAuth::AuthHash.new(auth)
+    if auth_hash.info.blank?
+      Rails.logger.info("User.find_or_create_from_auth! missing info from auth: #{auth.inspect}")
+      return
+    else
+      Rails.logger.info("User.find_or_create_from_auth! auth looks fine: #{auth.inspect}")
+    end
     find_or_create_by!(email: auth_hash.info.email) do |user|
       user.first_name = user.email.split("@").first.capitalize
       user.last_name = "Surname"
