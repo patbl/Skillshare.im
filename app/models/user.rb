@@ -23,7 +23,7 @@ class User < ApplicationRecord
     else
       Rails.logger.info("User.find_or_create_from_auth! auth looks fine: #{auth.inspect}")
     end
-    find_or_create_by!(email: auth_hash.info.email) do |user|
+    find_or_create_by!(email: auth_hash.info.fetch(:email)) do |user|
       user.first_name = user.email.split("@").first.capitalize
       user.last_name = "Surname"
       set_facebook_info(user, auth_hash) if auth_hash.provider == "facebook"
@@ -41,14 +41,14 @@ class User < ApplicationRecord
   private
 
   def self.set_facebook_info(user, auth)
-    user.first_name = auth.info.first_name
-    user.last_name = auth.info.last_name
-    user.location = auth.info.location
-    user.facebook_url = auth.info.urls[:Facebook]
+    user.first_name = auth.info.fetch(:first_name)
+    user.last_name = auth.info.fetch(:last_name)
+    user.location = auth.info.fetch(:location)
+    user.facebook_url = auth.info.fetch(:urls)[:Facebook]
 
     # remove attributes from the end of URL ("?type=normal" in the example below)
     # http://graph.facebook.com/632817960/picture?type=normal
-    user.avatar_url = auth.info.image.sub(/\?.*/, "")
+    user.avatar_url = auth.info.fetch(:image).sub(/\?.*/, "")
 
     user.oauth_token = auth.credentials.fetch(:token)
     user.oauth_expires_at = Time.at(auth.credentials.fetch(:expires_at))
