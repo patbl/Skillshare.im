@@ -1,4 +1,4 @@
-class CreatePasswordIdentities < ActiveRecord::Migration[5.0]
+class CreatePasswordIdentities < ActiveRecord::Migration[4.2][5.0]
   def change
     create_table :password_identities do |t|
       t.references :user, foreign_key: true, null: false

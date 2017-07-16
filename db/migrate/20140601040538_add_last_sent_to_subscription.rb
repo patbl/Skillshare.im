@@ -1,4 +1,4 @@
-class AddLastSentToSubscription < ActiveRecord::Migration
+class AddLastSentToSubscription < ActiveRecord::Migration[4.2]
   def up
     add_column :subscriptions, :last_sent, :datetime
     Subscription.all.each do |subscription|

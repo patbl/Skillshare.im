@@ -1,4 +1,4 @@
-class AddSecureKeyToSubscription < ActiveRecord::Migration
+class AddSecureKeyToSubscription < ActiveRecord::Migration[4.2]
   def up
     add_column :subscriptions, :secure_key, :string
     Subscription.all.each do |subscription|

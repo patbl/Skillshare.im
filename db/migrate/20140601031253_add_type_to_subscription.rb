@@ -1,4 +1,4 @@
-class AddTypeToSubscription < ActiveRecord::Migration
+class AddTypeToSubscription < ActiveRecord::Migration[4.2]
   def up
     add_column :subscriptions, :type, :string
     Subscription.all.each do |subscription|

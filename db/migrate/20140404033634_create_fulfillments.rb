@@ -1,4 +1,4 @@
-class CreateFulfillments < ActiveRecord::Migration
+class CreateFulfillments < ActiveRecord::Migration[4.2]
   def change
     create_table :fulfillments do |t|
       t.references :fulfiller, index: true

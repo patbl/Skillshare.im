@@ -1,4 +1,4 @@
-class RemoveEmailAndNameAndLocationAndLatitudeAndLongitudeFromIdentities < ActiveRecord::Migration
+class RemoveEmailAndNameAndLocationAndLatitudeAndLongitudeFromIdentities < ActiveRecord::Migration[4.2]
   def change
     remove_column :identities, :email, :string
     remove_column :identities, :name, :string
