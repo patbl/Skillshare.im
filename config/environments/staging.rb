@@ -77,7 +77,7 @@ Skillshare::Application.configure do
 
   config.action_mailer.default_url_options = { host: "ea-skillshare-staging.herokuapp.com" }
 
-  config.middleware.use "NoWWW"
+  config.middleware.use NoWww
 
   Rails.application.routes.default_url_options[:host]= 'ea-skillshare-staging.herokuapp.com'
 end

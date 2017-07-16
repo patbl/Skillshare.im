@@ -1,4 +1,4 @@
-class NoWWW
+class NoWww
   STARTS_WITH_WWW = /^www\./i
 
   def initialize(app)
