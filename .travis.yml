@@ -14,7 +14,7 @@ script:
 deploy:
   provider: heroku
   api_key:
-    secure: gk62FYTX4ef9XUOZ0SX34KdqAJi9MaNhToAC/jicLInInlC1WepRQRTcfUhtRCFgVQ3HVRiV0wBCaw2N4DG0o1Hn1qwg9319TgqXxzpsxvoqTyGK1UKx8HR3DJVynywfQXbbdg0W+HkmdzACW+EXbpRGbim5hHj5Ynpx7XEs870=
+    secure: ep/c69wPToiK+TDvAhtQwLqpYv7tHGBI0t3jmmw90LMRXqkkJAS3gljpOX3jesYqTrxYbe+EhW3P5ohAUDzlAlj9J8Sj0CHrk74RWaNa4XVmz0hESNmMGYRXa+Q/gOliL7TZJTdVYVogpNkInt9GwGeUmn9Mlz4d96B5H54BSIU=
   app: ea-skillshare-staging
   on:
     repo: patbl/Skillshare.im
