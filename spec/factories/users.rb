@@ -4,7 +4,7 @@ FactoryGirl.define do
   factory :user do
     first_name FFaker::Name.first_name
     last_name FFaker::Name.last_name
-    email FFaker::Internet.email
+    sequence(:email) { |n| "#{first_name}_#{last_name}#{n}@gmail.com".downcase }
     location "#{FFaker::Address.city}, #{FFaker::Address.country}"
     sequence(:oauth_token) { |n| "oauth#{n}" }
     about FFaker::Lorem.paragraphs.join "\n\n"

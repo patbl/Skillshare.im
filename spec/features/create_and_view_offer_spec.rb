@@ -4,7 +4,11 @@ feature "offer management", :slow do
   before { @user = sign_in }
 
   scenario "viewing a new offer" do
-    create :offer, title: "A bear hug", category_list: "self-improvement", description: "Dangerously cuddly."
+    create :offer,
+      user: @user,
+      title: "A bear hug",
+      category_list: "self-improvement",
+      description: "Dangerously cuddly."
 
     visit offers_path
     click_link "A bear hug"
