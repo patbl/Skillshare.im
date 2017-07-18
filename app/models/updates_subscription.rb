@@ -18,6 +18,8 @@ class UpdatesSubscription < Subscription
   def send_email!
     SubscriptionMailer.updates(self).deliver_now
     update(last_sent: Time.now)
+  rescue Net::SMTPSyntaxError
+    raise Net::SMTPSyntaxError, "#{self.attributes} #{user.attributes}"
   end
 end
 
