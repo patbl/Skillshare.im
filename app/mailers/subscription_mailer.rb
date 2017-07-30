@@ -1,5 +1,5 @@
 class SubscriptionMailer < Mailer
-  default from: "Skillshare.im <updates@skillshare.im>", reply_to: ENV["SUPPORT_EMAIL"]
+  default from: "Skillshare.im <updates@skillshare.im>", reply_to: ENV["SKILLSHARE_SUPPORT_EMAIL"]
 
   def updates(subscription)
     @user = subscription.user
