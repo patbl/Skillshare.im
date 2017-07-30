@@ -39,4 +39,5 @@ Skillshare::Application.routes.draw do
   # static pages
   get "faq", to: "pages#faq"
   get "about", to: "pages#about"
+  get "privacy", to: "pages#privacy"
 end

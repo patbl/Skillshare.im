@@ -2,8 +2,9 @@
   %nav.navbar.navbar-default{ role: "navigation" }
     .container
       %ul.nav.navbar-nav
-        %li= link_to("About", "/about")
-        %li= link_to("FAQ", "/faq")
+        %li= link_to("About", about_url)
+        %li= link_to("FAQ", faq_url)
+        %li= link_to("Privacy", privacy_url)
         %li.icon= link_to(fa_tag("twitter"), "https://twitter.com/Skillshare_im")
         %li.icon= link_to(fa_tag("github"), "https://github.com/patbl/ea-skillshare")
         %li.icon= mail_to(ENV["SUPPORT_EMAIL"], fa_tag("envelope"), target: "_blank", subject: "Skillshare.im feedback")
