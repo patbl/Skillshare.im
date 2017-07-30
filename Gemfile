@@ -63,6 +63,6 @@ gem "sass-rails"
 gem "simple_form"
 gem "sprockets", '~> 4.0.0.beta4'
 gem "uglifier"
-gem "unicorn"
+gem "puma"
 
 gem "pg"

@@ -182,7 +182,6 @@ GEM
       activerecord
       kaminari-core (= 1.0.1)
     kaminari-core (1.0.1)
-    kgio (2.11.0)
     launchy (2.4.3)
       addressable (~> 2.3)
     letter_opener (1.4.1)
@@ -242,6 +241,7 @@ GEM
     pry-rails (0.3.6)
       pry (>= 0.10.4)
     public_suffix (2.0.5)
+    puma (3.9.1)
     rack (2.0.3)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -277,7 +277,6 @@ GEM
       method_source
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    raindrops (0.18.0)
     rake (12.0.0)
     rb-fsevent (0.10.1)
     rb-inotify (0.9.10)
@@ -354,9 +353,6 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.2.0)
       execjs (>= 0.3.0, < 3)
-    unicorn (5.3.0)
-      kgio (~> 2.6)
-      raindrops (~> 0.7)
     web-console (3.5.1)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -405,6 +401,7 @@ DEPENDENCIES
   poltergeist
   pry-byebug
   pry-rails
+  puma
   rails (= 5.1.2)
   rails-controller-testing
   rails_12factor
@@ -421,7 +418,6 @@ DEPENDENCIES
   spring-commands-rspec
   sprockets (~> 4.0.0.beta4)
   uglifier
-  unicorn
   web-console
 
 RUBY VERSION
