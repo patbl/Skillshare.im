@@ -22,7 +22,9 @@ Skillshare::Application.routes.draw do
 
   # authentication
   get "auth/facebook", as: "facebook_auth"
-  match "auth/:provider/callback" => "sessions#create", via: [:get, :post]
+  match "auth/:provider/callback" => "sessions#create",
+        via: [:get, :post],
+        constraints: { provider: /facebook/ }
   get "auth/failure" => "sessions#failure"
   get "sessions" => "sessions#create"
   get "signin" => "sessions#new", as: "sign_in"
