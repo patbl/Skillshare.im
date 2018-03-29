@@ -145,7 +145,7 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
-    haml (5.0.2)
+    haml (5.0.4)
       temple (>= 0.8.0)
       tilt
     haml-rails (1.0.0)
@@ -425,7 +425,7 @@ DEPENDENCIES
   web-console
 
 RUBY VERSION
-   ruby 2.4.1p111
+   ruby 2.5.0p0
 
 BUNDLED WITH
-   1.15.4
+   1.16.1
