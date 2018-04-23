@@ -46,7 +46,7 @@ module ApplicationHelper
              when "normal" then "s=100"
              when "large" then "s=200"
              end
-      "http://gravatar.com/avatar/#{gravatar_id}.png?#{size}&d=mm"
+      "https://gravatar.com/avatar/#{gravatar_id}.png?#{size}&d=mm"
     end
   end
 
