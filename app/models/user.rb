@@ -31,7 +31,7 @@ class User < ApplicationRecord
   end
 
   def to_url
-    "http://skillshare.im/community/#{self.id}"
+    "https://skillshare.im/community/#{self.id}"
   end
 
   def full_name
@@ -47,8 +47,8 @@ class User < ApplicationRecord
     user.facebook_url = auth.info.fetch(:urls)[:Facebook]
 
     # remove attributes from the end of URL ("?type=normal" in the example below)
-    # http://graph.facebook.com/632817960/picture?type=normal
-    user.avatar_url = auth.info.fetch(:image).sub(/\?.*/, "")
+    # https://graph.facebook.com/632817960/picture?type=normal
+    user.avatar_url = auth.info.fetch(:image).sub(/\?.*/, "").sub(/^http:/, "https:")
 
     user.oauth_token = auth.credentials.fetch(:token)
     user.oauth_expires_at = Time.at(auth.credentials.fetch(:expires_at))

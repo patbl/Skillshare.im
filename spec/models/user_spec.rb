@@ -46,7 +46,7 @@ describe User do
     it "returns the URL for the user" do
       user = build :user
       allow(user).to receive(:id).and_return(789)
-      expect(user.to_url).to eq "http://skillshare.im/community/789"
+      expect(user.to_url).to eq "https://skillshare.im/community/789"
     end
   end
 end
