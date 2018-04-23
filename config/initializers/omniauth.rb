@@ -5,8 +5,8 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     image_size: :normal,
     info_fields: "first_name,last_name,location,link,email",
     client_options: {
-      site: "https://graph.facebook.com/v2.6",
-      authorize_url: "https://www.facebook.com/v2.6/dialog/oauth",
+      site: "https://graph.facebook.com/v2.10",
+      authorize_url: "https://www.facebook.com/v2.10/dialog/oauth",
     },
     token_params: { parse: :json },
   }
