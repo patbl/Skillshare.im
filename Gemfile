@@ -16,10 +16,6 @@ end
 
 group :development do
   gem "annotate"
-  gem "guard-bundler"
-  gem "guard-livereload"
-  gem "guard-rails"
-  gem "guard-rspec"
   gem "letter_opener"
   gem "web-console"
 end
