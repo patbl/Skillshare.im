@@ -356,6 +356,7 @@ DEPENDENCIES
   omniauth-facebook
   pg
   poltergeist
+  pry
   pry-byebug
   pry-rails
   puma

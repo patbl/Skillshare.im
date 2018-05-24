@@ -4,7 +4,6 @@ ruby "2.5.1"
 gem "rails", "5.1.2"
 
 group :test, :development do
-  gem "awesome_print"
   gem "factory_girl_rails"
   gem "growl"
   gem "pry-byebug"
@@ -36,6 +35,7 @@ group :production do
 end
 
 gem "acts-as-taggable-on"
+gem "awesome_print"
 gem "babel-transpiler"
 gem "bcrypt"
 gem "bootstrap-kaminari-views"
@@ -51,6 +51,7 @@ gem "jquery-rails"
 gem "kaminari"
 gem "newrelic_rpm"
 gem "omniauth-facebook"
+gem "pry"
 gem "puma"
 gem "redcarpet"
 gem "roadie"
