@@ -42,7 +42,6 @@ gem "bootstrap-kaminari-views"
 gem "bootstrap-sass"
 gem "coveralls", require: false
 gem "draper", "~> 3.0.0.pre1"
-gem "figaro"
 gem "font-awesome-rails"
 gem "geocoder"
 gem "haml-rails"

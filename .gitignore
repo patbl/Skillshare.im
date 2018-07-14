@@ -25,3 +25,6 @@ db/test.sqlite3-journal
 spec/support/examples.txt
 TAGS
 spring/
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key

@@ -10,7 +10,10 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     },
     token_params: { parse: :json },
   }
-  provider :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_APP_SECRET"], options
+  provider :facebook,
+    Rails.application.credentials.dig(Rails.env.to_sym, :facebook_app_id),
+    Rails.application.credentials.dig(Rails.env.to_sym, :facebook_app_secret),
+    options
   provider :developer, fields: %i[name], uid_field: :name if Rails.env.development?
 end
 

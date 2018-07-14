@@ -9,4 +9,5 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Skillshare::Application.config.secret_key_base = ENV['SKILLSHARE_SECRET_TOKEN']
+Skillshare::Application.config.secret_key_base =
+  Rails.application.credentials.skillshare_secret_token
