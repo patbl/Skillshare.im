@@ -1,7 +1,7 @@
 source "http://rubygems.org"
 
 ruby "2.5.1"
-gem "rails", "5.1.2"
+gem "rails", "5.2.0"
 
 group :test, :development do
   gem "factory_girl_rails"
