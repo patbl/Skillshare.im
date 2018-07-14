@@ -59,7 +59,7 @@ RSpec.configure do |config|
   config.before(:each) { GC.disable }
   config.after(:each) { GC.enable }
 
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
   config.include Capybara::DSL, type: :feature
   config.include FeatureHelpers, type: :feature
 

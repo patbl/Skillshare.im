@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :updates_subscription do
     user
     frequency :biweekly

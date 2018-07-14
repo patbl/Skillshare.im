@@ -4,7 +4,7 @@ ruby "2.5.1"
 gem "rails", "5.2.0"
 
 group :test, :development do
-  gem "factory_girl_rails"
+  gem "factory_bot_rails"
   gem "growl"
   gem "pry-byebug"
   gem "pry-rails"

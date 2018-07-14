@@ -1,6 +1,6 @@
 require 'ffaker'
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :wanted do
     title FFaker::Lorem.sentence[10..30]
     description FFaker::Lorem.paragraphs.join("\n\n")
