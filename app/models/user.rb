@@ -43,7 +43,6 @@ class User < ApplicationRecord
   def self.set_facebook_info(user, auth)
     user.first_name = auth.info.fetch(:first_name)
     user.last_name = auth.info.fetch(:last_name)
-    user.location = auth.info.fetch(:location)
     user.facebook_url = auth.info.fetch(:urls)[:Facebook]
 
     # remove attributes from the end of URL ("?type=normal" in the example below)

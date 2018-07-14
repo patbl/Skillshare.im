@@ -1,7 +1,7 @@
 OmniAuth.config.logger = Rails.logger
 Rails.application.config.middleware.use OmniAuth::Builder do
   options = {
-    scope: "email,user_location,public_profile",
+    scope: "email,public_profile",
     image_size: :normal,
     info_fields: "first_name,last_name,location,link,email",
     client_options: {
