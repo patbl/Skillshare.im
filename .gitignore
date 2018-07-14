@@ -5,7 +5,6 @@
 *.css.css
 capybara-*.html
 .rspec
-.rvmrc
 /.bundle
 /vendor/bundle
 /log
@@ -19,12 +18,6 @@ pickle-email-*.html
 .project
 config/initializers/secret_token.rb
 db/test.sqlite3-journal
-/config/application.yml
-.idea
-.DS_Store
 spec/support/examples.txt
-TAGS
 spring/
-
-# Ignore master key for decrypting credentials and more.
 /config/master.key
