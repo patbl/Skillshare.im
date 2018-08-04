@@ -50,7 +50,6 @@ describe SessionsController do
           first_name:       "Joe",
           last_name:        "Bloggs",
           facebook_url:     "http://www.facebook.com/jbloggs",
-          location:         "Palo Alto, California",
           oauth_token:      "ABCDEF",
           oauth_expires_at: Time.at(1321747205).to_datetime
         }

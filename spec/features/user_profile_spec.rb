@@ -59,20 +59,14 @@ feature "profile management", :slow do
     end
 
     scenario "saving changes to a profile" do
-      fill_in "Location", with: ""
-      click_button "Save"
-
       fill_in "First name", with: ""
-      click_button "Save"
-
-      fill_in "Location", with: "Nowhere, Wyoming"
       click_button "Save"
 
       fill_in "First name", with: "Joe"
       click_button "Save"
 
       expect(page).to have_selector(".alert-success")
-      expect(page).to have_content("Nowhere, Wyoming")
+      expect(page).to have_content("Joe")
 
       visit users_path
       user_count_equals 1

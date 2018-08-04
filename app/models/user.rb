@@ -11,7 +11,7 @@ class User < ApplicationRecord
   include Mappable
 
   validates :email, presence: true, uniqueness: true
-  validates_presence_of :first_name, :last_name, :location, on: :update
+  validates_presence_of :first_name, :last_name, on: :update
 
   accepts_nested_attributes_for :subscriptions, :password_identity
 
