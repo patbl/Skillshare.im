@@ -4,6 +4,7 @@ development:
   database: skillshare_development
   pool: 5
   timeout: 5000
+  username: <%= ENV.fetch("POSTGRES_USERNAME", "postgres") %>
   password:
 
 test:
@@ -12,6 +13,7 @@ test:
   database: skillshare_test
   pool: 5
   timeout: 5000
+  username: <%= ENV.fetch("POSTGRES_USERNAME", "postgres") %>
   password:
 
 production:
