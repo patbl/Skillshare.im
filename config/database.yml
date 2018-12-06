@@ -6,6 +6,7 @@ development:
   timeout: 5000
   username: <%= ENV.fetch("POSTGRES_USERNAME", "postgres") %>
   password:
+  port: <%= ENV.fetch("POSTGRES_PORT", 5432) %>
 
 test:
   adapter: postgresql
@@ -15,6 +16,7 @@ test:
   timeout: 5000
   username: <%= ENV.fetch("POSTGRES_USERNAME", "postgres") %>
   password:
+  port: <%= ENV.fetch("POSTGRES_PORT", 5432) %>
 
 production:
   adapter: postgresql
