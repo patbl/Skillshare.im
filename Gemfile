@@ -39,7 +39,7 @@ gem "awesome_print"
 gem "babel-transpiler"
 gem "bcrypt"
 gem "bootstrap-kaminari-views"
-gem "bootstrap-sass"
+gem "bootstrap-sass", "~> 3.4.1"
 gem "coveralls", require: false
 gem "draper", "~> 3.0.0.pre1"
 gem "font-awesome-rails"
