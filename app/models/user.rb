@@ -41,13 +41,13 @@ class User < ApplicationRecord
   private
 
   def self.set_facebook_info(user, auth)
-    user.first_name = auth.info.fetch(:first_name)
-    user.last_name = auth.info.fetch(:last_name)
-    user.facebook_url = auth.info.fetch(:urls)[:Facebook]
+    user.first_name = auth.info[:first_name]
+    user.last_name = auth.info[:last_name]
+    user.facebook_url = auth.info.dig(:urls, :Facebook)
 
     # remove attributes from the end of URL ("?type=normal" in the example below)
     # https://graph.facebook.com/632817960/picture?type=normal
-    user.avatar_url = auth.info.fetch(:image).sub(/\?.*/, "").sub(/^http:/, "https:")
+    user.avatar_url = auth.info[:image]&.sub(/\?.*/, "")&.sub(/^http:/, "https:")
 
     user.oauth_token = auth.credentials.fetch(:token)
     user.oauth_expires_at = Time.at(auth.credentials.fetch(:expires_at))
