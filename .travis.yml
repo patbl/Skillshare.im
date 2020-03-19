@@ -2,6 +2,8 @@ sudo: false
 language: ruby
 cache: bundler
 bundler_args: "--without development production"
+services:
+  - postgresql
 before_script: bundle exec rake db:create
 before_install:
   - gem install bundler
