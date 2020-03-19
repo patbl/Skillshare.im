@@ -4,7 +4,7 @@ ActionMailer::Base.smtp_settings = {
   enable_starttls_auto: true, # detects and uses STARTTLS
   user_name: Rails.application.credentials.email_service_user_name,
   password: Rails.application.credentials.email_service_password, # SMTP password is any valid API key
-  authentication: "login", # Mandrill supports 'plain' or 'login'
+  authentication: "login",
   domain: "skillshare.im", # your domain to identify your server when connecting
 }
 
