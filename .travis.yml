@@ -3,17 +3,17 @@ language: ruby
 cache: bundler
 bundler_args: "--without development production"
 services:
-  - postgresql
+- postgresql
 before_script: bundle exec rake db:create
 before_install:
-  - gem install bundler
+- gem install bundler
 script:
-  - RAILS_ENV=test bin/rails db:migrate --trace
-  - bundle exec rspec spec
+- RAILS_ENV=test bin/rails db:migrate --trace
+- bundle exec rspec spec
 deploy:
   provider: heroku
   api_key:
-    secure: QL+A1RiDfquAOtpavIfOl7sfj5S5U4rcr8B2lvEIEZKCpH60DAXCRmhGGDZa4ZYSSW4kuB5kgKBhs+CMomVvenl/PnYAG5IR7a76/YhiwrNV+bVKZ2BXyUgGOC717DDNWMQzAY3V7yGMG28gcoMm+2dORhpEJMtW2tOuC8LaOmE=
+    secure: YhYa1XbJmSW4f7ELgPgkLb4bpHdYnOuMyxvTB51HaiBmfOJ4J4XhDsRS5L0/095PVB4rJogivGOq9qwvPJUKwsbIC960tFZry0xzL39lb0raP0PD0FyKEVZAo1PmjPEmB+1kICVL7RqsDFN8gJPJsiIP7SqHKSG6kEl60GuesOc=
   app: ea-skillshare-staging
   on:
     repo: patbl/Skillshare.im
