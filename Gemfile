@@ -1,7 +1,7 @@
 source "http://rubygems.org"
 
 ruby "2.7.0"
-gem "rails", "5.2.2"
+gem "rails", "6.0.2.2"
 
 group :test, :development do
   gem "factory_bot_rails"
@@ -9,7 +9,7 @@ group :test, :development do
   gem "pry-byebug"
   gem "pry-rails"
   gem "rspec"
-  gem "rspec-rails"
+  gem "rspec-rails", "~> 4.0.0.rc1"
   gem "spring-commands-rspec"
 end
 
@@ -38,9 +38,9 @@ gem "awesome_print"
 gem "babel-transpiler"
 gem "bcrypt"
 gem "bootstrap-kaminari-views"
-gem "bootstrap-sass", "~> 3.4.1"
+gem "bootstrap-sass"
 gem "coveralls", require: false
-gem "draper", "~> 3.0.0.pre1"
+gem "draper"
 gem "font-awesome-rails"
 gem "geocoder"
 gem "haml-rails"
@@ -57,7 +57,7 @@ gem "roadie-rails"
 gem "sass"
 gem "sass-rails"
 gem "simple_form"
-gem "sprockets", '~> 4.0.0.beta4'
+gem "sprockets"
 gem "uglifier"
 
 gem "pg"
