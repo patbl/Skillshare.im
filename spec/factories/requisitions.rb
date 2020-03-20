@@ -2,8 +2,8 @@
 
 FactoryBot.define do
   factory :requisition do
-    requester nil
-    offerer nil
-    offer nil
+    requester { nil }
+    offerer { nil }
+    offer { nil }
   end
 end

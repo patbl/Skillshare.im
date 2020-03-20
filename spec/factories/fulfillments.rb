@@ -2,8 +2,8 @@
 
 FactoryBot.define do
   factory :fulfillment do
-    fulfiller nil
-    wanter nil
-    wanted nil
+    fulfiller { nil }
+    wanter { nil }
+    wanted { nil }
   end
 end

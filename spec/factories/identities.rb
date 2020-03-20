@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :identity do
-    provider "MyString"
+    provider { "MyString" }
     sequence(:uid) { |n| "uid#{n}" }
-    user nil
+    user { nil }
 
     factory :identity_with_user do
       user
