@@ -1,11 +1,11 @@
 User.delete_all
 
 dalai_lama = User.create(
-  facebook_url: "http://www.facebook.com/DalaiLama",
+  facebook_url: "https://www.facebook.com/DalaiLama",
   first_name: "His Holiness",
   last_name: "the Dalai Lama",
   email: "patbl@outlook.com",
-  avatar_url: "http://graph.facebook.com/339188887615/picture",
+  avatar_url: "https://graph.facebook.com/339188887615/picture",
   location: "Tibet",
   about: "The 14th Dalai Lama (religious name: Tenzin Gyatso, shortened from Jetsun Jamphel Ngawang Lobsang Yeshe Tenzin Gyatso, born Lhamo Dondrub,[2] 6 July 1935) is the 14th and current Dalai Lama, as well as the longest lived incumbent. Dalai Lamas are the head monks of the Gelugpa lineage of Tibetan Buddhism. He won the Nobel Peace Prize in 1989, and is also well known for his lifelong advocacy for Tibetans inside and outside Tibet."
 )
@@ -27,11 +27,11 @@ end
 
 100.times do |i|
   shakira = User.create(
-    facebook_url: "http://www.facebook.com/shakira",
+    facebook_url: "https://www.facebook.com/shakira",
     first_name: "Shakira",
     last_name: "Isabel Mebarak Ripoll",
     email: "shakira#{i}@gmail.com",
-    avatar_url: "http://graph.facebook.com/5027904559/picture",
+    avatar_url: "https://graph.facebook.com/5027904559/picture",
     location: "Barranquilla, Colombia",
     about: %{Shakira Isabel Mebarak Ripoll (pronounced: [ʃaˈkiɾa isaˈβel meβa'ɾak riˈpol]; born February 2, 1977),[2] known professionally as Shakira (English /ʃəˈkɪərə/,[3] Spanish: [ʃaˈkiɾa]), is a Colombian singer-songwriter, dancer, record producer, choreographer and model. Born and raised in Barranquilla, she began performing in school, demonstrating Latin, Arabic, and rock and roll influences and belly dancing abilities. Shakira released her first studio albums, Magia and Peligro, in the early 1990s, failing to attain commercial success; however, she rose to prominence in Latin America with her major-label debut, Pies Descalzos (1996), and her fourth album, Dónde Están los Ladrones? (1998).
 
