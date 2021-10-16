@@ -1,3 +1,6 @@
+# Unmaintained
+This app was online from 2013 to 2021. You can see what it used to look like [here](https://web.archive.org/web/20210116141049/https://www.skillshare.im/). I took it down because nobody was using it and it was slightly broken. 
+
 [![Build Status](https://travis-ci.org/patbl/Skillshare.im.png?branch=master)](https://travis-ci.org/patbl/Skillshare.im)
 [![Code Climate](https://codeclimate.com/github/patbl/Skillshare.im.png)](https://codeclimate.com/github/patbl/Skillshare.im)
 [![Coverage Status](https://coveralls.io/repos/patbl/Skillshare.im/badge.png?branch=master)](https://coveralls.io/r/patbl/Skillshare.im?branch=master)
